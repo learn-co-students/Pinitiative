@@ -1,11 +1,3 @@
 # ios-0916-team-lemonhandshake
 
-
-git clone fork merge what
-where did all the coding go
-bring back some swift yo
-
-#Thoughtful Title
-Thoughtful text
-
-More thoughtful text
+You're reading this right now.
