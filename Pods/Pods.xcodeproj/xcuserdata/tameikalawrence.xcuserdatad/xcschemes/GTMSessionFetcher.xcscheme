@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0810"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "610FB0B7A36434F6F828C8493C76058D"
-               BuildableName = "Pods_LemonHandshake.framework"
-               BlueprintName = "Pods-LemonHandshake"
+               BlueprintIdentifier = "23BA9083ED0D2392A167A8AFA04427FA"
+               BuildableName = "GTMSessionFetcher.framework"
+               BlueprintName = "GTMSessionFetcher"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "610FB0B7A36434F6F828C8493C76058D"
-            BuildableName = "Pods_LemonHandshake.framework"
-            BlueprintName = "Pods-LemonHandshake"
+            BlueprintIdentifier = "23BA9083ED0D2392A167A8AFA04427FA"
+            BuildableName = "GTMSessionFetcher.framework"
+            BlueprintName = "GTMSessionFetcher"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -60,6 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "23BA9083ED0D2392A167A8AFA04427FA"
+            BuildableName = "GTMSessionFetcher.framework"
+            BlueprintName = "GTMSessionFetcher"
+            ReferencedContainer = "container:Pods.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
