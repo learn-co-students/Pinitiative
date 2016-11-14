@@ -12,6 +12,8 @@
 		1B1096641DDA50CE00609104 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096621DDA50CE00609104 /* Main.storyboard */; };
 		1B1096661DDA50CE00609104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096651DDA50CE00609104 /* Assets.xcassets */; };
 		1B1096691DDA50CE00609104 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096671DDA50CE00609104 /* LaunchScreen.storyboard */; };
+		1B1096711DDA52B000609104 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096701DDA52B000609104 /* GoogleService-Info.plist */; };
+		C1C17914B89D5C7A8248CE88 /* Pods_LemonHandshake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F8D053C7AB55B440A09174 /* Pods_LemonHandshake.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,10 @@
 		1B1096651DDA50CE00609104 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B1096681DDA50CE00609104 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B10966A1DDA50CE00609104 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B1096701DDA52B000609104 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LemonHandshake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake.debug.xcconfig"; sourceTree = "<group>"; };
+		A0F8D053C7AB55B440A09174 /* Pods_LemonHandshake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LemonHandshake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9D87A0442C341DFD63FA7AE /* Pods-LemonHandshake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LemonHandshake.release.xcconfig"; path = "Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1C17914B89D5C7A8248CE88 /* Pods_LemonHandshake.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				1B10965D1DDA50CE00609104 /* LemonHandshake */,
 				1B10965C1DDA50CE00609104 /* Products */,
+				C71F4DC8BE452E19A820249F /* Pods */,
+				A7B4E77D6C3B3FB3CC90B9AB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +69,26 @@
 				1B1096651DDA50CE00609104 /* Assets.xcassets */,
 				1B1096671DDA50CE00609104 /* LaunchScreen.storyboard */,
 				1B10966A1DDA50CE00609104 /* Info.plist */,
+				1B1096701DDA52B000609104 /* GoogleService-Info.plist */,
 			);
 			path = LemonHandshake;
+			sourceTree = "<group>";
+		};
+		A7B4E77D6C3B3FB3CC90B9AB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0F8D053C7AB55B440A09174 /* Pods_LemonHandshake.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C71F4DC8BE452E19A820249F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */,
+				D9D87A0442C341DFD63FA7AE /* Pods-LemonHandshake.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B10966D1DDA50CE00609104 /* Build configuration list for PBXNativeTarget "LemonHandshake" */;
 			buildPhases = (
+				3C33936C1F8B6801A402DB42 /* [CP] Check Pods Manifest.lock */,
 				1B1096571DDA50CE00609104 /* Sources */,
 				1B1096581DDA50CE00609104 /* Frameworks */,
 				1B1096591DDA50CE00609104 /* Resources */,
+				5E7B4EB682E13185972F6286 /* [CP] Embed Pods Frameworks */,
+				A776A4A97FC5DF09239099AD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,12 +154,61 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B1096691DDA50CE00609104 /* LaunchScreen.storyboard in Resources */,
+				1B1096711DDA52B000609104 /* GoogleService-Info.plist in Resources */,
 				1B1096661DDA50CE00609104 /* Assets.xcassets in Resources */,
 				1B1096641DDA50CE00609104 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3C33936C1F8B6801A402DB42 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5E7B4EB682E13185972F6286 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A776A4A97FC5DF09239099AD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1B1096571DDA50CE00609104 /* Sources */ = {
@@ -258,6 +337,7 @@
 		};
 		1B10966E1DDA50CE00609104 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
@@ -270,6 +350,7 @@
 		};
 		1B10966F1DDA50CE00609104 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9D87A0442C341DFD63FA7AE /* Pods-LemonHandshake.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
@@ -299,6 +380,7 @@
 				1B10966F1DDA50CE00609104 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
