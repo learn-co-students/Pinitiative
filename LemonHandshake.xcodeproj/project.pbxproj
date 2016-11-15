@@ -14,6 +14,12 @@
 		1B1096691DDA50CE00609104 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096671DDA50CE00609104 /* LaunchScreen.storyboard */; };
 		1B1096711DDA52B000609104 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096701DDA52B000609104 /* GoogleService-Info.plist */; };
 		1B1096731DDA665B00609104 /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1096721DDA665B00609104 /* FirebaseAuth.swift */; };
+		BC6244E01DDA798D00AE6523 /* InitiativeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */; };
+		BC6244E11DDA798D00AE6523 /* LocationDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DB1DDA798D00AE6523 /* LocationDetailTableViewController.swift */; };
+		BC6244E21DDA798D00AE6523 /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */; };
+		BC6244E31DDA798D00AE6523 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DD1DDA798D00AE6523 /* MapViewController.swift */; };
+		BC6244E41DDA798D00AE6523 /* MyInitiativesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */; };
+		BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */; };
 		C1C17914B89D5C7A8248CE88 /* Pods_LemonHandshake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F8D053C7AB55B440A09174 /* Pods_LemonHandshake.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +35,12 @@
 		1B1096721DDA665B00609104 /* FirebaseAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
 		228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LemonHandshake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake.debug.xcconfig"; sourceTree = "<group>"; };
 		A0F8D053C7AB55B440A09174 /* Pods_LemonHandshake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LemonHandshake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiativeDetailViewController.swift; sourceTree = "<group>"; };
+		BC6244DB1DDA798D00AE6523 /* LocationDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailTableViewController.swift; sourceTree = "<group>"; };
+		BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
+		BC6244DD1DDA798D00AE6523 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInitiativesTableViewController.swift; sourceTree = "<group>"; };
+		BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartInitiativeViewController.swift; sourceTree = "<group>"; };
 		D9D87A0442C341DFD63FA7AE /* Pods-LemonHandshake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LemonHandshake.release.xcconfig"; path = "Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +80,12 @@
 				1B10965E1DDA50CE00609104 /* AppDelegate.swift */,
 				1B1096721DDA665B00609104 /* FirebaseAuth.swift */,
 				1B1096601DDA50CE00609104 /* ViewController.swift */,
+				BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */,
+				BC6244DB1DDA798D00AE6523 /* LocationDetailTableViewController.swift */,
+				BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */,
+				BC6244DD1DDA798D00AE6523 /* MapViewController.swift */,
+				BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */,
+				BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */,
 				1B1096621DDA50CE00609104 /* Main.storyboard */,
 				1B1096651DDA50CE00609104 /* Assets.xcassets */,
 				1B1096671DDA50CE00609104 /* LaunchScreen.storyboard */,
@@ -219,8 +237,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B1096731DDA665B00609104 /* FirebaseAuth.swift in Sources */,
+				BC6244E11DDA798D00AE6523 /* LocationDetailTableViewController.swift in Sources */,
+				BC6244E21DDA798D00AE6523 /* LoginScreenViewController.swift in Sources */,
 				1B1096611DDA50CE00609104 /* ViewController.swift in Sources */,
 				1B10965F1DDA50CE00609104 /* AppDelegate.swift in Sources */,
+				BC6244E01DDA798D00AE6523 /* InitiativeDetailViewController.swift in Sources */,
+				BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */,
+				BC6244E31DDA798D00AE6523 /* MapViewController.swift in Sources */,
+				BC6244E41DDA798D00AE6523 /* MyInitiativesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
