@@ -11,6 +11,8 @@
 *.xcworkspace
 xcuserdata
 
+Pods/
+
 # Build products
 build/
 *.o
