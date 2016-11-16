@@ -14,6 +14,7 @@
 		1B1096691DDA50CE00609104 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096671DDA50CE00609104 /* LaunchScreen.storyboard */; };
 		1B1096711DDA52B000609104 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096701DDA52B000609104 /* GoogleService-Info.plist */; };
 		1B1096731DDA665B00609104 /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1096721DDA665B00609104 /* FirebaseAuth.swift */; };
+		8309A9E51DDCE21400484700 /* MapDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8309A9E41DDCE21400484700 /* MapDataStore.swift */; };
 		BC43C33B1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */; };
 		BC6244E01DDA798D00AE6523 /* InitiativeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */; };
 		BC6244E11DDA798D00AE6523 /* LocationDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DB1DDA798D00AE6523 /* LocationDetailTableViewController.swift */; };
@@ -36,6 +37,7 @@
 		1B1096701DDA52B000609104 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1B1096721DDA665B00609104 /* FirebaseAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
 		228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LemonHandshake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake.debug.xcconfig"; sourceTree = "<group>"; };
+		8309A9E41DDCE21400484700 /* MapDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDataStore.swift; sourceTree = "<group>"; };
 		A0F8D053C7AB55B440A09174 /* Pods_LemonHandshake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LemonHandshake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyInitiativesTableViewController.swift; sourceTree = "<group>"; };
 		BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiativeDetailViewController.swift; sourceTree = "<group>"; };
@@ -81,10 +83,11 @@
 		1B10965D1DDA50CE00609104 /* LemonHandshake */ = {
 			isa = PBXGroup;
 			children = (
+				8309A9E31DDCE1F500484700 /* Data Stores */,
 				1B10965E1DDA50CE00609104 /* AppDelegate.swift */,
 				1B1096721DDA665B00609104 /* FirebaseAuth.swift */,
 				1B1096601DDA50CE00609104 /* ViewController.swift */,
-				BC87E4A61DDB862F00980939 /* controllers */,
+				BC87E4A61DDB862F00980939 /* Controllers */,
 				1B1096621DDA50CE00609104 /* Main.storyboard */,
 				1B1096651DDA50CE00609104 /* Assets.xcassets */,
 				1B1096671DDA50CE00609104 /* LaunchScreen.storyboard */,
@@ -92,6 +95,14 @@
 				1B1096701DDA52B000609104 /* GoogleService-Info.plist */,
 			);
 			path = LemonHandshake;
+			sourceTree = "<group>";
+		};
+		8309A9E31DDCE1F500484700 /* Data Stores */ = {
+			isa = PBXGroup;
+			children = (
+				8309A9E41DDCE21400484700 /* MapDataStore.swift */,
+			);
+			name = "Data Stores";
 			sourceTree = "<group>";
 		};
 		A7B4E77D6C3B3FB3CC90B9AB /* Frameworks */ = {
@@ -102,7 +113,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BC87E4A61DDB862F00980939 /* controllers */ = {
+		BC87E4A61DDB862F00980939 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */,
@@ -114,7 +125,7 @@
 				BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */,
 				BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */,
 			);
-			name = controllers;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		C71F4DC8BE452E19A820249F /* Pods */ = {
@@ -252,6 +263,7 @@
 			files = (
 				1B1096731DDA665B00609104 /* FirebaseAuth.swift in Sources */,
 				BC6244E11DDA798D00AE6523 /* LocationDetailTableViewController.swift in Sources */,
+				8309A9E51DDCE21400484700 /* MapDataStore.swift in Sources */,
 				BC6244E21DDA798D00AE6523 /* LoginScreenViewController.swift in Sources */,
 				1B1096611DDA50CE00609104 /* ViewController.swift in Sources */,
 				BC43C33B1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift in Sources */,
