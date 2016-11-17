@@ -8,16 +8,20 @@
 
 import UIKit
 import Mapbox
+import CoreLocation
 
 class MapViewController: UIViewController, MGLMapViewDelegate {
     
+//    var mapView: MGLMapView!
+    var store = MapDataStore.sharedInstance
     var mapView: MGLMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createMap()
+        view.addSubview(mapView)
+        mapView.delegate = self
 //        activateGestureRecognizer()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,57 +43,24 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     func createMap() {
         mapView = MGLMapView(frame: view.bounds)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.longitude = -73.974187 //Dummy Data. Will change to user location
-        mapView.latitude = 40.771133
-        mapView.zoomLevel = 14
-        mapView.styleURL = MGLStyle.streetsStyleURL(withVersion: 9)
-        let coordinate: CLLocationCoordinate2D = mapView.centerCoordinate
-        addPointAnnotation(coordinate: coordinate)
-        view.addSubview(mapView)
-        mapView.delegate = self
-    }
-
-    func activateGestureRecognizer() {
-        // double tapping zooms the map, so ensure that can still happen
-        let doubleTap = UITapGestureRecognizer(target: self, action: nil)
-        doubleTap.numberOfTapsRequired = 2
-        mapView.addGestureRecognizer(doubleTap)
-        
-        // delay single tap recognition until it is clearly not a double
-        let singleTap = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap))
-        singleTap.require(toFail: doubleTap)
-        mapView.addGestureRecognizer(singleTap)
+        mapView.styleURL = store.styleURL
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
+        mapView.zoomLevel = 15
+        mapView.frame.size.height = view.frame.size.height * 0.93
     }
     
-    func handleSingleTap(tap: UIGestureRecognizer) {
-        // convert tap location (CGPoint)
-        // to geographic coordinates (CLLocationCoordinate2D)
-        let location: CLLocationCoordinate2D = mapView.convert(tap.location(in: mapView), toCoordinateFrom: mapView)
-        print("You tapped at: \(location.latitude), \(location.longitude)")
-        
-        
-//        // create an array of coordinates for our polyline
-//        let coordinates: [CLLocationCoordinate2D] = [mapView.centerCoordinate, location]
-        
+    func mapView(_ mapView: MGLMapView, didUpdate userLocation: MGLUserLocation?) {
+        guard let userLocation = mapView.userLocation else { return }
+        let center = CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude)
+        store.latitude = userLocation.coordinate.latitude
+        store.longitude = userLocation.coordinate.longitude
+        mapView.latitude = store.latitude
+        mapView.longitude = store.longitude
+        mapView.setCenter(center, animated: true)
     }
     
-    func addPointAnnotation(coordinate: CLLocationCoordinate2D) {
-        let point = MGLPointAnnotation()
-        point.coordinate = (coordinate)
-        point.title = "\(coordinate.latitude), \(coordinate.longitude)"
-        print(point)
-        mapView.addAnnotation(point)
-    }
     
-    func mapView(mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
-    // Always try to show a callout when an annotation is tapped.
-        return true
-    }
     
-    // Or, if you’re using Swift 3 in Xcode 8.0, be sure to add an underscore before the method parameters:
-    func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
-        // Always try to show a callout when an annotation is tapped.
-        return true
-    }
 }
 

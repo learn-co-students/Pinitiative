@@ -83,6 +83,7 @@
 		1B10965D1DDA50CE00609104 /* LemonHandshake */ = {
 			isa = PBXGroup;
 			children = (
+				8309AA061DDE04BC00484700 /* Models */,
 				8309A9E31DDCE1F500484700 /* Data Stores */,
 				1B10965E1DDA50CE00609104 /* AppDelegate.swift */,
 				1B1096721DDA665B00609104 /* FirebaseAuth.swift */,
@@ -103,6 +104,13 @@
 				8309A9E41DDCE21400484700 /* MapDataStore.swift */,
 			);
 			name = "Data Stores";
+			sourceTree = "<group>";
+		};
+		8309AA061DDE04BC00484700 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		A7B4E77D6C3B3FB3CC90B9AB /* Frameworks */ = {
@@ -172,6 +180,7 @@
 				TargetAttributes = {
 					1B10965A1DDA50CE00609104 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 3WL69W834X;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -396,7 +405,9 @@
 			baseConfigurationReference = 228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3WL69W834X;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flatiron.LemonHandshake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -409,7 +420,9 @@
 			baseConfigurationReference = D9D87A0442C341DFD63FA7AE /* Pods-LemonHandshake.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3WL69W834X;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flatiron.LemonHandshake;
 				PRODUCT_NAME = "$(TARGET_NAME)";

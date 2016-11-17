@@ -7,3 +7,21 @@
 //
 
 import Foundation
+import Mapbox
+
+struct MapDataStore {
+    
+    var longitude: Double = 0.0
+    var latitude: Double = 0.0
+    var zoomLevel = 0.0
+    var styleURL = MGLStyle.streetsStyleURL(withVersion: 9)
+    
+    static let sharedInstance = MapDataStore()
+    private init(){}
+    //fetch dataset
+    //should have datapoints
+    
+    
+    
+
+}
