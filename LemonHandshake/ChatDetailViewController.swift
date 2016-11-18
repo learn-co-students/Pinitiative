@@ -2,13 +2,20 @@
 //  ChatDetailViewController.swift
 //  LemonHandshake
 //
-//  Created by Tameika Lawrence on 11/14/16.
+//  Created by Tameika Lawrence on 11/18/16.
 //  Copyright © 2016 Flatiron School. All rights reserved.
 //
 
 import UIKit
+import JSQMessagesViewController
 
-class ChatDetailViewController: UIViewController {
+class ChatDetailViewController: JSQMessagesViewController {
+    
+    let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.orange)
+    let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.lightGray)
+    var messages = [JSQMessage]()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

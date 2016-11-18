@@ -21,6 +21,7 @@
 		BC6244E31DDA798D00AE6523 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DD1DDA798D00AE6523 /* MapViewController.swift */; };
 		BC6244E41DDA798D00AE6523 /* MyInitiativesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */; };
 		BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */; };
+		BC686E7D1DDF57320034B932 /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC686E7C1DDF57320034B932 /* ChatDetailViewController.swift */; };
 		BC87E4A81DDB87E800980939 /* MemberManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */; };
 		C1C17914B89D5C7A8248CE88 /* Pods_LemonHandshake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F8D053C7AB55B440A09174 /* Pods_LemonHandshake.framework */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		BC6244DD1DDA798D00AE6523 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInitiativesTableViewController.swift; sourceTree = "<group>"; };
 		BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartInitiativeViewController.swift; sourceTree = "<group>"; };
+		BC686E7C1DDF57320034B932 /* ChatDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
 		BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberManagementViewController.swift; sourceTree = "<group>"; };
 		D9D87A0442C341DFD63FA7AE /* Pods-LemonHandshake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LemonHandshake.release.xcconfig"; path = "Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 				BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */,
 				BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */,
 				BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */,
+				BC686E7C1DDF57320034B932 /* ChatDetailViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				BC87E4A81DDB87E800980939 /* MemberManagementViewController.swift in Sources */,
 				BC6244E31DDA798D00AE6523 /* MapViewController.swift in Sources */,
 				BC6244E41DDA798D00AE6523 /* MyInitiativesTableViewController.swift in Sources */,
+				BC686E7D1DDF57320034B932 /* ChatDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

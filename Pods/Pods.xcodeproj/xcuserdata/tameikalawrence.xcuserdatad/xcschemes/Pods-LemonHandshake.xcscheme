@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0810"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "610FB0B7A36434F6F828C8493C76058D"
+               BlueprintIdentifier = "05EBC82853DEEBC24B0B5ACD26007798"
                BuildableName = "Pods_LemonHandshake.framework"
                BlueprintName = "Pods-LemonHandshake"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "610FB0B7A36434F6F828C8493C76058D"
+            BlueprintIdentifier = "05EBC82853DEEBC24B0B5ACD26007798"
             BuildableName = "Pods_LemonHandshake.framework"
             BlueprintName = "Pods-LemonHandshake"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "610FB0B7A36434F6F828C8493C76058D"
-            BuildableName = "Pods_LemonHandshake.framework"
-            BlueprintName = "Pods-LemonHandshake"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
