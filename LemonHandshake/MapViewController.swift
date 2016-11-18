@@ -48,7 +48,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.styleURL = store.styleURL
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
-        mapView.zoomLevel = 5
+        mapView.zoomLevel = 10
         mapView.frame.size.height = view.frame.size.height * 0.93
     }
     
