@@ -40,13 +40,15 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.0)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.0)
   - GTMSessionFetcher/Core (1.1.7)
-  - Mapbox-iOS-SDK (3.3.6)
+  - Mapbox-iOS-SDK (3.3.7)
+  - SnapKit (3.0.2)
 
 DEPENDENCIES:
   - Firebase
   - Firebase/Auth
   - Firebase/Database
   - Mapbox-iOS-SDK (~> 3.3.6)
+  - SnapKit (~> 3.0.2)
 
 SPEC CHECKSUMS:
   Firebase: ff77ffb77b317c3720fef57a60e9335cebf962e6
@@ -59,8 +61,9 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
-  Mapbox-iOS-SDK: 1651ab31beec917b60ccbb8f737d0435ec80eeb3
+  Mapbox-iOS-SDK: 142301fa63a6719cbd2eacc0f9e8bf36c65930d9
+  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
 
-PODFILE CHECKSUM: 914831409a052443179ff8df291dd4b4ac556454
+PODFILE CHECKSUM: 7aecde016ffe83edcf2b439f6bf16c6f4c42fabc
 
 COCOAPODS: 1.1.1
