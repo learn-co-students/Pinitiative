@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import SnapKit
+import Firebase
 
 class LoginScreenViewController: UIViewController {
 
@@ -19,6 +20,7 @@ class LoginScreenViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBAction func loginButton(_ sender: Any) {
+        
     }
     
     @IBAction func createAccountButton(_ sender: Any) {
@@ -34,8 +36,8 @@ class LoginScreenViewController: UIViewController {
 
             backgroundView.snp.makeConstraints { (make) in
             make.height.equalTo(self.view)
-            make.width.equalTo(self.view).offset(250)
-            make.center.equalTo(self.view)
+            make.width.equalTo(self.view).multipliedBy(2)
+            make.center.equalTo(self.view).offset(50)
             }
         
             usernameTextField.snp.makeConstraints { (make) in
@@ -43,6 +45,8 @@ class LoginScreenViewController: UIViewController {
             make.centerX.equalTo(self.view.center)
             make.width.equalTo(200)
             usernameTextField.layer.cornerRadius = 15
+            usernameTextField.layer.borderColor = UIColor.black.cgColor
+            usernameTextField.layer.borderWidth = 1
             }
         
             passwordTextField.snp.makeConstraints { (make) in
@@ -50,6 +54,8 @@ class LoginScreenViewController: UIViewController {
             make.centerX.equalTo(self.view.center)
             make.width.equalTo(200)
             passwordTextField.layer.cornerRadius = 15
+            passwordTextField.layer.borderColor = UIColor.black.cgColor
+            passwordTextField.layer.borderWidth = 1
             }
         
             loginButtonView.snp.makeConstraints { (make) in
@@ -57,8 +63,8 @@ class LoginScreenViewController: UIViewController {
             make.centerX.equalTo(self.view.center)
             make.width.equalTo(150)
             loginButtonView.layer.cornerRadius = 20
-            loginButtonView.layer.borderColor = UIColor.yellow.cgColor
-            loginButtonView.layer.borderWidth = 3
+            loginButtonView.layer.borderColor = UIColor.white.cgColor
+            loginButtonView.layer.borderWidth = 1
             }
         
             createAccountButtonView.snp.makeConstraints { (make) in
@@ -66,7 +72,7 @@ class LoginScreenViewController: UIViewController {
             make.centerX.equalTo(self.view.center)
             make.width.equalTo(self.view).multipliedBy(1.05)
             make.height.equalTo(self.view).multipliedBy(0.08)
-            createAccountButtonView.layer.borderColor = UIColor.yellow.cgColor
+            createAccountButtonView.layer.borderColor = UIColor.green.cgColor
             createAccountButtonView.layer.borderWidth = 3
             }
         
@@ -75,13 +81,22 @@ class LoginScreenViewController: UIViewController {
             make.centerX.equalTo(self.view.center)
             make.width.equalTo(self.view).multipliedBy(1.05)
             make.height.equalTo(self.view).multipliedBy(0.15)
-            applicationLogo.layer.borderColor = UIColor.yellow.cgColor
+            applicationLogo.layer.borderColor = UIColor.green.cgColor
             applicationLogo.layer.borderWidth = 3
         
         }
+      
 }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "loginToMapSegue" {
+            let dest = segue.destination
+            
+           
+        }
+    }
 }
 
-   
+
 
 
