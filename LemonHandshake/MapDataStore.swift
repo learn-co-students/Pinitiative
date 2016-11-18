@@ -114,6 +114,7 @@ enum LocationType {
     case policeStation
     case fireStation
     case park
+    case hospital
 }
 
 
