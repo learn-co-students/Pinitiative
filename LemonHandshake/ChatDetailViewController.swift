@@ -23,20 +23,25 @@ class ChatDetailViewController: JSQMessagesViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    let layout: JSQMessagesCollectionViewFlowLayout = JSQMessagesCollectionViewFlowLayout()
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    let chatCollectionView: JSQMessagesCollectionView = JSQMessagesCollectionView(frame: self.view.frame, collectionViewLayout: layout)
+    
+    
+    
+ 
 }
+
+
+//extension ChatDetailViewController {
+//    
+//    func addDemoMessages() {
+//        for i in 1...10 {
+//            let sender = (i % 2 == 0) ? "Server" : self.senderID
+//            let messageContent = "This is message #\(i)"
+//            let message = JSQMessage(senderId: sender, displayName: sender, text: messageContent)
+//            self.messages += [message]
+//        }
+//    }
+//        // reload messages view here
+//}
