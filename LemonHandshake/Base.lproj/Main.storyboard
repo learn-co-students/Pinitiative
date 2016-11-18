@@ -363,14 +363,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gBo-EL-yk4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1338" y="1047"/>
+            <point key="canvasLocation" x="1342" y="1009"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FMn-3P-Mmt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="LMZ-rX-9f2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="U8J-BJ-syT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="U8J-BJ-syT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>

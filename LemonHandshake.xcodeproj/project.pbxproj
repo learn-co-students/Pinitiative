@@ -15,10 +15,10 @@
 		1B1096711DDA52B000609104 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096701DDA52B000609104 /* GoogleService-Info.plist */; };
 		1B1096731DDA665B00609104 /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1096721DDA665B00609104 /* FirebaseAuth.swift */; };
 		8309A9E51DDCE21400484700 /* MapDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8309A9E41DDCE21400484700 /* MapDataStore.swift */; };
-		8309AA0F1DDE6C1700484700 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8309AA0E1DDE6C1700484700 /* MapAnnotation.swift */; };
 		832662A51DDF541900126B99 /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832662A41DDF541900126B99 /* CustomPointAnnotation.swift */; };
 		832662A91DDF5EEB00126B99 /* park2.png in Resources */ = {isa = PBXBuildFile; fileRef = 832662A81DDF5EEB00126B99 /* park2.png */; };
 		832662AB1DDF5F3000126B99 /* police.png in Resources */ = {isa = PBXBuildFile; fileRef = 832662AA1DDF5F3000126B99 /* police.png */; };
+		832662AD1DDF7AEB00126B99 /* MapDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832662AC1DDF7AEB00126B99 /* MapDataModels.swift */; };
 		BC43C33B1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */; };
 		BC6244E01DDA798D00AE6523 /* InitiativeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */; };
 		BC6244E11DDA798D00AE6523 /* LocationDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DB1DDA798D00AE6523 /* LocationDetailTableViewController.swift */; };
@@ -42,10 +42,10 @@
 		1B1096721DDA665B00609104 /* FirebaseAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
 		228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LemonHandshake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake.debug.xcconfig"; sourceTree = "<group>"; };
 		8309A9E41DDCE21400484700 /* MapDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDataStore.swift; sourceTree = "<group>"; };
-		8309AA0E1DDE6C1700484700 /* MapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
 		832662A41DDF541900126B99 /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		832662A81DDF5EEB00126B99 /* park2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = park2.png; sourceTree = "<group>"; };
 		832662AA1DDF5F3000126B99 /* police.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = police.png; sourceTree = "<group>"; };
+		832662AC1DDF7AEB00126B99 /* MapDataModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDataModels.swift; sourceTree = "<group>"; };
 		A0F8D053C7AB55B440A09174 /* Pods_LemonHandshake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LemonHandshake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyInitiativesTableViewController.swift; sourceTree = "<group>"; };
 		BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiativeDetailViewController.swift; sourceTree = "<group>"; };
@@ -127,8 +127,8 @@
 		832662A31DDF540600126B99 /* Map Models */ = {
 			isa = PBXGroup;
 			children = (
-				8309AA0E1DDE6C1700484700 /* MapAnnotation.swift */,
 				832662A41DDF541900126B99 /* CustomPointAnnotation.swift */,
+				832662AC1DDF7AEB00126B99 /* MapDataModels.swift */,
 			);
 			name = "Map Models";
 			sourceTree = "<group>";
@@ -200,7 +200,6 @@
 				TargetAttributes = {
 					1B10965A1DDA50CE00609104 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 3WL69W834X;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -296,10 +295,10 @@
 				BC6244E11DDA798D00AE6523 /* LocationDetailTableViewController.swift in Sources */,
 				8309A9E51DDCE21400484700 /* MapDataStore.swift in Sources */,
 				BC6244E21DDA798D00AE6523 /* LoginScreenViewController.swift in Sources */,
+				832662AD1DDF7AEB00126B99 /* MapDataModels.swift in Sources */,
 				1B1096611DDA50CE00609104 /* ViewController.swift in Sources */,
 				BC43C33B1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift in Sources */,
 				1B10965F1DDA50CE00609104 /* AppDelegate.swift in Sources */,
-				8309AA0F1DDE6C1700484700 /* MapAnnotation.swift in Sources */,
 				BC6244E01DDA798D00AE6523 /* InitiativeDetailViewController.swift in Sources */,
 				BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */,
 				BC87E4A81DDB87E800980939 /* MemberManagementViewController.swift in Sources */,
@@ -429,11 +428,11 @@
 			baseConfigurationReference = 228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3WL69W834X;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flatiron.LemonHandshake;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flatiron.TeamLemonHandshake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -444,11 +443,11 @@
 			baseConfigurationReference = D9D87A0442C341DFD63FA7AE /* Pods-LemonHandshake.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3WL69W834X;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flatiron.LemonHandshake;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flatiron.TeamLemonHandshake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

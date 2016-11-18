@@ -77,29 +77,23 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         let locations = store.locations
         
         for location in locations {
-//            let point = MGLPointAnnotation() //do not take this out of the for loop! It needs to instantiate a new point everytime it loops.
-//            point.coordinate = location.coordinates
-//            point.title = location.name
-//            point.subtitle = location.address
-//            pointAnnotations.append(point)
-            
             let point = CustomPointAnnotation(coordinate: location.coordinates, title: location.name, subtitle: location.address)
             
             switch location.type {
             case .fireStation:
-                point.image = UIImage(named: "fire_station")
+                point.image = UIImage(named: "firemen")
                 point.reuseIdentifier = "fireStation"
             case .school:
-                point.image = UIImage(named: "college_12_2x")
+                point.image = UIImage(named: "school")
                 point.reuseIdentifier = "school"
             case .park:
-                point.image = UIImage(named: "park2")
+                point.image = UIImage(named: "forest")
                 point.reuseIdentifier = "park"
             case .policeStation:
                 point.image = UIImage(named: "police")
                 point.reuseIdentifier = "policeStation"
             case .hospital:
-                point.image = UIImage(named: "hospital")
+                point.image = UIImage(named: "hospital-building")
                 point.reuseIdentifier = "hospital"
             }
             
@@ -112,23 +106,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
         return true
     }
-    
-//    func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
-//        
-//        var annotationImage = MGLAnnotationImage()
-//        if let point = annotation as? CustomPointAnnotation,
-//            let image = point.image,
-//            let reuseIdentifier = point.reuseIdentifier {
-//        }
-//        
-//        switch annotation {
-//            case annotation
-//        }
-//            annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: "pisa")
-//        
-//        
-//        return
-//    }
     
     func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
         if let point = annotation as? CustomPointAnnotation,
