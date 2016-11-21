@@ -92,7 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				8309AA061DDE04BC00484700 /* Models */,
-				8309A9E31DDCE1F500484700 /* Data Stores */,
+				8309A9E31DDCE1F500484700 /* Views */,
 				1B10965E1DDA50CE00609104 /* AppDelegate.swift */,
 				1B1096721DDA665B00609104 /* FirebaseAuth.swift */,
 				1B1096601DDA50CE00609104 /* ViewController.swift */,
@@ -108,12 +108,11 @@
 			path = LemonHandshake;
 			sourceTree = "<group>";
 		};
-		8309A9E31DDCE1F500484700 /* Data Stores */ = {
+		8309A9E31DDCE1F500484700 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8309A9E41DDCE21400484700 /* MapDataStore.swift */,
 			);
-			name = "Data Stores";
+			name = Views;
 			sourceTree = "<group>";
 		};
 		8309AA061DDE04BC00484700 /* Models */ = {
@@ -129,6 +128,7 @@
 			children = (
 				832662A41DDF541900126B99 /* CustomPointAnnotation.swift */,
 				832662AC1DDF7AEB00126B99 /* MapDataModels.swift */,
+				8309A9E41DDCE21400484700 /* MapDataStore.swift */,
 			);
 			name = "Map Models";
 			sourceTree = "<group>";
@@ -200,6 +200,7 @@
 				TargetAttributes = {
 					1B10965A1DDA50CE00609104 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 3WL69W834X;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -428,7 +429,8 @@
 			baseConfigurationReference = 228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 3WL69W834X;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -443,7 +445,8 @@
 			baseConfigurationReference = D9D87A0442C341DFD63FA7AE /* Pods-LemonHandshake.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 3WL69W834X;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
