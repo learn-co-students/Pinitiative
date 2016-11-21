@@ -206,6 +206,7 @@
 				TargetAttributes = {
 					1B10965A1DDA50CE00609104 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = WUSY57DP6U;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -436,7 +437,8 @@
 			baseConfigurationReference = 228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = WUSY57DP6U;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -451,7 +453,8 @@
 			baseConfigurationReference = D9D87A0442C341DFD63FA7AE /* Pods-LemonHandshake.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = WUSY57DP6U;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

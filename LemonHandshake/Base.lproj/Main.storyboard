@@ -115,13 +115,13 @@
                         <color key="backgroundColor" red="1" green="0.82028639542247284" blue="0.94811354923233382" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="         My Initiatives           " id="VL4-Sd-HPp">
+                        <barButtonItem title="         My Initiatives      " id="VL4-Sd-HPp">
                             <color key="tintColor" red="0.23921568627450981" green="1" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="whZ-zE-UrF" kind="show" id="09l-Va-NrD"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem title="    Local Initiatives     " id="liX-Wj-3HY">
+                        <barButtonItem title="      Local Initiatives       " id="liX-Wj-3HY">
                             <color key="tintColor" red="0.22745098039215686" green="0.92549019607843142" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Dwn-du-dg8" kind="show" id="jF6-55-ce7"/>
@@ -158,7 +158,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HeM-41-JAi" id="hIk-I7-shM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Initiative Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pt-gK-HJi">
@@ -238,7 +238,6 @@
         <!--Local Initiatives-->
         <scene sceneID="mD0-lR-aEp">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GpK-LY-F0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Dwn-du-dg8" customClass="NearbyInitiativesTableViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="114" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ohc-bL-pG8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -249,7 +248,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eiG-3N-CiO" id="BpV-ex-tVk">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Local Initiative" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhA-XN-qb7">
@@ -307,6 +306,7 @@
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GpK-LY-F0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2144.8000000000002" y="-663.41829085457277"/>
         </scene>
@@ -555,8 +555,8 @@
         <image name="backgroundNYC" width="1326" height="1291"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="h5K-wb-Q3f"/>
-        <segue reference="AlA-vr-7Py"/>
+        <segue reference="09l-Va-NrD"/>
+        <segue reference="zkx-6j-hXv"/>
         <segue reference="nR9-YX-1Fo"/>
     </inferredMetricsTieBreakers>
 </document>
