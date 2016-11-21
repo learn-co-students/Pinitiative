@@ -115,13 +115,13 @@
                         <color key="backgroundColor" red="1" green="0.82028639542247284" blue="0.94811354923233382" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="My Initiatives" id="VL4-Sd-HPp">
+                        <barButtonItem title="          My Initiatives          " id="VL4-Sd-HPp">
                             <color key="tintColor" red="0.23921568627450981" green="1" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="whZ-zE-UrF" kind="show" id="09l-Va-NrD"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem title="Local Initiatives" id="liX-Wj-3HY">
+                        <barButtonItem title="    Local Initiatives     " id="liX-Wj-3HY">
                             <color key="tintColor" red="0.22745098039215686" green="0.92549019607843142" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Dwn-du-dg8" kind="show" id="jF6-55-ce7"/>
@@ -277,7 +277,7 @@
             </objects>
             <point key="canvasLocation" x="2145" y="-663"/>
         </scene>
-        <!--Initiative Chat-->
+        <!--Chat-->
         <scene sceneID="raU-l5-UBM">
             <objects>
                 <viewController id="vIA-zt-Yj7" customClass="ChatDetailViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
@@ -299,7 +299,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Initiative Chat" id="s5g-Tz-sqH"/>
+                    <navigationItem key="navigationItem" title="Chat" id="s5g-Tz-sqH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8c-69-Dtl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
