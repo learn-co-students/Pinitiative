@@ -7,18 +7,22 @@
 //
 
 import UIKit
+import Firebase
 import JSQMessagesViewController
 
 class ChatDetailViewController: JSQMessagesViewController {
     
-    var chatCollectionView: JSQMessagesCollectionView!
+    //var chatCollectionView: JSQMessagesCollectionView!
     
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.orange)
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.blue)
-    var messages = [JSQMessage]()
+    var messages = [FIRDataSnapshot]()
+    var ref: FIRDatabaseReference!
+    fileprivate var refHandle: FIRDatabaseHandle!
     
     var sendersId: String!
     var sendersDisplayName: String!
+    let chatchatCollectionView: JSQMessagesCollectionView!
     
 
     override func viewDidLoad() {
@@ -27,15 +31,23 @@ class ChatDetailViewController: JSQMessagesViewController {
         self.chatCollectionView.reloadData()
     }
 
-    // FOR FORMING VIEW CONTROLLER
+    // FOR FORMING VIEW CONTROLLER (will move struct)
     
- 
+    struct MessageFields {
+        static let name = "name"
+        static let text = "text"
+        static let photoURL = "photoURL"
+        static let imageURL = "imageURL"
+    }
     
     
     let layout: JSQMessagesCollectionViewFlowLayout = JSQMessagesCollectionViewFlowLayout()
     let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
     
-    //let chatCollectionView: JSQMessagesCollectionView = JSQMessagesCollectionView
+
+    
+    
+    
     
     
     
@@ -47,14 +59,33 @@ class ChatDetailViewController: JSQMessagesViewController {
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+//        
+//        let data = self.messages[indexPath.row]
+//        return data
         
-        let data = self.messages[indexPath.row]
-        return data
+        let cell = self.chatCollectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath)
+        
+        let messageSnapShot = self.messages[indexPath.row]
+        let message = messageSnapShot.value as! [String:String]
+        let name = message[MessageFields.name]! as String
+        let text = message[MessageFields.text]! as String
+        let textView = UIView()
+        cell.contentView.addSubview(textView)
+
     }
+    
+    
+
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, didDeleteMessageAt indexPath: IndexPath!) {
         self.messages.remove(at: indexPath.row)
     }
+    
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        //create a message object
+        //append it to the array
+    }
+    
     
     
     
@@ -78,34 +109,3 @@ class ChatDetailViewController: JSQMessagesViewController {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//extension ChatDetailViewController {
-//    
-//    func addDemoMessages() {
-//        for i in 1...10 {
-//            let sender = (i % 2 == 0) ? "Server" : self.senderID
-//            let messageContent = "This is message #\(i)"
-//            let message = JSQMessage(senderId: sender, displayName: sender, text: messageContent)
-//            self.messages += [message]
-//        }
-//    }
-//        // reload messages view here
-//}
