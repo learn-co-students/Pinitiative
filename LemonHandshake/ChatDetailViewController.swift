@@ -20,6 +20,7 @@ class ChatDetailViewController: JSQMessagesViewController {
     var ref: FIRDatabaseReference!
     fileprivate var refHandle: FIRDatabaseHandle!
     
+    
     var sendersId: String!
     var sendersDisplayName: String!
     //let chatCollectionView: JSQMessagesCollectionView! = nil
@@ -51,6 +52,9 @@ class ChatDetailViewController: JSQMessagesViewController {
 //    let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
     
     
+    
+    
+  // MESSAGE DATA FOR TESTING
     
     func loadMessages() {
         
@@ -111,17 +115,23 @@ class ChatDetailViewController: JSQMessagesViewController {
         print(newMessage)
         self.messages.append(newMessage)
         self.collectionView.reloadData()
-        
     }
+    
+    
+    
+    
     
     
     // FOR MESSAGE BUBBLES ATTRIBUTES
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         
-        
+            let message = messages[indexPath.item]
+        if message.senderId == senderId {
             return outgoingBubble
-    
+        } else {
+            return incomingBubble
+        }
     }
     
     
