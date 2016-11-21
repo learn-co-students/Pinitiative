@@ -43,12 +43,16 @@ PODS:
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
+  - Mapbox-iOS-SDK (3.3.7)
+  - SnapKit (3.0.2)
 
 DEPENDENCIES:
   - Firebase
   - Firebase/Auth
   - Firebase/Database
   - JSQMessagesViewController (~> 7.3)
+  - Mapbox-iOS-SDK (~> 3.3.6)
+  - SnapKit (~> 3.0.2)
 
 SPEC CHECKSUMS:
   Firebase: ff77ffb77b317c3720fef57a60e9335cebf962e6
@@ -63,7 +67,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  Mapbox-iOS-SDK: 142301fa63a6719cbd2eacc0f9e8bf36c65930d9
+  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
 
-PODFILE CHECKSUM: 0d3a6a825bb7a090738411227107a2c9c9300115
+PODFILE CHECKSUM: cef9585e53aa4a2069ba5c1c9cdb2a8b83651293
 
 COCOAPODS: 1.0.1

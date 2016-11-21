@@ -1,3 +1,5 @@
-# ios-0916-team-lemonhandshake
+# Community Initiative App
 
-You're reading this right now.
+The purpose of this app is to create a common repository for community initiatives in your area. :)
+
+

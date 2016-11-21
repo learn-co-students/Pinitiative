@@ -1,6 +1,0 @@
-framework module Pods_LemonHandshake {
-  umbrella header "Pods-LemonHandshake-umbrella.h"
-
-  export *
-  module * { export * }
-}

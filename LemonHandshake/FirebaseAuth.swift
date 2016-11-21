@@ -11,7 +11,6 @@ import FirebaseAuth
 
 class FirebaseAuth {
     
-    
     class func signUpUserWith(email: String, password: String) -> Error? {
         var returnError: Error? = nil
         

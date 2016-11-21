@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05EBC82853DEEBC24B0B5ACD26007798"
+               BlueprintIdentifier = "2BE8402282354ACB5A811E81D33D96AC"
                BuildableName = "Pods_LemonHandshake.framework"
                BlueprintName = "Pods-LemonHandshake"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05EBC82853DEEBC24B0B5ACD26007798"
+            BlueprintIdentifier = "2BE8402282354ACB5A811E81D33D96AC"
             BuildableName = "Pods_LemonHandshake.framework"
             BlueprintName = "Pods-LemonHandshake"
             ReferencedContainer = "container:Pods.xcodeproj">
