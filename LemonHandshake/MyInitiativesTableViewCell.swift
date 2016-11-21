@@ -15,9 +15,12 @@ class MyInitiativesTableViewCell: UITableViewCell {
     @IBOutlet weak var initiativeLabel: UILabel!
    
     @IBOutlet weak var dateStartedLabel: UILabel!
+    
     @IBOutlet weak var dateLabel: UILabel!
     
     @IBOutlet weak var followersTextLabel: UILabel!
+    
     @IBOutlet weak var followersLabel: UILabel!
+    
     
 }
