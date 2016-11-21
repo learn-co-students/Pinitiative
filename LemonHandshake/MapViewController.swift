@@ -9,12 +9,19 @@
 import UIKit
 import Mapbox
 import CoreLocation
+import SnapKit
 
 class MapViewController: UIViewController, MGLMapViewDelegate {
+    
+    @IBAction func myInitiativesButton(_ sender: Any) {
+    }
+    
+  
     
 //    var mapView: MGLMapView!
     var store = MapDataStore.sharedInstance
     var mapView: MGLMapView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +31,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         store.generateData()
         addPointAnnotations()
 //        activateGestureRecognizer()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,8 +58,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
         mapView.zoomLevel = 10
-        mapView.frame.size.height = view.frame.size.height * 0.93
-    }
+        mapView.frame.size.height = view.frame.size.height * 0.95
+            }
     
     func mapView(_ mapView: MGLMapView, didUpdate userLocation: MGLUserLocation?) {
         guard let userLocation = mapView.userLocation else { return }
