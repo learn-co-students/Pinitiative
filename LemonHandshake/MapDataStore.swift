@@ -38,6 +38,7 @@ struct MapDataStore {
     var zoomLevel = 0.0
     var styleURL = MGLStyle.streetsStyleURL(withVersion: 9)
     
+    
     private init() { }
     
     
