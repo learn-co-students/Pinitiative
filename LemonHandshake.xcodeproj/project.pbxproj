@@ -1,0 +1,488 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B10965F1DDA50CE00609104 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10965E1DDA50CE00609104 /* AppDelegate.swift */; };
+		1B1096611DDA50CE00609104 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1096601DDA50CE00609104 /* ViewController.swift */; };
+		1B1096641DDA50CE00609104 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096621DDA50CE00609104 /* Main.storyboard */; };
+		1B1096661DDA50CE00609104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096651DDA50CE00609104 /* Assets.xcassets */; };
+		1B1096691DDA50CE00609104 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096671DDA50CE00609104 /* LaunchScreen.storyboard */; };
+		1B1096711DDA52B000609104 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096701DDA52B000609104 /* GoogleService-Info.plist */; };
+		1B1096731DDA665B00609104 /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1096721DDA665B00609104 /* FirebaseAuth.swift */; };
+		8309A9E51DDCE21400484700 /* MapDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8309A9E41DDCE21400484700 /* MapDataStore.swift */; };
+		832662A51DDF541900126B99 /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832662A41DDF541900126B99 /* CustomPointAnnotation.swift */; };
+		832662A91DDF5EEB00126B99 /* park2.png in Resources */ = {isa = PBXBuildFile; fileRef = 832662A81DDF5EEB00126B99 /* park2.png */; };
+		832662AB1DDF5F3000126B99 /* police.png in Resources */ = {isa = PBXBuildFile; fileRef = 832662AA1DDF5F3000126B99 /* police.png */; };
+		832662AD1DDF7AEB00126B99 /* MapDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832662AC1DDF7AEB00126B99 /* MapDataModels.swift */; };
+		BC43C33B1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */; };
+		BC6244E01DDA798D00AE6523 /* InitiativeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */; };
+		BC6244E11DDA798D00AE6523 /* LocationDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DB1DDA798D00AE6523 /* LocationDetailTableViewController.swift */; };
+		BC6244E21DDA798D00AE6523 /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */; };
+		BC6244E31DDA798D00AE6523 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DD1DDA798D00AE6523 /* MapViewController.swift */; };
+		BC6244E41DDA798D00AE6523 /* MyInitiativesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */; };
+		BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */; };
+		BC686E7D1DDF57320034B932 /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC686E7C1DDF57320034B932 /* ChatDetailViewController.swift */; };
+		BC87E4A81DDB87E800980939 /* MemberManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */; };
+		BCC70EF61DE346FD00D1C352 /* FirebaseChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC70EF51DE346FD00D1C352 /* FirebaseChat.swift */; };
+		C1C17914B89D5C7A8248CE88 /* Pods_LemonHandshake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F8D053C7AB55B440A09174 /* Pods_LemonHandshake.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1B10965B1DDA50CE00609104 /* LemonHandshake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LemonHandshake.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B10965E1DDA50CE00609104 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1B1096601DDA50CE00609104 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1B1096631DDA50CE00609104 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1B1096651DDA50CE00609104 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1B1096681DDA50CE00609104 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1B10966A1DDA50CE00609104 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B1096701DDA52B000609104 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1B1096721DDA665B00609104 /* FirebaseAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
+		228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LemonHandshake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake.debug.xcconfig"; sourceTree = "<group>"; };
+		8309A9E41DDCE21400484700 /* MapDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDataStore.swift; sourceTree = "<group>"; };
+		832662A41DDF541900126B99 /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
+		832662A81DDF5EEB00126B99 /* park2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = park2.png; sourceTree = "<group>"; };
+		832662AA1DDF5F3000126B99 /* police.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = police.png; sourceTree = "<group>"; };
+		832662AC1DDF7AEB00126B99 /* MapDataModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDataModels.swift; sourceTree = "<group>"; };
+		A0F8D053C7AB55B440A09174 /* Pods_LemonHandshake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LemonHandshake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyInitiativesTableViewController.swift; sourceTree = "<group>"; };
+		BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiativeDetailViewController.swift; sourceTree = "<group>"; };
+		BC6244DB1DDA798D00AE6523 /* LocationDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailTableViewController.swift; sourceTree = "<group>"; };
+		BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
+		BC6244DD1DDA798D00AE6523 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInitiativesTableViewController.swift; sourceTree = "<group>"; };
+		BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartInitiativeViewController.swift; sourceTree = "<group>"; };
+		BC686E7C1DDF57320034B932 /* ChatDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
+		BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberManagementViewController.swift; sourceTree = "<group>"; };
+		BCC70EF51DE346FD00D1C352 /* FirebaseChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseChat.swift; sourceTree = "<group>"; };
+		D9D87A0442C341DFD63FA7AE /* Pods-LemonHandshake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LemonHandshake.release.xcconfig"; path = "Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1B1096581DDA50CE00609104 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1C17914B89D5C7A8248CE88 /* Pods_LemonHandshake.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B1096521DDA50CE00609104 = {
+			isa = PBXGroup;
+			children = (
+				1B10965D1DDA50CE00609104 /* LemonHandshake */,
+				1B10965C1DDA50CE00609104 /* Products */,
+				C71F4DC8BE452E19A820249F /* Pods */,
+				A7B4E77D6C3B3FB3CC90B9AB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1B10965C1DDA50CE00609104 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B10965B1DDA50CE00609104 /* LemonHandshake.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B10965D1DDA50CE00609104 /* LemonHandshake */ = {
+			isa = PBXGroup;
+			children = (
+				8309AA061DDE04BC00484700 /* Models */,
+				8309A9E31DDCE1F500484700 /* Data Stores */,
+				1B10965E1DDA50CE00609104 /* AppDelegate.swift */,
+				1B1096721DDA665B00609104 /* FirebaseAuth.swift */,
+				1B1096601DDA50CE00609104 /* ViewController.swift */,
+				BCC70EF51DE346FD00D1C352 /* FirebaseChat.swift */,
+				BC87E4A61DDB862F00980939 /* Controllers */,
+				1B1096621DDA50CE00609104 /* Main.storyboard */,
+				1B1096651DDA50CE00609104 /* Assets.xcassets */,
+				832662AA1DDF5F3000126B99 /* police.png */,
+				832662A81DDF5EEB00126B99 /* park2.png */,
+				1B1096671DDA50CE00609104 /* LaunchScreen.storyboard */,
+				1B10966A1DDA50CE00609104 /* Info.plist */,
+				1B1096701DDA52B000609104 /* GoogleService-Info.plist */,
+			);
+			path = LemonHandshake;
+			sourceTree = "<group>";
+		};
+		8309A9E31DDCE1F500484700 /* Data Stores */ = {
+			isa = PBXGroup;
+			children = (
+				8309A9E41DDCE21400484700 /* MapDataStore.swift */,
+			);
+			name = "Data Stores";
+			sourceTree = "<group>";
+		};
+		8309AA061DDE04BC00484700 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				832662A31DDF540600126B99 /* Map Models */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		832662A31DDF540600126B99 /* Map Models */ = {
+			isa = PBXGroup;
+			children = (
+				832662A41DDF541900126B99 /* CustomPointAnnotation.swift */,
+				832662AC1DDF7AEB00126B99 /* MapDataModels.swift */,
+			);
+			name = "Map Models";
+			sourceTree = "<group>";
+		};
+		A7B4E77D6C3B3FB3CC90B9AB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0F8D053C7AB55B440A09174 /* Pods_LemonHandshake.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC87E4A61DDB862F00980939 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */,
+				BC6244DB1DDA798D00AE6523 /* LocationDetailTableViewController.swift */,
+				BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */,
+				BC6244DD1DDA798D00AE6523 /* MapViewController.swift */,
+				BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */,
+				BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */,
+				BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */,
+				BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */,
+				BC686E7C1DDF57320034B932 /* ChatDetailViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C71F4DC8BE452E19A820249F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */,
+				D9D87A0442C341DFD63FA7AE /* Pods-LemonHandshake.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B10965A1DDA50CE00609104 /* LemonHandshake */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B10966D1DDA50CE00609104 /* Build configuration list for PBXNativeTarget "LemonHandshake" */;
+			buildPhases = (
+				3C33936C1F8B6801A402DB42 /* [CP] Check Pods Manifest.lock */,
+				1B1096571DDA50CE00609104 /* Sources */,
+				1B1096581DDA50CE00609104 /* Frameworks */,
+				1B1096591DDA50CE00609104 /* Resources */,
+				5E7B4EB682E13185972F6286 /* [CP] Embed Pods Frameworks */,
+				A776A4A97FC5DF09239099AD /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LemonHandshake;
+			productName = LemonHandshake;
+			productReference = 1B10965B1DDA50CE00609104 /* LemonHandshake.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B1096531DDA50CE00609104 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Flatiron School";
+				TargetAttributes = {
+					1B10965A1DDA50CE00609104 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1B1096561DDA50CE00609104 /* Build configuration list for PBXProject "LemonHandshake" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1B1096521DDA50CE00609104;
+			productRefGroup = 1B10965C1DDA50CE00609104 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B10965A1DDA50CE00609104 /* LemonHandshake */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1B1096591DDA50CE00609104 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B1096691DDA50CE00609104 /* LaunchScreen.storyboard in Resources */,
+				1B1096711DDA52B000609104 /* GoogleService-Info.plist in Resources */,
+				1B1096661DDA50CE00609104 /* Assets.xcassets in Resources */,
+				1B1096641DDA50CE00609104 /* Main.storyboard in Resources */,
+				832662A91DDF5EEB00126B99 /* park2.png in Resources */,
+				832662AB1DDF5F3000126B99 /* police.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3C33936C1F8B6801A402DB42 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5E7B4EB682E13185972F6286 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A776A4A97FC5DF09239099AD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B1096571DDA50CE00609104 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B1096731DDA665B00609104 /* FirebaseAuth.swift in Sources */,
+				BC6244E11DDA798D00AE6523 /* LocationDetailTableViewController.swift in Sources */,
+				8309A9E51DDCE21400484700 /* MapDataStore.swift in Sources */,
+				BC6244E21DDA798D00AE6523 /* LoginScreenViewController.swift in Sources */,
+				832662AD1DDF7AEB00126B99 /* MapDataModels.swift in Sources */,
+				1B1096611DDA50CE00609104 /* ViewController.swift in Sources */,
+				BC43C33B1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift in Sources */,
+				1B10965F1DDA50CE00609104 /* AppDelegate.swift in Sources */,
+				BC6244E01DDA798D00AE6523 /* InitiativeDetailViewController.swift in Sources */,
+				BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */,
+				BC87E4A81DDB87E800980939 /* MemberManagementViewController.swift in Sources */,
+				BC6244E31DDA798D00AE6523 /* MapViewController.swift in Sources */,
+				BCC70EF61DE346FD00D1C352 /* FirebaseChat.swift in Sources */,
+				BC6244E41DDA798D00AE6523 /* MyInitiativesTableViewController.swift in Sources */,
+				BC686E7D1DDF57320034B932 /* ChatDetailViewController.swift in Sources */,
+				832662A51DDF541900126B99 /* CustomPointAnnotation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1B1096621DDA50CE00609104 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B1096631DDA50CE00609104 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1B1096671DDA50CE00609104 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B1096681DDA50CE00609104 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1B10966B1DDA50CE00609104 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1B10966C1DDA50CE00609104 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1B10966E1DDA50CE00609104 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = LemonHandshake/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.flatiron.TeamLemonHandshake;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		1B10966F1DDA50CE00609104 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9D87A0442C341DFD63FA7AE /* Pods-LemonHandshake.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = LemonHandshake/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.flatiron.TeamLemonHandshake;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B1096561DDA50CE00609104 /* Build configuration list for PBXProject "LemonHandshake" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B10966B1DDA50CE00609104 /* Debug */,
+				1B10966C1DDA50CE00609104 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B10966D1DDA50CE00609104 /* Build configuration list for PBXNativeTarget "LemonHandshake" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B10966E1DDA50CE00609104 /* Debug */,
+				1B10966F1DDA50CE00609104 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1B1096531DDA50CE00609104 /* Project object */;
+}
