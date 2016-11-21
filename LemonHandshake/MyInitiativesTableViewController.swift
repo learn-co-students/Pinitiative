@@ -35,17 +35,43 @@ class MyInitiativesTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "initiativeCell", for: indexPath)
-        print("table view called")
-        
-        cell.snp.makeConstraints { (make) in
-            make.height.equalTo(self.view).multipliedBy(0.25)
-            
-            cell.detailTextLabel?.text = "Test Cell"
-            
-            cell.backgroundColor = UIColor.gray
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "initiativeCell", for: indexPath) as! MyInitiativesTableViewCell
 
+        cell.backgroundColor = UIColor.white
+        cell.layer.borderColor = UIColor.green.cgColor
+        cell.layer.borderWidth = 2
+        
+// ------------------------------------------------------------
+        cell.initiativeLabel.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self.view.center)
+            make.width.equalTo(self.view)
+        }
+        cell.initiativeLabel.text = "Pick up trash at the park"
+       
+        
+// ------------------------------------------------------------
+        cell.dateStartedLabel.snp.makeConstraints { (make) in
+            make.leftMargin.equalTo(self.view)
+        }
+        
+// ------------------------------------------------------------
+        cell.followersTextLabel.snp.makeConstraints { (make) in
+            make.leftMargin.equalTo(self.view)
+        }
+        
+// ------------------------------------------------------------
+        cell.followersLabel.snp.makeConstraints { (make) in
+            make.rightMargin.equalTo(self.view)
+        }
+        cell.followersLabel.text = String(describing: 54)
+        
+// ------------------------------------------------------------
+        cell.dateLabel.snp.makeConstraints { (make) in
+            make.rightMargin.equalTo(self.view)
+        }
+        cell.dateLabel.text = "October 10th, 2016"
+        
+       
         return cell
     }
     
