@@ -115,7 +115,7 @@
                         <color key="backgroundColor" red="1" green="0.82028639542247284" blue="0.94811354923233382" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="          My Initiatives          " id="VL4-Sd-HPp">
+                        <barButtonItem title="         My Initiatives           " id="VL4-Sd-HPp">
                             <color key="tintColor" red="0.23921568627450981" green="1" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="whZ-zE-UrF" kind="show" id="09l-Va-NrD"/>
@@ -129,6 +129,11 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Map Markers" id="qGh-Ym-BAw">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" style="done" id="Euu-17-UdB">
+                            <connections>
+                                <segue destination="grr-aR-yVn" kind="show" id="gt2-6L-7f4"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Start Initiative" id="knX-CG-P5h">
                             <connections>
                                 <segue destination="akF-xd-ri0" kind="presentation" id="zkx-6j-hXv"/>
@@ -228,22 +233,23 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vrd-8R-DmE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="585" y="850"/>
+            <point key="canvasLocation" x="585" y="849"/>
         </scene>
         <!--Local Initiatives-->
         <scene sceneID="mD0-lR-aEp">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GpK-LY-F0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Dwn-du-dg8" customClass="NearbyInitiativesTableViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ohc-bL-pG8">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="114" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ohc-bL-pG8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="eiG-3N-CiO">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nearbyInitiatives" rowHeight="114" id="eiG-3N-CiO">
+                                <rect key="frame" x="0.0" y="28" width="375" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eiG-3N-CiO" id="BpV-ex-tVk">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NEARBY INITIATIVES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhA-XN-qb7">
@@ -255,6 +261,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="qOK-cb-7fF" kind="show" id="nR9-YX-1Fo"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -269,11 +278,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="qOK-cb-7fF" kind="showDetail" id="y7G-kb-dfC"/>
-                    </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GpK-LY-F0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2145" y="-663"/>
         </scene>
@@ -333,6 +338,13 @@
                                     <action selector="cancelInitiativeButton:" destination="akF-xd-ri0" eventType="touchUpInside" id="W8t-lR-IgC"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ob0-L4-rha">
+                                <rect key="frame" x="139" y="161" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QKg-f9-nTR">
                                 <rect key="frame" x="139" y="224" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -361,27 +373,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfp-qi-qNg">
+                            <navigationBar opaque="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="CrB-71-OE2">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem title="Start New Initiative" id="CZX-eA-H29"/>
+                                    <navigationItem title="Start Initiative" id="CJV-Gd-gCD"/>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ob0-L4-rha">
-                                <rect key="frame" x="139" y="161" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQz-Qv-hEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2956" y="1141"/>
+            <point key="canvasLocation" x="2956" y="1153"/>
         </scene>
         <!--Member Management View Controller-->
         <scene sceneID="HjF-sy-o6p">
@@ -412,10 +421,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="         My Initiatives " id="6bz-vm-sQm">
+                            <color key="tintColor" red="0.22745098039215686" green="0.90196078431372551" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="whZ-zE-UrF" kind="show" id="h5K-wb-Q3f"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fo-g6-F7F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1674" y="125"/>
+            <point key="canvasLocation" x="1670" y="154"/>
         </scene>
         <!--Initiative Details-->
         <scene sceneID="ZbK-7J-37K">
@@ -510,7 +527,8 @@
         <image name="backgroundNYC" width="1326" height="1291"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zkx-6j-hXv"/>
+        <segue reference="h5K-wb-Q3f"/>
         <segue reference="peZ-TE-S1e"/>
+        <segue reference="vbW-6v-bue"/>
     </inferredMetricsTieBreakers>
 </document>
