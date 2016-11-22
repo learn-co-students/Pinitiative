@@ -43,6 +43,8 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
     @IBOutlet weak var applicationLogo: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+            dump(FirebaseInteractor.geofireTest())
 
             backgroundView.snp.makeConstraints { (make) in
             make.height.equalTo(self.view)

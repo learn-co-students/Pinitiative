@@ -68,6 +68,8 @@ PODS:
   - FirebaseUI/Twitter (1.0.0):
     - FirebaseUI/Auth
     - TwitterKit (~> 2.4)
+  - GeoFire (2.0.0):
+    - Firebase/Database (~> 3.2)
   - GoogleAppUtilities (1.1.2):
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleInterchangeUtilities (1.2.2):
@@ -110,8 +112,18 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Database
   - FirebaseUI
+  - GeoFire (from `https://github.com/firebase/geofire-objc.git`)
   - Mapbox-iOS-SDK (~> 3.3.6)
   - SnapKit (~> 3.0.2)
+
+EXTERNAL SOURCES:
+  GeoFire:
+    :git: https://github.com/firebase/geofire-objc.git
+
+CHECKOUT OPTIONS:
+  GeoFire:
+    :commit: dbb8d193f5ee1371837800d0502bd29cba779da4
+    :git: https://github.com/firebase/geofire-objc.git
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -126,6 +138,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FirebaseStorage: c50aa353bf484072704e73b4aff1bd47adb735c4
   FirebaseUI: 82bd64fc3fc5a9451c37a720aee813990e727cf1
+  GeoFire: ef73103b88eb026c27212c40ea16757d6ad362ea
   GoogleAppUtilities: a8a552aa74f6597f805e45b5a3962766c3134973
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSignIn: a8694c0a8e6d1b0ec77c58014de5bfd4ba2fa766
@@ -139,6 +152,6 @@ SPEC CHECKSUMS:
   TwitterCore: a8aea8bdaf2abd6572c8f264707a4ea4dc2d0eab
   TwitterKit: d38c08d31dfd4ba604f95deca6cf8e174b5cbd96
 
-PODFILE CHECKSUM: d66bb141cd3e9c3d881cf6f596875077537dd34d
+PODFILE CHECKSUM: 7fc7def4a4cc9c563e35b8a24a7e584ad9fcd759
 
 COCOAPODS: 1.1.1
