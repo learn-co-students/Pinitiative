@@ -8,5 +8,6 @@ pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'Mapbox-iOS-SDK', '~> 3.3.6'
 pod 'SnapKit', '~> 3.0.2'
+pod 'FirebaseUI'
 
 end
