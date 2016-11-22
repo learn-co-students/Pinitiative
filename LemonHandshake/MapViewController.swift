@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import Mapbox
 import CoreLocation
 import SnapKit

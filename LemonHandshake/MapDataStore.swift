@@ -102,7 +102,7 @@ struct MapDataStore {
 
 enum StoryboardID: String {
     case loginVC = "login-vc"
-    case mainVC = "mapVC"
+    case mapVC = "mapVC"
 }
 
 
