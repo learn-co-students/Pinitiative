@@ -13,6 +13,7 @@ import Firebase
 import FirebaseAuthUI
 import FirebaseGoogleAuthUI
 
+
 class LoginScreenViewController: UIViewController, FUIAuthDelegate {
 
     @IBOutlet weak var backgroundView: UIImageView!
@@ -99,18 +100,20 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
 }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "loginToMapSegue" {
-            let dest = segue.destination
-            
-           
-        }
+     if segue.identifier == "loginToMapSegue" {
+        let dest = segue.destination
+    }
     }
     
     
     // conforming to Firebase UI protocol
     public func authUI(_ authUI: FUIAuth, didSignInWith user: FIRUser?, error: Error?) {
-        print(FIRAuth.auth()?.currentUser?.uid)
+    
     }
+    
+    
+
+    
 }
 
 
