@@ -19,6 +19,8 @@
 		832662A91DDF5EEB00126B99 /* park2.png in Resources */ = {isa = PBXBuildFile; fileRef = 832662A81DDF5EEB00126B99 /* park2.png */; };
 		832662AB1DDF5F3000126B99 /* police.png in Resources */ = {isa = PBXBuildFile; fileRef = 832662AA1DDF5F3000126B99 /* police.png */; };
 		832662AD1DDF7AEB00126B99 /* MapDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832662AC1DDF7AEB00126B99 /* MapDataModels.swift */; };
+		92764CF01DE34635007115E9 /* MyInitiativesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92764CEF1DE34635007115E9 /* MyInitiativesTableViewCell.swift */; };
+		92764CF61DE37F11007115E9 /* NearbyInitiativesDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */; };
 		BC43C33B1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */; };
 		BC6244E01DDA798D00AE6523 /* InitiativeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */; };
 		BC6244E11DDA798D00AE6523 /* LocationDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DB1DDA798D00AE6523 /* LocationDetailTableViewController.swift */; };
@@ -46,6 +48,8 @@
 		832662A81DDF5EEB00126B99 /* park2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = park2.png; sourceTree = "<group>"; };
 		832662AA1DDF5F3000126B99 /* police.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = police.png; sourceTree = "<group>"; };
 		832662AC1DDF7AEB00126B99 /* MapDataModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDataModels.swift; sourceTree = "<group>"; };
+		92764CEF1DE34635007115E9 /* MyInitiativesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInitiativesTableViewCell.swift; sourceTree = "<group>"; };
+		92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyInitiativesDetailCell.swift; sourceTree = "<group>"; };
 		A0F8D053C7AB55B440A09174 /* Pods_LemonHandshake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LemonHandshake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyInitiativesTableViewController.swift; sourceTree = "<group>"; };
 		BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiativeDetailViewController.swift; sourceTree = "<group>"; };
@@ -149,8 +153,10 @@
 				BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */,
 				BC6244DD1DDA798D00AE6523 /* MapViewController.swift */,
 				BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */,
+				92764CEF1DE34635007115E9 /* MyInitiativesTableViewCell.swift */,
 				BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */,
 				BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */,
+				92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */,
 				BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */,
 			);
 			name = Controllers;
@@ -200,7 +206,9 @@
 				TargetAttributes = {
 					1B10965A1DDA50CE00609104 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 3WL69W834X;
+
+						DevelopmentTeam = WUSY57DP6U;
+
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -295,6 +303,7 @@
 				1B1096731DDA665B00609104 /* FirebaseAuth.swift in Sources */,
 				BC6244E11DDA798D00AE6523 /* LocationDetailTableViewController.swift in Sources */,
 				8309A9E51DDCE21400484700 /* MapDataStore.swift in Sources */,
+				92764CF01DE34635007115E9 /* MyInitiativesTableViewCell.swift in Sources */,
 				BC6244E21DDA798D00AE6523 /* LoginScreenViewController.swift in Sources */,
 				832662AD1DDF7AEB00126B99 /* MapDataModels.swift in Sources */,
 				1B1096611DDA50CE00609104 /* ViewController.swift in Sources */,
@@ -302,6 +311,7 @@
 				1B10965F1DDA50CE00609104 /* AppDelegate.swift in Sources */,
 				BC6244E01DDA798D00AE6523 /* InitiativeDetailViewController.swift in Sources */,
 				BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */,
+				92764CF61DE37F11007115E9 /* NearbyInitiativesDetailCell.swift in Sources */,
 				BC87E4A81DDB87E800980939 /* MemberManagementViewController.swift in Sources */,
 				BC6244E31DDA798D00AE6523 /* MapViewController.swift in Sources */,
 				BC6244E41DDA798D00AE6523 /* MyInitiativesTableViewController.swift in Sources */,
@@ -429,8 +439,10 @@
 			baseConfigurationReference = 228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3WL69W834X;
-				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
+
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = WUSY57DP6U;
+
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -445,8 +457,10 @@
 			baseConfigurationReference = D9D87A0442C341DFD63FA7AE /* Pods-LemonHandshake.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3WL69W834X;
-				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
+
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = WUSY57DP6U;
+
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
