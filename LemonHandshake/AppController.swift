@@ -33,7 +33,7 @@ class AppController: UIViewController {
        
         if FIRAuth.auth()?.currentUser != nil {
 
-        actingViewController = loadViewController(withID: .mapVC)
+        actingViewController = loadViewController(withID: .navID)
         
         } else {
         
@@ -60,11 +60,9 @@ class AppController: UIViewController {
            
             return storyboard.instantiateViewController(withIdentifier: id.rawValue) as! LoginScreenViewController
         
-        case .mapVC:
+        case .navID:
            
-            let vc = storyboard.instantiateViewController(withIdentifier: id.rawValue) as! MapViewController
-            
-            let navVC = UINavigationController(rootViewController: vc)
+            let navVC = storyboard.instantiateViewController(withIdentifier: "navID") as! UINavigationController
             
             return navVC
             
@@ -87,7 +85,7 @@ class AppController: UIViewController {
         
         switch notification.name {
         case Notification.Name.closeLoginVC:
-            switchToViewController(withID: .mapVC)
+            switchToViewController(withID: .navID)
         default:
             fatalError("ERROR: Unable to match notification name")
         }

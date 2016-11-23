@@ -545,7 +545,7 @@
         <!--Navigation Controller-->
         <scene sceneID="FMn-3P-Mmt">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" toolbarHidden="NO" id="LMZ-rX-9f2" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navID" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" toolbarHidden="NO" id="LMZ-rX-9f2" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="U8J-BJ-syT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
