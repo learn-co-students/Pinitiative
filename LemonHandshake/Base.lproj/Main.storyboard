@@ -135,14 +135,14 @@
                         <color key="backgroundColor" red="1" green="0.82028639542247284" blue="0.94811354923233382" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="         My Initiatives      " id="VL4-Sd-HPp">
+                        <barButtonItem title="          My Initiatives      " id="VL4-Sd-HPp">
                             <color key="tintColor" red="0.23921568627450981" green="1" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="whZ-zE-UrF" kind="show" id="09l-Va-NrD"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem title="      Local Initiatives       " id="liX-Wj-3HY" userLabel="Local Initiatives">
-                            <color key="tintColor" red="0.22745098039215686" green="0.92549019607843142" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.23921568627450981" green="0.99607843137254903" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Dwn-du-dg8" kind="show" id="jF6-55-ce7"/>
                             </connections>
@@ -150,7 +150,7 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Map Markers" id="qGh-Ym-BAw">
                         <barButtonItem key="leftBarButtonItem" title="Settings" style="done" id="Euu-17-UdB">
-                            <color key="tintColor" red="0.19607843137254902" green="0.80000000000000004" blue="0.16078431372549021" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.23921568627450981" green="0.99607843137254903" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="grr-aR-yVn" kind="show" id="gt2-6L-7f4"/>
                             </connections>
@@ -348,7 +348,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Qx2-Am-AKr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Win-Vc-GJI">
-                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CHAT DETAIL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofH-EJ-LCw">
@@ -468,7 +468,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="         My Initiatives " id="6bz-vm-sQm">
+                        <barButtonItem title="          My Initiatives " id="6bz-vm-sQm">
                             <color key="tintColor" red="0.22745098039215686" green="0.90196078431372551" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="whZ-zE-UrF" kind="show" id="h5K-wb-Q3f"/>
@@ -491,7 +491,7 @@
                         <viewControllerLayoutGuide type="bottom" id="WFe-aP-KtS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Qbu-D6-kgJ">
-                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Initiative Name" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0pT-hP-UOp">
@@ -547,7 +547,7 @@
             <objects>
                 <navigationController storyboardIdentifier="navID" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" toolbarHidden="NO" id="LMZ-rX-9f2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="U8J-BJ-syT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="U8J-BJ-syT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
@@ -575,8 +575,8 @@
         <image name="backgroundNYC" width="1326" height="1291"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nR9-YX-1Fo"/>
-        <segue reference="h5K-wb-Q3f"/>
-        <segue reference="AlA-vr-7Py"/>
+        <segue reference="peZ-TE-S1e"/>
+        <segue reference="09l-Va-NrD"/>
+        <segue reference="zkx-6j-hXv"/>
     </inferredMetricsTieBreakers>
 </document>

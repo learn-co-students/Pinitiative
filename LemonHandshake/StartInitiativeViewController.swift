@@ -80,7 +80,9 @@ class StartInitiativeViewController: UIViewController {
         let alertController = UIAlertController(title: nil, message: "\(nameTextField.text!) added to your initiatives!", preferredStyle: UIAlertControllerStyle.alert)
             
         let okAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.default) { completion -> Void in
-         
+        
+        print("THE DATE SELECTED IS: \(self.datePickerView.date)")
+            
         self.dismiss(animated: true, completion: nil)
         // might need to reload datastore here.
             
