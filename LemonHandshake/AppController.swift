@@ -8,10 +8,11 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class AppController: UIViewController {
     
-    var containerView: UIView!
+    @IBOutlet var containerView: UIView!
     var actingViewController: UIViewController!
     
     // MARK: View lifecycle
@@ -27,10 +28,20 @@ class AppController: UIViewController {
     // MARK: Set Up
     
     private func loadInitialViewController() {
+      
+//       FIRAuth.auth()?.addStateDidChangeListener { (auth, user) in
+       
+        if FIRAuth.auth()?.currentUser != nil {
+
+        actingViewController = loadViewController(withID: .navID)
+        
+        } else {
         
         actingViewController = loadViewController(withID: .loginVC)
-        addActing(viewController: actingViewController)
-        
+        }
+    
+        self.addActing(viewController: actingViewController)
+     
     }
     
     private func addNotificationObservers() {
@@ -46,7 +57,15 @@ class AppController: UIViewController {
         
         switch id {
         case .loginVC:
+           
             return storyboard.instantiateViewController(withIdentifier: id.rawValue) as! LoginScreenViewController
+        
+        case .navID:
+           
+            let navVC = storyboard.instantiateViewController(withIdentifier: "navID") as! UINavigationController
+            
+            return navVC
+            
         default:
             fatalError("ERROR: Unable to find controller with storyboard id: \(id)")
         }
@@ -66,7 +85,7 @@ class AppController: UIViewController {
         
         switch notification.name {
         case Notification.Name.closeLoginVC:
-            switchToViewController(withID: .mainVC)
+            switchToViewController(withID: .navID)
         default:
             fatalError("ERROR: Unable to match notification name")
         }

@@ -28,9 +28,9 @@ struct MapDataStore {
     var userLongitude = Double()
     var locations: [Location] = []
     var schools: [School] = []
-    var fireStations: [FireStation] = []
+    //var fireStations: [FireStation] = []
     var parks: [Park] = []
-    var policeStations: [PoliceStation] = []
+    //var policeStations: [PoliceStation] = []
     var coordinates: [CLLocationCoordinate2D] = []
     var pointAnnotations: [MGLPointAnnotation] = []
     
@@ -102,7 +102,7 @@ struct MapDataStore {
 
 enum StoryboardID: String {
     case loginVC = "login-vc"
-    case mainVC = "mapVC"
+    case navID = "navID"
 }
 
 

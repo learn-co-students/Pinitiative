@@ -42,6 +42,7 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
     @IBOutlet weak var createAccountButtonView: UIButton!
    
     @IBOutlet weak var applicationLogo: UILabel!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
