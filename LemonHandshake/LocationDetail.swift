@@ -22,7 +22,6 @@ class LocationDetail: UIView {
             nameLabel.text = location.name
             addressLabel.text = location.address
             propertyTypeIcon.image = location.icon
-            print("Inside /(location)")
         }
     }
     
@@ -47,22 +46,6 @@ class LocationDetail: UIView {
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        
-        nameLabel.snp.makeConstraints { (make) in
-            make.edges.equalTo(contentView)
-        }
-        
-        addressLabel.snp.makeConstraints { (make) in
-            make.edges.equalTo(contentView).inset(UIEdgeInsetsMake(20, 20, 20, 20))
-        }
- 
-        propertyTypeIcon.snp.makeConstraints { (make) in
-            make.edges.equalTo(contentView).inset(UIEdgeInsetsMake(20, 20, 20, 20))
-        }
-        
-        propertyPreview.snp.makeConstraints { (make) in
-            make.edges.equalTo(contentView).inset(UIEdgeInsetsMake(20, 20, 20, 20))
-        }
         
     }
     

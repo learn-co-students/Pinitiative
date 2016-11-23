@@ -52,7 +52,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.styleURL = store.styleURL
         mapView.showsUserLocation = true
-        mapView.userTrackingMode = .follow
+//        mapView.userTrackingMode = .follow
         mapView.zoomLevel = 10
         mapView.frame.size.height = view.frame.size.height
         view.addSubview(mapView)
