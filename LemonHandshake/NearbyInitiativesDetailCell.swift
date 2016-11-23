@@ -18,5 +18,5 @@ class NearbyInitiativesDetailCell: UITableViewCell {
     @IBOutlet weak var dateTextLabel: UILabel!
     @IBOutlet weak var followersTextLabel: UILabel!
     
-    
+
 }

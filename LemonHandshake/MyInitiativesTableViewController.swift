@@ -42,6 +42,35 @@ class MyInitiativesTableViewController: UITableViewController {
         cell.layer.borderColor = UIColor.green.cgColor
         cell.layer.borderWidth = 2
         
+        cell.initiativeLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(cell.contentView)
+            make.centerX.equalTo(cell.contentView.center)
+        }
+        
+        cell.dateStartedLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(cell.contentView).offset(40)
+            make.leftMargin.equalTo(cell.contentView).offset(20)
+            
+        }
+        
+        cell.dateLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(cell.contentView).offset(40)
+            make.rightMargin.equalTo(cell.contentView).offset(-20)
+            
+        }
+        
+        cell.followersLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(cell.contentView).offset(80)
+            make.leftMargin.equalTo(cell.contentView).offset(20)
+            
+        }
+        
+        cell.followersTextLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(cell.contentView).offset(80)
+            make.rightMargin.equalTo(cell.contentView).offset(-20)
+            
+        }
+        
         cell.initiativeLabel.text = "Pick up trash on the freeway"
         cell.followersLabel.text = String(describing: 54)
         cell.dateLabel.text = "April 26th 1992"
