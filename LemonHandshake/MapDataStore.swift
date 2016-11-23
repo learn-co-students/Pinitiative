@@ -47,7 +47,7 @@ struct MapDataStore {
         //Create dummy schools
         let school1Coordinate = CLLocationCoordinate2D(latitude: 40.771336, longitude: -73.919845)
         coordinates.append(school1Coordinate)
-        let school1Location = Location(name: "New Milestone Preschool", address: "Test School", coordinates: school1Coordinate, type: .school )
+        let school1Location = Location(name: "New Milestone Preschool", address: "Test School", coordinates: school1Coordinate, type: .school)
         self.locations.append(school1Location)
 //        let school1 = School(location: school1Location)
 //        self.schools.append(school1)

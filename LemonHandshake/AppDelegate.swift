@@ -58,9 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     //JCB - For Google Sign In
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        
-        let accessToken = user.authentication.accessToken
-        print(accessToken)
     }
 }
 
