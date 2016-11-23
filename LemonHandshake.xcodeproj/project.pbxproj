@@ -33,6 +33,7 @@
 		BC6244E41DDA798D00AE6523 /* MyInitiativesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */; };
 		BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */; };
 		BC87E4A81DDB87E800980939 /* MemberManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */; };
+		BCB137B91DE5EBD200C15CDD /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */; };
 		C1C17914B89D5C7A8248CE88 /* Pods_LemonHandshake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F8D053C7AB55B440A09174 /* Pods_LemonHandshake.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInitiativesTableViewController.swift; sourceTree = "<group>"; };
 		BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartInitiativeViewController.swift; sourceTree = "<group>"; };
 		BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberManagementViewController.swift; sourceTree = "<group>"; };
+		BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
 		D9D87A0442C341DFD63FA7AE /* Pods-LemonHandshake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LemonHandshake.release.xcconfig"; path = "Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +176,7 @@
 		BC87E4A61DDB862F00980939 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */,
 				BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */,
 				BC6244DB1DDA798D00AE6523 /* LocationDetailTableViewController.swift */,
 				BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */,
@@ -338,6 +341,7 @@
 				BC43C33B1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift in Sources */,
 				1B10965F1DDA50CE00609104 /* AppDelegate.swift in Sources */,
 				BC6244E01DDA798D00AE6523 /* InitiativeDetailViewController.swift in Sources */,
+				BCB137B91DE5EBD200C15CDD /* ChatDetailViewController.swift in Sources */,
 				1B10B1A41DE4C8F9006E38A7 /* GeoFire.swift in Sources */,
 				BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */,
 				837C2F5A1DE4942500E076C9 /* AppController.swift in Sources */,

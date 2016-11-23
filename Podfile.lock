@@ -97,6 +97,9 @@ PODS:
   - GTMSessionFetcher/Core (1.1.7)
   - GTMSessionFetcher/Full (1.1.7):
     - GTMSessionFetcher/Core (= 1.1.7)
+  - JSQMessagesViewController (7.3.4):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
   - Mapbox-iOS-SDK (3.3.7)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
@@ -113,6 +116,7 @@ DEPENDENCIES:
   - Firebase/Database
   - FirebaseUI
   - GeoFire (from `https://github.com/firebase/geofire-objc.git`)
+  - JSQMessagesViewController
   - Mapbox-iOS-SDK (~> 3.3.6)
   - SnapKit (~> 3.0.2)
 
@@ -146,12 +150,14 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
+  JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Mapbox-iOS-SDK: 142301fa63a6719cbd2eacc0f9e8bf36c65930d9
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   TwitterCore: 150e8d2538b867bdde9ef9b61c6b755c2523c25e
   TwitterKit: 3d72f0b25f2cc281f996e976928d2defe28702cb
 
-PODFILE CHECKSUM: 7fc7def4a4cc9c563e35b8a24a7e584ad9fcd759
+PODFILE CHECKSUM: 63dd619dead94c15d85488bb1513cfbd8924d3c2
 
 COCOAPODS: 1.1.1
