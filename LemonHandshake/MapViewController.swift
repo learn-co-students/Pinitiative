@@ -13,10 +13,8 @@ import SnapKit
 
 class MapViewController: UIViewController, MGLMapViewDelegate {
     
-    
     @IBAction func myInitiativesButton(_ sender: Any) {
     }
-    
   
     
 //    var mapView: MGLMapView!
@@ -24,6 +22,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     var mapView: MGLMapView!
     var mapBounds = MGLCoordinateBounds()
     var locations = [Location]()
+    var locationView = LocationView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +59,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
         mapView.zoomLevel = 10
-        mapView.frame.size.height = view.frame.size.height * 0.95
+        mapView.frame.size.height = view.frame.size.height * 0.97
     }
     
     func mapView(_ mapView: MGLMapView, didUpdate userLocation: MGLUserLocation?) {
@@ -79,36 +78,25 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         print(locations.count)
         for location in locations {
             let point = CustomPointAnnotation(coordinate: location.coordinates, title: location.name, subtitle: location.address)
-            
-            switch location.type {
-            case .fireStation:
-                point.image = UIImage(named: "firemen")
-                point.reuseIdentifier = "fireStation"
-            case .school:
-                point.image = UIImage(named: "school")
-                point.reuseIdentifier = "school"
-            case .park:
-                point.image = UIImage(named: "forest")
-                point.reuseIdentifier = "park"
-            case .policeStation:
-                point.image = UIImage(named: "police")
-                point.reuseIdentifier = "policeStation"
-            case .hospital:
-                point.image = UIImage(named: "hospital-building")
-                point.reuseIdentifier = "hospital"
-            }
-            
-            pointAnnotations.append(point)
+                point.image = location.icon
+                point.reuseIdentifier = location.type.rawValue
+                pointAnnotations.append(point)
         }
         mapView.addAnnotations(pointAnnotations)
     }
 
     
+    func mapView(_ mapView: MGLMapView, didSelect annotation: MGLAnnotation) {
+ 
+    }
+    
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
         //UIVIew with duration pop up XIB
-        
-        
-        
+        locationView = LocationView(frame: view.bounds)
+        let selected = annotation as! CustomPointAnnotation
+        print(selected)
+        locationView.location = Location(name: selected.title!, address: selected.subtitle!, coordinates: selected.coordinate, type: LocationType(rawValue: selected.reuseIdentifier!)!)
+        view.addSubview(locationView)
         return true
     }
     
@@ -154,5 +142,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         locations = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
         addPointAnnotations()
     }
+    
     
 }
