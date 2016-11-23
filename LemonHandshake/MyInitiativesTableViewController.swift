@@ -42,9 +42,9 @@ class MyInitiativesTableViewController: UITableViewController {
         cell.layer.borderColor = UIColor.green.cgColor
         cell.layer.borderWidth = 2
         
-        cell.initiativeLabel.text = "Pick up trash at the park"
+        cell.initiativeLabel.text = "Pick up trash on the freeway"
         cell.followersLabel.text = String(describing: 54)
-        cell.dateLabel.text = "October 10th, 2016"
+        cell.dateLabel.text = "April 26th 1992"
  
        
         return cell

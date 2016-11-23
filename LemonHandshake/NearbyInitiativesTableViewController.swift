@@ -42,11 +42,21 @@ class NearbyInitiativesTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "nearbyInitiatives", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "nearbyInitiatives", for: indexPath) as! NearbyInitiativesDetailCell
 
+        // add the below to a xib file?
+        
         cell.backgroundColor = UIColor.clear
         cell.layer.borderColor = UIColor.blue.cgColor
         cell.layer.borderWidth = 2
+        
+        cell.nearbyInitiativeNameLabel.text = "Feed the homeless"
+        cell.dateTextLabel.text = "April 1st, 2016"
+        cell.followersTextLabel.text = "589"
+        
+        cell.snp.makeConstraints { (make) in
+            
+        }
 
         return cell
     }
