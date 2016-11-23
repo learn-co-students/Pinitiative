@@ -8,6 +8,8 @@
 
 import Foundation
 import Mapbox
+import UIKit
+
 
 struct Location {
     var name: String
@@ -16,6 +18,29 @@ struct Location {
     var longitude: Double { get { return self.coordinates.longitude } }
     var latitude: Double { get { return self.coordinates.latitude } }
     var type: LocationType
+    var icon: UIImage {
+        switch type {
+        case .fireStation:
+        return UIImage(named: "firemen")!
+        case .school:
+        return UIImage(named: "school")!
+        case .park:
+        return UIImage(named: "forest")!
+        case .policeStation:
+        return UIImage(named: "police")!
+        case .hospital:
+        return UIImage(named: "hospital-building")!
+        }
+    }
+
+
+    init(name: String, address: String, coordinates: CLLocationCoordinate2D, type: LocationType) {
+        self.name = name
+        self.address = address
+        self.coordinates = coordinates
+        self.type = type
+    }
+    
 }
 
 struct School { //other custom fields for schools, add here. If there are other fields, add them in the initializer
@@ -39,10 +64,10 @@ struct Park {
     var location: Location!
 }
 
-enum LocationType {
-    case school
-    case policeStation
-    case fireStation
-    case park
-    case hospital
+enum LocationType: String {
+    case school = "school"
+    case policeStation = "policeStation"
+    case fireStation = "fireStation"
+    case park = "park"
+    case hospital = "hospital"
 }

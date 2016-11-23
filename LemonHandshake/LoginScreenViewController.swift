@@ -10,8 +10,11 @@ import UIKit
 import Foundation
 import SnapKit
 import Firebase
+import FirebaseAuthUI
+import FirebaseGoogleAuthUI
 
-class LoginScreenViewController: UIViewController {
+
+class LoginScreenViewController: UIViewController, FUIAuthDelegate {
 
     @IBOutlet weak var backgroundView: UIImageView!
     
@@ -20,7 +23,15 @@ class LoginScreenViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBAction func loginButton(_ sender: Any) {
+        let authUI = FUIAuth.init(uiWith: FIRAuth.auth()!)
         
+        authUI?.delegate = self
+        
+        authUI?.providers = [FUIGoogleAuth()]
+        //            FUIFacebookAuth(), FUIGoogleAuth()]
+        
+        let authViewController = authUI?.authViewController()
+        self.present(authViewController!, animated: true)
     }
     
     @IBAction func createAccountButton(_ sender: Any) {
@@ -31,6 +42,7 @@ class LoginScreenViewController: UIViewController {
     @IBOutlet weak var createAccountButtonView: UIButton!
    
     @IBOutlet weak var applicationLogo: UILabel!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -89,12 +101,20 @@ class LoginScreenViewController: UIViewController {
 }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "loginToMapSegue" {
-            let dest = segue.destination
-            
-           
-        }
+     if segue.identifier == "loginToMapSegue" {
+        let dest = segue.destination
     }
+    }
+    
+    
+    // conforming to Firebase UI protocol
+    public func authUI(_ authUI: FUIAuth, didSignInWith user: FIRUser?, error: Error?) {
+    
+    }
+    
+    
+
+    
 }
 
 

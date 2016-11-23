@@ -6,9 +6,8 @@
 //  Copyright (c) 2014 Firebase. All rights reserved.
 //
 
+#import <FirebaseDatabase/FirebaseDatabase.h>
 
-//#import <FirebaseDatabase/FirebaseDatabase.h>
-# import "/Users/tameikalawrence/Desktop/LemonHandshake-Community-App/ios-0916-team-lemonhandshake/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FirebaseDatabase.h"
 #import "GeoFire.h"
 #import "GeoFire+Private.h"
 #import "GFGeoHash.h"

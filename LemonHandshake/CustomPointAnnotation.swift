@@ -27,4 +27,8 @@ class CustomPointAnnotation: NSObject, MGLAnnotation {
         self.title = title
         self.subtitle = subtitle
     }
+    
+    
+    
+    
 }

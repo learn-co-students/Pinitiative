@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import Mapbox
 import CoreLocation
 import SnapKit
@@ -15,13 +16,14 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     
     @IBAction func myInitiativesButton(_ sender: Any) {
     }
-    
   
     
 //    var mapView: MGLMapView!
     var store = MapDataStore.sharedInstance
     var mapView: MGLMapView!
-    
+    var mapBounds = MGLCoordinateBounds()
+    var locations = [Location]()
+    var locationView = LocationView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         view.addSubview(mapView)
         mapView.delegate = self
         store.generateData()
-        addPointAnnotations()
+//        addPointAnnotations() //First load
 //        activateGestureRecognizer()
         
         
@@ -58,8 +60,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
         mapView.zoomLevel = 10
-        mapView.frame.size.height = view.frame.size.height * 0.95
-            }
+        mapView.frame.size.height = view.frame.size.height * 0.97
+    }
     
     func mapView(_ mapView: MGLMapView, didUpdate userLocation: MGLUserLocation?) {
         guard let userLocation = mapView.userLocation else { return }
@@ -74,36 +76,28 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     func addPointAnnotations() {
         var pointAnnotations = [CustomPointAnnotation]()
         
-        let locations = store.locations
-        
+        print(locations.count)
         for location in locations {
             let point = CustomPointAnnotation(coordinate: location.coordinates, title: location.name, subtitle: location.address)
-            
-            switch location.type {
-            case .fireStation:
-                point.image = UIImage(named: "firemen")
-                point.reuseIdentifier = "fireStation"
-            case .school:
-                point.image = UIImage(named: "school")
-                point.reuseIdentifier = "school"
-            case .park:
-                point.image = UIImage(named: "forest")
-                point.reuseIdentifier = "park"
-            case .policeStation:
-                point.image = UIImage(named: "police")
-                point.reuseIdentifier = "policeStation"
-            case .hospital:
-                point.image = UIImage(named: "hospital-building")
-                point.reuseIdentifier = "hospital"
-            }
-            
-            pointAnnotations.append(point)
+                point.image = location.icon
+                point.reuseIdentifier = location.type.rawValue
+                pointAnnotations.append(point)
         }
         mapView.addAnnotations(pointAnnotations)
     }
 
     
+    func mapView(_ mapView: MGLMapView, didSelect annotation: MGLAnnotation) {
+ 
+    }
+    
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+        //UIVIew with duration pop up XIB
+        locationView = LocationView(frame: view.bounds)
+        let selected = annotation as! CustomPointAnnotation
+        print(selected)
+        locationView.location = Location(name: selected.title!, address: selected.subtitle!, coordinates: selected.coordinate, type: LocationType(rawValue: selected.reuseIdentifier!)!)
+        view.addSubview(locationView)
         return true
     }
     
@@ -124,4 +118,31 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         // Fallback to the default marker image.
         return nil
     }
+    
+    func setVisibleAnnotationsForVisibleCoordinates(_ bounds: MGLCoordinateBounds) -> [Location] {
+        //filter location
+        let locations = store.locations
+        var boundLocations = [Location]()
+        
+        print(bounds)
+        print(locations[1])
+        
+        for location in locations {
+          if location.latitude <= bounds.ne.latitude &&
+             location.latitude >= bounds.sw.latitude &&
+             location.longitude <= bounds.ne.longitude &&
+             location.longitude >= bounds.sw.longitude {
+               boundLocations.append(location)
+            }
+        }
+        return boundLocations
+    }
+    
+    func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
+        mapBounds = mapView.visibleCoordinateBounds
+        locations = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
+        addPointAnnotations()
+    }
+    
+    
 }

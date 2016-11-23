@@ -28,15 +28,16 @@ struct MapDataStore {
     var userLongitude = Double()
     var locations: [Location] = []
     var schools: [School] = []
-    var fireStations: [FireStation] = []
+    //var fireStations: [FireStation] = []
     var parks: [Park] = []
-    var policeStations: [PoliceStation] = []
+    //var policeStations: [PoliceStation] = []
     var coordinates: [CLLocationCoordinate2D] = []
     var pointAnnotations: [MGLPointAnnotation] = []
     
    
     var zoomLevel = 0.0
     var styleURL = MGLStyle.streetsStyleURL(withVersion: 9)
+    
     
     private init() { }
     
@@ -46,7 +47,7 @@ struct MapDataStore {
         //Create dummy schools
         let school1Coordinate = CLLocationCoordinate2D(latitude: 40.771336, longitude: -73.919845)
         coordinates.append(school1Coordinate)
-        let school1Location = Location(name: "New Milestone Preschool", address: "Test School", coordinates: school1Coordinate, type: .school )
+        let school1Location = Location(name: "New Milestone Preschool", address: "Test School", coordinates: school1Coordinate, type: .school)
         self.locations.append(school1Location)
 //        let school1 = School(location: school1Location)
 //        self.schools.append(school1)
@@ -99,7 +100,10 @@ struct MapDataStore {
 
 
 
-
+enum StoryboardID: String {
+    case loginVC = "login-vc"
+    case navID = "navID"
+}
 
 
 
