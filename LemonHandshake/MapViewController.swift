@@ -106,6 +106,10 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
 
     
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+        //UIVIew with duration pop up XIB
+        
+        
+        
         return true
     }
     

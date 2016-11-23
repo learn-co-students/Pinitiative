@@ -45,9 +45,7 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-            print("TEST PRINT")
-        
+
             backgroundView.snp.makeConstraints { (make) in
             make.height.equalTo(self.view)
             make.width.equalTo(self.view).multipliedBy(2)
