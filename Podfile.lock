@@ -102,10 +102,10 @@ PODS:
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - SnapKit (3.0.2)
-  - TwitterCore (2.6.1):
+  - TwitterCore (2.6.0):
     - Fabric
-  - TwitterKit (2.6.1):
-    - TwitterCore (= 2.6.1)
+  - TwitterKit (2.6.0):
+    - TwitterCore (= 2.6.0)
 
 DEPENDENCIES:
   - Firebase
@@ -149,8 +149,8 @@ SPEC CHECKSUMS:
   Mapbox-iOS-SDK: 142301fa63a6719cbd2eacc0f9e8bf36c65930d9
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
-  TwitterCore: a8aea8bdaf2abd6572c8f264707a4ea4dc2d0eab
-  TwitterKit: d38c08d31dfd4ba604f95deca6cf8e174b5cbd96
+  TwitterCore: 150e8d2538b867bdde9ef9b61c6b755c2523c25e
+  TwitterKit: 3d72f0b25f2cc281f996e976928d2defe28702cb
 
 PODFILE CHECKSUM: 7fc7def4a4cc9c563e35b8a24a7e584ad9fcd759
 
