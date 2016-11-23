@@ -116,6 +116,7 @@ DEPENDENCIES:
   - Firebase/Database
   - FirebaseUI
   - GeoFire (from `https://github.com/firebase/geofire-objc.git`)
+  - GoogleSignIn
   - JSQMessagesViewController
   - Mapbox-iOS-SDK (~> 3.3.6)
   - SnapKit (~> 3.0.2)
@@ -158,6 +159,6 @@ SPEC CHECKSUMS:
   TwitterCore: 150e8d2538b867bdde9ef9b61c6b755c2523c25e
   TwitterKit: 3d72f0b25f2cc281f996e976928d2defe28702cb
 
-PODFILE CHECKSUM: 63dd619dead94c15d85488bb1513cfbd8924d3c2
+PODFILE CHECKSUM: 4337da6e80c324027aeb67e48aa5b178a1de90f6
 
 COCOAPODS: 1.1.1
