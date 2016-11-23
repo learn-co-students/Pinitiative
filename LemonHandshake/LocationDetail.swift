@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SnapKit
 
-class LocationView: UIView {
+class LocationDetail: UIView {
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,6 +22,7 @@ class LocationView: UIView {
             nameLabel.text = location.name
             addressLabel.text = location.address
             propertyTypeIcon.image = location.icon
+            print("Inside /(location)")
         }
     }
     
@@ -38,11 +40,30 @@ class LocationView: UIView {
     func commonInit() {
         Bundle.main.loadNibNamed("LocationDetail", owner: self, options: nil)
         addSubview(contentView)
+        
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        
         contentView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        contentView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 25)
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        
+        nameLabel.snp.makeConstraints { (make) in
+            make.edges.equalTo(contentView)
+        }
+        
+        addressLabel.snp.makeConstraints { (make) in
+            make.edges.equalTo(contentView).inset(UIEdgeInsetsMake(20, 20, 20, 20))
+        }
+ 
+        propertyTypeIcon.snp.makeConstraints { (make) in
+            make.edges.equalTo(contentView).inset(UIEdgeInsetsMake(20, 20, 20, 20))
+        }
+        
+        propertyPreview.snp.makeConstraints { (make) in
+            make.edges.equalTo(contentView).inset(UIEdgeInsetsMake(20, 20, 20, 20))
+        }
+        
     }
     
 }

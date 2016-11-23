@@ -17,7 +17,6 @@ class CustomPointAnnotation: NSObject, MGLAnnotation {
     var title: String?
     var subtitle: String?
     
-    
     // Custom properties that we will use to customize the annotation's image.
     var image: UIImage?
     var reuseIdentifier: String?

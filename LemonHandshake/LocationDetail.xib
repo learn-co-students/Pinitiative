@@ -6,10 +6,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationView" customModule="LemonHandshake" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationDetail" customModule="LemonHandshake" customModuleProvider="target">
             <connections>
                 <outlet property="addressLabel" destination="e9h-cy-3zI" id="iHG-dI-5ai"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="J97-7f-nKO"/>
@@ -24,22 +25,20 @@
             <rect key="frame" x="0.0" y="0.0" width="374" height="275"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcB-Y9-d0X">
-                    <rect key="frame" x="16" y="40" width="49" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcB-Y9-d0X">
+                    <rect key="frame" x="16" y="49" width="276" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTq-Wc-Ef6">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTq-Wc-Ef6">
                     <rect key="frame" x="121" y="11" width="132" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9h-cy-3zI">
-                    <rect key="frame" x="16" y="69" width="289" height="21"/>
+                    <rect key="frame" x="16" y="81" width="330" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
@@ -55,6 +54,16 @@
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="sTq-Wc-Ef6" secondAttribute="trailing" constant="121" id="0XD-ZG-GO2"/>
+                <constraint firstItem="sTq-Wc-Ef6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="2t8-xd-ssT"/>
+                <constraint firstItem="BcB-Y9-d0X" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="F53-lq-Rpx"/>
+                <constraint firstItem="BcB-Y9-d0X" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Ljb-qr-KfT"/>
+                <constraint firstItem="sTq-Wc-Ef6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="121" id="Tqa-5D-4Lq"/>
+                <constraint firstItem="sTq-Wc-Ef6" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="12:25" id="VVJ-5u-0c1"/>
+                <constraint firstItem="BcB-Y9-d0X" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="an0-oK-imG"/>
+                <constraint firstItem="BcB-Y9-d0X" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="ffI-PQ-s4a"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="82" y="69.5"/>
