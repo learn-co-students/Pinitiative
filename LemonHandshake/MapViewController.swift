@@ -94,10 +94,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         return true
     }
     
-    func mapView(_ mapView: MGLMapView, didSelect annotation: MGLAnnotation) {
-//        locationDetailView.removeFromSuperview()
-    }
-    
     
     func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
         if let point = annotation as? CustomPointAnnotation,
@@ -117,6 +113,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         return nil
     }
     
+    //Can be deleted once GeoFire is available
     func setVisibleAnnotationsForVisibleCoordinates(_ bounds: MGLCoordinateBounds) -> [Location] {
         //filter location
         let locations = store.locations

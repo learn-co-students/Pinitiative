@@ -106,17 +106,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aB7-kw-958" customClass="LocationDetail" customModule="LemonHandshake" customModuleProvider="target">
-                                <rect key="frame" x="47" y="146.5" width="281" height="207"/>
+                                <rect key="frame" x="16" y="345" width="343" height="244"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="aB7-kw-958" secondAttribute="height" multiplier="374:275" id="WZd-OE-epf"/>
+                                    <constraint firstAttribute="width" secondItem="aB7-kw-958" secondAttribute="height" multiplier="374:275" constant="11.159999999999968" id="WZd-OE-epf"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.60961579623287676" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="aB7-kw-958" firstAttribute="width" secondItem="TEX-YY-XWj" secondAttribute="width" multiplier="0.75" id="1Zj-YP-fLH"/>
-                            <constraint firstItem="aB7-kw-958" firstAttribute="centerY" secondItem="TEX-YY-XWj" secondAttribute="centerY" multiplier="0.75" id="IO3-jY-x2i"/>
+                            <constraint firstItem="aB7-kw-958" firstAttribute="width" secondItem="TEX-YY-XWj" secondAttribute="width" multiplier="0.75" constant="61.75" id="1Zj-YP-fLH"/>
+                            <constraint firstItem="aB7-kw-958" firstAttribute="centerY" secondItem="TEX-YY-XWj" secondAttribute="centerY" multiplier="0.75" constant="216.875" id="IO3-jY-x2i"/>
                             <constraint firstItem="aB7-kw-958" firstAttribute="centerX" secondItem="TEX-YY-XWj" secondAttribute="centerX" id="LhH-vo-Qib"/>
                         </constraints>
                     </view>
@@ -126,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsi-Bm-W0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="-642"/>
+            <point key="canvasLocation" x="20" y="-642.72863568215894"/>
         </scene>
         <!--App Controller-->
         <scene sceneID="HA5-JS-AIs">

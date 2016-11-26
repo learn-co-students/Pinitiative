@@ -46,6 +46,7 @@ class LocationDetail: UIView {
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+
         
     }
     

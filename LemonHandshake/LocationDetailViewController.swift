@@ -15,6 +15,7 @@ class LocationDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationDetailView.layer.cornerRadius = 15
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissViewController))
         view.addGestureRecognizer(tapGestureRecognizer)
     }
