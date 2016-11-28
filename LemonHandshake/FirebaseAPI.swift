@@ -44,7 +44,7 @@ class FirebaseAPI {
     
     //MARK: - Initiative functions
     static func storeNewInitiative(_ initiative: Initiative) {
-        let initiativeRef = FIRDatabase.database().reference().child("initiatives")
+        var initiativeRef = FIRDatabase.database().reference().child("initiatives")
         
         var serializedData: [String: Any] = [
             "name": initiative.name,
@@ -56,7 +56,20 @@ class FirebaseAPI {
         ]
         if let landmarkID = initiative.associatedLandmark?.databaseKey {
             serializedData["landmarkID"] = landmarkID
+            
+            initiativeRef = initiativeRef.child(landmarkID)
+
         }
+        
+        initiativeRef.setValue(serializedData, withCompletionBlock: { error, ref in
+            
+            // setValue is done! data is on firebase, we're in the completion block.
+            
+            
+            
+        })
+        
+        
         
         initiativeRef.setValue(serializedData, forKey: initiative.databaseKey)
     }

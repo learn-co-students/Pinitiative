@@ -11,7 +11,8 @@ import Firebase
 
 class FirebaseChatViewController: UIViewController {
     
-    var ref: FIRDatabaseReference! = nil
+    var ref: FIRDatabaseReference!
+    var initiativeID: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +22,9 @@ class FirebaseChatViewController: UIViewController {
     
     func creatChat() {
     
-        ref = FIRDatabase.database().reference().child("chats")
+        ref = FIRDatabase.database().reference()
         
-        let chatRef = ref.childByAutoId()
-    
-        
-        chatRef.setValue([String:Any](), forKey: "initiatives")
-        
+        let chatRef = ref.child("Chats").child(initiativeID)
         
         
     
