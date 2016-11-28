@@ -25,8 +25,15 @@ class StartInitiativeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let background = UIImage(named: "yellowRoad" )
+        let imageView = UIImageView(image: background)
+        self.view.addSubview(imageView)
+        imageView.contentMode = .scaleAspectFill
+        imageView.alpha = 0.5
+        view.sendSubview(toBack: imageView)
+        
         addInitiativeLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).offset(-150)
+            make.bottomMargin.equalTo(self.view).offset(-283)
             make.left.equalTo(self.view).offset(80)
             make.width.equalTo(125)
             addInitiativeLabel.layer.cornerRadius = 20
@@ -35,7 +42,7 @@ class StartInitiativeViewController: UIViewController {
         }
         
         cancelInitiativeLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).offset(-150)
+            make.bottomMargin.equalTo(self.view).offset(-283)
             make.right.equalTo(self.view).offset(-80)
             make.width.equalTo(125)
             cancelInitiativeLabel.layer.cornerRadius = 20
@@ -44,29 +51,35 @@ class StartInitiativeViewController: UIViewController {
         }
         
         nameTextField.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(300)
+            make.topMargin.equalTo(self.view).offset(235)
             make.height.equalTo(40)
             make.centerX.equalTo(self.view)
             make.width.equalTo(300)
             nameTextField.layer.cornerRadius = 20
             nameTextField.layer.borderColor = UIColor.black.cgColor
             nameTextField.layer.borderWidth = 1
+            nameTextField.backgroundColor = UIColor.white.withAlphaComponent(0.8)
         }
         
         descriptionTextField.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(350)
-            make.height.equalTo(200)
+            make.topMargin.equalTo(self.view).offset(285)
+            make.height.equalTo(150)
             make.centerX.equalTo(self.view)
             make.width.equalTo(300)
             descriptionTextField.layer.cornerRadius = 20
             descriptionTextField.layer.borderColor = UIColor.black.cgColor
             descriptionTextField.layer.borderWidth = 1
+            descriptionTextField.backgroundColor = UIColor.white.withAlphaComponent(0.8)
         }
 
         datePickerView.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(65)
+            make.topMargin.equalTo(self.view).offset(100)
             make.centerX.equalTo(self.view)
             make.width.equalTo(self.view).multipliedBy(0.8)
+            make.height.equalTo(125)
+            datePickerView.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+            datePickerView.layer.cornerRadius = 20
+            datePickerView.layer.borderWidth = 1
            
         }
 

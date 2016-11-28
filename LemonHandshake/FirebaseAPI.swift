@@ -111,8 +111,8 @@ class FirebaseAPI {
         let targetLandmarkRef = FIRDatabase.database().reference().child("landmarks").child(key)
         
         targetLandmarkRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let dictionary = snapshot.value as? [String: String] else { print("FAILURE: Error with snapshot for location with key: \(key)");return }
-            guard let type = dictionary["type"] else { print("FAILURE: Could not retrieve location type for location with key: \(key)"); return }
+            guard let dictionary = snapshot.value as? [String: String] else { print("FAILURE: Error with snapshot for landmark with key: \(key)");return }
+            guard let type = dictionary["type"] else { print("FAILURE: Could not retrieve landmark type for landmark with key: \(key)"); return }
             
             switch type {
             case "hospital":
@@ -123,7 +123,7 @@ class FirebaseAPI {
                     let latitude = Double(latitudeString),
                     let longitudeString = dictionary["longitude"],
                     let longitude = Double(longitudeString)
-                    else { print("FAILURE: Could not parse data for location with key: \(key)"); return}
+                    else { print("FAILURE: Could not parse data for landmark with key: \(key)"); return}
                 
                 let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                 
@@ -140,7 +140,7 @@ class FirebaseAPI {
                     let latitude = Double(latitudeString),
                     let longitudeString = dictionary["longitude"],
                     let longitude = Double(longitudeString)
-                    else { print("FAILURE: Could not parse data for location with key: \(key)"); return }
+                    else { print("FAILURE: Could not parse data for landmark with key: \(key)"); return }
                 
                 let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                 
@@ -149,7 +149,7 @@ class FirebaseAPI {
                 completion(park)
             
             default:
-                print("FAILURE: Could not recognize type \"\(type)\" for location with key: \(key)")
+                print("FAILURE: Could not recognize type \"\(type)\" for landmark with key: \(key)")
             }
             
         })
