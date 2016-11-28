@@ -11,11 +11,15 @@ import UIKit
 import SnapKit
 
 class NearbyInitiativesDetailCell: UITableViewCell {
+   
     @IBOutlet weak var nearbyInitiativeNameLabel: UILabel!
+   
     @IBOutlet weak var dateStartedLabel: UILabel!
+   
     @IBOutlet weak var followersLabel: UILabel!
-    
+   
     @IBOutlet weak var dateTextLabel: UILabel!
+   
     @IBOutlet weak var followersTextLabel: UILabel!
     
 
