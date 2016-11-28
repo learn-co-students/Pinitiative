@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class LocationDetail: UIView {
+class LandmarkDetail: UIView {
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -17,11 +17,11 @@ class LocationDetail: UIView {
     @IBOutlet weak var propertyTypeIcon: UIImageView!
     @IBOutlet weak var propertyPreview: UIImageView!
     
-    var location: Location! {
+    var landmark: Landmark! {
         didSet {
-            nameLabel.text = location.name
-            addressLabel.text = location.address
-            propertyTypeIcon.image = location.icon
+            nameLabel.text = landmark.name
+            //addressLabel.text = landmark.address
+            propertyTypeIcon.image = landmark.icon
         }
     }
     
