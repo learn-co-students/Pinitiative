@@ -24,16 +24,19 @@ class FirebaseChatViewController: UIViewController {
         ref = FIRDatabase.database().reference().child("chats")
         
         let chatRef = ref.childByAutoId()
-        let initiativeID = [String:Any]
+    
         
-//        let initiativeRef = chatRef.child("initiatives")
+        chatRef.setValue([String:Any](), forKey: "initiatives")
         
-        chatRef.setValue([String:any], forKey: "initiatives")
         
-        //let userRef = chatRef.child("users")
         
     
     }
     
 
 }
+
+
+//chatmessages -> initiativeID -> messageID -> (content, timestamp, userID) 
+
+
