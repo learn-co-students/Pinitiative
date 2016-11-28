@@ -12,6 +12,8 @@ import SnapKit
 
 class NearbyInitiativesTableViewController: UITableViewController {
 
+    let store = MapDataStore.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

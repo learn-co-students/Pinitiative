@@ -12,6 +12,8 @@ import SnapKit
 
 class MyInitiativesTableViewController: UITableViewController {
 
+    let store = MapDataStore.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

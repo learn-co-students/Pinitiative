@@ -26,7 +26,7 @@ class StartInitiativeViewController: UIViewController {
         super.viewDidLoad()
         
         addInitiativeLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).offset(-150)
+            make.bottomMargin.equalTo(self.view).offset(-300)
             make.left.equalTo(self.view).offset(80)
             make.width.equalTo(125)
             addInitiativeLabel.layer.cornerRadius = 20
@@ -35,7 +35,7 @@ class StartInitiativeViewController: UIViewController {
         }
         
         cancelInitiativeLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).offset(-150)
+            make.bottomMargin.equalTo(self.view).offset(-300)
             make.right.equalTo(self.view).offset(-80)
             make.width.equalTo(125)
             cancelInitiativeLabel.layer.cornerRadius = 20
@@ -44,7 +44,7 @@ class StartInitiativeViewController: UIViewController {
         }
         
         nameTextField.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(300)
+            make.topMargin.equalTo(self.view).offset(210)
             make.height.equalTo(40)
             make.centerX.equalTo(self.view)
             make.width.equalTo(300)
@@ -54,8 +54,8 @@ class StartInitiativeViewController: UIViewController {
         }
         
         descriptionTextField.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(350)
-            make.height.equalTo(200)
+            make.topMargin.equalTo(self.view).offset(260)
+            make.height.equalTo(150)
             make.centerX.equalTo(self.view)
             make.width.equalTo(300)
             descriptionTextField.layer.cornerRadius = 20
@@ -64,9 +64,10 @@ class StartInitiativeViewController: UIViewController {
         }
 
         datePickerView.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(65)
+            make.topMargin.equalTo(self.view).offset(100)
             make.centerX.equalTo(self.view)
             make.width.equalTo(self.view).multipliedBy(0.8)
+            make.height.equalTo(100)
            
         }
 
