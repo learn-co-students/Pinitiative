@@ -49,7 +49,7 @@ struct Initiative {
 extension Initiative: CustomStringConvertible {
     var description: String { return name }
     
-    static func startNewInitiativeAtLandmark(landmark: Landmark, initiativeName: String, shortDescription: String, longDescription: String) -> Initiative {
+    static func startNewInitiativeAtLandmark(landmark: Landmark, initiativeName: String, shortDescription: String, longDescription: String) {
         
         let key = FIRDatabase.database().reference().key
         
@@ -57,6 +57,15 @@ extension Initiative: CustomStringConvertible {
         
         FirebaseAPI.storeNewInitiative(initiative)
         
-        return initiative
+    }
+    
+    static func startNewInitiativeAtLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees, initiativeName: String, shortDescription: String, longDescription: String) {
+        
+        let key = FIRDatabase.database().reference().key
+        
+        let initiative =  Initiative(name: initiativeName, latitude: latitude, longitude: longitude, databaseKey: key, leader: FirebaseAuth.currentUserID ?? "", shortDescription: shortDescription, longDescription: longDescription, createdAt: Date())
+        
+        FirebaseAPI.storeNewInitiative(initiative)
+        
     }
 }
