@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SnapKit
 
-class LocationView: UIView {
+class LocationDetail: UIView {
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -38,11 +39,15 @@ class LocationView: UIView {
     func commonInit() {
         Bundle.main.loadNibNamed("LocationDetail", owner: self, options: nil)
         addSubview(contentView)
+        
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        
         contentView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        contentView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 25)
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+
+        
     }
     
 }

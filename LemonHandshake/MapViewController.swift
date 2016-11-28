@@ -23,18 +23,12 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     var mapView: MGLMapView!
     var mapBounds = MGLCoordinateBounds()
     var locations = [Location]()
-    var locationView = LocationView()
+    var locationDetailView = LocationDetail()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createMap()
-        view.addSubview(mapView)
-        mapView.delegate = self
         store.generateData()
-//        addPointAnnotations() //First load
-//        activateGestureRecognizer()
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,9 +52,11 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.styleURL = store.styleURL
         mapView.showsUserLocation = true
-        mapView.userTrackingMode = .follow
+//        mapView.userTrackingMode = .follow
         mapView.zoomLevel = 10
-        mapView.frame.size.height = view.frame.size.height * 0.97
+        mapView.frame.size.height = view.frame.size.height
+        view.addSubview(mapView)
+        mapView.delegate = self
     }
     
     func mapView(_ mapView: MGLMapView, didUpdate userLocation: MGLUserLocation?) {
@@ -86,20 +82,18 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.addAnnotations(pointAnnotations)
     }
 
-    
-    func mapView(_ mapView: MGLMapView, didSelect annotation: MGLAnnotation) {
- 
-    }
-    
+
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
-        //UIVIew with duration pop up XIB
-        locationView = LocationView(frame: view.bounds)
+        
         let selected = annotation as! CustomPointAnnotation
-        print(selected)
-        locationView.location = Location(name: selected.title!, address: selected.subtitle!, coordinates: selected.coordinate, type: LocationType(rawValue: selected.reuseIdentifier!)!)
-        view.addSubview(locationView)
+        
+         let chosenLocation = Location(name: selected.title!, address: selected.subtitle!, coordinates: selected.coordinate, type: LocationType(rawValue: selected.reuseIdentifier!)!)
+        
+        performSegue(withIdentifier: "annotationSegue", sender: chosenLocation)
+        
         return true
     }
+    
     
     func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
         if let point = annotation as? CustomPointAnnotation,
@@ -119,6 +113,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         return nil
     }
     
+    //Can be deleted once GeoFire is available
     func setVisibleAnnotationsForVisibleCoordinates(_ bounds: MGLCoordinateBounds) -> [Location] {
         //filter location
         let locations = store.locations
@@ -144,5 +139,27 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         addPointAnnotations()
     }
     
+    func handleSingleTap(tap: UITapGestureRecognizer) {
+        locationDetailView.removeFromSuperview()
+    }
+}
+
+
+// MARK: - Segue
+extension MapViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "annotationSegue" {
+            
+            let destVC = segue.destination as! LocationDetailViewController
+            
+            destVC.location = sender as! Location
+        
+        }
+        
+        
+        
+    }
     
 }
