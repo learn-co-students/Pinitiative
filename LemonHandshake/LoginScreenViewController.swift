@@ -42,10 +42,9 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
     @IBOutlet weak var createAccountButtonView: UIButton!
    
     @IBOutlet weak var applicationLogo: UILabel!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
             backgroundView.snp.makeConstraints { (make) in
             make.height.equalTo(self.view)
             make.width.equalTo(self.view).multipliedBy(2)

@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3CJ-NX-deg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Login Screen View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginScreenViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login-vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginScreenViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -50,7 +52,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IbH-UL-d9W"/>
-                                    <segue destination="LMZ-rX-9f2" kind="show" identifier="loginToMapSegue" id="b9s-L7-Fdj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlO-mL-ohw">
@@ -90,18 +91,74 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-466" y="36"/>
+            <point key="canvasLocation" x="-1007" y="-707"/>
+        </scene>
+        <!--Location Detail View Controller-->
+        <scene sceneID="571-q6-DgQ">
+            <objects>
+                <viewController id="zYc-Au-Tv4" customClass="LocationDetailViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AIh-UH-eXX"/>
+                        <viewControllerLayoutGuide type="bottom" id="2cH-Th-qX5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TEX-YY-XWj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aB7-kw-958" customClass="LocationDetail" customModule="LemonHandshake" customModuleProvider="target">
+                                <rect key="frame" x="16" y="345" width="343" height="244"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aB7-kw-958" secondAttribute="height" multiplier="374:275" constant="11.159999999999968" id="WZd-OE-epf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.60961579623287676" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aB7-kw-958" firstAttribute="width" secondItem="TEX-YY-XWj" secondAttribute="width" multiplier="0.75" constant="61.75" id="1Zj-YP-fLH"/>
+                            <constraint firstItem="aB7-kw-958" firstAttribute="centerY" secondItem="TEX-YY-XWj" secondAttribute="centerY" multiplier="0.75" constant="216.875" id="IO3-jY-x2i"/>
+                            <constraint firstItem="aB7-kw-958" firstAttribute="centerX" secondItem="TEX-YY-XWj" secondAttribute="centerX" id="LhH-vo-Qib"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="locationDetailView" destination="aB7-kw-958" id="zov-tG-vQK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fsi-Bm-W0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20" y="-642.72863568215894"/>
+        </scene>
+        <!--App Controller-->
+        <scene sceneID="HA5-JS-AIs">
+            <objects>
+                <viewController id="f82-wG-XHm" customClass="AppController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dpr-Ts-q0V"/>
+                        <viewControllerLayoutGuide type="bottom" id="NSF-Fi-PvF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PCk-Em-42T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="PCk-Em-42T" id="Yxw-Og-th6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WRL-LR-RsY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1830" y="-338"/>
         </scene>
         <!--Map Markers-->
         <scene sceneID="AjW-Cj-b0s">
             <objects>
-                <viewController id="3CJ-NX-deg" customClass="MapViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3CJ-NX-deg" customClass="MapViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q7B-cu-LII"/>
                         <viewControllerLayoutGuide type="bottom" id="K1f-mO-0bs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Eur-dh-AHX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MAP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8C-5F-AMU">
@@ -115,14 +172,14 @@
                         <color key="backgroundColor" red="1" green="0.82028639542247284" blue="0.94811354923233382" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="         My Initiatives      " id="VL4-Sd-HPp">
+                        <barButtonItem title="          My Initiatives      " id="VL4-Sd-HPp">
                             <color key="tintColor" red="0.23921568627450981" green="1" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="whZ-zE-UrF" kind="show" id="09l-Va-NrD"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem title="      Local Initiatives       " id="liX-Wj-3HY">
-                            <color key="tintColor" red="0.22745098039215686" green="0.92549019607843142" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                        <barButtonItem title="      Local Initiatives       " id="liX-Wj-3HY" userLabel="Local Initiatives">
+                            <color key="tintColor" red="0.23921568627450981" green="0.99607843137254903" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Dwn-du-dg8" kind="show" id="jF6-55-ce7"/>
                             </connections>
@@ -130,27 +187,32 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Map Markers" id="qGh-Ym-BAw">
                         <barButtonItem key="leftBarButtonItem" title="Settings" style="done" id="Euu-17-UdB">
+                            <color key="tintColor" red="0.23921568627450981" green="0.99607843137254903" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="grr-aR-yVn" kind="show" id="gt2-6L-7f4"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Start Initiative" id="knX-CG-P5h">
+                            <color key="tintColor" red="0.23921568627450981" green="0.99607843137254903" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="akF-xd-ri0" kind="presentation" id="zkx-6j-hXv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="zYc-Au-Tv4" kind="presentation" identifier="annotationSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="MVg-bT-R5e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TU8-j5-9ac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="585" y="-663"/>
+            <point key="canvasLocation" x="38" y="32"/>
         </scene>
         <!--My Initiatives-->
         <scene sceneID="MST-I5-qQp">
             <objects>
                 <tableViewController id="whZ-zE-UrF" customClass="MyInitiativesTableViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="114" sectionHeaderHeight="28" sectionFooterHeight="28" id="FCy-Re-Rae">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -224,6 +286,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="My Initiatives" id="7WT-HU-YUe">
                         <barButtonItem key="rightBarButtonItem" title="Start Initiative" id="ObC-vA-XmS">
+                            <color key="tintColor" red="0.19607843137254902" green="0.80000000000000004" blue="0.16078431372549021" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="akF-xd-ri0" kind="presentation" identifier="addInitiativeSegue" id="vbW-6v-bue"/>
                             </connections>
@@ -233,18 +296,18 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vrd-8R-DmE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="585" y="849"/>
+            <point key="canvasLocation" x="38" y="1083"/>
         </scene>
         <!--Local Initiatives-->
         <scene sceneID="mD0-lR-aEp">
             <objects>
                 <tableViewController id="Dwn-du-dg8" customClass="NearbyInitiativesTableViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="114" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ohc-bL-pG8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nearbyInitiatives" rowHeight="114" id="eiG-3N-CiO">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nearbyInitiatives" rowHeight="114" id="eiG-3N-CiO" customClass="NearbyInitiativesDetailCell" customModule="LemonHandshake" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eiG-3N-CiO" id="BpV-ex-tVk">
@@ -289,6 +352,11 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="dateStartedLabel" destination="x0m-TU-DhO" id="dkg-HM-egE"/>
+                                    <outlet property="dateTextLabel" destination="qpu-Wr-8lW" id="xNt-jX-jNf"/>
+                                    <outlet property="followersLabel" destination="E2Z-R3-TLq" id="Owf-ov-DbM"/>
+                                    <outlet property="followersTextLabel" destination="KjX-hR-Urp" id="YJY-8b-4eS"/>
+                                    <outlet property="nearbyInitiativeNameLabel" destination="yhA-XN-qb7" id="lUm-J3-d4F"/>
                                     <segue destination="qOK-cb-7fF" kind="show" id="nR9-YX-1Fo"/>
                                 </connections>
                             </tableViewCell>
@@ -300,6 +368,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Local Initiatives" id="cEw-l6-dVe">
                         <barButtonItem key="rightBarButtonItem" title="Start Initiative" id="45B-sB-L2w">
+                            <color key="tintColor" red="0.23921568627450981" green="0.99607843137254903" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="akF-xd-ri0" kind="presentation" id="AlA-vr-7Py"/>
                             </connections>
@@ -319,7 +388,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Qx2-Am-AKr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Win-Vc-GJI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CHAT DETAIL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofH-EJ-LCw">
@@ -336,7 +405,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8c-69-Dtl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2861.5999999999999" y="-247.82608695652175"/>
+            <point key="canvasLocation" x="2950" y="1846"/>
         </scene>
         <!--Start Initiative View Controller-->
         <scene sceneID="FO1-nA-bP0">
@@ -351,56 +420,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFr-DC-OuP">
-                                <rect key="frame" x="63" y="393" width="87" height="30"/>
+                                <rect key="frame" x="63" y="393" width="85" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.23921568627450981" green="1" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
-                                    <action selector="addInitiativeButton:" destination="akF-xd-ri0" eventType="touchUpInside" id="vFa-e4-8DG"/>
+                                    <action selector="addInitiativeButton:" destination="akF-xd-ri0" eventType="touchUpInside" id="yhU-PZ-qdF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9id-9g-hh0">
                                 <rect key="frame" x="223" y="393" width="98" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.23921568627450981" green="1" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <action selector="cancelInitiativeButton:" destination="akF-xd-ri0" eventType="touchUpInside" id="W8t-lR-IgC"/>
+                                    <action selector="cancelInitiativeButton:" destination="akF-xd-ri0" eventType="touchUpInside" id="Abs-aE-kbK"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ob0-L4-rha">
-                                <rect key="frame" x="139" y="161" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ydp-6m-YFA">
+                                <rect key="frame" x="16" y="74" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QKg-f9-nTR">
-                                <rect key="frame" x="139" y="224" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g3f-dG-I3R">
-                                <rect key="frame" x="139" y="282" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ydp-6m-YFA">
-                                <rect key="frame" x="139" y="110" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="START INITIATIVE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Duc-wk-BMa">
-                                <rect key="frame" x="124" y="524" width="137" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <navigationBar opaque="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="CrB-71-OE2">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -412,15 +455,36 @@
                                     <navigationItem title="Start Initiative" id="CJV-Gd-gCD"/>
                                 </items>
                             </navigationBar>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="dox-PN-faY">
+                                <rect key="frame" x="53" y="226" width="263" height="137"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="501607314.42383498">
+                                    <!--2016-11-23 15:21:54 +0000-->
+                                </date>
+                            </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tell us a little about your initiative" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ob0-L4-rha">
+                                <rect key="frame" x="16" y="112" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="addInitiativeLabel" destination="BFr-DC-OuP" id="YbK-Ow-WAi"/>
+                        <outlet property="cancelInitiativeLabel" destination="9id-9g-hh0" id="wJK-aT-wt3"/>
+                        <outlet property="datePickerView" destination="dox-PN-faY" id="bSb-lC-kZh"/>
+                        <outlet property="descriptionTextField" destination="Ob0-L4-rha" id="9QR-T7-AKi"/>
+                        <outlet property="nameTextField" destination="Ydp-6m-YFA" id="Teq-Tn-nGr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQz-Qv-hEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2956" y="1153"/>
+            <point key="canvasLocation" x="2949.5999999999999" y="1082.608695652174"/>
         </scene>
-        <!--Member Management View Controller-->
+        <!--Member Management-->
         <scene sceneID="HjF-sy-o6p">
             <objects>
                 <viewController id="grr-aR-yVn" customClass="MemberManagementViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
@@ -428,39 +492,35 @@
                         <viewControllerLayoutGuide type="top" id="LKk-HW-MOp"/>
                         <viewControllerLayoutGuide type="bottom" id="wXv-yR-faz"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Kud-Jm-X6r">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="Kud-Jm-X6r">
+                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MEMBER MANAGEMENT " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IqR-Iv-LYe">
-                                <rect key="frame" x="89" y="277" width="196" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Google Calendar API View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IqR-Iv-LYe">
+                                <rect key="frame" x="0.0" y="64" width="375" height="239"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.58253125597990052" blue="0.13005322093709348" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Qc-XO-KDp">
-                                <rect key="frame" x="0.0" y="20" width="383" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Member Management" id="y69-Lg-uJ5"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="         My Initiatives " id="6bz-vm-sQm">
+                        <barButtonItem title="          My Initiatives " id="6bz-vm-sQm">
                             <color key="tintColor" red="0.22745098039215686" green="0.90196078431372551" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="whZ-zE-UrF" kind="show" id="h5K-wb-Q3f"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
+                    <navigationItem key="navigationItem" title="Member Management" id="y69-Lg-uJ5"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fo-g6-F7F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1670" y="56"/>
+            <point key="canvasLocation" x="1365.5999999999999" y="31.934032983508249"/>
         </scene>
         <!--Initiative Details-->
         <scene sceneID="ZbK-7J-37K">
@@ -471,7 +531,7 @@
                         <viewControllerLayoutGuide type="bottom" id="WFe-aP-KtS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Qbu-D6-kgJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Initiative Name" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0pT-hP-UOp">
@@ -520,27 +580,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gBo-EL-yk4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2085.5999999999999" y="2014.5427286356824"/>
+            <point key="canvasLocation" x="2062" y="1847"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FMn-3P-Mmt">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="LMZ-rX-9f2" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navID" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" toolbarHidden="NO" id="LMZ-rX-9f2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="U8J-BJ-syT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="U8J-BJ-syT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.23921568627450981" green="0.99607843137254903" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.99392129350000002" green="1" blue="0.8712511396" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" id="Goo-sd-pAl">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" barStyle="black" translucent="NO" id="Goo-sd-pAl">
                         <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
                     </toolbar>
                     <connections>
                         <segue destination="3CJ-NX-deg" kind="relationship" relationship="rootViewController" id="mbX-tI-weD"/>
@@ -548,15 +608,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XwK-Eh-HVC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1266" y="36"/>
+            <point key="canvasLocation" x="-1006" y="32"/>
         </scene>
     </scenes>
     <resources>
         <image name="backgroundNYC" width="1326" height="1291"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="peZ-TE-S1e"/>
         <segue reference="09l-Va-NrD"/>
         <segue reference="zkx-6j-hXv"/>
-        <segue reference="nR9-YX-1Fo"/>
     </inferredMetricsTieBreakers>
 </document>

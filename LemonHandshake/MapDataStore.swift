@@ -38,7 +38,7 @@ struct MapDataStore {
     private init() { }
     
     
-//    mutating func generateData() {
+    mutating func generateData() {
 //        
 //        //Create dummy schools
 //        let school1Coordinate = CLLocationCoordinate2D(latitude: 40.771336, longitude: -73.919845)
@@ -85,7 +85,7 @@ struct MapDataStore {
 //        let park2Location = Location(name: "Central Park", address: "In Manhattan", coordinates: park2Coordinate, type: .park)
 //        self.locations.append(park2Location)
 //        
-//    }
+    }
     
         
     func fetchDataSet() { //From Firebase woot!
@@ -98,7 +98,7 @@ struct MapDataStore {
 
 enum StoryboardID: String {
     case loginVC = "login-vc"
-    case mainVC = "mapVC"
+    case navID = "navID"
 }
 
 

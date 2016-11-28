@@ -8,11 +8,13 @@
 
 import Foundation
 import Mapbox
+import UIKit
 
-enum LandmarkType {
-    case school
-    case park
-    case hospital
+
+enum LandmarkType: String {
+    case school = "School"
+    case park = "Park"
+    case hospital = "Hospital"
 }
 
 protocol Landmark {
@@ -26,6 +28,21 @@ extension Landmark {
     
     var longitude: Double {  return self.coordinates.longitude }
     var latitude: Double { return self.coordinates.latitude }
+    
+    var icon: UIImage {
+        switch type {
+//        case .fireStation:
+//            return UIImage(named: "firemen")!
+        case .school:
+            return UIImage(named: "school")!
+        case .park:
+            return UIImage(named: "forest")!
+//        case .policeStation:
+//            return UIImage(named: "police")!
+        case .hospital:
+            return UIImage(named: "hospital-building")!
+        }
+    }
 }
 
 struct Hospital: Landmark {
@@ -45,7 +62,7 @@ struct Park: Landmark {
     var acres: Double
 }
 
-struct School {
+struct School: Landmark {
     var name: String
     var address: String
     var coordinates: CLLocationCoordinate2D

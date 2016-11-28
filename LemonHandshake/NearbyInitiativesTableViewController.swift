@@ -42,11 +42,52 @@ class NearbyInitiativesTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "nearbyInitiatives", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "nearbyInitiatives", for: indexPath) as! NearbyInitiativesDetailCell
 
+        // add the below to a xib file?
+        
+        
         cell.backgroundColor = UIColor.clear
         cell.layer.borderColor = UIColor.blue.cgColor
         cell.layer.borderWidth = 2
+        
+        cell.nearbyInitiativeNameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(cell.contentView)
+            make.centerX.equalTo(cell.contentView.center)
+        }
+        
+        cell.dateStartedLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(cell.contentView).offset(40)
+            make.leftMargin.equalTo(cell.contentView).offset(20)
+            
+        }
+        
+        cell.dateTextLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(cell.contentView).offset(40)
+            make.rightMargin.equalTo(cell.contentView).offset(-20)
+
+        }
+        
+        cell.followersLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(cell.contentView).offset(80)
+            make.leftMargin.equalTo(cell.contentView).offset(20)
+
+        }
+
+        cell.followersTextLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(cell.contentView).offset(80)
+            make.rightMargin.equalTo(cell.contentView).offset(-20)
+
+        }
+
+        
+        
+
+        
+        
+        cell.nearbyInitiativeNameLabel.text = "Feed the homeless"
+        cell.dateTextLabel.text = "April 1st, 2016"
+        cell.followersTextLabel.text = "589"
 
         return cell
     }

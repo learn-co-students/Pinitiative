@@ -7,16 +7,15 @@
 //
 
 import UIKit
+import Foundation
 import Mapbox
 import CoreLocation
 import SnapKit
 
 class MapViewController: UIViewController, MGLMapViewDelegate {
     
-    
     @IBAction func myInitiativesButton(_ sender: Any) {
     }
-    
   
     
 //    var mapView: MGLMapView!
@@ -24,6 +23,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     var mapView: MGLMapView!
     var mapBounds = MGLCoordinateBounds()
     var landmarks = [Landmark]()
+    var landmarkDetailView = LandmarkDetail()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +37,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
 //        activateGestureRecognizer()
         
         
+        store.generateData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,9 +61,11 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.styleURL = store.styleURL
         mapView.showsUserLocation = true
-        mapView.userTrackingMode = .follow
+//        mapView.userTrackingMode = .follow
         mapView.zoomLevel = 10
-        mapView.frame.size.height = view.frame.size.height * 0.95
+        mapView.frame.size.height = view.frame.size.height
+        view.addSubview(mapView)
+        mapView.delegate = self
     }
     
     func mapView(_ mapView: MGLMapView, didUpdate userLocation: MGLUserLocation?) {
@@ -80,39 +83,41 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         
         print(landmarks.count)
         for landmark in landmarks {
-            let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: "")
-            
-            switch landmark.type {
-//            case .fireStation:
-//                point.image = UIImage(named: "firemen")
-//                point.reuseIdentifier = "fireStation"
-            case .school:
-                point.image = UIImage(named: "school")
-                point.reuseIdentifier = "school"
-            case .park:
-                point.image = UIImage(named: "forest")
-                point.reuseIdentifier = "park"
-//            case .policeStation:
-//                point.image = UIImage(named: "police")
-//                point.reuseIdentifier = "policeStation"
-            case .hospital:
-                point.image = UIImage(named: "hospital-building")
-                point.reuseIdentifier = "hospital"
+            if let landmark = landmark as? Park {
+                let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
+                point.image = landmark.icon
+                point.reuseIdentifier = landmark.type.rawValue
+                pointAnnotations.append(point)
+            } else if let landmark = landmark as? School {
+                let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
+                point.image = landmark.icon
+                point.reuseIdentifier = landmark.type.rawValue
+                pointAnnotations.append(point)
+            } else if let landmark = landmark as? Hospital {
+                let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.facilityType, databaseKey: landmark.databaseKey)
+                point.image = landmark.icon
+                point.reuseIdentifier = landmark.type.rawValue
+                pointAnnotations.append(point)
             }
-            
-            pointAnnotations.append(point)
         }
         mapView.addAnnotations(pointAnnotations)
     }
 
-    
+
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
-        //UIVIew with duration pop up XIB
         
+        let selected = annotation as! CustomPointAnnotation
+        
+        FirebaseAPI.retrieveLandmark(withKey: selected.databaseKey) { (landmark) in
+            OperationQueue.main.addOperation {
+                self.performSegue(withIdentifier: "annotationSegue", sender: landmark)
+            }
+        }
         
         
         return true
     }
+    
     
     func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
         if let point = annotation as? CustomPointAnnotation,
@@ -132,13 +137,14 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         return nil
     }
     
+    //Can be deleted once GeoFire is available
     func setVisibleAnnotationsForVisibleCoordinates(_ bounds: MGLCoordinateBounds) -> [Landmark] {
         //filter location
         let landmarks = store.landmarks
         var boundLandmarks = [Landmark]()
         
         print(bounds)
-        print(landmarks[1])
+        //print(landmarks[1])
         
         for landmark in landmarks {
           if landmark.latitude <= bounds.ne.latitude &&
@@ -155,6 +161,29 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapBounds = mapView.visibleCoordinateBounds
         landmarks = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
         addPointAnnotations()
+    }
+    
+    func handleSingleTap(tap: UITapGestureRecognizer) {
+        landmarkDetailView.removeFromSuperview()
+    }
+}
+
+
+// MARK: - Segue
+extension MapViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "annotationSegue" {
+            
+            let destVC = segue.destination as! LocationDetailViewController
+            
+            destVC.landmark = sender as! Landmark
+        
+        }
+        
+        
+        
     }
     
 }
