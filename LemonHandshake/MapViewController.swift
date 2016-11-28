@@ -16,43 +16,46 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     
     @IBAction func myInitiativesButton(_ sender: Any) {
     }
-  
     
-//    var mapView: MGLMapView!
+    
     var store = MapDataStore.sharedInstance
     var mapView: MGLMapView!
     var mapBounds = MGLCoordinateBounds()
     var locations = [Location]()
-    var locationDetailView = LocationDetail()
+//    var landmarkDetailView = LandmarkDetail()
+    var selectedAnnotation: CustomPointAnnotation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createMap()
-        store.generateData()
+        store.generateData() //for testing purposes
+        
+        locations = store.locations //for testing
+        addPointAnnotations(locations)
+        activateGestureRecognizer()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     func createMap() {
         mapView = MGLMapView(frame: view.bounds)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.styleURL = store.styleURL
         mapView.showsUserLocation = true
-//        mapView.userTrackingMode = .follow
         mapView.zoomLevel = 10
         mapView.frame.size.height = view.frame.size.height
         view.addSubview(mapView)
@@ -63,31 +66,17 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         guard let userLocation = mapView.userLocation else { return }
         let center = CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude)
         store.userCoordinate = userLocation.coordinate
-        mapView.latitude = 40.771336
-        mapView.longitude = -73.919845
+        mapView.latitude = 40.771336 //for testing, will change to user location
+        mapView.longitude = -73.919845 //for testing, will change to user location
         mapView.setCenter(center, animated: true)
     }
     
     
-    func addPointAnnotations() {
-        var pointAnnotations = [CustomPointAnnotation]()
-        
-        print(locations.count)
-        for location in locations {
-            let point = CustomPointAnnotation(coordinate: location.coordinates, title: location.name, subtitle: location.address)
-                point.image = location.icon
-                point.reuseIdentifier = location.type.rawValue
-                pointAnnotations.append(point)
-        }
-        mapView.addAnnotations(pointAnnotations)
-    }
-
-
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
         
         let selected = annotation as! CustomPointAnnotation
         
-         let chosenLocation = Location(name: selected.title!, address: selected.subtitle!, coordinates: selected.coordinate, type: LocationType(rawValue: selected.reuseIdentifier!)!)
+        let chosenLocation = Location(name: selected.title!, address: selected.subtitle!, coordinates: selected.coordinate, type: LocationType(rawValue: selected.reuseIdentifier!)!)
         
         performSegue(withIdentifier: "annotationSegue", sender: chosenLocation)
         
@@ -96,6 +85,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     
     
     func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
+        
         if let point = annotation as? CustomPointAnnotation,
             let image = point.image,
             let reuseIdentifier = point.reuseIdentifier {
@@ -113,36 +103,76 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         return nil
     }
     
-    //Can be deleted once GeoFire is available
-    func setVisibleAnnotationsForVisibleCoordinates(_ bounds: MGLCoordinateBounds) -> [Location] {
-        //filter location
-        let locations = store.locations
-        var boundLocations = [Location]()
+    //    //Can be deleted once GeoFire is available
+    //    func setVisibleAnnotationsForVisibleCoordinates(_ bounds: MGLCoordinateBounds) -> [Location] {
+    //        //filter location
+    //        let locations = store.locations
+    //        var boundLocations = [Location]()
+    //
+    //        print(bounds)
+    //        print(locations[1])
+    //
+    //        for location in locations {
+    //          if location.latitude <= bounds.ne.latitude &&
+    //             location.latitude >= bounds.sw.latitude &&
+    //             location.longitude <= bounds.ne.longitude &&
+    //             location.longitude >= bounds.sw.longitude {
+    //               boundLocations.append(location)
+    //            }
+    //        }
+    //        return boundLocations
+    //    }
+    
+    //    func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
+    //        mapBounds = mapView.visibleCoordinateBounds
+    //        locations = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
+    //        addPointAnnotations()
+    //    }
+    
+    
+    
+    
+    func activateGestureRecognizer() {
+        let doubleTap = UITapGestureRecognizer(target: self, action: nil)
+        doubleTap.numberOfTapsRequired = 2
+        mapView.addGestureRecognizer(doubleTap)
         
-        print(bounds)
-        print(locations[1])
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        mapView.addGestureRecognizer(longPress)
+        
+    }
+    
+    func addPointAnnotations(_ locations: [Location]) {
+        var pointAnnotations = [CustomPointAnnotation]()
         
         for location in locations {
-          if location.latitude <= bounds.ne.latitude &&
-             location.latitude >= bounds.sw.latitude &&
-             location.longitude <= bounds.ne.longitude &&
-             location.longitude >= bounds.sw.longitude {
-               boundLocations.append(location)
-            }
+            let point = CustomPointAnnotation(coordinate: location.coordinates, title: location.name, subtitle: location.address)
+            point.image = location.icon
+            point.reuseIdentifier = location.type.rawValue
+            pointAnnotations.append(point)
+            mapView.selectAnnotation(point, animated: false)
         }
-        return boundLocations
+        
+        mapView.addAnnotations(pointAnnotations)
+        mapView.showAnnotations(pointAnnotations, animated: false)
     }
     
-    func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
-        mapBounds = mapView.visibleCoordinateBounds
-        locations = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
-        addPointAnnotations()
-    }
-    
-    func handleSingleTap(tap: UITapGestureRecognizer) {
-        locationDetailView.removeFromSuperview()
+    func handleLongPress(long: UILongPressGestureRecognizer) {
+        let longPressLocation: CLLocationCoordinate2D = mapView.convert(long.location(in: mapView), toCoordinateFrom: mapView)
+        
+        var markedLocations = [Location]()
+        
+        let markedLocation = Location(name: "Marked Location", address: "Test", coordinates: longPressLocation, type: .custom) //test need GeoFire for Geocoding for addresses
+        
+        markedLocations.append(markedLocation)
+        addPointAnnotations(markedLocations)
+        
+//        mapView.addAnnotation(<#T##annotation: MGLAnnotation##MGLAnnotation#>)
+            performSegue(withIdentifier: "annotationSegue", sender: markedLocation)
+//        }
     }
 }
+
 
 
 // MARK: - Segue
@@ -152,12 +182,16 @@ extension MapViewController {
         
         if segue.identifier == "annotationSegue" {
             
-            let destVC = segue.destination as! LocationDetailViewController
-            
+            let destVC = segue.destination as! LandmarkDetailViewController
             destVC.location = sender as! Location
-        
+            guard let identifier = segue.identifier else { return }
+            
+        } else if segue.identifier == "dropPinSegue" {
+            
+            let destVC = segue.destination as! DropPinDetailViewController
+            destVC.location = sender as! Location
+            
         }
-        
         
         
     }

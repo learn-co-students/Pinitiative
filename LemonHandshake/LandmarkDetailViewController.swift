@@ -8,23 +8,23 @@
 
 import UIKit
 
-class LocationDetailViewController: UIViewController {
+class LandmarkDetailViewController: UIViewController {
 
-    @IBOutlet weak var locationDetailView: LocationDetail!
+    @IBOutlet weak var landmarkDetailView: LandmarkDetail!
+    
     var location: Location!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationDetailView.layer.cornerRadius = 15
+    
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissViewController))
-        view.addGestureRecognizer(tapGestureRecognizer)
+            view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        locationDetailView.location = location
+        landmarkDetailView.location = location
     }
-    
     
     func dismissViewController() {
         dismiss(animated: true, completion: nil)

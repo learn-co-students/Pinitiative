@@ -1,34 +1,28 @@
 //
-//  LocationView.swift
+//  DropPin.swift
 //  LemonHandshake
 //
-//  Created by Jhantelle Belleza on 11/22/16.
+//  Created by Jhantelle Belleza on 11/28/16.
 //  Copyright © 2016 Flatiron School. All rights reserved.
 //
 
+import Foundation
 import UIKit
-import SnapKit
 
-class LocationDetail: UIView {
-    
+class DropPinDetail: UIView {
+        
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var propertyTypeIcon: UIImageView!
-    @IBOutlet weak var propertyPreview: UIImageView!
+    @IBOutlet weak var latitudeLabel: UILabel!
+    @IBOutlet weak var longitudeLabel: UILabel!
     
     var location: Location! {
         didSet {
-            nameLabel.text = location.name
             addressLabel.text = location.address
-            propertyTypeIcon.image = location.icon
+            latitudeLabel.text = String(location.latitude)
+            longitudeLabel.text = String(location.longitude)
         }
-    }
-    
-    @IBOutlet weak var headerLabel: UILabel!
-    override init(frame: CGRect) { //Create programatically
-        super.init(frame: frame)
-        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) { //Create via storyboard
@@ -37,7 +31,7 @@ class LocationDetail: UIView {
     }
     
     func commonInit() {
-        Bundle.main.loadNibNamed("LocationDetail", owner: self, options: nil)
+        Bundle.main.loadNibNamed("DropPinDetail", owner: self, options: nil)
         addSubview(contentView)
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -46,8 +40,7 @@ class LocationDetail: UIView {
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-
+        
         
     }
-    
 }

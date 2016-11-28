@@ -30,6 +30,8 @@ struct Location {
         return UIImage(named: "police")!
         case .hospital:
         return UIImage(named: "hospital-building")!
+        case .custom:
+        return UIImage(named: "drop_pin_marker")!
         }
     }
 
@@ -70,4 +72,5 @@ enum LocationType: String {
     case fireStation = "fireStation"
     case park = "park"
     case hospital = "hospital"
+    case custom = "custom"
 }
