@@ -77,6 +77,36 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     
     
+    func badWordFilter() {
+        
+        for word in messages {
+            if JSQMessag
+        }
+                    
+                    //let adviceString = giveAdviceTextField.text
+                    let badWordToColor = word
+                    let range = (adviceText as NSString).range(of: badWordToColor)
+                    let attributedString = NSMutableAttributedString(string: adviceText)
+                    attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red , range: range)
+                    
+                    
+                    let alert = UIAlertController(title: "OOPS!", message: "Your message contains an inappropriate word.", preferredStyle: UIAlertControllerStyle.alert)
+                    print("alert")
+                    
+                    let okAction = UIAlertAction(title: "OK Cool", style: .default, handler: nil)
+                    
+                    alert.addAction(okAction)
+                    
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    
+                }
+            }
+            
+        }
+    }
+
+    
     
     //FOR HANDLING MESSAGES
     
