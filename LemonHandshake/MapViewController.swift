@@ -13,10 +13,7 @@ import CoreLocation
 import SnapKit
 
 class MapViewController: UIViewController, MGLMapViewDelegate {
-    
-    @IBAction func myInitiativesButton(_ sender: Any) {
-    }
-  
+
     
 //    var mapView: MGLMapView!
     var store = MapDataStore.sharedInstance

@@ -14,14 +14,16 @@ class MyInitiativesTableViewController: UITableViewController {
     
     var userInitiatves = [Initiative]()
 
+    let store = MapDataStore.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let background = UIImage(named: "backgroundImage" )
+        let background = UIImage(named: "gardenRoad" )
         let imageView = UIImageView(image: background)
         self.view.addSubview(imageView)
         imageView.contentMode = .scaleAspectFill
-        imageView.alpha = 0.3
+        imageView.alpha = 0.4
         view.sendSubview(toBack: imageView)
         
         
