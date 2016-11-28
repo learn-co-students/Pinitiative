@@ -29,10 +29,12 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         super.viewDidLoad()
         
         print("Map view did load")
-        FirebaseAPI.geoFirePullNearbyLandmarks()
         createMap()
         view.addSubview(mapView)
         mapView.delegate = self
+        FirebaseAPI.geoFirePullNearbyLandmarks (within: 2) { (landmark) in
+            self.addSinglePointAnnotation(for: landmark)
+        }
 //        addPointAnnotations() //First load
 //        activateGestureRecognizer()
         
@@ -102,6 +104,28 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         }
         mapView.addAnnotations(pointAnnotations)
     }
+    
+    func addSinglePointAnnotation(for landmark: Landmark) {
+        
+        
+        if let landmark = landmark as? Park {
+            let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
+            point.image = landmark.icon
+            point.reuseIdentifier = landmark.type.rawValue
+            mapView.addAnnotation(point)
+        } else if let landmark = landmark as? School {
+            let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
+            point.image = landmark.icon
+            point.reuseIdentifier = landmark.type.rawValue
+            mapView.addAnnotation(point)
+        } else if let landmark = landmark as? Hospital {
+            let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.facilityType, databaseKey: landmark.databaseKey)
+            point.image = landmark.icon
+            point.reuseIdentifier = landmark.type.rawValue
+            mapView.addAnnotation(point)
+        }
+        
+    }
 
 
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
@@ -137,29 +161,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         return nil
     }
     
-    //Can be deleted once GeoFire is available
-    func setVisibleAnnotationsForVisibleCoordinates(_ bounds: MGLCoordinateBounds) -> [Landmark] {
-        //filter location
-        let landmarks = store.landmarks
-        var boundLandmarks = [Landmark]()
-        
-        print(bounds)
-        //print(landmarks[1])
-        
-        for landmark in landmarks {
-          if landmark.latitude <= bounds.ne.latitude &&
-             landmark.latitude >= bounds.sw.latitude &&
-             landmark.longitude <= bounds.ne.longitude &&
-             landmark.longitude >= bounds.sw.longitude {
-               boundLandmarks.append(landmark)
-            }
-        }
-        return boundLandmarks
-    }
-    
     func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
         mapBounds = mapView.visibleCoordinateBounds
-        landmarks = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
+        //landmarks = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
         addPointAnnotations()
     }
     
@@ -176,9 +180,15 @@ extension MapViewController {
         
         if segue.identifier == "annotationSegue" {
             
-            let destVC = segue.destination as! LocationDetailViewController
+            let destVC = segue.destination as! LandmarkDetailViewController
             
-            destVC.landmark = sender as! Landmark
+            if let landmark = sender as? School {
+                destVC.landmark = landmark
+            } else if let landmark = sender as? Hospital {
+                destVC.landmark = landmark
+            } else if let landmark = sender as? Park {
+                destVC.landmark = landmark
+            }
         
         }
         

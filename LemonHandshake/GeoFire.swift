@@ -16,7 +16,7 @@ extension FirebaseAPI {
     
     typealias Kilometers = Double
     
-    static func geoFirePullNearbyLandmarks() {
+    static func geoFirePullNearbyLandmarks(within range: Kilometers, completion: @escaping (Landmark)->Void) {
         
         
         //Property sets
@@ -32,7 +32,7 @@ extension FirebaseAPI {
         
         
         //Make Circle Query
-        guard let circleQuery = geoFire.query(at: userLocation, withRadius: 0.5) else { print("FAILURE: Failed to create non nil value for cicleQuery"); return }
+        guard let circleQuery = geoFire.query(at: userLocation, withRadius: range) else { print("FAILURE: Failed to create non nil value for cicleQuery"); return }
         
         print("PROGRESS: Got here")
         circleQuery.observe(.keyEntered) { (optionalKey, location) in
@@ -44,6 +44,8 @@ extension FirebaseAPI {
             FirebaseAPI.retrieveLandmark(withKey: key, completion: { (landmark) in
                 print("SUCCESS: Retrieved data for \(landmark.name)")
                 mapStore.landmarks.append(landmark)
+                
+                completion(landmark)
             })
         }
         

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LocationDetailViewController: UIViewController {
+class LandmarkDetailViewController: UIViewController {
 
     @IBOutlet weak var landmarkDetailView: LandmarkDetail!
     var landmark: Landmark!
