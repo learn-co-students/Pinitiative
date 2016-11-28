@@ -41,15 +41,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     }
     
     
-    /*
+    
      // MARK: - Navigation
      
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
     func createMap() {
         mapView = MGLMapView(frame: view.bounds)
@@ -103,34 +97,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         return nil
     }
     
-    //    //Can be deleted once GeoFire is available
-    //    func setVisibleAnnotationsForVisibleCoordinates(_ bounds: MGLCoordinateBounds) -> [Location] {
-    //        //filter location
-    //        let locations = store.locations
-    //        var boundLocations = [Location]()
-    //
-    //        print(bounds)
-    //        print(locations[1])
-    //
-    //        for location in locations {
-    //          if location.latitude <= bounds.ne.latitude &&
-    //             location.latitude >= bounds.sw.latitude &&
-    //             location.longitude <= bounds.ne.longitude &&
-    //             location.longitude >= bounds.sw.longitude {
-    //               boundLocations.append(location)
-    //            }
-    //        }
-    //        return boundLocations
-    //    }
-    
-    //    func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
-    //        mapBounds = mapView.visibleCoordinateBounds
-    //        locations = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
-    //        addPointAnnotations()
-    //    }
-    
-    
-    
     
     func activateGestureRecognizer() {
         let doubleTap = UITapGestureRecognizer(target: self, action: nil)
@@ -154,7 +120,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         }
         
         mapView.addAnnotations(pointAnnotations)
-        mapView.showAnnotations(pointAnnotations, animated: false)
     }
     
     func handleLongPress(long: UILongPressGestureRecognizer) {
@@ -167,9 +132,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         markedLocations.append(markedLocation)
         addPointAnnotations(markedLocations)
         
-//        mapView.addAnnotation(<#T##annotation: MGLAnnotation##MGLAnnotation#>)
-            performSegue(withIdentifier: "annotationSegue", sender: markedLocation)
-//        }
+        performSegue(withIdentifier: "annotationSegue", sender: markedLocation)
     }
 }
 
@@ -184,8 +147,7 @@ extension MapViewController {
             
             let destVC = segue.destination as! LandmarkDetailViewController
             destVC.location = sender as! Location
-            guard let identifier = segue.identifier else { return }
-            
+        
         } else if segue.identifier == "dropPinSegue" {
             
             let destVC = segue.destination as! DropPinDetailViewController
