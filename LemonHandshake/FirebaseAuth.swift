@@ -44,4 +44,8 @@ class FirebaseAuth {
         
         return nil
     }
+    
+    class var currentUserID: String? {
+        return FIRAuth.auth()?.currentUser?.uid
+    }
 }

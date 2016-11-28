@@ -32,14 +32,11 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         createMap()
         view.addSubview(mapView)
         mapView.delegate = self
-        FirebaseAPI.geoFirePullNearbyLandmarks (within: 2) { (landmark) in
-            self.addSinglePointAnnotation(for: landmark)
-        }
+        refreshLandmarks()
 //        addPointAnnotations() //First load
 //        activateGestureRecognizer()
         
         
-        store.generateData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,6 +54,13 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func refreshLandmarks(){
+        FirebaseAPI.geoFirePullNearbyLandmarks (within: 2) { (landmark) in
+            self.store.landmarks.append(landmark)
+            self.addSinglePointAnnotation(for: landmark)
+        }
+    }
     
     func createMap() {
         mapView = MGLMapView(frame: view.bounds)

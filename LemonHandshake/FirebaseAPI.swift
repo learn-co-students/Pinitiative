@@ -74,16 +74,30 @@ class FirebaseAPI {
                 let latitude = dictionary["latitude"] as? Double,
                 let longitude = dictionary["longitude"] as? Double,
                 let leader = dictionary["leader"] as? String,
-                let members = dictionary["members"] as? [String:Any]
+                let members = dictionary["members"] as? [String:Any],
+                let date = dictionary["date"] as? Date
                 else { print("FAILURE: Could not parse data for initiative with key: \(key)");return }
             
-            var initiative = Initiative(name: name, latitude: latitude, longitude: longitude, databaseKey: key, leader: leader, shortDescription: shortDescription, longDescription: longDescription)
             
-            for member in members {
-                initiative.members.append(member.key)
+            
+            if let landmark = dictionary["landmark"] as? String {
+                FirebaseAPI.retrieveLandmark(withKey: landmark, completion: { (landmark) in
+                    var initiative = Initiative(name: name, associatedLandmark: landmark, databaseKey: key, leader: leader, shortDescription: shortDescription, longDescription: longDescription, createdAt: date)
+                    
+                    for member in members {
+                        initiative.members.append(member.key)
+                    }
+                    
+                    completion(initiative)
+                })
+            } else {
+                var initiative = Initiative(name: name, latitude: latitude, longitude: longitude, databaseKey: key, leader: leader, shortDescription: shortDescription, longDescription: longDescription, createdAt: date)
+                for member in members {
+                    initiative.members.append(member.key)
+                }
+                completion(initiative)
             }
             
-            completion(initiative)
         })
     }
     
