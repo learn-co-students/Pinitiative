@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SnapKit
 
-class LocationView: UIView {
+class LandmarkDetail: UIView {
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -16,11 +17,11 @@ class LocationView: UIView {
     @IBOutlet weak var propertyTypeIcon: UIImageView!
     @IBOutlet weak var propertyPreview: UIImageView!
     
-    var location: Location! {
+    var landmark: Landmark! {
         didSet {
-            nameLabel.text = location.name
-            addressLabel.text = location.address
-            propertyTypeIcon.image = location.icon
+            nameLabel.text = landmark.name
+            //addressLabel.text = landmark.address
+            propertyTypeIcon.image = landmark.icon
         }
     }
     
@@ -38,11 +39,15 @@ class LocationView: UIView {
     func commonInit() {
         Bundle.main.loadNibNamed("LocationDetail", owner: self, options: nil)
         addSubview(contentView)
+        
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        
         contentView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        contentView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 25)
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+
+        
     }
     
 }
