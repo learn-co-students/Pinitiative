@@ -13,7 +13,12 @@ class MemberManagementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let background = UIImage(named: "leafyRailroad")
+        let imageView = UIImageView(image: background)
+        self.view.addSubview(imageView)
+        imageView.contentMode = .scaleAspectFill
+        imageView.alpha = 0.5
+        view.sendSubview(toBack: imageView)
     }
 
     override func didReceiveMemoryWarning() {
