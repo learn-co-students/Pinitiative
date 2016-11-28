@@ -23,14 +23,16 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     var store = MapDataStore.sharedInstance
     var mapView: MGLMapView!
     var mapBounds = MGLCoordinateBounds()
-    var locations = [Location]()
+    var landmarks = [Landmark]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Map view did load")
+        FirebaseAPI.geoFirePullNearbyLandmarks()
         createMap()
         view.addSubview(mapView)
         mapView.delegate = self
-        store.generateData()
 //        addPointAnnotations() //First load
 //        activateGestureRecognizer()
         
@@ -76,23 +78,23 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     func addPointAnnotations() {
         var pointAnnotations = [CustomPointAnnotation]()
         
-        print(locations.count)
-        for location in locations {
-            let point = CustomPointAnnotation(coordinate: location.coordinates, title: location.name, subtitle: location.address)
+        print(landmarks.count)
+        for landmark in landmarks {
+            let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: "")
             
-            switch location.type {
-            case .fireStation:
-                point.image = UIImage(named: "firemen")
-                point.reuseIdentifier = "fireStation"
+            switch landmark.type {
+//            case .fireStation:
+//                point.image = UIImage(named: "firemen")
+//                point.reuseIdentifier = "fireStation"
             case .school:
                 point.image = UIImage(named: "school")
                 point.reuseIdentifier = "school"
             case .park:
                 point.image = UIImage(named: "forest")
                 point.reuseIdentifier = "park"
-            case .policeStation:
-                point.image = UIImage(named: "police")
-                point.reuseIdentifier = "policeStation"
+//            case .policeStation:
+//                point.image = UIImage(named: "police")
+//                point.reuseIdentifier = "policeStation"
             case .hospital:
                 point.image = UIImage(named: "hospital-building")
                 point.reuseIdentifier = "hospital"
@@ -130,28 +132,28 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         return nil
     }
     
-    func setVisibleAnnotationsForVisibleCoordinates(_ bounds: MGLCoordinateBounds) -> [Location] {
+    func setVisibleAnnotationsForVisibleCoordinates(_ bounds: MGLCoordinateBounds) -> [Landmark] {
         //filter location
-        let locations = store.locations
-        var boundLocations = [Location]()
+        let landmarks = store.landmarks
+        var boundLandmarks = [Landmark]()
         
         print(bounds)
-        print(locations[1])
+        print(landmarks[1])
         
-        for location in locations {
-          if location.latitude <= bounds.ne.latitude &&
-             location.latitude >= bounds.sw.latitude &&
-             location.longitude <= bounds.ne.longitude &&
-             location.longitude >= bounds.sw.longitude {
-               boundLocations.append(location)
+        for landmark in landmarks {
+          if landmark.latitude <= bounds.ne.latitude &&
+             landmark.latitude >= bounds.sw.latitude &&
+             landmark.longitude <= bounds.ne.longitude &&
+             landmark.longitude >= bounds.sw.longitude {
+               boundLandmarks.append(landmark)
             }
         }
-        return boundLocations
+        return boundLandmarks
     }
     
     func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
         mapBounds = mapView.visibleCoordinateBounds
-        locations = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
+        landmarks = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
         addPointAnnotations()
     }
     

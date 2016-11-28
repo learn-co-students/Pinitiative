@@ -9,40 +9,48 @@
 import Foundation
 import Mapbox
 
-struct Location {
-    var name: String
-    var address: String
-    var coordinates: CLLocationCoordinate2D
-    var longitude: Double { get { return self.coordinates.longitude } }
-    var latitude: Double { get { return self.coordinates.latitude } }
-    var type: LocationType
-}
-
-struct School { //other custom fields for schools, add here. If there are other fields, add them in the initializer
-    var location: Location!
-    
-    init(location: Location) {
-        self.location = location
-    }
-    
-}
-
-struct PoliceStation {
-    var location: Location!
-}
-
-struct FireStation {
-    var location: Location!
-}
-
-struct Park {
-    var location: Location!
-}
-
-enum LocationType {
+enum LandmarkType {
     case school
-    case policeStation
-    case fireStation
     case park
     case hospital
 }
+
+protocol Landmark {
+    var name: String { get set }
+    var coordinates: CLLocationCoordinate2D { get set }
+    var type: LandmarkType { get }
+    var databaseKey: String { get set }
+}
+
+extension Landmark {
+    
+    var longitude: Double {  return self.coordinates.longitude }
+    var latitude: Double { return self.coordinates.latitude }
+}
+
+struct Hospital: Landmark {
+    var name: String
+    var coordinates: CLLocationCoordinate2D
+    var type: LandmarkType { return .hospital }
+    var databaseKey: String
+    var facilityType: String
+}
+
+struct Park: Landmark {
+    var name: String
+    var address: String
+    var coordinates: CLLocationCoordinate2D
+    var type: LandmarkType { return .park }
+    var databaseKey: String
+    var acres: Double
+}
+
+struct School {
+    var name: String
+    var address: String
+    var coordinates: CLLocationCoordinate2D
+    var type: LandmarkType { return .school }
+    var databaseKey: String
+}
+
+

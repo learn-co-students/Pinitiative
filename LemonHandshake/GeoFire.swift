@@ -12,62 +12,43 @@ import GeoFire
 import FirebaseDatabase
 import FirebaseAuth
 
-class FirebaseAPI {
-    private init() {}
+extension FirebaseAPI {
     
     typealias Kilometers = Double
     
-    static func geofireTest() -> [String] {
+    static func geoFirePullNearbyLandmarks() {
         
         
-        var keys = [String]()
+        //Property sets
+        var mapStore = MapDataStore.sharedInstance
         
-        print("KEY SAMPLE: \(FIRDatabase.database().reference().childByAutoId().key)")
+        let ref = FIRDatabase.database().reference()
+        let geoFireRef = ref.child("geofire")
+        
+        let userLocation = CLLocation(latitude: 40.705200, longitude: -74.013984)
         
         
+        guard let geoFire = GeoFire(firebaseRef: geoFireRef) else { print("FAILURE: GeoFire failed to create non nil value from geoFireRef"); return }
         
-        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
-            print("Authenticated")
-            
-            let center = CLLocation(latitude: 40.818894, longitude: -73.940722)
-            
-            let geofireRef = FIRDatabase.database().reference().child("geofire")
-            let geoFire = GeoFire(firebaseRef: geofireRef)
-            
-//            geofireRef.observeSingleEvent(of: .value, with: { (snapshot) in
-//                dump(snapshot)
-//            })
-            
-            var circleQuery = geoFire?.query(at: center, withRadius: 0.5)
-            
-            var queryHandle = circleQuery?.observe(.keyEntered) { (key, location) in
-                print("Circle query observe")
-                keys.append(key!)
-                let locationRef = FIRDatabase.database().reference().child("landmarks").child(key!)
-                locationRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                    print("Location near you: \(snapshot)")
-                })
-            }
+        
+        //Make Circle Query
+        guard let circleQuery = geoFire.query(at: userLocation, withRadius: 0.5) else { print("FAILURE: Failed to create non nil value for cicleQuery"); return }
+        
+        print("PROGRESS: Got here")
+        circleQuery.observe(.keyEntered) { (optionalKey, location) in
+            print("PROGRESS: Circle Query Observing")
+            guard let key = optionalKey else { print("FAILURE: Failed to retrieve key during circleQuery observe"); return }
+            print("PROGRESS: Circle Query Observing location with key: \(key)")
             
             
-            geoFire?.getLocationForKey("-KXCD5L2nf9SGjP_2QyT", withCallback: { (location, error) in
-                if let error = error {
-                    print("ERROR: \(error.localizedDescription)")
-                } else if let location = location {
-                    print("SUCCESS: \(location.coordinate)")
-                } else {
-                    print("FAILURE: No locations with key: \("-KXCD5L2nf9SGjP_2QyT")")
-                }
+            FirebaseAPI.retrieveLandmark(withKey: key, completion: { (landmark) in
+                print("SUCCESS: Retrieved data for \(landmark.name)")
+                mapStore.landmarks.append(landmark)
             })
-            
-            
-        })
+        }
+        
+       
         
         
-    
-        
-//        print("Query Handle: \(queryHandle)")
-        
-        return keys
     }
 }

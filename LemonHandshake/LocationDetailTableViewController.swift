@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LocationDetailTableViewController: UITableViewController {
+class LandmarkDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
