@@ -22,12 +22,21 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     var store = MapDataStore.sharedInstance
     var mapView: MGLMapView!
     var mapBounds = MGLCoordinateBounds()
-    var locations = [Location]()
-    var locationDetailView = LocationDetail()
+    var landmarks = [Landmark]()
+    var landmarkDetailView = LandmarkDetail()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Map view did load")
+        FirebaseAPI.geoFirePullNearbyLandmarks()
         createMap()
+        view.addSubview(mapView)
+        mapView.delegate = self
+//        addPointAnnotations() //First load
+//        activateGestureRecognizer()
+        
+        
         store.generateData()
     }
 
@@ -72,12 +81,24 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     func addPointAnnotations() {
         var pointAnnotations = [CustomPointAnnotation]()
         
-        print(locations.count)
-        for location in locations {
-            let point = CustomPointAnnotation(coordinate: location.coordinates, title: location.name, subtitle: location.address)
-                point.image = location.icon
-                point.reuseIdentifier = location.type.rawValue
+        print(landmarks.count)
+        for landmark in landmarks {
+            if let landmark = landmark as? Park {
+                let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
+                point.image = landmark.icon
+                point.reuseIdentifier = landmark.type.rawValue
                 pointAnnotations.append(point)
+            } else if let landmark = landmark as? School {
+                let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
+                point.image = landmark.icon
+                point.reuseIdentifier = landmark.type.rawValue
+                pointAnnotations.append(point)
+            } else if let landmark = landmark as? Hospital {
+                let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.facilityType, databaseKey: landmark.databaseKey)
+                point.image = landmark.icon
+                point.reuseIdentifier = landmark.type.rawValue
+                pointAnnotations.append(point)
+            }
         }
         mapView.addAnnotations(pointAnnotations)
     }
@@ -87,9 +108,12 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         
         let selected = annotation as! CustomPointAnnotation
         
-         let chosenLocation = Location(name: selected.title!, address: selected.subtitle!, coordinates: selected.coordinate, type: LocationType(rawValue: selected.reuseIdentifier!)!)
+        FirebaseAPI.retrieveLandmark(withKey: selected.databaseKey) { (landmark) in
+            OperationQueue.main.addOperation {
+                self.performSegue(withIdentifier: "annotationSegue", sender: landmark)
+            }
+        }
         
-        performSegue(withIdentifier: "annotationSegue", sender: chosenLocation)
         
         return true
     }
@@ -114,33 +138,33 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     }
     
     //Can be deleted once GeoFire is available
-    func setVisibleAnnotationsForVisibleCoordinates(_ bounds: MGLCoordinateBounds) -> [Location] {
+    func setVisibleAnnotationsForVisibleCoordinates(_ bounds: MGLCoordinateBounds) -> [Landmark] {
         //filter location
-        let locations = store.locations
-        var boundLocations = [Location]()
+        let landmarks = store.landmarks
+        var boundLandmarks = [Landmark]()
         
         print(bounds)
-        print(locations[1])
+        //print(landmarks[1])
         
-        for location in locations {
-          if location.latitude <= bounds.ne.latitude &&
-             location.latitude >= bounds.sw.latitude &&
-             location.longitude <= bounds.ne.longitude &&
-             location.longitude >= bounds.sw.longitude {
-               boundLocations.append(location)
+        for landmark in landmarks {
+          if landmark.latitude <= bounds.ne.latitude &&
+             landmark.latitude >= bounds.sw.latitude &&
+             landmark.longitude <= bounds.ne.longitude &&
+             landmark.longitude >= bounds.sw.longitude {
+               boundLandmarks.append(landmark)
             }
         }
-        return boundLocations
+        return boundLandmarks
     }
     
     func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
         mapBounds = mapView.visibleCoordinateBounds
-        locations = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
+        landmarks = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
         addPointAnnotations()
     }
     
     func handleSingleTap(tap: UITapGestureRecognizer) {
-        locationDetailView.removeFromSuperview()
+        landmarkDetailView.removeFromSuperview()
     }
 }
 
@@ -154,7 +178,7 @@ extension MapViewController {
             
             let destVC = segue.destination as! LocationDetailViewController
             
-            destVC.location = sender as! Location
+            destVC.landmark = sender as! Landmark
         
         }
         
