@@ -21,7 +21,8 @@ class ChatDetailViewController: JSQMessagesViewController {
     var ref: FIRDatabaseReference!
     fileprivate var refHandle: FIRDatabaseHandle!
     
-    var initiativeiD: String!
+    //testing with rand generated initiative id
+    var initiativeiD = UUID().uuidString
     
     
     override func viewDidLoad() {
@@ -29,7 +30,7 @@ class ChatDetailViewController: JSQMessagesViewController {
         self.senderId = "2"
         self.senderDisplayName = "Tameika"
         connectToChat()
-        loadMessages()
+        //loadMessages()
         print(messages)
         
         self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
@@ -43,21 +44,36 @@ class ChatDetailViewController: JSQMessagesViewController {
         
         let chatRef = ref.child("Chats").child(initiativeiD)
         
-        chatRef.observe(.childAdded, with: { snapshot in
-            
-            let messageDictionary = snapshot.value as! [String : String]
-            
-            // TODO: Create a JSQMessage after parsing through the message dictionary above. Passing it the necessary values to its init functions that are available to you.
-            
-            let userID = messageDictionary["user"]
-            let message = messageDictionary["message"]
-            
-            
-            guard let jsqMessage = JSQMessage(senderId: self.senderId, senderDisplayName: self.senderDisplayName, date: nil, text: message) else { return }
-            
-            self.messages.append(jsqMessage)
-            
-        })
+//        let chat = [
+//        
+//            "name" : "Tameika",
+//            "message" : "hi"
+//            
+//        ]
+//        
+//        chatRef.setValue(chat)
+        
+//        for message in messages {
+//            chatRef.setValue(message)
+//        }
+//        
+        
+        
+//        chatRef.observe(.childAdded, with: { snapshot in
+//            
+//            let messageDictionary = snapshot.value as! [String : String]
+//            
+//            // TODO: Create a JSQMessage after parsing through the message dictionary above. Passing it the necessary values to its init functions that are available to you.
+//            
+//            let userID = messageDictionary["user"]
+//            let message = messageDictionary["message"]
+//            
+//            
+//            guard let jsqMessage = JSQMessage(senderId: self.senderId, senderDisplayName: self.senderDisplayName, date: nil, text: message) else { return }
+//            
+//            self.messages.append(jsqMessage)
+//            
+//        })
         
         
         
@@ -109,24 +125,24 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     // MESSAGE DATA FOR TESTING
     
-    func loadMessages() {
-        
-        guard let message1 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hey") else { return }
-        guard let message2 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hi") else { return }
-        guard let message3 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hello") else { return }
-        
-        guard let message4 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Hola") else { return }
-        guard let message5 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Buenos Dias") else { return }
-        guard let message6 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Buenos Tardes") else { return }
-        
-        self.messages.append(message1)
-        self.messages.append(message2)
-        self.messages.append(message3)
-        self.messages.append(message4)
-        self.messages.append(message5)
-        self.messages.append(message6)
-        
-    }
+//    func loadMessages() {
+//        
+//        guard let message1 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hey") else { return }
+//        guard let message2 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hi") else { return }
+//        guard let message3 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hello") else { return }
+//        
+//        guard let message4 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Hola") else { return }
+//        guard let message5 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Buenos Dias") else { return }
+//        guard let message6 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Buenos Tardes") else { return }
+//        
+//        self.messages.append(message1)
+//        self.messages.append(message2)
+//        self.messages.append(message3)
+//        self.messages.append(message4)
+//        self.messages.append(message5)
+//        self.messages.append(message6)
+//        
+//    }
     
     
     
@@ -162,10 +178,22 @@ class ChatDetailViewController: JSQMessagesViewController {
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         //create a message object
         //append it to the array
+       
+        ref = FIRDatabase.database().reference()
         
-        guard let newMessage = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text) else { return }
-        print(newMessage)
-        self.messages.append(newMessage)
+        let chatRef = ref.child("Chats").child(initiativeiD)
+        
+        let messageObject = ["text": text,
+                             "sender": senderId,
+                             "displayName": senderDisplayName,
+                             "date": nil]
+        chatRef.setValue(messageObject)
+        
+//        guard let newMessage = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text) else { return }
+//        print(newMessage)
+//        self.messages.append(newMessage)
+//        
+        
         self.collectionView.reloadData()
     }
     
