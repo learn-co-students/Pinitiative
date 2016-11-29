@@ -31,8 +31,9 @@ class ChatDetailViewController: JSQMessagesViewController {
         self.senderDisplayName = "Tameika"
         connectToChat()
         print(messages)
+        collectionView.reloadData()
         
-        self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
+        //self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         // also have outgoing here, fyi
         
     }
@@ -52,9 +53,9 @@ class ChatDetailViewController: JSQMessagesViewController {
             let message = messageDictionary["message"]
 
             
-            guard let jsqMessage = JSQMessage(senderId: self.senderId, senderDisplayName: self.senderDisplayName, date: nil, text: message) else { return }
+            guard let jsqMessage = JSQMessage(senderId: userID, senderDisplayName: self.senderDisplayName, date: nil, text: message) else { return }
 
-           self.messages.append(jsqMessage)
+            self.messages.append(jsqMessage)
             
         })
         
@@ -100,20 +101,11 @@ class ChatDetailViewController: JSQMessagesViewController {
         return self.messages.count
     }
     
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
-//        
-//                let messageSnapShot = self.messages[indexPath.row]
-//                let message = messageSnapShot.value as! [String:String]
-//                let name = message[MessageFields.name]! as String
-//                let text = message[MessageFields.text]! as String
-//                var textMessage = JSQMessage(senderId: name, displayName: name, text: text)
-//        
-//        let textMessage = self.messages[indexPath.row]
-//        print(textMessage)
-//        return textMessage
-        
-    }
     
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+        let data = messages[indexPath.row]
+        return data
+    }
     
     
     
@@ -125,23 +117,20 @@ class ChatDetailViewController: JSQMessagesViewController {
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         //create a message object
         //append it to the array
-       
-        ref = FIRDatabase.database().reference()
-        
         let chatRef = ref.child("Chats").child(initiativeiD)
         
-        let messageObject = ["text": text,
-                             "sender": senderId,
-                             "displayName": senderDisplayName,
-                             "date": nil]
-        chatRef.setValue(messageObject)
+        guard let newMessage = JSQMessage(senderId: self.senderId, displayName: self.senderDisplayName, text: text) else { return }
         
-//        guard let newMessage = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text) else { return }
-//        print(newMessage)
-//        self.messages.append(newMessage)
-//        
+        messages.append(newMessage)
+        print(newMessage)
         
-        self.collectionView.reloadData()
+        let newMessageData = newMessage as! [String : String]
+        
+        chatRef.setValue(newMessageData)
+        
+        self.finishSendingMessage()
+        
+        
     }
     
     
