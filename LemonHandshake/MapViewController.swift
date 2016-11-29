@@ -28,15 +28,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         
         print("Map view did load")
         createMap()
-        //        store.generateData() //for testing purposes
-        //        locations = store.locations //for testing
-        //        addPointAnnotations(locations)
         view.addSubview(mapView)
         activateGestureRecognizer()
         mapView.delegate = self
-        FirebaseAPI.geoFirePullNearbyLandmarks (within: 2) { (landmark) in
-            self.addSinglePointAnnotation(for: landmark)
-        }
     }
     
     override func didReceiveMemoryWarning() {

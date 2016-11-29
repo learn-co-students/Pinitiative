@@ -60,7 +60,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yXv-kh-WQO">
                     <rect key="frame" x="46" y="94" width="290" height="176"/>
                 </imageView>
-                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="fbZ-km-Ywq" userLabel="Address Stack View">
+                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="fbZ-km-Ywq" userLabel="Address Stack View">
                     <rect key="frame" x="8" y="53" width="390" height="29"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0y-Se-hRY">
@@ -91,9 +91,9 @@
                 <constraint firstAttribute="trailing" secondItem="XTh-jV-gId" secondAttribute="trailing" constant="9" id="Sjf-gV-4Vl"/>
                 <constraint firstItem="EmL-E3-baI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="djD-ZJ-yPA"/>
                 <constraint firstItem="yXv-kh-WQO" firstAttribute="top" secondItem="fbZ-km-Ywq" secondAttribute="bottom" constant="12" id="epA-Y6-vjX"/>
-                <constraint firstItem="fbZ-km-Ywq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" constant="-8" id="kbb-B1-Ug0"/>
+                <constraint firstItem="fbZ-km-Ywq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="kbb-B1-Ug0"/>
                 <constraint firstItem="yXv-kh-WQO" firstAttribute="top" secondItem="XTh-jV-gId" secondAttribute="bottom" constant="20" id="sZm-tH-6yp"/>
-                <constraint firstAttribute="trailing" secondItem="fbZ-km-Ywq" secondAttribute="trailingMargin" constant="-16" id="v10-lf-awH"/>
+                <constraint firstAttribute="trailing" secondItem="fbZ-km-Ywq" secondAttribute="trailingMargin" constant="-24" id="v10-lf-awH"/>
                 <constraint firstItem="yXv-kh-WQO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="46" id="wxg-Tf-z8o"/>
                 <constraint firstAttribute="trailing" secondItem="yXv-kh-WQO" secondAttribute="trailing" constant="38" id="y24-Sb-wjA"/>
                 <constraint firstItem="EmL-E3-baI" firstAttribute="bottom" secondItem="fbZ-km-Ywq" secondAttribute="top" constant="-8" id="yMJ-mA-Qrj"/>
