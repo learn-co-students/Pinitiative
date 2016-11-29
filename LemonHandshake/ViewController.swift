@@ -16,11 +16,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let error = FirebaseAuth.signUpUserWith(email: "cboynton16@gmail.com", password: "password")
-        if let error = error {
-            print(error.localizedDescription)
-        }
-        
     }
     
     override func didReceiveMemoryWarning() {

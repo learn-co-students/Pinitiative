@@ -14,8 +14,8 @@ class FirebaseAPI {
     private init() {}
     
     //MARK: - User functions
-    static func storeNewUser(firstName:String, lastName: String) {
-        let newUserRef = FIRDatabase.database().reference().child("users").childByAutoId()
+    static func storeNewUser(id: String, firstName:String, lastName: String) {
+        let newUserRef = FIRDatabase.database().reference().child("users").child(id)
         
         let serializedData = [
             "firstName":firstName,
@@ -44,12 +44,13 @@ class FirebaseAPI {
     
     //MARK: - Initiative functions
     static func storeNewInitiative(_ initiative: Initiative) {
-        var initiativeRef = FIRDatabase.database().reference().child("initiatives")
+
+        let initiativeRef = FIRDatabase.database().reference().child("initiatives").child(initiative.databaseKey)
+
         
         var serializedData: [String: Any] = [
             "name": initiative.name,
-            "shortDescription": initiative.shortDescription,
-            "longDescription": initiative.longDescription,
+            "initiativeDescription": initiative.initiativeDescription,
             "latitude": initiative.location.coordinate.latitude,
             "longitude": initiative.location.coordinate.longitude,
             "leader": initiative.leader
@@ -60,18 +61,13 @@ class FirebaseAPI {
             initiativeRef = initiativeRef.child(landmarkID)
 
         }
+        if let associatedDate = initiative.associatedDate {
+            serializedData["associatedDate"] = associatedDate.timeIntervalSince1970
+        }
         
-        initiativeRef.setValue(serializedData, withCompletionBlock: { error, ref in
-            
-            // setValue is done! data is on firebase, we're in the completion block.
-            
-            
-            
-        })
-        
-        
-        
-        initiativeRef.setValue(serializedData, forKey: initiative.databaseKey)
+
+        initiativeRef.setValue(serializedData)
+
     }
     
     static func retrieveInitiative(withKey key: String, completion: @escaping (Initiative)-> Void ) {
@@ -82,21 +78,34 @@ class FirebaseAPI {
             
             guard
                 let name = dictionary["name"] as? String,
-                let shortDescription = dictionary["shortDescription"] as? String,
-                let longDescription = dictionary["longDescription"] as? String,
+                let initiativeDescription = dictionary["initiativeDescription"] as? String,
                 let latitude = dictionary["latitude"] as? Double,
                 let longitude = dictionary["longitude"] as? Double,
                 let leader = dictionary["leader"] as? String,
-                let members = dictionary["members"] as? [String:Any]
+                let members = dictionary["members"] as? [String:Any],
+                let createdAt = dictionary["createdAt"] as? Date
                 else { print("FAILURE: Could not parse data for initiative with key: \(key)");return }
             
-            var initiative = Initiative(name: name, latitude: latitude, longitude: longitude, databaseKey: key, leader: leader, shortDescription: shortDescription, longDescription: longDescription)
+            let associatedDate: Date? = Date(optionalTimeIntervalSince1970: (dictionary["associatedDate"] as? TimeInterval) ?? nil)
             
-            for member in members {
-                initiative.members.append(member.key)
+            if let landmark = dictionary["landmark"] as? String {
+                FirebaseAPI.retrieveLandmark(withKey: landmark, completion: { (landmark) in
+                    var initiative = Initiative(name: name, associatedLandmark: landmark, databaseKey: key, leader: leader, initiativeDescription: initiativeDescription, createdAt: createdAt, associatedDate: associatedDate)
+                    
+                    for member in members {
+                        initiative.members.append(member.key)
+                    }
+                    
+                    completion(initiative)
+                })
+            } else {
+                var initiative = Initiative(name: name, latitude: latitude, longitude: longitude, databaseKey: key, leader: leader, initiativeDescription: initiativeDescription, createdAt: createdAt, associatedDate: associatedDate)
+                for member in members {
+                    initiative.members.append(member.key)
+                }
+                completion(initiative)
             }
             
-            completion(initiative)
         })
     }
     
@@ -181,4 +190,14 @@ class FirebaseAPI {
     }
     
     
+}
+
+extension Date {
+    init?(optionalTimeIntervalSince1970: TimeInterval?) {
+        if let timeIntervalSince1970 = optionalTimeIntervalSince1970 {
+            self = Date(timeIntervalSince1970: timeIntervalSince1970)
+        } else {
+            return nil
+        }
+    }
 }

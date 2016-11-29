@@ -22,12 +22,21 @@
 		832662A91DDF5EEB00126B99 /* park2.png in Resources */ = {isa = PBXBuildFile; fileRef = 832662A81DDF5EEB00126B99 /* park2.png */; };
 		832662AB1DDF5F3000126B99 /* police.png in Resources */ = {isa = PBXBuildFile; fileRef = 832662AA1DDF5F3000126B99 /* police.png */; };
 		832662AD1DDF7AEB00126B99 /* MapDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832662AC1DDF7AEB00126B99 /* MapDataModels.swift */; };
-		83509E421DE63F9300D8C18B /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83509E411DE63F9300D8C18B /* LocationDetailViewController.swift */; };
-		8355FD221DE4CC9C00A30A80 /* LocationDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8355FD211DE4CC9C00A30A80 /* LocationDetail.xib */; };
+		8326CB281DECD923009EC996 /* DropPinDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326CB271DECD923009EC996 /* DropPinDetailViewController.swift */; };
+		83358AC81DECBC600045B170 /* DropPinDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83358AC71DECBC600045B170 /* DropPinDetail.xib */; };
+		83358ACA1DECBD0E0045B170 /* DropPinDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83358AC91DECBD0E0045B170 /* DropPinDetail.swift */; };
+		83509E421DE63F9300D8C18B /* LandmarkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83509E411DE63F9300D8C18B /* LandmarkDetailViewController.swift */; };
+		8355FD221DE4CC9C00A30A80 /* LandmarkDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8355FD211DE4CC9C00A30A80 /* LandmarkDetail.xib */; };
 		837C2F5A1DE4942500E076C9 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C2F591DE4942500E076C9 /* AppController.swift */; };
 		837C2F631DE4AC9F00E076C9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C2F621DE4AC9F00E076C9 /* Extensions.swift */; };
 		837C2F661DE4B64500E076C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837C2F651DE4B64500E076C9 /* GoogleService-Info.plist */; };
-		83D2E84B1DE4EF310095C068 /* LocationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2E84A1DE4EF310095C068 /* LocationDetail.swift */; };
+
+
+		926753A91DEDE2E000256968 /* calendarHTML.html in Resources */ = {isa = PBXBuildFile; fileRef = 926753A81DEDE2E000256968 /* calendarHTML.html */; };
+
+		83D2E84B1DE4EF310095C068 /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2E84A1DE4EF310095C068 /* LandmarkDetail.swift */; };
+		83E865CA1DECFEC900336BC4 /* DropPinLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E865C91DECFEC900336BC4 /* DropPinLocation.swift */; };
+
 		92764CF01DE34635007115E9 /* MyInitiativesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92764CEF1DE34635007115E9 /* MyInitiativesTableViewCell.swift */; };
 		92764CF61DE37F11007115E9 /* NearbyInitiativesDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */; };
 		BC2B50D01DE6469A006A1FE9 /* FirebaseChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2B50CF1DE6469A006A1FE9 /* FirebaseChatViewController.swift */; };
@@ -63,12 +72,20 @@
 		832662A81DDF5EEB00126B99 /* park2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = park2.png; sourceTree = "<group>"; };
 		832662AA1DDF5F3000126B99 /* police.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = police.png; sourceTree = "<group>"; };
 		832662AC1DDF7AEB00126B99 /* MapDataModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDataModels.swift; sourceTree = "<group>"; };
-		83509E411DE63F9300D8C18B /* LocationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
-		8355FD211DE4CC9C00A30A80 /* LocationDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationDetail.xib; sourceTree = "<group>"; };
+		8326CB271DECD923009EC996 /* DropPinDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropPinDetailViewController.swift; sourceTree = "<group>"; };
+		83358AC71DECBC600045B170 /* DropPinDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropPinDetail.xib; sourceTree = "<group>"; };
+		83358AC91DECBD0E0045B170 /* DropPinDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropPinDetail.swift; sourceTree = "<group>"; };
+		83509E411DE63F9300D8C18B /* LandmarkDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandmarkDetailViewController.swift; sourceTree = "<group>"; };
+		8355FD211DE4CC9C00A30A80 /* LandmarkDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandmarkDetail.xib; sourceTree = "<group>"; };
 		837C2F591DE4942500E076C9 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		837C2F621DE4AC9F00E076C9 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		837C2F651DE4B64500E076C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		83D2E84A1DE4EF310095C068 /* LocationDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetail.swift; sourceTree = "<group>"; };
+
+		926753A81DEDE2E000256968 /* calendarHTML.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = calendarHTML.html; sourceTree = "<group>"; };
+
+		83D2E84A1DE4EF310095C068 /* LandmarkDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
+		83E865C91DECFEC900336BC4 /* DropPinLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropPinLocation.swift; sourceTree = "<group>"; };
+
 		92764CEF1DE34635007115E9 /* MyInitiativesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInitiativesTableViewCell.swift; sourceTree = "<group>"; };
 		92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyInitiativesDetailCell.swift; sourceTree = "<group>"; };
 		A0F8D053C7AB55B440A09174 /* Pods_LemonHandshake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LemonHandshake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +180,7 @@
 				832662A41DDF541900126B99 /* CustomPointAnnotation.swift */,
 				832662AC1DDF7AEB00126B99 /* MapDataModels.swift */,
 				8309A9E41DDCE21400484700 /* MapDataStore.swift */,
+				83E865C91DECFEC900336BC4 /* DropPinLocation.swift */,
 			);
 			name = "Map Models";
 			sourceTree = "<group>";
@@ -179,8 +197,10 @@
 		83D2E8491DE4ECE30095C068 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
-				83D2E84A1DE4EF310095C068 /* LocationDetail.swift */,
-				8355FD211DE4CC9C00A30A80 /* LocationDetail.xib */,
+				83D2E84A1DE4EF310095C068 /* LandmarkDetail.swift */,
+				8355FD211DE4CC9C00A30A80 /* LandmarkDetail.xib */,
+				83358AC91DECBD0E0045B170 /* DropPinDetail.swift */,
+				83358AC71DECBC600045B170 /* DropPinDetail.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -207,11 +227,11 @@
 				92764CEF1DE34635007115E9 /* MyInitiativesTableViewCell.swift */,
 				92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */,
 				837C2F591DE4942500E076C9 /* AppController.swift */,
-
+				926753A81DEDE2E000256968 /* calendarHTML.html */,
+				8326CB271DECD923009EC996 /* DropPinDetailViewController.swift */,
+				83509E411DE63F9300D8C18B /* LandmarkDetailViewController.swift */,
 				BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */,
-				BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */,
-
-				83509E411DE63F9300D8C18B /* LocationDetailViewController.swift */,
+				BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */
 
 			);
 			name = Controllers;
@@ -289,13 +309,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83358AC81DECBC600045B170 /* DropPinDetail.xib in Resources */,
 				1B1096691DDA50CE00609104 /* LaunchScreen.storyboard in Resources */,
 				1B1096661DDA50CE00609104 /* Assets.xcassets in Resources */,
 				1B1096641DDA50CE00609104 /* Main.storyboard in Resources */,
+				926753A91DEDE2E000256968 /* calendarHTML.html in Resources */,
 				832662A91DDF5EEB00126B99 /* park2.png in Resources */,
 				837C2F661DE4B64500E076C9 /* GoogleService-Info.plist in Resources */,
 				832662AB1DDF5F3000126B99 /* police.png in Resources */,
-				8355FD221DE4CC9C00A30A80 /* LocationDetail.xib in Resources */,
+				8355FD221DE4CC9C00A30A80 /* LandmarkDetail.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,10 +377,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B1096731DDA665B00609104 /* FirebaseAuth.swift in Sources */,
+				83E865CA1DECFEC900336BC4 /* DropPinLocation.swift in Sources */,
 				837C2F631DE4AC9F00E076C9 /* Extensions.swift in Sources */,
 				BC6244E11DDA798D00AE6523 /* LandmarkDetailTableViewController.swift in Sources */,
 				1B5CB0161DE9D5FF00C090E0 /* FirebaseAPI.swift in Sources */,
 				8309A9E51DDCE21400484700 /* MapDataStore.swift in Sources */,
+				83358ACA1DECBD0E0045B170 /* DropPinDetail.swift in Sources */,
 				92764CF01DE34635007115E9 /* MyInitiativesTableViewCell.swift in Sources */,
 				BC6244E21DDA798D00AE6523 /* LoginScreenViewController.swift in Sources */,
 				BC2B50D01DE6469A006A1FE9 /* FirebaseChatViewController.swift in Sources */,
@@ -371,15 +395,17 @@
 				BC6244E01DDA798D00AE6523 /* InitiativeDetailViewController.swift in Sources */,
 				BCB137B91DE5EBD200C15CDD /* ChatDetailViewController.swift in Sources */,
 				1B10B1A41DE4C8F9006E38A7 /* GeoFire.swift in Sources */,
+				8326CB281DECD923009EC996 /* DropPinDetailViewController.swift in Sources */,
 				BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */,
 				BCAAF03D1DEC859900D78419 /* BadWords.swift in Sources */,
 				83509E421DE63F9300D8C18B /* LocationDetailViewController.swift in Sources */,
+				83509E421DE63F9300D8C18B /* LandmarkDetailViewController.swift in Sources */,
 				837C2F5A1DE4942500E076C9 /* AppController.swift in Sources */,
 				92764CF61DE37F11007115E9 /* NearbyInitiativesDetailCell.swift in Sources */,
 				BC87E4A81DDB87E800980939 /* MemberManagementViewController.swift in Sources */,
 				BC6244E31DDA798D00AE6523 /* MapViewController.swift in Sources */,
 				BC6244E41DDA798D00AE6523 /* MyInitiativesTableViewController.swift in Sources */,
-				83D2E84B1DE4EF310095C068 /* LocationDetail.swift in Sources */,
+				83D2E84B1DE4EF310095C068 /* LandmarkDetail.swift in Sources */,
 				832662A51DDF541900126B99 /* CustomPointAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -66,8 +66,6 @@ class AppController: UIViewController {
             
             return navVC
             
-        default:
-            fatalError("ERROR: Unable to find controller with storyboard id: \(id)")
         }
     }
     

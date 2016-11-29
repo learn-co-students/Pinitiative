@@ -14,11 +14,6 @@ class FirebaseAuth {
     class func signUpUserWith(email: String, password: String) -> Error? {
         var returnError: Error? = nil
         
-        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-            if let error = error {
-                returnError = error
-            }
-        })
         
         return returnError
     }
@@ -43,5 +38,9 @@ class FirebaseAuth {
         }
         
         return nil
+    }
+    
+    class var currentUserID: String? {
+        return FIRAuth.auth()?.currentUser?.uid
     }
 }

@@ -89,23 +89,28 @@ class StartInitiativeViewController: UIViewController {
     @IBAction func addInitiativeButton(_ sender: Any) {
         
         if descriptionTextField.text != "" && nameTextField.text != "" {
-        
-        let alertController = UIAlertController(title: nil, message: "\(nameTextField.text!) added to your initiatives!", preferredStyle: UIAlertControllerStyle.alert)
             
-        let okAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.default) { completion -> Void in
-        
-        print("THE DATE SELECTED IS: \(self.datePickerView.date)")
+            let mapStore = MapDataStore.sharedInstance
             
-        self.dismiss(animated: true, completion: nil)
-        // might need to reload datastore here.
+            print("ADDING INITIATIVE AT \(mapStore.userCoordinate)")
             
-        }
+            Initiative.startNewInitiativeAtLocation(latitude: mapStore.userLatitude, longitude: mapStore.userLongitude, initiativeName: nameTextField.text!, initiativeDescription: descriptionTextField.text!, associatedDate: datePickerView.date)
             
-        alertController.addAction(okAction)
+            let alertController = UIAlertController(title: nil, message: "\(nameTextField.text!) added to your initiatives!", preferredStyle: UIAlertControllerStyle.alert)
             
-        self.present(alertController, animated: true, completion: nil)
+            let okAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.default) { completion -> Void in
+                
+                print("THE DATE SELECTED IS: \(self.datePickerView.date)")
+                
+                self.dismiss(animated: true, completion: nil)
+                // might need to reload datastore here.
+                
+            }
             
-        
+            alertController.addAction(okAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+            
         }
     }
     
