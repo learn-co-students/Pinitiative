@@ -14,8 +14,8 @@ class FirebaseAPI {
     private init() {}
     
     //MARK: - User functions
-    static func storeNewUser(firstName:String, lastName: String) {
-        let newUserRef = FIRDatabase.database().reference().child("users").childByAutoId()
+    static func storeNewUser(id: String, firstName:String, lastName: String) {
+        let newUserRef = FIRDatabase.database().reference().child("users").child(id)
         
         let serializedData = [
             "firstName":firstName,
@@ -44,7 +44,9 @@ class FirebaseAPI {
     
     //MARK: - Initiative functions
     static func storeNewInitiative(_ initiative: Initiative) {
-        let initiativeRef = FIRDatabase.database().reference().child("initiatives").child(initiative.databaseKey)
+
+        var initiativeRef = FIRDatabase.database().reference().child("initiatives").child(initiative.databaseKey)
+
         
         var serializedData: [String: Any] = [
             "name": initiative.name,
@@ -55,12 +57,17 @@ class FirebaseAPI {
         ]
         if let landmarkID = initiative.associatedLandmark?.databaseKey {
             serializedData["landmarkID"] = landmarkID
+            
+            initiativeRef = initiativeRef.child(landmarkID)
+
         }
         if let associatedDate = initiative.associatedDate {
             serializedData["associatedDate"] = associatedDate.timeIntervalSince1970
         }
         
+
         initiativeRef.setValue(serializedData)
+
     }
     
     static func retrieveInitiative(withKey key: String, completion: @escaping (Initiative)-> Void ) {
