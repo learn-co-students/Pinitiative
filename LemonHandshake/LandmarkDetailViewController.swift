@@ -24,6 +24,7 @@ class LandmarkDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         landmarkDetailView.nameLabel.text = landmark.name
         if landmark.type == .school {
             let school = landmark as! School
