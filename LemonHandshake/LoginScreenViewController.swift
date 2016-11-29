@@ -23,6 +23,10 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBAction func loginButton(_ sender: Any) {
+        
+    }
+    
+    @IBAction func createAccountButton(_ sender: Any) {
         let authUI = FUIAuth.init(uiWith: FIRAuth.auth()!)
         
         authUI?.delegate = self
@@ -34,14 +38,48 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
         self.present(authViewController!, animated: true)
     }
     
-    @IBAction func createAccountButton(_ sender: Any) {
-    }
-    
     @IBOutlet weak var loginButtonView: UIButton!
     
     @IBOutlet weak var createAccountButtonView: UIButton!
    
     @IBOutlet weak var applicationLogo: UILabel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("PROGRESS: View Will Appear Runs")
+        
+        if let userID = FirebaseAuth.currentUserID {
+            
+            let ref = FIRDatabase.database().reference().child("users").child(userID)
+            
+            ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                if let dictionary = snapshot.value as? [String:String] {
+                    
+                    if let name = dictionary["firstName"] {
+                        print("SUCCESS: \(name) is already in the database")
+                    }
+                }else {
+                    print("SUCCESS: New user is being stored in the database (Point 2)")
+                    FirebaseAPI.storeNewUser(id: userID, firstName: "Test", lastName: "Name")
+                }
+            })
+            
+            print("PROGRESS: Should Perform segue, and move into ")
+            
+//            performSegue(withIdentifier: "signedInSegue", sender: self)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let navVC = storyboard.instantiateViewController(withIdentifier: "navID") as! UINavigationController
+            
+            
+            
+        } else {
+            
+            print("PROGRESS: No user signed in, ignoring segue")
+        }
+    }
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,9 +138,9 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
 }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     if segue.identifier == "loginToMapSegue" {
-        let dest = segue.destination
-    }
+        if segue.identifier == "loginToMapSegue" {
+            let dest = segue.destination
+        }
     }
     
     

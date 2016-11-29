@@ -14,8 +14,8 @@ class FirebaseAPI {
     private init() {}
     
     //MARK: - User functions
-    static func storeNewUser(firstName:String, lastName: String) {
-        let newUserRef = FIRDatabase.database().reference().child("users").childByAutoId()
+    static func storeNewUser(id: String, firstName:String, lastName: String) {
+        let newUserRef = FIRDatabase.database().reference().child("users").child(id)
         
         let serializedData = [
             "firstName":firstName,

@@ -20,7 +20,7 @@ extension FirebaseAPI {
         
         
         //Property sets
-        var mapStore = MapDataStore.sharedInstance
+        let mapStore = MapDataStore.sharedInstance
         
         let ref = FIRDatabase.database().reference()
         let geoFireRef = ref.child("geofire")

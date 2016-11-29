@@ -45,6 +45,7 @@ extension Landmark {
     }
 }
 
+
 struct Hospital: Landmark {
     var name: String
     var coordinates: CLLocationCoordinate2D
