@@ -33,12 +33,18 @@ class InitiativeDetailViewController: UIViewController {
     
     @IBOutlet weak var chatButtonLabel: UIButton!
     
+    var initiative: Initiative!
+    
+    var leader: User = User.blank
     
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        populateInitiativeData()
+        retrieveLeaderName()
         
         let background = UIImage(named: "purpleBenches" )
         let imageView = UIImageView(image: background)
@@ -123,6 +129,24 @@ class InitiativeDetailViewController: UIViewController {
             chatButtonLabel.layer.borderWidth = 1
         }
 
+    }
+    
+    func populateInitiativeData() {
+        InitiativeNameLabel.text = initiative.name
+        dateTextLabel.text = initiative.createdAt.formattedAs("MM/dd/yy")
+        leaderTextLabel.text = ""
+        followersTextLabel.text = "\(initiative.members.count)"
+        descriptionTextHere.text = initiative.initiativeDescription
+    }
+    
+    func retrieveLeaderName() {
+        print("Retrieving leader name for key: \(initiative.leader)")
+        FirebaseAPI.retrieveUser(withKey: initiative.leader) { (user) in
+            self.leader = user
+            OperationQueue.main.addOperation {
+                self.leaderTextLabel.text = "\(user.firstName) \(user.lastName)"
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
