@@ -12,7 +12,7 @@ import SnapKit
 
 
 class InitiativeDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var InitiativeNameLabel: UILabel!
     
     @IBOutlet weak var dateStartedLabel: UILabel!
@@ -22,8 +22,6 @@ class InitiativeDetailViewController: UIViewController {
     @IBOutlet weak var leaderTextLabel: UILabel!
     
     @IBOutlet weak var totalFollowersLabel: UILabel!
-    
-    @IBOutlet weak var aboutThisInitiativeLabel: UILabel!
     
     @IBOutlet weak var dateTextLabel: UILabel!
     
@@ -54,75 +52,69 @@ class InitiativeDetailViewController: UIViewController {
         view.sendSubview(toBack: imageView)
         
         InitiativeNameLabel.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(50)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.05)
             make.centerX.equalTo(self.view)
             make.width.equalTo(400)
 
         }
         
         dateStartedLabel.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(100)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.17)
             make.left.equalTo(self.view).offset(30)
             make.width.equalTo(200)
 
         }
         
         dateTextLabel.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(100)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.17)
             make.right.equalTo(self.view).offset(-30)
             make.width.equalTo(200)
 
         }
         
         leaderLabel.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(130)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.24)
             make.left.equalTo(self.view).offset(30)
             make.width.equalTo(200)
 
         }
         
         leaderTextLabel.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(130)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.24)
             make.right.equalTo(self.view).offset(-30)
             make.width.equalTo(200)
 
         }
         
         totalFollowersLabel.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(160)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.31)
             make.left.equalTo(self.view).offset(30)
             make.width.equalTo(200)
 
         }
         followersTextLabel.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(160)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.31)
             make.right.equalTo(self.view).offset(-30)
             make.width.equalTo(200)
 
         }
         
-        aboutThisInitiativeLabel.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(200)
-            make.centerX.equalTo(self.view)
-            make.width.equalTo(400)
-
-        }
         
         descriptionTextHere.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(225)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.75)
             make.centerX.equalTo(self.view)
-            make.width.equalTo(400)
-            make.height.equalTo(225)
+            make.width.equalTo(325)
+            make.height.equalTo(200)
             descriptionTextHere.layer.cornerRadius = 20
             descriptionTextHere.layer.borderColor = UIColor.black.cgColor
             descriptionTextHere.layer.borderWidth = 1
 
         }
-        
+
         chatButtonLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).offset(-75)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.95)
             make.width.equalTo(200)
-            make.height.equalTo(100)
+            make.height.equalTo(50)
             make.centerX.equalTo(self.view)
             chatButtonLabel.layer.cornerRadius = 20
             chatButtonLabel.layer.borderColor = UIColor.black.cgColor

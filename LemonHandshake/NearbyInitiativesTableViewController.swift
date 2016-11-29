@@ -91,10 +91,9 @@ class NearbyInitiativesTableViewController: UITableViewController {
 
         }
 
-        let initiative = nearbyInitiatives[indexPath.row]
         
 
-        
+        let initiative = nearbyInitiatives[indexPath.row]
         
         cell.nearbyInitiativeNameLabel.text = initiative.name
         cell.dateTextLabel.text = initiative.createdAt.formattedAs("MMMM dd, yyyy")
@@ -102,6 +101,7 @@ class NearbyInitiativesTableViewController: UITableViewController {
 
         return cell
     }
+  
     
    
 }

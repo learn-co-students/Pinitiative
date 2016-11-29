@@ -26,8 +26,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refreshLandmarks()
         
+        refreshLandmarks()
         
         print("Map view did load")
         createMap()
@@ -42,11 +42,16 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     }
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
     
     // MARK: - Navigation
     
     
     func refreshLandmarks(){
+        print("Refreshing Landmarks")
         FirebaseAPI.geoFirePullNearbyLandmarks (within: 2, ofLocation: CLLocation(latitude: store.userLatitude, longitude: store.userLongitude)) { (landmark) in
             self.store.landmarks.append(landmark)
             self.addSinglePointAnnotation(for: landmark)

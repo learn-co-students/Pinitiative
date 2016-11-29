@@ -20,7 +20,7 @@ extension FirebaseAPI {
     //static let ref: FIRDatabaseReference { return FIRDatabase.database().reference() }
     
     static func geoFirePullNearbyLandmarks(within range: Kilometers, ofLocation location: CLLocation, completion: @escaping (Landmark)->Void) {
-        var geoFireRef: FIRDatabaseReference { return FirebaseAPI.ref.child("geoFire") }
+        var geoFireRef: FIRDatabaseReference { return FirebaseAPI.ref.child("geofire") }
         
         
         //Property sets
@@ -59,14 +59,18 @@ extension FirebaseAPI {
     }
     
     static func geoFirePullNearbyInitiatives(within range: Kilometers, ofLocation location: CLLocation, completion: @escaping (Initiative)->Void ) {
-        let geoFireRef: FIRDatabaseReference = FirebaseAPI.ref.child("geoFire").child("initiatives")
+        
+        print("PROGRESS: Pulling Nearby initiatives")
+        let geoFireRef: FIRDatabaseReference = FirebaseAPI.ref.child("geofire").child("initiatives")
         
         guard let geoFire = GeoFire(firebaseRef: geoFireRef) else { print("FAILURE: GeoFire failled co reate non nil value from geoFireRef"); return }
         
         guard let circleQuery = geoFire.query(at: location, withRadius: range) else { print("FAILURE: Failed to create non nil value for circleQuery"); return }
-        
+    
         circleQuery.observe(.keyEntered) { (optionalKey, location) in
+            
             guard let key = optionalKey else { print("FAILURE: Failed to retrieve key during circleQuery observe"); return }
+            print("PROGRESS: Pulling Nearby initiative with key: \(key)")
             
             FirebaseAPI.retrieveInitiative(withKey: key, completion: { (initiative) in
                 completion(initiative)
