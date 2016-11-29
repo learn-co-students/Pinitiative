@@ -13,6 +13,8 @@ import CoreLocation
 class FirebaseAPI {
     private init() {}
     
+    static var ref: FIRDatabaseReference { return FIRDatabase.database().reference() }
+    
     //MARK: - User functions
     static func storeNewUser(id: String, firstName:String, lastName: String) {
         let newUserRef = FIRDatabase.database().reference().child("users").child(id)
@@ -74,6 +76,10 @@ class FirebaseAPI {
         let userInitiativesRef = FIRDatabase.database().reference().child("users").child(initiative.leader).child("initiatives")
         
         userInitiativesRef.updateChildValues([initiative.databaseKey:true])
+        
+        if initiative.associatedLandmark == nil {
+            FirebaseAPI.geoFireStoreNewInitiative(at: initiative.location, key: initiative.databaseKey)
+        }
     }
     
     static func retrieveInitiative(withKey key: String, completion: @escaping (Initiative)-> Void ) {

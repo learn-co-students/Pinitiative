@@ -14,6 +14,8 @@ class NearbyInitiativesTableViewController: UITableViewController {
 
     let store = MapDataStore.sharedInstance
     
+    var nearbyInitiatives = [Initiative]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,6 +31,13 @@ class NearbyInitiativesTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    func retrieveNearbyInitiatives() {
+        FirebaseAPI.geoFirePullNearbyInitiatives(within: 0.5, ofLocation: store.userLocation) { (initiative) in
+            self.nearbyInitiatives.append(initiative)
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -39,7 +48,7 @@ class NearbyInitiativesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 20
+        return nearbyInitiatives.count
     }
 
     
@@ -82,14 +91,14 @@ class NearbyInitiativesTableViewController: UITableViewController {
 
         }
 
-        
+        let initiative = nearbyInitiatives[indexPath.row]
         
 
         
         
-        cell.nearbyInitiativeNameLabel.text = "Feed the homeless"
-        cell.dateTextLabel.text = "April 1st, 2016"
-        cell.followersTextLabel.text = "589"
+        cell.nearbyInitiativeNameLabel.text = initiative.name
+        cell.dateTextLabel.text = initiative.createdAt.formattedAs("MMMM dd, yyyy")
+        cell.followersTextLabel.text = "\(initiative.members.count)"
 
         return cell
     }

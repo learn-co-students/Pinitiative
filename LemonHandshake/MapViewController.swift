@@ -26,6 +26,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        refreshLandmarks()
+        
+        
         print("Map view did load")
         createMap()
         view.addSubview(mapView)
