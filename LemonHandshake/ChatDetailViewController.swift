@@ -15,26 +15,46 @@ class ChatDetailViewController: JSQMessagesViewController {
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.orange)
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.blue)
     var messages = [JSQMessage]()
+    
     //var sendersId: String!
     //var sendersDisplayName: String!
     
     var ref: FIRDatabaseReference!
     fileprivate var refHandle: FIRDatabaseHandle!
     
+    var initiativeiD = "Fixing Potholes"
     //testing with rand generated initiative id
-    var initiativeiD = UUID().uuidString
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.senderId = "2"
         self.senderDisplayName = "Tameika"
+        
+        
+        
+        
+        
+        let uuid = UserDefaults.standard.object(forKey: "UUID") as? String
+        if let myID = uuid{
+            //then do something with uuid
+        }else{
+            let newId = UUID().uuidString
+            UserDefaults.standard.set(newId, forKey: "UUID")
+        }
+        
+        
+        
+
         connectToChat()
         print(messages)
         collectionView.reloadData()
         
         //self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         // also have outgoing here, fyi
+        
+        
         
     }
     
@@ -43,19 +63,38 @@ class ChatDetailViewController: JSQMessagesViewController {
         ref = FIRDatabase.database().reference()
         
         let chatRef = ref.child("Chats").child(initiativeiD)
-        
-        
-        chatRef.observe(.childAdded, with: { snapshot in
+        let msgRef = chatRef.child("Messages")
 
-            let messageDictionary = snapshot.value as! [String : String]
+   
+        
+        msgRef.observe(.childAdded, with: { snapshot in
+
+            print(snapshot.value)
+            let messageDictionary = snapshot.value as! [String:String]
+            
+            print("Dictionary \(messageDictionary)")
+            
             
             let userID = messageDictionary["user"]
             let message = messageDictionary["message"]
-
+            let id = messageDictionary["id"]
+           
+            print(userID)
+            print(message)
+            print(id)
             
-            guard let jsqMessage = JSQMessage(senderId: userID, senderDisplayName: self.senderDisplayName, date: nil, text: message) else { return }
+            
+            guard let user = userID else { return }
+            guard let  unwrappedid = id else { return }
+            
+            
+            guard let jsqMessage = JSQMessage(senderId: unwrappedid, displayName: userID, text: message) else { return }
+            
+//            guard let jsqMessage = JSQMessage(senderId: userID, senderDisplayName: self.senderDisplayName, date: nil, text: message) else { return }
 
             self.messages.append(jsqMessage)
+            self.collectionView.reloadData()
+            
             
         })
         
@@ -79,6 +118,9 @@ class ChatDetailViewController: JSQMessagesViewController {
                     let userInfo = snapshot.value as! [String : String]
                     
                     let name = userInfo["name"] ?? "No Name"
+                    
+                    usersRef.setValue(userInfo)
+                   
                 
                 })
                 
@@ -94,7 +136,7 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     
     
-    //FOR HANDLING MESSAGES
+    //FOR HANDLING MESSAGES IN VIEWCONTROLLER
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(self.messages.count)
@@ -117,18 +159,28 @@ class ChatDetailViewController: JSQMessagesViewController {
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         //create a message object
         //append it to the array
+        
+        
+        ref = FIRDatabase.database().reference()
+        
         let chatRef = ref.child("Chats").child(initiativeiD)
+        let msgRef = chatRef.child("Messages")
         
-        guard let newMessage = JSQMessage(senderId: self.senderId, displayName: self.senderDisplayName, text: text) else { return }
+        var dict = [String:String]()
+
         
-        messages.append(newMessage)
-        print(newMessage)
+        dict["user"] = self.senderDisplayName
+        dict["message"] = text
+        dict["id"] = self.senderId
         
-        let newMessageData = newMessage as! [String : String]
-        
-        chatRef.setValue(newMessageData)
+        msgRef.childByAutoId().setValue(dict)
+//        guard let newMessage = JSQMessage(senderId: self.senderId, displayName: self.senderDisplayName, text: text) else { return }
+//        
+//        messages.append(newMessage)
+//        print(newMessage)
         
         self.finishSendingMessage()
+    
         
         
     }
@@ -158,28 +210,5 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     
 }
-
-
-
-// MESSAGE DATA FOR TESTING
-
-//    func loadMessages() {
-//
-//        guard let message1 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hey") else { return }
-//        guard let message2 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hi") else { return }
-//        guard let message3 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hello") else { return }
-//
-//        guard let message4 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Hola") else { return }
-//        guard let message5 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Buenos Dias") else { return }
-//        guard let message6 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Buenos Tardes") else { return }
-//
-//        self.messages.append(message1)
-//        self.messages.append(message2)
-//        self.messages.append(message3)
-//        self.messages.append(message4)
-//        self.messages.append(message5)
-//        self.messages.append(message6)
-//
-//    }
 
 
