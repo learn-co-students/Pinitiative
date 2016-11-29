@@ -128,16 +128,13 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         
         let selected = annotation as! CustomPointAnnotation
         
-        //        let chosenLocation = Landmark(name: selected.title!, address: selected.subtitle!, coordinates: selected.coordinate, type: LocationType(rawValue: selected.reuseIdentifier!)!)
-        
-        FirebaseAPI.retrieveLandmark(withKey: selected.databaseKey) { (landmark) in
-            OperationQueue.main.addOperation {
-                self.performSegue(withIdentifier: "annotationSegue", sender: landmark)
+        if selected.reuseIdentifier != "Custom Marker" {
+            FirebaseAPI.retrieveLandmark(withKey: selected.databaseKey) { (landmark) in
+                OperationQueue.main.addOperation {
+                    self.performSegue(withIdentifier: "annotationSegue", sender: landmark)
+                }
             }
-        }
-        
-        
-        
+        } 
         return true
     }
     
@@ -172,28 +169,17 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         
     }
     
-    //    func addPointAnnotations(_ locations: [Location]) {
-    //        var pointAnnotations = [CustomPointAnnotation]()
-    //
-    //        for location in locations {
-    //            let point = CustomPointAnnotation(coordinate: location.coordinates, title: location.name, subtitle: location.address)
-    //            point.image = location.icon
-    //            point.reuseIdentifier = location.type.rawValue
-    //            pointAnnotations.append(point)
-    //            mapView.selectAnnotation(point, animated: false)
-    //        }
-    //
-    //        mapView.addAnnotations(pointAnnotations)
-    //    }
-    
-    func handleLongPress(long: UILongPressGestureRecognizer) {
+     func handleLongPress(long: UILongPressGestureRecognizer) {
         let longPressCoordinate: CLLocationCoordinate2D = mapView.convert(long.location(in: mapView), toCoordinateFrom: mapView)
         
-        let markedLocation = DropPinLocation(coordinate: longPressCoordinate, address: "Test Address") //test need geocoding for mapbox
+        let markedLocation = CustomPointAnnotation(coordinate: longPressCoordinate, title: "Marked Location", subtitle: "Geocoded Address", databaseKey: "")
+        //test need geocoding for mapbox
+        markedLocation.reuseIdentifier = "Custom Marker"
+        mapView.addAnnotation(markedLocation)
         
-        mapView.addAnnotation(markedLocation as! MGLPointAnnotation)
+        let senderLocation = DropPinLocation(coordinate: longPressCoordinate, address: "Geocoded address")
         
-        performSegue(withIdentifier: "annotationSegue", sender: markedLocation)
+        performSegue(withIdentifier: "dropPinSegue", sender: senderLocation)
         
     }
     
@@ -215,9 +201,6 @@ extension MapViewController {
         if segue.identifier == "annotationSegue" {
             
             let destVC = segue.destination as! LandmarkDetailViewController
-            
-            destVC.landmark = sender as! Landmark
-            
             
             if let landmark = sender as? School {
                 destVC.landmark = landmark
