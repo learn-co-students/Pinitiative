@@ -45,7 +45,7 @@ class FirebaseAPI {
     //MARK: - Initiative functions
     static func storeNewInitiative(_ initiative: Initiative) {
 
-        let initiativeRef = FIRDatabase.database().reference().child("initiatives").child(initiative.databaseKey)
+        var initiativeRef = FIRDatabase.database().reference().child("initiatives").child(initiative.databaseKey)
 
         
         var serializedData: [String: Any] = [
