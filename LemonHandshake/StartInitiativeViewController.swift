@@ -33,7 +33,7 @@ class StartInitiativeViewController: UIViewController {
         view.sendSubview(toBack: imageView)
         
         addInitiativeLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).offset(-283)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.4)
             make.left.equalTo(self.view).offset(80)
             make.width.equalTo(125)
             addInitiativeLabel.layer.cornerRadius = 20
@@ -42,7 +42,7 @@ class StartInitiativeViewController: UIViewController {
         }
         
         cancelInitiativeLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).offset(-283)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.4)
             make.right.equalTo(self.view).offset(-80)
             make.width.equalTo(125)
             cancelInitiativeLabel.layer.cornerRadius = 20
@@ -51,7 +51,7 @@ class StartInitiativeViewController: UIViewController {
         }
         
         nameTextField.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(235)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.25)
             make.height.equalTo(40)
             make.centerX.equalTo(self.view)
             make.width.equalTo(300)
@@ -62,7 +62,7 @@ class StartInitiativeViewController: UIViewController {
         }
         
         descriptionTextField.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(285)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.65)
             make.height.equalTo(150)
             make.centerX.equalTo(self.view)
             make.width.equalTo(300)
@@ -73,7 +73,7 @@ class StartInitiativeViewController: UIViewController {
         }
 
         datePickerView.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(100)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.96)
             make.centerX.equalTo(self.view)
             make.width.equalTo(self.view).multipliedBy(0.8)
             make.height.equalTo(125)
