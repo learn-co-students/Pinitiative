@@ -12,7 +12,7 @@ import SnapKit
 
 
 class InitiativeDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var InitiativeNameLabel: UILabel!
     
     @IBOutlet weak var dateStartedLabel: UILabel!

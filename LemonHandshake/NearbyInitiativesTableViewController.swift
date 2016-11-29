@@ -83,16 +83,13 @@ class NearbyInitiativesTableViewController: UITableViewController {
         }
 
         
-        
-
-        
-        
         cell.nearbyInitiativeNameLabel.text = "Feed the homeless"
         cell.dateTextLabel.text = "April 1st, 2016"
         cell.followersTextLabel.text = "589"
 
         return cell
     }
+  
     
    
 }

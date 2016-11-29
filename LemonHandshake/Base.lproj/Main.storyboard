@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
-
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -127,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsi-Bm-W0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="-642.72863568215894"/>
+            <point key="canvasLocation" x="670" y="-663"/>
         </scene>
         <!--App Controller-->
         <scene sceneID="HA5-JS-AIs">
@@ -221,7 +220,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HeM-41-JAi" id="hIk-I7-shM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Initiative Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pt-gK-HJi">
@@ -312,7 +311,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eiG-3N-CiO" id="BpV-ex-tVk">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Local Initiative" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhA-XN-qb7">
@@ -358,7 +357,7 @@
                                     <outlet property="followersLabel" destination="E2Z-R3-TLq" id="Owf-ov-DbM"/>
                                     <outlet property="followersTextLabel" destination="KjX-hR-Urp" id="YJY-8b-4eS"/>
                                     <outlet property="nearbyInitiativeNameLabel" destination="yhA-XN-qb7" id="lUm-J3-d4F"/>
-                                    <segue destination="qOK-cb-7fF" kind="show" id="nR9-YX-1Fo"/>
+                                    <segue destination="qOK-cb-7fF" kind="show" identifier="" id="nR9-YX-1Fo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -497,7 +496,6 @@
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="Kud-Jm-X6r">
                         <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<<<<<<< HEAD
                         <subviews>
                             <webView autoresizesSubviews="NO" clipsSubviews="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="08b-0a-7wD">
                                 <rect key="frame" x="37" y="60" width="300" height="60"/>
@@ -507,8 +505,6 @@
                                 <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
                         </subviews>
-=======
->>>>>>> master
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems>
@@ -521,6 +517,9 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Member Management" id="y69-Lg-uJ5"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="calendarWebView" destination="08b-0a-7wD" id="CiY-01-zGG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fo-g6-F7F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -663,17 +662,8 @@
         <image name="backgroundNYC" width="1326" height="1291"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
-        <segue reference="zkx-6j-hXv"/>
-        <segue reference="nR9-YX-1Fo"/>
-        <segue reference="h5K-wb-Q3f"/>
-=======
-        <segue reference="h5K-wb-Q3f"/>
-        <segue reference="vbW-6v-bue"/>
-        <segue reference="peZ-TE-S1e"/>
-        <segue reference="nR9-YX-1Fo"/>
+        <segue reference="09l-Va-NrD"/>
         <segue reference="AlA-vr-7Py"/>
->>>>>>> master
->>>>>>> master
+        <segue reference="nR9-YX-1Fo"/>
     </inferredMetricsTieBreakers>
 </document>
