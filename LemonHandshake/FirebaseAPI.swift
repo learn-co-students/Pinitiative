@@ -29,11 +29,11 @@ class FirebaseAPI {
         let targetUserRef = FIRDatabase.database().reference().child("users").child(key)
         
         targetUserRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let dictionary = snapshot.value as? [String: String] else { print("FAILURE: Error with snaphsot for user with key: \(key))"); return }
+            guard let dictionary = snapshot.value as? [String: Any] else { print("FAILURE: Error with snaphsot for user with key: \(key))"); return }
             
             guard
-                let firstName = dictionary["firstName"],
-                let lastName = dictionary["lastName"]
+                let firstName = dictionary["firstName"] as? String,
+                let lastName = dictionary["lastName"] as? String
                 else { print("FAILURE: Could not parse data for user with key: \(key)"); return }
             
             let user = User(firstName: firstName, lastName: lastName, databaseKey: key)
@@ -51,7 +51,9 @@ class FirebaseAPI {
             "initiativeDescription": initiative.initiativeDescription,
             "latitude": initiative.location.coordinate.latitude,
             "longitude": initiative.location.coordinate.longitude,
-            "leader": initiative.leader
+            "leader": initiative.leader,
+            "members": [initiative.leader:true],
+            "createdAt": initiative.createdAt.timeIntervalSince1970
         ]
         if let landmarkID = initiative.associatedLandmark?.databaseKey {
             serializedData["landmarkID"] = landmarkID
@@ -63,7 +65,7 @@ class FirebaseAPI {
         initiativeRef.setValue(serializedData)
         
         
-        let userInitiativesRef = FIRDatabase.database().reference().child(initiative.leader).child("initiatives")
+        let userInitiativesRef = FIRDatabase.database().reference().child("users").child(initiative.leader).child("initiatives")
         
         userInitiativesRef.updateChildValues([initiative.databaseKey:true])
     }
@@ -81,14 +83,14 @@ class FirebaseAPI {
                 let longitude = dictionary["longitude"] as? Double,
                 let leader = dictionary["leader"] as? String,
                 let members = dictionary["members"] as? [String:Any],
-                let createdAt = dictionary["createdAt"] as? Date
+                let createdAt = dictionary["createdAt"] as? TimeInterval
                 else { print("FAILURE: Could not parse data for initiative with key: \(key)");return }
             
             let associatedDate: Date? = Date(optionalTimeIntervalSince1970: (dictionary["associatedDate"] as? TimeInterval) ?? nil)
             
             if let landmark = dictionary["landmark"] as? String {
                 FirebaseAPI.retrieveLandmark(withKey: landmark, completion: { (landmark) in
-                    var initiative = Initiative(name: name, associatedLandmark: landmark, databaseKey: key, leader: leader, initiativeDescription: initiativeDescription, createdAt: createdAt, associatedDate: associatedDate)
+                    var initiative = Initiative(name: name, associatedLandmark: landmark, databaseKey: key, leader: leader, initiativeDescription: initiativeDescription, createdAt: Date(timeIntervalSince1970: createdAt), associatedDate: associatedDate)
                     
                     for member in members {
                         initiative.members.append(member.key)
@@ -97,7 +99,7 @@ class FirebaseAPI {
                     completion(initiative)
                 })
             } else {
-                var initiative = Initiative(name: name, latitude: latitude, longitude: longitude, databaseKey: key, leader: leader, initiativeDescription: initiativeDescription, createdAt: createdAt, associatedDate: associatedDate)
+                var initiative = Initiative(name: name, latitude: latitude, longitude: longitude, databaseKey: key, leader: leader, initiativeDescription: initiativeDescription, createdAt: Date(timeIntervalSince1970: createdAt), associatedDate: associatedDate)
                 for member in members {
                     initiative.members.append(member.key)
                 }
@@ -111,6 +113,35 @@ class FirebaseAPI {
         let membersRef = FIRDatabase.database().reference().child("initiatives").child(initiativeKey).child("members")
         
         membersRef.setValue(true, forKey: memberKey)
+    }
+    
+    static func retrieveInitiativesFor(userKey: String, completion: @escaping ([Initiative]) -> Void) {
+        let userInitiativeRef = FIRDatabase.database().reference().child("users").child(userKey).child("initiatives")
+        
+        userInitiativeRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String:Any] {
+                
+                var initiativeKeys = [String]()
+                var initiatives = [Initiative]()
+                
+                for item in dictionary {
+                    initiativeKeys.append(item.key)
+                }
+                
+                for initiativeKey in initiativeKeys {
+                    FirebaseAPI.retrieveInitiative(withKey: initiativeKey, completion: { (initiative) in
+                        initiatives.append(initiative)
+                        if initiativeKeys.count == initiatives.count {
+                            completion(initiatives)
+                        }
+                    })
+                }
+                
+            } else {
+                print("No initiatives for user")
+            }
+        })
+        
     }
     
     //MARK: - Landmark functions

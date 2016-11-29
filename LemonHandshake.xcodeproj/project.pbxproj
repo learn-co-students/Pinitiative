@@ -17,6 +17,7 @@
 		1B1E94311DEB720E00F7EFEC /* Initiative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1E94301DEB720E00F7EFEC /* Initiative.swift */; };
 		1B1E94331DEB733700F7EFEC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1E94321DEB733700F7EFEC /* User.swift */; };
 		1B5CB0161DE9D5FF00C090E0 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CB0151DE9D5FF00C090E0 /* FirebaseAPI.swift */; };
+		1BC785F21DEE17C600CC9C16 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC785F11DEE17C600CC9C16 /* Date.swift */; };
 		8309A9E51DDCE21400484700 /* MapDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8309A9E41DDCE21400484700 /* MapDataStore.swift */; };
 		832662A51DDF541900126B99 /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832662A41DDF541900126B99 /* CustomPointAnnotation.swift */; };
 		832662A91DDF5EEB00126B99 /* park2.png in Resources */ = {isa = PBXBuildFile; fileRef = 832662A81DDF5EEB00126B99 /* park2.png */; };
@@ -30,13 +31,9 @@
 		837C2F5A1DE4942500E076C9 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C2F591DE4942500E076C9 /* AppController.swift */; };
 		837C2F631DE4AC9F00E076C9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C2F621DE4AC9F00E076C9 /* Extensions.swift */; };
 		837C2F661DE4B64500E076C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837C2F651DE4B64500E076C9 /* GoogleService-Info.plist */; };
-
-
-		926753A91DEDE2E000256968 /* calendarHTML.html in Resources */ = {isa = PBXBuildFile; fileRef = 926753A81DEDE2E000256968 /* calendarHTML.html */; };
-
 		83D2E84B1DE4EF310095C068 /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2E84A1DE4EF310095C068 /* LandmarkDetail.swift */; };
 		83E865CA1DECFEC900336BC4 /* DropPinLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E865C91DECFEC900336BC4 /* DropPinLocation.swift */; };
-
+		926753A91DEDE2E000256968 /* calendarHTML.html in Resources */ = {isa = PBXBuildFile; fileRef = 926753A81DEDE2E000256968 /* calendarHTML.html */; };
 		92764CF01DE34635007115E9 /* MyInitiativesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92764CEF1DE34635007115E9 /* MyInitiativesTableViewCell.swift */; };
 		92764CF61DE37F11007115E9 /* NearbyInitiativesDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */; };
 		BC43C33B1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */; };
@@ -65,6 +62,7 @@
 		1B1E94301DEB720E00F7EFEC /* Initiative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Initiative.swift; sourceTree = "<group>"; };
 		1B1E94321DEB733700F7EFEC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1B5CB0151DE9D5FF00C090E0 /* FirebaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
+		1BC785F11DEE17C600CC9C16 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LemonHandshake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake.debug.xcconfig"; sourceTree = "<group>"; };
 		8309A9E41DDCE21400484700 /* MapDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDataStore.swift; sourceTree = "<group>"; };
 		832662A41DDF541900126B99 /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
@@ -79,12 +77,9 @@
 		837C2F591DE4942500E076C9 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		837C2F621DE4AC9F00E076C9 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		837C2F651DE4B64500E076C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-
-		926753A81DEDE2E000256968 /* calendarHTML.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = calendarHTML.html; sourceTree = "<group>"; };
-
 		83D2E84A1DE4EF310095C068 /* LandmarkDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
 		83E865C91DECFEC900336BC4 /* DropPinLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropPinLocation.swift; sourceTree = "<group>"; };
-
+		926753A81DEDE2E000256968 /* calendarHTML.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = calendarHTML.html; sourceTree = "<group>"; };
 		92764CEF1DE34635007115E9 /* MyInitiativesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInitiativesTableViewCell.swift; sourceTree = "<group>"; };
 		92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyInitiativesDetailCell.swift; sourceTree = "<group>"; };
 		A0F8D053C7AB55B440A09174 /* Pods_LemonHandshake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LemonHandshake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +129,7 @@
 		1B10965D1DDA50CE00609104 /* LemonHandshake */ = {
 			isa = PBXGroup;
 			children = (
+				1BC785F01DEE17BD00CC9C16 /* Tools */,
 				837C2F641DE4ACB400E076C9 /* Constants */,
 				8309AA061DDE04BC00484700 /* Models */,
 				8309A9E31DDCE1F500484700 /* Views */,
@@ -162,6 +158,14 @@
 				1B5CB0151DE9D5FF00C090E0 /* FirebaseAPI.swift */,
 			);
 			name = Firebase;
+			sourceTree = "<group>";
+		};
+		1BC785F01DEE17BD00CC9C16 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				1BC785F11DEE17C600CC9C16 /* Date.swift */,
+			);
+			name = Tools;
 			sourceTree = "<group>";
 		};
 		8309A9E31DDCE1F500484700 /* Views */ = {
@@ -236,8 +240,7 @@
 				8326CB271DECD923009EC996 /* DropPinDetailViewController.swift */,
 				83509E411DE63F9300D8C18B /* LandmarkDetailViewController.swift */,
 				BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */,
-				BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */
-
+				BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B1096731DDA665B00609104 /* FirebaseAuth.swift in Sources */,
+				1BC785F21DEE17C600CC9C16 /* Date.swift in Sources */,
 				83E865CA1DECFEC900336BC4 /* DropPinLocation.swift in Sources */,
 				837C2F631DE4AC9F00E076C9 /* Extensions.swift in Sources */,
 				BC6244E11DDA798D00AE6523 /* LandmarkDetailTableViewController.swift in Sources */,
