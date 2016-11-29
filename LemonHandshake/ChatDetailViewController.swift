@@ -30,7 +30,6 @@ class ChatDetailViewController: JSQMessagesViewController {
         self.senderId = "2"
         self.senderDisplayName = "Tameika"
         connectToChat()
-        //loadMessages()
         print(messages)
         
         self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
@@ -44,36 +43,20 @@ class ChatDetailViewController: JSQMessagesViewController {
         
         let chatRef = ref.child("Chats").child(initiativeiD)
         
-//        let chat = [
-//        
-//            "name" : "Tameika",
-//            "message" : "hi"
-//            
-//        ]
-//        
-//        chatRef.setValue(chat)
         
-//        for message in messages {
-//            chatRef.setValue(message)
-//        }
-//        
-        
-        
-//        chatRef.observe(.childAdded, with: { snapshot in
-//            
-//            let messageDictionary = snapshot.value as! [String : String]
-//            
-//            // TODO: Create a JSQMessage after parsing through the message dictionary above. Passing it the necessary values to its init functions that are available to you.
-//            
-//            let userID = messageDictionary["user"]
-//            let message = messageDictionary["message"]
-//            
-//            
-//            guard let jsqMessage = JSQMessage(senderId: self.senderId, senderDisplayName: self.senderDisplayName, date: nil, text: message) else { return }
-//            
-//            self.messages.append(jsqMessage)
-//            
-//        })
+        chatRef.observe(.childAdded, with: { snapshot in
+
+            let messageDictionary = snapshot.value as! [String : String]
+            
+            let userID = messageDictionary["user"]
+            let message = messageDictionary["message"]
+
+            
+            guard let jsqMessage = JSQMessage(senderId: self.senderId, senderDisplayName: self.senderDisplayName, date: nil, text: message) else { return }
+
+           self.messages.append(jsqMessage)
+            
+        })
         
         
         
@@ -105,44 +88,8 @@ class ChatDetailViewController: JSQMessagesViewController {
             
         })
         
+        
     }
-    
-    // FOR FORMING VIEW CONTROLLER (will move struct)
-    
-    struct MessageFields {
-        static let name = "name"
-        static let text = "text"
-        static let photoURL = "photoURL"
-        static let imageURL = "imageURL"
-    }
-    
-    
-    //    let layout: JSQMessagesCollectionViewFlowLayout = JSQMessagesCollectionViewFlowLayout()
-    //    let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-    
-    
-    
-    
-    // MESSAGE DATA FOR TESTING
-    
-//    func loadMessages() {
-//        
-//        guard let message1 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hey") else { return }
-//        guard let message2 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hi") else { return }
-//        guard let message3 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hello") else { return }
-//        
-//        guard let message4 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Hola") else { return }
-//        guard let message5 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Buenos Dias") else { return }
-//        guard let message6 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Buenos Tardes") else { return }
-//        
-//        self.messages.append(message1)
-//        self.messages.append(message2)
-//        self.messages.append(message3)
-//        self.messages.append(message4)
-//        self.messages.append(message5)
-//        self.messages.append(message6)
-//        
-//    }
     
     
     
@@ -154,16 +101,16 @@ class ChatDetailViewController: JSQMessagesViewController {
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
-        
-        //        let messageSnapShot = self.messages[indexPath.row]
-        //        let message = messageSnapShot.value as! [String:String]
-        //        let name = message[MessageFields.name]! as String
-        //        let text = message[MessageFields.text]! as String
-        //        var textMessage = JSQMessage(senderId: name, displayName: name, text: text)
-        
-        let textMessage = self.messages[indexPath.row]
-        print(textMessage)
-        return textMessage
+//        
+//                let messageSnapShot = self.messages[indexPath.row]
+//                let message = messageSnapShot.value as! [String:String]
+//                let name = message[MessageFields.name]! as String
+//                let text = message[MessageFields.text]! as String
+//                var textMessage = JSQMessage(senderId: name, displayName: name, text: text)
+//        
+//        let textMessage = self.messages[indexPath.row]
+//        print(textMessage)
+//        return textMessage
         
     }
     
@@ -200,8 +147,6 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     
     
-    
-    
     // FOR MESSAGE BUBBLES ATTRIBUTES
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
@@ -227,5 +172,25 @@ class ChatDetailViewController: JSQMessagesViewController {
 
 
 
+// MESSAGE DATA FOR TESTING
+
+//    func loadMessages() {
+//
+//        guard let message1 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hey") else { return }
+//        guard let message2 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hi") else { return }
+//        guard let message3 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hello") else { return }
+//
+//        guard let message4 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Hola") else { return }
+//        guard let message5 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Buenos Dias") else { return }
+//        guard let message6 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Buenos Tardes") else { return }
+//
+//        self.messages.append(message1)
+//        self.messages.append(message2)
+//        self.messages.append(message3)
+//        self.messages.append(message4)
+//        self.messages.append(message5)
+//        self.messages.append(message6)
+//
+//    }
 
 
