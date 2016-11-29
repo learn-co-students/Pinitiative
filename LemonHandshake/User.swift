@@ -23,5 +23,10 @@ struct User {
     }
 }
 
+extension User {
+    static var blank: User {
+        return User(firstName: "", lastName: "", databaseKey: "")
+    }
+}
 
 
