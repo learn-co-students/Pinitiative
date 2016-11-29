@@ -54,30 +54,19 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
             let ref = FIRDatabase.database().reference().child("users").child(userID)
             
             ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                if let dictionary = snapshot.value as? [String:String] {
-                    
-                    if let name = dictionary["firstName"] {
-                        print("SUCCESS: \(name) is already in the database")
-                    }
-                }else {
-                    print("SUCCESS: New user is being stored in the database (Point 2)")
+                if snapshot.value as? [String:String] == nil {
                     FirebaseAPI.storeNewUser(id: userID, firstName: "Test", lastName: "Name")
                 }
             })
-            
-            print("PROGRESS: Should Perform segue, and move into ")
-            
-//            performSegue(withIdentifier: "signedInSegue", sender: self)
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
             let navVC = storyboard.instantiateViewController(withIdentifier: "navID") as! UINavigationController
             
+            present(navVC, animated: true, completion: { 
+                
+            })
             
-            
-        } else {
-            
-            print("PROGRESS: No user signed in, ignoring segue")
         }
     }
    
