@@ -1,5 +1,5 @@
 //
-//  LocationDetailTableViewController.swift
+//  LandmarkDetailTableViewController.swift
 //  LemonHandshake
 //
 //  Created by Tameika Lawrence on 11/14/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LocationDetailTableViewController: UITableViewController {
+class LandmarkDetailTableViewController: UITableViewController {
     
 
     override func viewDidLoad() {

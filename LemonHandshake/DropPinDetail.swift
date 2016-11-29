@@ -16,12 +16,16 @@ class DropPinDetail: UIView {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
+    @IBAction func startInitiativePressed(_ sender: Any) {
+        
+    }
     
-    var location: Location! {
+    @IBOutlet weak var startInitiativeButton: UIButton!
+    var location: DropPinLocation! { //custom class for drop Pin that has location
         didSet {
             addressLabel.text = location.address
-            latitudeLabel.text = String(location.latitude)
-            longitudeLabel.text = String(location.longitude)
+            latitudeLabel.text = String(location.coordinate.latitude)
+            longitudeLabel.text = String(location.coordinate.longitude)
         }
     }
     
@@ -40,7 +44,7 @@ class DropPinDetail: UIView {
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        
-        
     }
+    
+    
 }

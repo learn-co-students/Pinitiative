@@ -21,18 +21,27 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     var store = MapDataStore.sharedInstance
     var mapView: MGLMapView!
     var mapBounds = MGLCoordinateBounds()
-    var locations = [Location]()
-//    var landmarkDetailView = LandmarkDetail()
-    var selectedAnnotation: CustomPointAnnotation!
+    var landmarks = [Landmark]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createMap()
-        store.generateData() //for testing purposes
         
-        locations = store.locations //for testing
-        addPointAnnotations(locations)
+        print("Map view did load")
+        createMap()
+        //        store.generateData() //for testing purposes
+        //        locations = store.locations //for testing
+        //        addPointAnnotations(locations)
+        view.addSubview(mapView)
         activateGestureRecognizer()
+        mapView.delegate = self
+        FirebaseAPI.geoFirePullNearbyLandmarks (within: 2) { (landmark) in
+            self.addSinglePointAnnotation(for: landmark)
+        }
+        //        addPointAnnotations() //First load
+        //        activateGestureRecognizer()
+        
+        
+        store.generateData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,8 +51,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     
     
     
-     // MARK: - Navigation
-     
+    // MARK: - Navigation
+    
     
     func createMap() {
         mapView = MGLMapView(frame: view.bounds)
@@ -66,13 +75,68 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     }
     
     
+    
+    func addPointAnnotations() {
+        var pointAnnotations = [CustomPointAnnotation]()
+        
+        print(landmarks.count)
+        for landmark in landmarks {
+            if let landmark = landmark as? Park {
+                let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
+                point.image = landmark.icon
+                point.reuseIdentifier = landmark.type.rawValue
+                pointAnnotations.append(point)
+            } else if let landmark = landmark as? School {
+                let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
+                point.image = landmark.icon
+                point.reuseIdentifier = landmark.type.rawValue
+                pointAnnotations.append(point)
+            } else if let landmark = landmark as? Hospital {
+                let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.facilityType, databaseKey: landmark.databaseKey)
+                point.image = landmark.icon
+                point.reuseIdentifier = landmark.type.rawValue
+                pointAnnotations.append(point)
+            }
+        }
+        mapView.addAnnotations(pointAnnotations)
+    }
+    
+    func addSinglePointAnnotation(for landmark: Landmark) {
+        
+        
+        if let landmark = landmark as? Park {
+            let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
+            point.image = landmark.icon
+            point.reuseIdentifier = landmark.type.rawValue
+            mapView.addAnnotation(point)
+        } else if let landmark = landmark as? School {
+            let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
+            point.image = landmark.icon
+            point.reuseIdentifier = landmark.type.rawValue
+            mapView.addAnnotation(point)
+        } else if let landmark = landmark as? Hospital {
+            let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.facilityType, databaseKey: landmark.databaseKey)
+            point.image = landmark.icon
+            point.reuseIdentifier = landmark.type.rawValue
+            mapView.addAnnotation(point)
+        }
+        
+    }
+    
+    
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
         
         let selected = annotation as! CustomPointAnnotation
         
-        let chosenLocation = Location(name: selected.title!, address: selected.subtitle!, coordinates: selected.coordinate, type: LocationType(rawValue: selected.reuseIdentifier!)!)
+        //        let chosenLocation = Landmark(name: selected.title!, address: selected.subtitle!, coordinates: selected.coordinate, type: LocationType(rawValue: selected.reuseIdentifier!)!)
         
-        performSegue(withIdentifier: "annotationSegue", sender: chosenLocation)
+        FirebaseAPI.retrieveLandmark(withKey: selected.databaseKey) { (landmark) in
+            OperationQueue.main.addOperation {
+                self.performSegue(withIdentifier: "annotationSegue", sender: landmark)
+            }
+        }
+        
+        
         
         return true
     }
@@ -108,33 +172,38 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         
     }
     
-    func addPointAnnotations(_ locations: [Location]) {
-        var pointAnnotations = [CustomPointAnnotation]()
-        
-        for location in locations {
-            let point = CustomPointAnnotation(coordinate: location.coordinates, title: location.name, subtitle: location.address)
-            point.image = location.icon
-            point.reuseIdentifier = location.type.rawValue
-            pointAnnotations.append(point)
-            mapView.selectAnnotation(point, animated: false)
-        }
-        
-        mapView.addAnnotations(pointAnnotations)
-    }
+    //    func addPointAnnotations(_ locations: [Location]) {
+    //        var pointAnnotations = [CustomPointAnnotation]()
+    //
+    //        for location in locations {
+    //            let point = CustomPointAnnotation(coordinate: location.coordinates, title: location.name, subtitle: location.address)
+    //            point.image = location.icon
+    //            point.reuseIdentifier = location.type.rawValue
+    //            pointAnnotations.append(point)
+    //            mapView.selectAnnotation(point, animated: false)
+    //        }
+    //
+    //        mapView.addAnnotations(pointAnnotations)
+    //    }
     
     func handleLongPress(long: UILongPressGestureRecognizer) {
-        let longPressLocation: CLLocationCoordinate2D = mapView.convert(long.location(in: mapView), toCoordinateFrom: mapView)
+        let longPressCoordinate: CLLocationCoordinate2D = mapView.convert(long.location(in: mapView), toCoordinateFrom: mapView)
         
-        var markedLocations = [Location]()
+        let markedLocation = DropPinLocation(coordinate: longPressCoordinate, address: "Test Address") //test need geocoding for mapbox
         
-        let markedLocation = Location(name: "Marked Location", address: "Test", coordinates: longPressLocation, type: .custom) //test need GeoFire for Geocoding for addresses
-        
-        markedLocations.append(markedLocation)
-        addPointAnnotations(markedLocations)
+        mapView.addAnnotation(markedLocation as! MGLPointAnnotation)
         
         performSegue(withIdentifier: "annotationSegue", sender: markedLocation)
+        
+    }
+    
+    func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
+        mapBounds = mapView.visibleCoordinateBounds
+        //landmarks = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
+        addPointAnnotations()
     }
 }
+
 
 
 
@@ -146,12 +215,23 @@ extension MapViewController {
         if segue.identifier == "annotationSegue" {
             
             let destVC = segue.destination as! LandmarkDetailViewController
-            destVC.location = sender as! Location
-        
+            
+            destVC.landmark = sender as! Landmark
+            
+            
+            if let landmark = sender as? School {
+                destVC.landmark = landmark
+            } else if let landmark = sender as? Hospital {
+                destVC.landmark = landmark
+            } else if let landmark = sender as? Park {
+                destVC.landmark = landmark
+            }
+            
+            
         } else if segue.identifier == "dropPinSegue" {
             
             let destVC = segue.destination as! DropPinDetailViewController
-            destVC.location = sender as! Location
+            destVC.location = sender as! DropPinLocation
             
         }
         

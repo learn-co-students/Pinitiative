@@ -10,7 +10,9 @@ import UIKit
 
 class DropPinDetailViewController: UIViewController {
 
-    var location: Location!
+    var location: DropPinLocation!
+    
+    
     override func viewDidLoad() {
         
     let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissViewController))

@@ -18,11 +18,11 @@ class LandmarkDetail: UIView {
     @IBOutlet weak var propertyPreview: UIImageView!
     @IBOutlet weak var landmarkNameLabel: UILabel!
     
-    var location: Location! {
+    var landmark: Landmark! {
         didSet {
-            nameLabel.text = location.name
-            addressLabel.text = location.address
-            propertyTypeIcon.image = location.icon
+            nameLabel.text = landmark.name
+            //addressLabel.text = landmark.address
+            propertyTypeIcon.image = landmark.icon
         }
     }
     

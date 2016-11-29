@@ -11,60 +11,65 @@ import Mapbox
 import UIKit
 
 
-struct Location {
+enum LandmarkType: String {
+    case school = "School"
+    case park = "Park"
+    case hospital = "Hospital"
+}
+
+protocol Landmark {
+    var name: String { get set }
+    var coordinates: CLLocationCoordinate2D { get set }
+    var type: LandmarkType { get }
+    var databaseKey: String { get set }
+}
+
+extension Landmark {
+    
+    var longitude: Double {  return self.coordinates.longitude }
+    var latitude: Double { return self.coordinates.latitude }
+    
+    var icon: UIImage {
+        switch type {
+//        case .fireStation:
+//            return UIImage(named: "firemen")!
+        case .school:
+            return UIImage(named: "school")!
+        case .park:
+            return UIImage(named: "forest")!
+//        case .policeStation:
+//            return UIImage(named: "police")!
+        case .hospital:
+        return UIImage(named: "hospital-building")!
+    }
+ }
+}
+
+struct Hospital: Landmark {
+    var name: String
+    var coordinates: CLLocationCoordinate2D
+    var type: LandmarkType { return .hospital }
+    var databaseKey: String
+    var facilityType: String
+}
+
+struct Park: Landmark {
     var name: String
     var address: String
     var coordinates: CLLocationCoordinate2D
-    var longitude: Double { get { return self.coordinates.longitude } }
-    var latitude: Double { get { return self.coordinates.latitude } }
-    var type: LocationType
-    var icon: UIImage {
-        switch type {
-        case .fireStation:
-        return UIImage(named: "firemen")!
-        case .school:
-        return UIImage(named: "school")!
-        case .park:
-        return UIImage(named: "forest")!
-        case .policeStation:
-        return UIImage(named: "police")!
-        case .hospital:
-        return UIImage(named: "hospital-building")!
-        case .custom:
-        return UIImage(named: "drop_pin_marker")!
-        }
-    }
-
-
-    init(name: String, address: String, coordinates: CLLocationCoordinate2D, type: LocationType) {
-        self.name = name
-        self.address = address
-        self.coordinates = coordinates
-        self.type = type
-    }
-    
+    var type: LandmarkType { return .park }
+    var databaseKey: String
+    var acres: Double
 }
 
-struct School { //other custom fields for schools, add here. If there are other fields, add them in the initializer
-    var location: Location!
-    
-    init(location: Location) {
-        self.location = location
-    }
-    
+struct School: Landmark {
+    var name: String
+    var address: String
+    var coordinates: CLLocationCoordinate2D
+    var type: LandmarkType { return .school }
+    var databaseKey: String
 }
 
-struct PoliceStation {
-    var location: Location!
-}
-
-struct FireStation {
-    var location: Location!
-}
-
-struct Park {
-    var location: Location!
-}
 
 enum LocationType: String {
     case school = "school"
@@ -72,5 +77,4 @@ enum LocationType: String {
     case fireStation = "fireStation"
     case park = "park"
     case hospital = "hospital"
-    case custom = "custom"
 }
