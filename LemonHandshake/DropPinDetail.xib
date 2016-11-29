@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DropPinDetail" customModule="LemonHandshake" customModuleProvider="target">
+            <connections>
+                <outlet property="addressLabel" destination="K76-vK-END" id="wOb-gf-9fA"/>
+                <outlet property="contentView" destination="lLC-UZ-XGW" id="aCe-Xu-EgK"/>
+                <outlet property="distanceLabel" destination="bav-bz-Zvp" id="ziX-gU-aRa"/>
+                <outlet property="latitudeLabel" destination="eu5-GG-bLI" id="50h-tV-KZE"/>
+                <outlet property="longitudeLabel" destination="T59-GB-DlJ" id="YZD-ZF-G2u"/>
+                <outlet property="startInitiativeButton" destination="e4s-Qp-Cnf" id="WJQ-Ma-v2W"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="lLC-UZ-XGW">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="275"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="GOJ-tc-WiX" userLabel="Marked Stack">
+                    <rect key="frame" x="8" y="8" width="358" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Marked Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NtJ-gw-dpB">
+                            <rect key="frame" x="0.0" y="0.0" width="178" height="29.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bav-bz-Zvp">
+                            <rect key="frame" x="0.0" y="29.5" width="65.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="GOJ-tc-WiX" secondAttribute="height" multiplier="179:25" id="rlh-XV-Y3m"/>
+                    </constraints>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CsR-PT-mT2" userLabel="Latitude Stack">
+                    <rect key="frame" x="27" y="122" width="210" height="41"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jF-AU-yVp">
+                            <rect key="frame" x="0.0" y="0.0" width="210" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Latitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eu5-GG-bLI">
+                            <rect key="frame" x="0.0" y="20.5" width="210" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0Js-3q-RYS" userLabel="Longitude Stack">
+                    <rect key="frame" x="208" y="122" width="295" height="41"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Longitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQ1-6w-Df5">
+                            <rect key="frame" x="0.0" y="0.0" width="295" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T59-GB-DlJ">
+                            <rect key="frame" x="0.0" y="20.5" width="295" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="0Js-3q-RYS" secondAttribute="height" multiplier="295:41" id="7uj-y9-eXU"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4s-Qp-Cnf">
+                    <rect key="frame" x="117" y="213" width="141" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Start an initiative?"/>
+                    <connections>
+                        <action selector="startInitiativePressed:" destination="-1" eventType="touchUpInside" id="LYe-50-nrd"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K76-vK-END">
+                    <rect key="frame" x="16" y="54" width="155" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="K76-vK-END" secondAttribute="height" multiplier="31:12" id="ckU-H2-Enu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="CsR-PT-mT2" firstAttribute="trailing" secondItem="0Js-3q-RYS" secondAttribute="leading" constant="13" id="BWE-S6-Wp3"/>
+                <constraint firstAttribute="trailingMargin" secondItem="0Js-3q-RYS" secondAttribute="trailing" constant="-145" id="GuS-z8-6ae"/>
+                <constraint firstAttribute="trailingMargin" secondItem="GOJ-tc-WiX" secondAttribute="trailing" id="LO7-CY-RB2"/>
+                <constraint firstItem="GOJ-tc-WiX" firstAttribute="leading" secondItem="lLC-UZ-XGW" secondAttribute="leadingMargin" id="YWY-9u-eUf"/>
+                <constraint firstAttribute="bottomMargin" secondItem="0Js-3q-RYS" secondAttribute="bottom" constant="112" id="aAu-BU-BCo"/>
+                <constraint firstItem="GOJ-tc-WiX" firstAttribute="bottom" secondItem="K76-vK-END" secondAttribute="top" constant="4" id="g64-QF-dU5"/>
+                <constraint firstItem="K76-vK-END" firstAttribute="leading" secondItem="lLC-UZ-XGW" secondAttribute="leading" constant="16" id="gYq-bU-QVC"/>
+                <constraint firstAttribute="trailing" secondItem="K76-vK-END" secondAttribute="trailing" constant="203" id="hBO-Le-iM1"/>
+                <constraint firstItem="GOJ-tc-WiX" firstAttribute="top" secondItem="lLC-UZ-XGW" secondAttribute="topMargin" id="kqX-Tl-ZiM"/>
+                <constraint firstAttribute="bottomMargin" secondItem="CsR-PT-mT2" secondAttribute="bottom" constant="112" id="nTj-cm-Ya5"/>
+                <constraint firstItem="CsR-PT-mT2" firstAttribute="leading" secondItem="lLC-UZ-XGW" secondAttribute="leadingMargin" constant="11" id="r5q-Jp-rLe"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="130" y="-251.5"/>
+        </view>
+    </objects>
+</document>

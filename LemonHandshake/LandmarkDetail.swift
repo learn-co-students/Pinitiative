@@ -16,6 +16,7 @@ class LandmarkDetail: UIView {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var propertyTypeIcon: UIImageView!
     @IBOutlet weak var propertyPreview: UIImageView!
+    @IBOutlet weak var landmarkNameLabel: UILabel!
     
     var landmark: Landmark! {
         didSet {
@@ -25,19 +26,13 @@ class LandmarkDetail: UIView {
         }
     }
     
-    @IBOutlet weak var headerLabel: UILabel!
-    override init(frame: CGRect) { //Create programatically
-        super.init(frame: frame)
-        commonInit()
-    }
-    
     required init?(coder aDecoder: NSCoder) { //Create via storyboard
         super.init(coder: aDecoder)
         commonInit()
     }
     
     func commonInit() {
-        Bundle.main.loadNibNamed("LocationDetail", owner: self, options: nil)
+        Bundle.main.loadNibNamed("LandmarkDetail", owner: self, options: nil)
         addSubview(contentView)
         
         contentView.translatesAutoresizingMaskIntoConstraints = false

@@ -40,9 +40,9 @@ extension Landmark {
 //        case .policeStation:
 //            return UIImage(named: "police")!
         case .hospital:
-            return UIImage(named: "hospital-building")!
-        }
+        return UIImage(named: "hospital-building")!
     }
+ }
 }
 
 struct Hospital: Landmark {
@@ -71,3 +71,10 @@ struct School: Landmark {
 }
 
 
+enum LocationType: String {
+    case school = "school"
+    case policeStation = "policeStation"
+    case fireStation = "fireStation"
+    case park = "park"
+    case hospital = "hospital"
+}
