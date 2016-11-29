@@ -44,7 +44,9 @@ class FirebaseAPI {
     
     //MARK: - Initiative functions
     static func storeNewInitiative(_ initiative: Initiative) {
-        let initiativeRef = FIRDatabase.database().reference().child("initiatives").child(initiative.databaseKey)
+
+        var initiativeRef = FIRDatabase.database().reference().child("initiatives").child(initiative.databaseKey)
+
         
         var serializedData: [String: Any] = [
             "name": initiative.name,
@@ -57,11 +59,15 @@ class FirebaseAPI {
         ]
         if let landmarkID = initiative.associatedLandmark?.databaseKey {
             serializedData["landmarkID"] = landmarkID
+            
+            initiativeRef = initiativeRef.child(landmarkID)
+
         }
         if let associatedDate = initiative.associatedDate {
             serializedData["associatedDate"] = associatedDate.timeIntervalSince1970
         }
         
+
         initiativeRef.setValue(serializedData)
         
         

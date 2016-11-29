@@ -12,95 +12,144 @@ import JSQMessagesViewController
 
 class ChatDetailViewController: JSQMessagesViewController {
     
-    //var chatCollectionView: JSQMessagesCollectionView!
-    
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.orange)
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.blue)
     var messages = [JSQMessage]()
+    
+    //var sendersId: String!
+    //var sendersDisplayName: String!
+    
     var ref: FIRDatabaseReference!
     fileprivate var refHandle: FIRDatabaseHandle!
     
+    var initiativeiD = "Fixing Potholes"
+    //testing with rand generated initiative id
+
     
-    var sendersId: String!
-    var sendersDisplayName: String!
-    //let chatCollectionView: JSQMessagesCollectionView! = nil
-
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.senderId = "2"
         self.senderDisplayName = "Tameika"
-        loadMessages()
-        print(messages)
         
-        self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
+        
+        
+        
+        
+        let uuid = UserDefaults.standard.object(forKey: "UUID") as? String
+        if let myID = uuid{
+            //then do something with uuid
+        }else{
+            let newId = UUID().uuidString
+            UserDefaults.standard.set(newId, forKey: "UUID")
+        }
+        
+        
+        
+
+        connectToChat()
+        print(messages)
+        collectionView.reloadData()
+        
+        //self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         // also have outgoing here, fyi
         
+        
+        
     }
+    
+    func connectToChat() {
+        
+        ref = FIRDatabase.database().reference()
+        
+        let chatRef = ref.child("Chats").child(initiativeiD)
+        let msgRef = chatRef.child("Messages")
 
-    // FOR FORMING VIEW CONTROLLER (will move struct)
-    
-    struct MessageFields {
-        static let name = "name"
-        static let text = "text"
-        static let photoURL = "photoURL"
-        static let imageURL = "imageURL"
+   
+        
+        msgRef.observe(.childAdded, with: { snapshot in
+
+            print(snapshot.value)
+            let messageDictionary = snapshot.value as! [String:String]
+            
+            print("Dictionary \(messageDictionary)")
+            
+            
+            let userID = messageDictionary["user"]
+            let message = messageDictionary["message"]
+            let id = messageDictionary["id"]
+           
+            print(userID)
+            print(message)
+            print(id)
+            
+            
+            guard let user = userID else { return }
+            guard let  unwrappedid = id else { return }
+            
+            
+            guard let jsqMessage = JSQMessage(senderId: unwrappedid, displayName: userID, text: message) else { return }
+            
+//            guard let jsqMessage = JSQMessage(senderId: userID, senderDisplayName: self.senderDisplayName, date: nil, text: message) else { return }
+
+            self.messages.append(jsqMessage)
+            self.collectionView.reloadData()
+            
+            
+        })
+        
+        
+        
+        let usersRef = ref.child("Members").child(initiativeiD)
+        
+        usersRef.observe(.childAdded, with: { snapshot in
+            
+            let users = snapshot.value as! [String : String]
+            
+            let userKeys = users.keys
+            // userKeys will be an array of [A712, B614]
+            
+            for user in userKeys {
+                
+                let individualUserRef = self.ref.child("Users")
+                
+                individualUserRef.observeSingleEvent(of: .value, with: { snapshot in
+                    
+                    let userInfo = snapshot.value as! [String : String]
+                    
+                    let name = userInfo["name"] ?? "No Name"
+                    
+                    usersRef.setValue(userInfo)
+                   
+                
+                })
+                
+                
+            }
+            
+            
+            
+        })
+        
+        
     }
     
     
-//    let layout: JSQMessagesCollectionViewFlowLayout = JSQMessagesCollectionViewFlowLayout()
-//    let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
     
-    
-    
-    
-  // MESSAGE DATA FOR TESTING
-    
-    func loadMessages() {
-        
-        guard let message1 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hey") else { return }
-        guard let message2 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hi") else { return }
-        guard let message3 = JSQMessage(senderId: "1", displayName: "Johann", text: "Hello") else { return }
-        
-        guard let message4 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Hola") else { return }
-        guard let message5 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Buenos Dias") else { return }
-        guard let message6 = JSQMessage(senderId: "2", displayName: "Tameika", text: "Buenos Tardes") else { return }
-        
-        self.messages.append(message1)
-        self.messages.append(message2)
-        self.messages.append(message3)
-        self.messages.append(message4)
-        self.messages.append(message5)
-        self.messages.append(message6)
- 
-    }
-    
-    
-    
-    
-    //FOR HANDLING MESSAGES
+    //FOR HANDLING MESSAGES IN VIEWCONTROLLER
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(self.messages.count)
         return self.messages.count
     }
     
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
-        
-//        let messageSnapShot = self.messages[indexPath.row]
-//        let message = messageSnapShot.value as! [String:String]
-//        let name = message[MessageFields.name]! as String
-//        let text = message[MessageFields.text]! as String
-//        var textMessage = JSQMessage(senderId: name, displayName: name, text: text)
-        
-        let textMessage = self.messages[indexPath.row]
-        print(textMessage)
-        return textMessage
-        
+        let data = messages[indexPath.row]
+        return data
     }
     
     
-
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, didDeleteMessageAt indexPath: IndexPath!) {
         self.messages.remove(at: indexPath.row)
@@ -111,13 +160,30 @@ class ChatDetailViewController: JSQMessagesViewController {
         //create a message object
         //append it to the array
         
-        guard let newMessage = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text) else { return }
-        print(newMessage)
-        self.messages.append(newMessage)
-        self.collectionView.reloadData()
+        
+        ref = FIRDatabase.database().reference()
+        
+        let chatRef = ref.child("Chats").child(initiativeiD)
+        let msgRef = chatRef.child("Messages")
+        
+        var dict = [String:String]()
+
+        
+        dict["user"] = self.senderDisplayName
+        dict["message"] = text
+        dict["id"] = self.senderId
+        
+        msgRef.childByAutoId().setValue(dict)
+//        guard let newMessage = JSQMessage(senderId: self.senderId, displayName: self.senderDisplayName, text: text) else { return }
+//        
+//        messages.append(newMessage)
+//        print(newMessage)
+        
+        self.finishSendingMessage()
+    
+        
+        
     }
-    
-    
     
     
     
@@ -126,7 +192,7 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         
-            let message = messages[indexPath.item]
+        let message = messages[indexPath.item]
         if message.senderId == senderId {
             return outgoingBubble
         } else {
@@ -138,14 +204,11 @@ class ChatDetailViewController: JSQMessagesViewController {
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         return nil
     }
- 
     
- 
-
-
+    
+    
+    
+    
 }
-
-
-
 
 
