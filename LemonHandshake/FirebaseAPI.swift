@@ -61,6 +61,11 @@ class FirebaseAPI {
         }
         
         initiativeRef.setValue(serializedData)
+        
+        
+        let userInitiativesRef = FIRDatabase.database().reference().child(initiative.leader).child("initiatives")
+        
+        userInitiativesRef.updateChildValues([initiative.databaseKey:true])
     }
     
     static func retrieveInitiative(withKey key: String, completion: @escaping (Initiative)-> Void ) {
