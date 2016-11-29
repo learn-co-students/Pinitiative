@@ -33,7 +33,7 @@ class StartInitiativeViewController: UIViewController {
         view.sendSubview(toBack: imageView)
         
         addInitiativeLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).offset(-283)
+            make.bottomMargin.equalTo(self.view).offset(-100)
             make.left.equalTo(self.view).offset(80)
             make.width.equalTo(125)
             addInitiativeLabel.layer.cornerRadius = 20
@@ -92,7 +92,9 @@ class StartInitiativeViewController: UIViewController {
             
             let mapStore = MapDataStore.sharedInstance
             
-            Initiative.startNewInitiativeAtLocation(latitude: mapStore.userLatitude, longitude: mapStore.userLongitude, initiativeName: nameTextField.text!, shortDescription: "", longDescription: descriptionTextField.text!)
+            print("ADDING INITIATIVE AT \(mapStore.userCoordinate)")
+            
+            Initiative.startNewInitiativeAtLocation(latitude: mapStore.userLatitude, longitude: mapStore.userLongitude, initiativeName: nameTextField.text!, initiativeDescription: descriptionTextField.text!, associatedDate: datePickerView.date)
             
             let alertController = UIAlertController(title: nil, message: "\(nameTextField.text!) added to your initiatives!", preferredStyle: UIAlertControllerStyle.alert)
             

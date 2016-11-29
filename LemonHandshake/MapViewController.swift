@@ -29,7 +29,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         createMap()
         view.addSubview(mapView)
         mapView.delegate = self
-        refreshLandmarks()
+        //refreshLandmarks()
 //        addPointAnnotations() //First load
 //        activateGestureRecognizer()
         
@@ -53,7 +53,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     */
     
     func refreshLandmarks(){
-        FirebaseAPI.geoFirePullNearbyLandmarks (within: 2) { (landmark) in
+        FirebaseAPI.geoFirePullNearbyLandmarks (within: 2, ofLocation: CLLocation(latitude: store.userLatitude, longitude: store.userLongitude)) { (landmark) in
             self.store.landmarks.append(landmark)
             self.addSinglePointAnnotation(for: landmark)
         }
@@ -75,9 +75,13 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         guard let userLocation = mapView.userLocation else { return }
         let center = CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude)
         store.userCoordinate = userLocation.coordinate
-        mapView.latitude = 40.771336
-        mapView.longitude = -73.919845
+        store.userLatitude = userLocation.coordinate.latitude
+        store.userLongitude = userLocation.coordinate.longitude
+        mapView.latitude = userLocation.coordinate.latitude
+        mapView.longitude = userLocation.coordinate.longitude
         mapView.setCenter(center, animated: true)
+        print("LOCATION: Coordinate\(store.userCoordinate) should equal \(userLocation.coordinate)")
+        refreshLandmarks()
     }
     
     
@@ -107,6 +111,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     }
     
     func addSinglePointAnnotation(for landmark: Landmark) {
+        
+        landmark.type
         
         
         if let landmark = landmark as? Park {
