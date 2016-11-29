@@ -33,7 +33,7 @@ class StartInitiativeViewController: UIViewController {
         view.sendSubview(toBack: imageView)
         
         addInitiativeLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).offset(-100)
+            make.bottomMargin.equalTo(self.view).offset(-283)
             make.left.equalTo(self.view).offset(80)
             make.width.equalTo(125)
             addInitiativeLabel.layer.cornerRadius = 20

@@ -112,9 +112,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     
     func addSinglePointAnnotation(for landmark: Landmark) {
         
-        landmark.type
-        
-        
         if let landmark = landmark as? Park {
             let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
             point.image = landmark.icon
@@ -198,8 +195,6 @@ extension MapViewController {
             }
         
         }
-        
-        
         
     }
     
