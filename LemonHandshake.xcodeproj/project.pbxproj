@@ -224,9 +224,9 @@
 				92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */,
 				837C2F591DE4942500E076C9 /* AppController.swift */,
 				8326CB271DECD923009EC996 /* DropPinDetailViewController.swift */,
-				BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */,
-				BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */,
 				83509E411DE63F9300D8C18B /* LandmarkDetailViewController.swift */,
+				BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */,
+				BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */
 			);
 			name = Controllers;
 			sourceTree = "<group>";

@@ -17,6 +17,8 @@ class FirebaseAuth {
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
             if let error = error {
                 returnError = error
+            } else {
+                FirebaseAPI.storeNewUser(firstName: "Test", lastName: "Name")
             }
         })
         
@@ -43,5 +45,9 @@ class FirebaseAuth {
         }
         
         return nil
+    }
+    
+    class var currentUserID: String? {
+        return FIRAuth.auth()?.currentUser?.uid
     }
 }

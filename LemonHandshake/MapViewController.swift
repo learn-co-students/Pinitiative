@@ -37,11 +37,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         FirebaseAPI.geoFirePullNearbyLandmarks (within: 2) { (landmark) in
             self.addSinglePointAnnotation(for: landmark)
         }
-        //        addPointAnnotations() //First load
-        //        activateGestureRecognizer()
-        
-        
-        store.generateData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,6 +48,13 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     
     // MARK: - Navigation
     
+    
+    func refreshLandmarks(){
+        FirebaseAPI.geoFirePullNearbyLandmarks (within: 2, ofLocation: CLLocation(latitude: store.userLatitude, longitude: store.userLongitude)) { (landmark) in
+            self.store.landmarks.append(landmark)
+            self.addSinglePointAnnotation(for: landmark)
+        }
+    }
     
     func createMap() {
         mapView = MGLMapView(frame: view.bounds)
@@ -69,9 +71,13 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         guard let userLocation = mapView.userLocation else { return }
         let center = CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude)
         store.userCoordinate = userLocation.coordinate
-        mapView.latitude = 40.771336 //for testing, will change to user location
-        mapView.longitude = -73.919845 //for testing, will change to user location
+        store.userLatitude = userLocation.coordinate.latitude
+        store.userLongitude = userLocation.coordinate.longitude
+        mapView.latitude = userLocation.coordinate.latitude
+        mapView.longitude = userLocation.coordinate.longitude
         mapView.setCenter(center, animated: true)
+        print("LOCATION: Coordinate\(store.userCoordinate) should equal \(userLocation.coordinate)")
+        refreshLandmarks()
     }
     
     
@@ -102,7 +108,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     }
     
     func addSinglePointAnnotation(for landmark: Landmark) {
-        
         
         if let landmark = landmark as? Park {
             let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
@@ -234,8 +239,6 @@ extension MapViewController {
             destVC.location = sender as! DropPinLocation
             
         }
-        
-        
     }
     
 }
