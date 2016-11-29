@@ -24,8 +24,8 @@ class DropPinDetail: UIView {
     var location: DropPinLocation! { //custom class for drop Pin that has location
         didSet {
             addressLabel.text = location.address
-            latitudeLabel.text = String(location.coordinate.latitude)
-            longitudeLabel.text = String(location.coordinate.longitude)
+            latitudeLabel.text = String(format: "%.2f", location.coordinate.latitude)
+            longitudeLabel.text = String(format: "%.2f", location.coordinate.longitude)
         }
     }
     
@@ -38,6 +38,7 @@ class DropPinDetail: UIView {
         Bundle.main.loadNibNamed("DropPinDetail", owner: self, options: nil)
         addSubview(contentView)
         
+//        startInitiativeButton.backgroundColor = UIColor.black
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
@@ -48,3 +49,4 @@ class DropPinDetail: UIView {
     
     
 }
+

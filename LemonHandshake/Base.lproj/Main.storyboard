@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -113,7 +113,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.60961579623287676" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.60645869006849318" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="aB7-kw-958" firstAttribute="width" secondItem="TEX-YY-XWj" secondAttribute="width" multiplier="0.75" constant="61.75" id="1Zj-YP-fLH"/>
                             <constraint firstItem="aB7-kw-958" firstAttribute="centerY" secondItem="TEX-YY-XWj" secondAttribute="centerY" multiplier="0.75" constant="216.875" id="IO3-jY-x2i"/>
@@ -121,11 +121,7 @@
                         </constraints>
                     </view>
                     <connections>
-<<<<<<< HEAD
-                        <outlet property="landmarkDetailView" destination="aB7-kw-958" id="KZz-Iv-AVi"/>
-=======
                         <outlet property="landmarkDetailView" destination="aB7-kw-958" id="8ca-tA-hwS"/>
->>>>>>> master
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsi-Bm-W0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -696,35 +692,38 @@
                         <viewControllerLayoutGuide type="top" id="0VD-gW-YWC"/>
                         <viewControllerLayoutGuide type="bottom" id="5xs-OF-fty"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="sPb-pO-1Pg">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="sPb-pO-1Pg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ktH-XF-pWz">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ktH-XF-pWz" customClass="DropPinDetail" customModule="LemonHandshake" customModuleProvider="target">
                                 <rect key="frame" x="20" y="349" width="339" height="251"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.60961579623287676" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.60999999999999999" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ktH-XF-pWz" firstAttribute="leading" secondItem="sPb-pO-1Pg" secondAttribute="leading" constant="20" id="2Gn-wE-YCY"/>
+                            <constraint firstItem="ktH-XF-pWz" firstAttribute="top" secondItem="0VD-gW-YWC" secondAttribute="bottom" constant="329" id="Ndx-jf-DA7"/>
+                            <constraint firstItem="5xs-OF-fty" firstAttribute="top" secondItem="ktH-XF-pWz" secondAttribute="bottom" constant="67" id="dyt-Ti-ACH"/>
+                            <constraint firstAttribute="trailing" secondItem="ktH-XF-pWz" secondAttribute="trailing" constant="16" id="jXw-79-UVZ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dropPinDetailView" destination="ktH-XF-pWz" id="rfF-TK-CL3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7x-nw-aBN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="840.79999999999995" y="-994.45277361319347"/>
+            <point key="canvasLocation" x="948" y="-798"/>
         </scene>
     </scenes>
     <resources>
         <image name="backgroundNYC" width="1326" height="1291"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
-        <segue reference="09l-Va-NrD"/>
-        <segue reference="zkx-6j-hXv"/>
-=======
         <segue reference="zkx-6j-hXv"/>
         <segue reference="h5K-wb-Q3f"/>
->>>>>>> master
         <segue reference="peZ-TE-S1e"/>
     </inferredMetricsTieBreakers>
 </document>

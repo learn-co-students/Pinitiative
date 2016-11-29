@@ -10,8 +10,9 @@ import UIKit
 
 class DropPinDetailViewController: UIViewController {
 
-    var location: DropPinLocation!
+    @IBOutlet weak var dropPinDetailView: DropPinDetail!
     
+    var location: DropPinLocation!
     
     override func viewDidLoad() {
         
@@ -21,7 +22,7 @@ class DropPinDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        landmarkDetailView.location = location
+        dropPinDetailView.location = location
     }
     
     func dismissViewController() {

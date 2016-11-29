@@ -20,8 +20,16 @@ class LandmarkDetail: UIView {
     
     var landmark: Landmark! {
         didSet {
+            if landmark.type == .school {
+                let school = landmark as! School
+                addressLabel.text = school.address
+            } else if landmark.type == .park {
+                let park = landmark as! Park
+                addressLabel.text = park.address
+            } else {
+                addressLabel.text = "Watch out for next update!"
+            }
             nameLabel.text = landmark.name
-            //addressLabel.text = landmark.address
             propertyTypeIcon.image = landmark.icon
         }
     }
@@ -42,7 +50,6 @@ class LandmarkDetail: UIView {
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
 
-        
     }
     
 }
