@@ -17,10 +17,8 @@ class ChatDetailViewController: JSQMessagesViewController {
     var messages = [JSQMessage]()
     
     var ref: FIRDatabaseReference!
-    fileprivate var refHandle: FIRDatabaseHandle!
     
     var initiative: Initiative!
-    //testing with rand generated initiative id
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +28,6 @@ class ChatDetailViewController: JSQMessagesViewController {
         
         self.senderId = "2"
         self.senderDisplayName = "Tameika"
-        
-//        let uuid = UserDefaults.standard.object(forKey: "UUID") as? String
-//        if let myID = uuid{
-//            //then do something with uuid
-//        }else{
-//            let newId = UUID().uuidString
-//            UserDefaults.standard.set(newId, forKey: "UUID")
-//        }
         
     }
     
@@ -131,9 +121,6 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        //create a message object
-        //append it to the array
-        
         
         ref = FIRDatabase.database().reference()
         
@@ -147,10 +134,6 @@ class ChatDetailViewController: JSQMessagesViewController {
         dict["userID"] = self.senderId
         
         msgRef.childByAutoId().setValue(dict)
-//        guard let newMessage = JSQMessage(senderId: self.senderId, displayName: self.senderDisplayName, text: text) else { return }
-//        
-//        messages.append(newMessage)
-//        print(newMessage)
         
         self.finishSendingMessage()
         
