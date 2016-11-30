@@ -12,6 +12,13 @@ import SnapKit
 
 class StartInitiativeViewController: UIViewController {
 
+    @IBAction func datePickerSwitch(_ sender: Any) {
+        
+        datePickerView.isHidden = datePickerView.isHidden == false ? true : false
+        
+     
+    }
+    
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var descriptionTextField: UITextField!

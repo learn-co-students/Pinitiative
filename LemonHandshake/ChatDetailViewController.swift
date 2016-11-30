@@ -16,91 +16,66 @@ class ChatDetailViewController: JSQMessagesViewController {
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.blue)
     var messages = [JSQMessage]()
     
-    //var sendersId: String!
-    //var sendersDisplayName: String!
-    
     var ref: FIRDatabaseReference!
     fileprivate var refHandle: FIRDatabaseHandle!
     
-    var initiativeiD = "Fixing Potholes"
+    var initiative: Initiative!
     //testing with rand generated initiative id
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.senderId = "2"
-        self.senderDisplayName = "Tameika"
-        
-        
-        
-        
-        
-        let uuid = UserDefaults.standard.object(forKey: "UUID") as? String
-        if let myID = uuid{
-            //then do something with uuid
-        }else{
-            let newId = UUID().uuidString
-            UserDefaults.standard.set(newId, forKey: "UUID")
-        }
-        
-        
-        
-
         connectToChat()
         print(messages)
         collectionView.reloadData()
         
-        //self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
-        // also have outgoing here, fyi
+        self.senderId = "2"
+        self.senderDisplayName = "Tameika"
         
-        
+//        let uuid = UserDefaults.standard.object(forKey: "UUID") as? String
+//        if let myID = uuid{
+//            //then do something with uuid
+//        }else{
+//            let newId = UUID().uuidString
+//            UserDefaults.standard.set(newId, forKey: "UUID")
+//        }
         
     }
+    
     
     func connectToChat() {
         
         ref = FIRDatabase.database().reference()
         
-        let chatRef = ref.child("Chats").child(initiativeiD)
+        let chatRef = ref.child("Chats").child(initiative.databaseKey)
         let msgRef = chatRef.child("Messages")
-
-   
         
         msgRef.observe(.childAdded, with: { snapshot in
+        print(snapshot.value)
+            
+        let messageDictionary = snapshot.value as! [String:String]
+        print("Dictionary \(messageDictionary)")
+        
+        
+        guard let username = messageDictionary["username"] else { return }
+        guard let message = messageDictionary["message"] else { return }
+        guard let userID = messageDictionary["userID"] else { return }
+       
+        print(username)
+        print(message)
+        print(userID)
+        
+        
+        guard let jsqMessage = JSQMessage(senderId: userID, displayName: username, text: message) else { return }
 
-            print(snapshot.value)
-            let messageDictionary = snapshot.value as! [String:String]
-            
-            print("Dictionary \(messageDictionary)")
-            
-            
-            let userID = messageDictionary["user"]
-            let message = messageDictionary["message"]
-            let id = messageDictionary["id"]
-           
-            print(userID)
-            print(message)
-            print(id)
-            
-            
-            guard let user = userID else { return }
-            guard let  unwrappedid = id else { return }
-            
-            
-            guard let jsqMessage = JSQMessage(senderId: unwrappedid, displayName: userID, text: message) else { return }
-            
-//            guard let jsqMessage = JSQMessage(senderId: userID, senderDisplayName: self.senderDisplayName, date: nil, text: message) else { return }
-
-            self.messages.append(jsqMessage)
-            self.collectionView.reloadData()
+        self.messages.append(jsqMessage)
+        self.collectionView.reloadData()
             
             
         })
         
         
         
-        let usersRef = ref.child("Members").child(initiativeiD)
+        let usersRef = ref.child("Members").child(initiative.databaseKey)
         
         usersRef.observe(.childAdded, with: { snapshot in
             
@@ -150,7 +125,6 @@ class ChatDetailViewController: JSQMessagesViewController {
     }
     
     
-    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, didDeleteMessageAt indexPath: IndexPath!) {
         self.messages.remove(at: indexPath.row)
     }
@@ -163,15 +137,14 @@ class ChatDetailViewController: JSQMessagesViewController {
         
         ref = FIRDatabase.database().reference()
         
-        let chatRef = ref.child("Chats").child(initiativeiD)
+        let chatRef = ref.child("Chats").child(initiative.databaseKey)
         let msgRef = chatRef.child("Messages")
         
         var dict = [String:String]()
-
         
-        dict["user"] = self.senderDisplayName
+        dict["username"] = self.senderDisplayName
         dict["message"] = text
-        dict["id"] = self.senderId
+        dict["userID"] = self.senderId
         
         msgRef.childByAutoId().setValue(dict)
 //        guard let newMessage = JSQMessage(senderId: self.senderId, displayName: self.senderDisplayName, text: text) else { return }
@@ -180,8 +153,6 @@ class ChatDetailViewController: JSQMessagesViewController {
 //        print(newMessage)
         
         self.finishSendingMessage()
-    
-        
         
     }
     
@@ -205,8 +176,7 @@ class ChatDetailViewController: JSQMessagesViewController {
         return nil
     }
     
-    
-    
+
     
     
 }
