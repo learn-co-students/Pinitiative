@@ -32,10 +32,6 @@ class ChatDetailViewController: JSQMessagesViewController {
         self.senderId = "2"
         self.senderDisplayName = "Tameika"
         
-        
-        
-        
-        
         let uuid = UserDefaults.standard.object(forKey: "UUID") as? String
         if let myID = uuid{
             //then do something with uuid
@@ -44,17 +40,9 @@ class ChatDetailViewController: JSQMessagesViewController {
             UserDefaults.standard.set(newId, forKey: "UUID")
         }
         
-        
-        
-
         connectToChat()
         print(messages)
         collectionView.reloadData()
-        
-        //self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
-        // also have outgoing here, fyi
-        
-        
         
     }
     
@@ -64,8 +52,6 @@ class ChatDetailViewController: JSQMessagesViewController {
         
         let chatRef = ref.child("Chats").child(initiativeiD)
         let msgRef = chatRef.child("Messages")
-
-   
         
         msgRef.observe(.childAdded, with: { snapshot in
 
@@ -89,8 +75,6 @@ class ChatDetailViewController: JSQMessagesViewController {
             
             
             guard let jsqMessage = JSQMessage(senderId: unwrappedid, displayName: userID, text: message) else { return }
-            
-//            guard let jsqMessage = JSQMessage(senderId: userID, senderDisplayName: self.senderDisplayName, date: nil, text: message) else { return }
 
             self.messages.append(jsqMessage)
             self.collectionView.reloadData()
@@ -151,7 +135,7 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     
     
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didDeleteMessageAt indexPath: IndexPath!) {
+    override func collectionView(_ collectionView: JSQMessag esCollectionView!, didDeleteMessageAt indexPath: IndexPath!) {
         self.messages.remove(at: indexPath.row)
     }
     
@@ -180,8 +164,6 @@ class ChatDetailViewController: JSQMessagesViewController {
 //        print(newMessage)
         
         self.finishSendingMessage()
-    
-        
         
     }
     
@@ -205,8 +187,7 @@ class ChatDetailViewController: JSQMessagesViewController {
         return nil
     }
     
-    
-    
+
     
     
 }
