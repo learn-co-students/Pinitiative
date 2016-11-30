@@ -107,6 +107,14 @@ class NearbyInitiativesTableViewController: UITableViewController {
         return cell
     }
   
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "localInitiativeDetail" {
+            guard let dest = segue.destination as? InitiativeDetailViewController else { return }
+            
+            let initiative = nearbyInitiatives[(tableView.indexPathForSelectedRow?.row)!]
+            
+            dest.initiative = initiative
+        }
+    }
    
 }

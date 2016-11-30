@@ -357,7 +357,7 @@
                                     <outlet property="followersLabel" destination="E2Z-R3-TLq" id="Owf-ov-DbM"/>
                                     <outlet property="followersTextLabel" destination="KjX-hR-Urp" id="YJY-8b-4eS"/>
                                     <outlet property="nearbyInitiativeNameLabel" destination="yhA-XN-qb7" id="lUm-J3-d4F"/>
-                                    <segue destination="qOK-cb-7fF" kind="show" identifier="" id="nR9-YX-1Fo"/>
+                                    <segue destination="qOK-cb-7fF" kind="show" identifier="localInitiativeDetail" id="nR9-YX-1Fo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -534,7 +534,7 @@
                         <viewControllerLayoutGuide type="bottom" id="WFe-aP-KtS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Qbu-D6-kgJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Initiative Name" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0pT-hP-UOp">
@@ -662,11 +662,8 @@
         <image name="backgroundNYC" width="1326" height="1291"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AlA-vr-7Py"/>
-        <segue reference="nR9-YX-1Fo"/>
-        <segue reference="h5K-wb-Q3f"/>
         <segue reference="09l-Va-NrD"/>
+        <segue reference="nR9-YX-1Fo"/>
         <segue reference="AlA-vr-7Py"/>
-        <segue reference="peZ-TE-S1e"/>
     </inferredMetricsTieBreakers>
 </document>
