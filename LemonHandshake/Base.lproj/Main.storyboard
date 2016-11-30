@@ -126,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsi-Bm-W0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="38" y="-682"/>
+            <point key="canvasLocation" x="670" y="-663"/>
         </scene>
         <!--App Controller-->
         <scene sceneID="HA5-JS-AIs">
@@ -201,7 +201,6 @@
                     </navigationItem>
                     <connections>
                         <segue destination="zYc-Au-Tv4" kind="presentation" identifier="annotationSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="MVg-bT-R5e"/>
-                        <segue destination="zRk-UF-MBE" kind="presentation" identifier="dropPinSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="YFK-st-QwJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TU8-j5-9ac" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -221,7 +220,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HeM-41-JAi" id="hIk-I7-shM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Initiative Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pt-gK-HJi">
@@ -312,7 +311,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eiG-3N-CiO" id="BpV-ex-tVk">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Local Initiative" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhA-XN-qb7">
@@ -658,48 +657,13 @@
             </objects>
             <point key="canvasLocation" x="-1006" y="32"/>
         </scene>
-        <!--Drop Pin Detail View Controller-->
-        <scene sceneID="7uk-wQ-Q1J">
-            <objects>
-                <viewController id="zRk-UF-MBE" customClass="DropPinDetailViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5DG-fk-M8G"/>
-                        <viewControllerLayoutGuide type="bottom" id="X9W-Kp-B4E"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="NmI-jM-fP4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpM-6J-z49" customClass="DropPinDetail" customModule="LemonHandshake" customModuleProvider="target">
-                                <rect key="frame" x="16" y="345" width="343" height="244"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="zpM-6J-z49" secondAttribute="height" multiplier="374:275" constant="11.159999999999968" id="7M8-br-e53"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.60961579619999995" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="zpM-6J-z49" firstAttribute="centerX" secondItem="NmI-jM-fP4" secondAttribute="centerX" id="cIZ-8Y-lg4"/>
-                            <constraint firstItem="zpM-6J-z49" firstAttribute="centerY" secondItem="NmI-jM-fP4" secondAttribute="centerY" multiplier="0.75" constant="216.875" id="cxn-Mc-KmP"/>
-                            <constraint firstItem="zpM-6J-z49" firstAttribute="width" secondItem="NmI-jM-fP4" secondAttribute="width" multiplier="0.75" constant="61.75" id="pEX-4C-tfo"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="dropPinDetailView" destination="zpM-6J-z49" id="dsH-jB-1UK"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rZN-sL-1dK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="926" y="-682"/>
-        </scene>
     </scenes>
     <resources>
         <image name="backgroundNYC" width="1326" height="1291"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="09l-Va-NrD"/>
-        <segue reference="zkx-6j-hXv"/>
+        <segue reference="AlA-vr-7Py"/>
         <segue reference="peZ-TE-S1e"/>
     </inferredMetricsTieBreakers>
 </document>
