@@ -57,7 +57,8 @@ class FirebaseAPI {
             "longitude": initiative.location.coordinate.longitude,
             "leader": initiative.leader,
             "members": [initiative.leader:true],
-            "createdAt": initiative.createdAt.timeIntervalSince1970
+            "createdAt": initiative.createdAt.timeIntervalSince1970,
+            "expirationDate": initiative.createdAt.timeIntervalSince1970
         ]
         if let landmarkID = initiative.associatedLandmark?.databaseKey {
             serializedData["landmarkID"] = landmarkID
@@ -82,6 +83,84 @@ class FirebaseAPI {
         }
     }
     
+    static func archive(initiative: Initiative) {
+        
+        //Easier access to the initiative key
+        let initiativeKey = initiative.databaseKey
+        
+        //Create the ref for the old location of the initiative data
+        let targetInitiativeRef = FIRDatabase.database().reference().child("initiatives").child(initiativeKey)
+        
+        //Create the ref for the new location of the initiative data in the archive section
+        let archivedInitiativeRef = FIRDatabase.database().reference().child("archive").child("initiatives").child(initiativeKey)
+        
+        //Create the ref for the GeoFire location of the initiative, if it has one.
+        var geofireRef: FIRDatabaseReference? = nil
+        
+        //Create the ref for the chat
+        var chatRef = FIRDatabase.database().reference().child("Chats").child(initiativeKey)
+        
+        if initiative.associatedLandmark == nil {
+            geofireRef = FIRDatabase.database().reference().child("geofire").child(initiativeKey)
+        }
+        
+        //Get the data located at the old location
+        targetInitiativeRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            //Convert the snaphot value to a usable dictionary
+            guard let dictionary = snapshot.value as? [String:Any] else { print("FAILURE: Error with snapshot for archiving initiative with key: \(initiativeKey)"); return }
+            
+            //Take the member info out of the main dictionary
+            guard let members = dictionary["members"] as? [String: Bool] else { print("FAILURE: Could not retrieve members for while archiving initiative with key: \(initiativeKey)"); return }
+            
+            //Iterate over the members
+            for member in members {
+                
+                //If that member is still a member of the initiative...
+                if member.value == true {
+                    
+                    //...create an easy access variable...
+                    let userKey = member.key
+                    
+                    //...find the ref for the user in firebase...
+                    let userRef = FIRDatabase.database().reference().child("users").child(userKey)
+                    
+                    //...and set the value for the initiative to false in the intiative section of their info
+                    userRef.child("initiatives").updateChildValues([initiativeKey:false])
+                }
+            }
+            
+            //Put the dictionary into the new location for the archive
+            archivedInitiativeRef.setValue(dictionary)
+            
+            //Once everything is complete, delete the info from the old location...
+            targetInitiativeRef.removeValue(completionBlock: { (error, ref) in
+                print("WARNING: Initiative \(initiative.name) with key \(initiativeKey) has expired and has been archived")
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+            })
+            
+            //...remove the info from the GeoFire location, should it exist...
+            if let geofireRef = geofireRef {
+                geofireRef.removeValue(completionBlock: { (error, ref) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                })
+            }
+            
+            //...and remove the chat from the database
+            chatRef.removeValue(completionBlock: { (error, ref) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+            })
+        })
+        
+        
+    }
+    
     static func retrieveInitiative(withKey key: String, completion: @escaping (Initiative)-> Void ) {
         let targetInitiativeRef = FIRDatabase.database().reference().child("initiatives").child(key)
         
@@ -95,14 +174,20 @@ class FirebaseAPI {
                 let longitude = dictionary["longitude"] as? Double,
                 let leader = dictionary["leader"] as? String,
                 let members = dictionary["members"] as? [String:Any],
-                let createdAt = dictionary["createdAt"] as? TimeInterval
+                let createdAt = dictionary["createdAt"] as? TimeInterval,
+                let expirationDate = dictionary["expirationDate"] as? TimeInterval
                 else { print("FAILURE: Could not parse data for initiative with key: \(key)");return }
             
+            if Date() > Date(timeIntervalSince1970: expirationDate).daysInFuture(30) {
+            }
+            
+            
             let associatedDate: Date? = Date(optionalTimeIntervalSince1970: (dictionary["associatedDate"] as? TimeInterval) ?? nil)
+
             
             if let landmark = dictionary["landmark"] as? String {
                 FirebaseAPI.retrieveLandmark(withKey: landmark, completion: { (landmark) in
-                    var initiative = Initiative(name: name, associatedLandmark: landmark, databaseKey: key, leader: leader, initiativeDescription: initiativeDescription, createdAt: Date(timeIntervalSince1970: createdAt), associatedDate: associatedDate)
+                    var initiative = Initiative(name: name, associatedLandmark: landmark, databaseKey: key, leader: leader, initiativeDescription: initiativeDescription, createdAt: Date(timeIntervalSince1970: createdAt), associatedDate: associatedDate, expirationDate: Date(timeIntervalSince1970: expirationDate))
                     
                     for member in members {
                         initiative.members.append(member.key)
@@ -111,7 +196,7 @@ class FirebaseAPI {
                     completion(initiative)
                 })
             } else {
-                var initiative = Initiative(name: name, latitude: latitude, longitude: longitude, databaseKey: key, leader: leader, initiativeDescription: initiativeDescription, createdAt: Date(timeIntervalSince1970: createdAt), associatedDate: associatedDate)
+                var initiative = Initiative(name: name, latitude: latitude, longitude: longitude, databaseKey: key, leader: leader, initiativeDescription: initiativeDescription, createdAt: Date(timeIntervalSince1970: createdAt), associatedDate: associatedDate, expirationDate: Date(timeIntervalSince1970: expirationDate))
                 for member in members {
                     initiative.members.append(member.key)
                 }

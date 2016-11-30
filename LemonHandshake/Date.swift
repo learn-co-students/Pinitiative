@@ -14,4 +14,10 @@ extension Date {
         dateFormatter.dateFormat = string
         return dateFormatter.string(from: self)
     }
+    
+    func daysInFuture(_ days: Int) -> Date {
+        let seconds: TimeInterval = TimeInterval(days * 24 * 60 * 60)
+        
+        return self.addingTimeInterval(seconds)
+    }
 }
