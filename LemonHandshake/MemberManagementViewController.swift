@@ -30,10 +30,10 @@ class MemberManagementViewController: UIViewController {
         
         
         calendarWebView.snp.makeConstraints { (make) in
-            make.width.equalTo(self.view)
-            make.height.equalTo(300)
+            make.width.equalTo(415)
+            make.height.equalTo(310)
             make.centerX.equalTo(self.view)
-            make.topMargin.equalTo(self.view)
+            make.topMargin.equalTo(self.view).offset(15)
             
         }
         

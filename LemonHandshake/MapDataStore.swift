@@ -18,6 +18,7 @@ class MapDataStore {
     static let sharedInstance = MapDataStore()
     
     var userCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D() { didSet { print("Changed") } }
+    var userLocation: CLLocation { return CLLocation(latitude: userLatitude, longitude: userLongitude) }
     var userLatitude: Double = 0.0
     var userLongitude: Double = 0.0
     var landmarks: [Landmark] = []
