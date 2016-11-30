@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -127,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsi-Bm-W0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="670" y="-663"/>
+            <point key="canvasLocation" x="38" y="-663"/>
         </scene>
         <!--App Controller-->
         <scene sceneID="HA5-JS-AIs">
@@ -202,6 +202,9 @@
                     </navigationItem>
                     <connections>
                         <segue destination="zYc-Au-Tv4" kind="presentation" identifier="annotationSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="MVg-bT-R5e"/>
+
+                        <segue destination="qWx-m3-kEc" kind="presentation" identifier="dropPinSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="PpP-Ac-koJ"/>
+
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TU8-j5-9ac" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -358,7 +361,7 @@
                                     <outlet property="followersLabel" destination="E2Z-R3-TLq" id="Owf-ov-DbM"/>
                                     <outlet property="followersTextLabel" destination="KjX-hR-Urp" id="YJY-8b-4eS"/>
                                     <outlet property="nearbyInitiativeNameLabel" destination="yhA-XN-qb7" id="lUm-J3-d4F"/>
-                                    <segue destination="qOK-cb-7fF" kind="show" identifier="localInitiativeDetail" id="nR9-YX-1Fo"/>
+                                    <segue destination="qOK-cb-7fF" kind="show" identifier="" id="nR9-YX-1Fo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -552,7 +555,7 @@
                         <viewControllerLayoutGuide type="bottom" id="WFe-aP-KtS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Qbu-D6-kgJ">
-                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Initiative Name" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0pT-hP-UOp">
@@ -675,13 +678,48 @@
             </objects>
             <point key="canvasLocation" x="-1006" y="32"/>
         </scene>
+        <!--Drop Pin Detail View Controller-->
+        <scene sceneID="wpr-Ev-IaO">
+            <objects>
+                <viewController id="qWx-m3-kEc" customClass="DropPinDetailViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fzH-9e-vOp"/>
+                        <viewControllerLayoutGuide type="bottom" id="BI9-6Q-FDY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cVF-In-qWL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISX-gG-Op3" customClass="DropPinDetail" customModule="LemonHandshake" customModuleProvider="target">
+                                <rect key="frame" x="16" y="345" width="343" height="244"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ISX-gG-Op3" secondAttribute="height" multiplier="374:275" constant="11.159999999999968" id="kPa-dD-zPp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.60961579619999995" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ISX-gG-Op3" firstAttribute="centerY" secondItem="cVF-In-qWL" secondAttribute="centerY" multiplier="0.75" constant="216.875" id="2sc-9x-1Hk"/>
+                            <constraint firstItem="ISX-gG-Op3" firstAttribute="width" secondItem="cVF-In-qWL" secondAttribute="width" multiplier="0.75" constant="61.75" id="4AF-Rv-43E"/>
+                            <constraint firstItem="ISX-gG-Op3" firstAttribute="centerX" secondItem="cVF-In-qWL" secondAttribute="centerX" id="HiO-Gb-zv7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dropPinDetailView" destination="ISX-gG-Op3" id="KoS-4G-7uu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QAv-PE-iay" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="812" y="-663"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backgroundNYC" width="1326" height="1291"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="09l-Va-NrD"/>
-        <segue reference="nR9-YX-1Fo"/>
-        <segue reference="AlA-vr-7Py"/>
+        <segue reference="zkx-6j-hXv"/>
+        <segue reference="peZ-TE-S1e"/>
     </inferredMetricsTieBreakers>
 </document>
