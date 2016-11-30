@@ -14,6 +14,8 @@ class NearbyInitiativesTableViewController: UITableViewController {
 
     let store = MapDataStore.sharedInstance
     
+    var nearbyInitiatives = [Initiative]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,11 +25,23 @@ class NearbyInitiativesTableViewController: UITableViewController {
         imageView.contentMode = .scaleAspectFill
         imageView.alpha = 0.4
         view.sendSubview(toBack: imageView)
+        
+        retrieveNearbyInitiatives()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func retrieveNearbyInitiatives() {
+        FirebaseAPI.geoFirePullNearbyInitiatives(within: 0.5, ofLocation: store.userLocation) { (initiative) in
+            self.nearbyInitiatives.append(initiative)
+            OperationQueue.main.addOperation {
+                self.tableView.reloadData()
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -39,7 +53,7 @@ class NearbyInitiativesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 20
+        return nearbyInitiatives.count
     }
 
     
@@ -83,13 +97,24 @@ class NearbyInitiativesTableViewController: UITableViewController {
         }
 
         
-        cell.nearbyInitiativeNameLabel.text = "Feed the homeless"
-        cell.dateTextLabel.text = "April 1st, 2016"
-        cell.followersTextLabel.text = "589"
+
+        let initiative = nearbyInitiatives[indexPath.row]
+        
+        cell.nearbyInitiativeNameLabel.text = initiative.name
+        cell.dateTextLabel.text = initiative.createdAt.formattedAs("MMMM dd, yyyy")
+        cell.followersTextLabel.text = "\(initiative.members.count)"
 
         return cell
     }
   
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "localInitiativeDetail" {
+            guard let dest = segue.destination as? InitiativeDetailViewController else { return }
+            
+            let initiative = nearbyInitiatives[(tableView.indexPathForSelectedRow?.row)!]
+            
+            dest.initiative = initiative
+        }
+    }
    
 }
