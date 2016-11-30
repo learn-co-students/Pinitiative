@@ -201,7 +201,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="zYc-Au-Tv4" kind="presentation" identifier="annotationSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="MVg-bT-R5e"/>
-                        <segue destination="9bZ-Q7-xhX" kind="presentation" identifier="dropPinSegue" id="0Cz-Yt-51R"/>
+                        <segue destination="9bZ-Q7-xhX" kind="presentation" identifier="dropPinSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="0Cz-Yt-51R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TU8-j5-9ac" userLabel="First Responder" sceneMemberID="firstResponder"/>

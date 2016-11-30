@@ -22,10 +22,10 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     var mapView: MGLMapView!
     var mapBounds = MGLCoordinateBounds()
     var landmarks = [Landmark]()
+    var geocoder = CLGeocoder()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         print("Map view did load")
         createMap()
         view.addSubview(mapView)
@@ -127,13 +127,13 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         
         let selected = annotation as! CustomPointAnnotation
         
-        if selected.reuseIdentifier != "Custom Marker" {
+        if selected.reuseIdentifier != Constants.customMarkerText {
             FirebaseAPI.retrieveLandmark(withKey: selected.databaseKey) { (landmark) in
                 OperationQueue.main.addOperation {
-                    self.performSegue(withIdentifier: "annotationSegue", sender: landmark)
+                    self.performSegue(withIdentifier: Constants.annotationSegueText, sender: landmark)
                 }
             }
-        } 
+        }
         return true
     }
     
@@ -168,18 +168,41 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         
     }
     
-     func handleLongPress(long: UILongPressGestureRecognizer) {
+    func handleLongPress(long: UILongPressGestureRecognizer) {
         let longPressCoordinate: CLLocationCoordinate2D = mapView.convert(long.location(in: mapView), toCoordinateFrom: mapView)
+        var geocodeAddress = String()
         
-        let markedLocation = CustomPointAnnotation(coordinate: longPressCoordinate, title: "Marked Location", subtitle: "Geocoded Address", databaseKey: "")
-        //test need geocoding for mapbox
-        markedLocation.reuseIdentifier = "Custom Marker"
-        mapView.addAnnotation(markedLocation)
+        let location = CLLocation(latitude: longPressCoordinate.latitude, longitude: longPressCoordinate.longitude)
         
-        let senderLocation = DropPinLocation(coordinate: longPressCoordinate, address: "Geocoded address")
         
-        performSegue(withIdentifier: "dropPinSegue", sender: senderLocation)
+        geocoder.reverseGeocodeLocation(location){
+            placemarks, error in
+            var address = String()
+            
+                if error != nil {
+                    geocodeAddress = "Cannot convert coordinate to address."
+                }
+                
+                guard let unwrappedPlacemarks = placemarks else { return }
+                if unwrappedPlacemarks.count > 0 {
+                    let placemark = unwrappedPlacemarks[0]
+                    let addressLines = placemark.addressDictionary?["FormattedAddressLines"] as! [String]
+                    for addressLine in addressLines {
+                        address += (addressLine + " ")
+                    }
+                    geocodeAddress = address
+                }
         
+            let markedLocation = CustomPointAnnotation(coordinate: longPressCoordinate, title: Constants.markedLocationText, subtitle: geocodeAddress, databaseKey: "")
+            //test need geocoding for mapbox
+            markedLocation.reuseIdentifier = Constants.customMarkerText
+            self.mapView.addAnnotation(markedLocation)
+            
+            let senderLocation = DropPinLocation(coordinate: longPressCoordinate, address: geocodeAddress)
+            
+            self.performSegue(withIdentifier: Constants.dropPinSegueText, sender: senderLocation)
+    
+        }
     }
     
     func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
@@ -187,6 +210,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         //landmarks = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
         addPointAnnotations()
     }
+    
 }
 
 
@@ -197,7 +221,7 @@ extension MapViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "annotationSegue" {
+        if segue.identifier == Constants.annotationSegueText {
             
             let destVC = segue.destination as! LandmarkDetailViewController
             
@@ -210,7 +234,7 @@ extension MapViewController {
             }
             
             
-        } else if segue.identifier == "dropPinSegue" {
+        } else if segue.identifier == Constants.dropPinSegueText {
             
             let destVC = segue.destination as! DropPinDetailViewController
             destVC.location = sender as! DropPinLocation
