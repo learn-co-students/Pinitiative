@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vIA-zt-Yj7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -563,7 +563,7 @@
                                 </state>
                                 <connections>
                                     <action selector="ChatButton:" destination="qOK-cb-7fF" eventType="touchUpInside" id="Qi4-V0-Ja9"/>
-                                    <segue destination="vIA-zt-Yj7" kind="popoverPresentation" popoverAnchorView="Cuu-YX-WYK" id="2w2-cr-nGz">
+                                    <segue destination="vIA-zt-Yj7" kind="popoverPresentation" identifier="chatButtonSegue" popoverAnchorView="Cuu-YX-WYK" id="2w2-cr-nGz">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
