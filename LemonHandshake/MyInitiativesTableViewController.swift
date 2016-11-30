@@ -12,7 +12,7 @@ import SnapKit
 
 class MyInitiativesTableViewController: UITableViewController {
     
-    var userInitiatves = [Initiative]()
+    var userInitiatives = [Initiative]()
 
     let store = MapDataStore.sharedInstance
     
@@ -29,6 +29,15 @@ class MyInitiativesTableViewController: UITableViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        FirebaseAPI.retrieveInitiativesFor(userKey: FirebaseAuth.currentUserID ?? "") { (initiatives) in
+            self.userInitiatives = initiatives
+            self.tableView.reloadData()
+        }
+    }
+    
 
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -38,7 +47,7 @@ class MyInitiativesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-        return userInitiatves.count
+        return userInitiatives.count
     }
 
     
@@ -78,9 +87,11 @@ class MyInitiativesTableViewController: UITableViewController {
             
         }
         
-        cell.initiativeLabel.text = "Pick up trash on the freeway"
-        cell.followersLabel.text = String(describing: 54)
-        cell.dateLabel.text = "April 26th 1992"
+        let userInitiative = userInitiatives[indexPath.row]
+        
+        cell.initiativeLabel.text = userInitiative.name
+        cell.followersLabel.text = "\(userInitiative.members.count)"
+        cell.dateLabel.text = userInitiative.createdAt.formattedAs("MMMM dd, yyyy")
  
        
         return cell
@@ -88,8 +99,11 @@ class MyInitiativesTableViewController: UITableViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "initiativeToDetailSegue" {
+            let dest = segue.destination as! InitiativeDetailViewController
+            
+            dest.initiative = userInitiatives[(tableView.indexPathForSelectedRow?.row)!]
+        }
     }
     
 

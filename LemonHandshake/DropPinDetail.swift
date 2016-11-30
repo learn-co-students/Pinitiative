@@ -18,6 +18,7 @@ class DropPinDetail: UIView {
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBAction func startInitiativePressed(_ sender: Any) {
+        
     }
     
     @IBOutlet weak var startInitiativeButton: UIButton!

@@ -14,13 +14,6 @@ class FirebaseAuth {
     class func signUpUserWith(email: String, password: String) -> Error? {
         var returnError: Error? = nil
         
-        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-            if let error = error {
-                returnError = error
-            } else {
-                FirebaseAPI.storeNewUser(firstName: "Test", lastName: "Name")
-            }
-        })
         
         return returnError
     }

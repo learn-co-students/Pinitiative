@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,21 +27,21 @@
                                 <rect key="frame" x="67" y="338" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eUU-sG-AM7">
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eUU-sG-AM7">
                                 <rect key="frame" x="139" y="406" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LlD-ba-HN0">
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LlD-ba-HN0">
                                 <rect key="frame" x="139" y="474" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iew-4C-wM3">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iew-4C-wM3">
                                 <rect key="frame" x="164" y="571" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.094924178900000003" green="1" blue="0.0" alpha="0.74789870689655169" colorSpace="calibratedRGB"/>
@@ -113,7 +113,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.60645869006849318" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.60961579623287676" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aB7-kw-958" firstAttribute="width" secondItem="TEX-YY-XWj" secondAttribute="width" multiplier="0.75" constant="61.75" id="1Zj-YP-fLH"/>
                             <constraint firstItem="aB7-kw-958" firstAttribute="centerY" secondItem="TEX-YY-XWj" secondAttribute="centerY" multiplier="0.75" constant="216.875" id="IO3-jY-x2i"/>
@@ -126,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsi-Bm-W0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-134" y="-707"/>
+            <point key="canvasLocation" x="670" y="-663"/>
         </scene>
         <!--App Controller-->
         <scene sceneID="HA5-JS-AIs">
@@ -206,7 +206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TU8-j5-9ac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32" y="97"/>
+            <point key="canvasLocation" x="38" y="32"/>
         </scene>
         <!--My Initiatives-->
         <scene sceneID="MST-I5-qQp">
@@ -358,7 +358,7 @@
                                     <outlet property="followersLabel" destination="E2Z-R3-TLq" id="Owf-ov-DbM"/>
                                     <outlet property="followersTextLabel" destination="KjX-hR-Urp" id="YJY-8b-4eS"/>
                                     <outlet property="nearbyInitiativeNameLabel" destination="yhA-XN-qb7" id="lUm-J3-d4F"/>
-                                    <segue destination="qOK-cb-7fF" kind="show" id="nR9-YX-1Fo"/>
+                                    <segue destination="qOK-cb-7fF" kind="show" identifier="" id="nR9-YX-1Fo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -445,17 +445,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <navigationBar opaque="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="CrB-71-OE2">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Start Initiative" id="CJV-Gd-gCD"/>
-                                </items>
-                            </navigationBar>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="dox-PN-faY">
                                 <rect key="frame" x="53" y="226" width="263" height="137"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -471,6 +460,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <navigationBar opaque="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="CrB-71-OE2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Start Initiative" id="CJV-Gd-gCD"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -497,6 +497,15 @@
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="Kud-Jm-X6r">
                         <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView autoresizesSubviews="NO" clipsSubviews="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="08b-0a-7wD">
+                                <rect key="frame" x="37" y="60" width="300" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431372549019" green="0.38823529411764707" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.51037157709704972" green="0.50703717606100041" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems>
@@ -509,6 +518,9 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Member Management" id="y69-Lg-uJ5"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="calendarWebView" destination="08b-0a-7wD" id="CiY-01-zGG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fo-g6-F7F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -547,13 +559,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About this Initiative" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ep4-9A-Rba">
-                                <rect key="frame" x="48" y="223" width="297" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cuu-YX-WYK">
                                 <rect key="frame" x="0.0" y="471" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -564,6 +569,9 @@
                                 </state>
                                 <connections>
                                     <action selector="ChatButton:" destination="qOK-cb-7fF" eventType="touchUpInside" id="Qi4-V0-Ja9"/>
+                                    <segue destination="vIA-zt-Yj7" kind="popoverPresentation" popoverAnchorView="Cuu-YX-WYK" id="2w2-cr-nGz">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Initiative Description Here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ti0-xr-1mE">
@@ -608,7 +616,6 @@
                     <navigationItem key="navigationItem" title="Initiative Details" id="fs2-j3-mBz"/>
                     <connections>
                         <outlet property="InitiativeNameLabel" destination="0pT-hP-UOp" id="b5A-QL-ID2"/>
-                        <outlet property="aboutThisInitiativeLabel" destination="Ep4-9A-Rba" id="0jU-q9-7rO"/>
                         <outlet property="chatButtonLabel" destination="Cuu-YX-WYK" id="ivW-7K-WNf"/>
                         <outlet property="dateStartedLabel" destination="04b-Ru-O31" id="GDu-oO-bZa"/>
                         <outlet property="dateTextLabel" destination="877-89-fYU" id="suw-EL-wzo"/>
@@ -651,46 +658,16 @@
             </objects>
             <point key="canvasLocation" x="-1006" y="32"/>
         </scene>
-        <!--Drop Pin Detail View Controller-->
-        <scene sceneID="zqS-qu-Y3I">
-            <objects>
-                <viewController id="9bZ-Q7-xhX" customClass="DropPinDetailViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0VD-gW-YWC"/>
-                        <viewControllerLayoutGuide type="bottom" id="5xs-OF-fty"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="sPb-pO-1Pg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ktH-XF-pWz" customClass="DropPinDetail" customModule="LemonHandshake" customModuleProvider="target">
-                                <rect key="frame" x="20" y="349" width="339" height="251"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.60999999999999999" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="ktH-XF-pWz" firstAttribute="leading" secondItem="sPb-pO-1Pg" secondAttribute="leading" constant="20" id="2Gn-wE-YCY"/>
-                            <constraint firstItem="ktH-XF-pWz" firstAttribute="top" secondItem="0VD-gW-YWC" secondAttribute="bottom" constant="329" id="Ndx-jf-DA7"/>
-                            <constraint firstItem="5xs-OF-fty" firstAttribute="top" secondItem="ktH-XF-pWz" secondAttribute="bottom" constant="67" id="dyt-Ti-ACH"/>
-                            <constraint firstAttribute="trailing" secondItem="ktH-XF-pWz" secondAttribute="trailing" constant="16" id="jXw-79-UVZ"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="dropPinDetailView" destination="ktH-XF-pWz" id="rfF-TK-CL3"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="p7x-nw-aBN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="948" y="-798"/>
-        </scene>
     </scenes>
     <resources>
         <image name="backgroundNYC" width="1326" height="1291"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zkx-6j-hXv"/>
+        <segue reference="AlA-vr-7Py"/>
+        <segue reference="nR9-YX-1Fo"/>
         <segue reference="h5K-wb-Q3f"/>
+        <segue reference="09l-Va-NrD"/>
+        <segue reference="AlA-vr-7Py"/>
         <segue reference="peZ-TE-S1e"/>
     </inferredMetricsTieBreakers>
 </document>
