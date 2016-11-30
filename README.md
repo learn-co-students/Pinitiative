@@ -3,6 +3,9 @@
 The purpose of this app is to create a common repository for community initiatives in your area. :)
 
 
+## Database Maker Application
+This application uses another application to parse through NYC Open Data, geocode addresses, and write this organized data to Firebase. That app is [available here](https://github.com/Chrisb616/lemonHandshakeDatabaseMaker)
+
 ## How to get GeoFire 1.1 working
 GeoFire hasn't been updated in some time. Until Firebase comes out with a new version for Swift 3, there are a few steps that need to be followed to get GeoFire up and running.
 
