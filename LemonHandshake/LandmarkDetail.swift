@@ -9,7 +9,14 @@
 import UIKit
 import SnapKit
 
+protocol LandmarkDetailDelegate: class {
+    func startInitiative()
+    func listLandmarkInitiative()
+}
+
 class LandmarkDetail: UIView {
+    
+    weak var delegate: LandmarkDetailDelegate?
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -17,6 +24,18 @@ class LandmarkDetail: UIView {
     @IBOutlet weak var propertyTypeIcon: UIImageView!
     @IBOutlet weak var propertyPreview: UIImageView!
     @IBOutlet weak var landmarkNameLabel: UILabel!
+    
+    
+    @IBAction func landmarkInitiativePressed(_ sender: UIButton) {
+        delegate?.listLandmarkInitiative()
+    }
+    
+    
+    @IBAction func startInitiativePressed(_ sender: UIButton) {
+        delegate?.startInitiative()
+    }
+    
+
     
     var landmark: Landmark! {
         didSet {
