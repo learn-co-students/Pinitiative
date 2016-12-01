@@ -160,9 +160,11 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         
-        let outgoingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: senderDisplayName, backgroundColor: UIColor.randomColor(), textColor: UIColor.randomColor(), font: UIFont.avenir, diameter: UInt(2.0))
         
-        let incomingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: senderDisplayName, backgroundColor: UIColor.randomColor(), textColor: UIColor.randomColor(), font: UIFont.avenir, diameter: UInt(2.0))
+        
+        let outgoingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: senderDisplayName), backgroundColor: UIColor.darkGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
+        
+        let incomingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: senderDisplayName), backgroundColor: UIColor.darkGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
         
         let message = messages[indexPath.item]
         if message.senderId == senderId {
@@ -173,20 +175,50 @@ class ChatDetailViewController: JSQMessagesViewController {
 
     }
     
+    
+    
+    
+    
 
-    
-    
 }
 
-extension UIColor {
-    static func randomColor() -> UIColor {
-        return UIColor(red:   CGFloat(drand48()),
-                       green: CGFloat(drand48()),
-                       blue:  CGFloat(drand48()),
-                       alpha: 0.50)
+extension JSQMessagesViewController {
+    
+    
+    func generateInitials(senderDisplayName: String) -> String? {
+        
+        let nameCharacters = [Character](senderDisplayName.characters)
+        
+        guard !senderDisplayName.isEmpty, nameCharacters.first != " " else { return nil }
+        
+        guard nameCharacters.contains(" ") else { return String(nameCharacters.first!).uppercased() }
+        
+        let words = (nameCharacters.split(separator: " "))
+        
+        let firstWordArray = words.first!
+        
+        let lastWordArray = words.last!
+        
+        let firstNameInitial = String(firstWordArray.first!)
+        
+        let lastNameInitial = String(lastWordArray.first!)
+        
+        return firstNameInitial.uppercased() + lastNameInitial.uppercased()
+        
     }
 }
 
+
+//
+//extension UIColor {
+//    static func randomColor() -> UIColor {
+//        return UIColor(red:   CGFloat(drand48()),
+//                       green: CGFloat(drand48()),
+//                       blue:  CGFloat(drand48()),
+//                       alpha: 0.50)
+//    }
+//}
+
 extension UIFont {
-    static let avenir = UIFont.init(name: "Avenir", size: 1.0)
+    static let avenir = UIFont.init(name: "Avenir", size: 24.0)
 }
