@@ -1,8 +1,8 @@
 ![alt-text](http://i.imgur.com/lJps0lY.png "Pinitiative")
 
-# Community Initiative App
+# Pinitiative
 
-The purpose of this app is to create a common repository for community initiatives in your area. :)
+Pinitiative is a project made for [The Opportunity Project](http://opportunity.census.gov/) using landmark data from NYC Open Data.
 
 
 ## Database Maker Application
