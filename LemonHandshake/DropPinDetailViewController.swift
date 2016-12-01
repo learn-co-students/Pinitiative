@@ -8,16 +8,16 @@
 
 import UIKit
 
-class DropPinDetailViewController: UIViewController {
-
+class DropPinDetailViewController: UIViewController, DropPinDelegate {
+    
     @IBOutlet weak var dropPinDetailView: DropPinDetail!
     
     var location: DropPinLocation!
     
     override func viewDidLoad() {
-        
     let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissViewController))
         view.addGestureRecognizer(tapGestureRecognizer)
+        dropPinDetailView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,4 +28,10 @@ class DropPinDetailViewController: UIViewController {
     func dismissViewController() {
         dismiss(animated: true, completion: nil)
     }
+
+    func startInitiative() {
+        performSegue(withIdentifier: Constants.startInitiativeSegue, sender: self.location)
+    }
+
 }
+

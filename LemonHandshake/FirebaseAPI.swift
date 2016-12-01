@@ -17,13 +17,17 @@ class FirebaseAPI {
     
     //MARK: - User functions
     static func storeNewUser(id: String, firstName:String, lastName: String) {
+        
+        //Create a reference point for the user info
         let newUserRef = FIRDatabase.database().reference().child("users").child(id)
         
+        //Create a dictionary containing the info to be stored in the database
         let serializedData = [
             "firstName":firstName,
             "lastName":lastName
         ]
         
+        //Update the child values at the location
         newUserRef.updateChildValues(serializedData)
     }
     
@@ -44,7 +48,58 @@ class FirebaseAPI {
         })
     }
     
+    static func archive(user: User) {
+        
+        //Easy access to the user key
+        let userKey = user.databaseKey
+        
+        //Create the ref for the old location of the user data
+        let targetUserRef = FIRDatabase.database().reference().child("users").child(userKey)
+        
+        //Create the ref for the new location of the user data in the archive section
+        let archivedInitiativeRef = FIRDatabase.database().reference().child("archives").child("users").child(userKey)
+        
+        //Get the data located at the old location in the database
+        targetUserRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            //Convert the snapshot value to a usable dictionary
+            guard let dictionary = snapshot.value as? [String:Any] else { print("FAILURE: Error with snapshot for archiving user with key: \(user.databaseKey)"); return }
+            
+            //Take the initiative info out of the main dictionary
+            guard let initiatives = dictionary["initiatives"] as? [String:Bool] else { print("");return }
+            
+            //Iterate over initiatives
+            for initiative in initiatives {
+                
+                //If that member is still an active member of that initiative...
+                if initiative.value == true {
+                    
+                    //...create an easy access variable...
+                    let initiativeKey = initiative.key
+                    
+                    //..find the ref for the user in firebase...
+                    let memberRef = FIRDatabase.database().reference().child("initiatives").child(initiativeKey)
+                    
+                    //...and set the value for the member to false
+                    memberRef.child("initiatives").updateChildValues([userKey:false])
+                }
+            }
+            
+            //Put the dictionary into the new location in the archive section
+            archivedInitiativeRef.setValue(dictionary)
+            
+            //Once everything is complete, delete the info from the old location
+            targetUserRef.removeValue(completionBlock: { (error, ref) in
+                print("WARNING: User \(user.firstName) \(user.lastName) with key \(userKey) is being archived")
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+            })
+        })
+    }
+    
     //MARK: - Initiative functions
+    
     static func storeNewInitiative(_ initiative: Initiative) {
 
         var initiativeRef = FIRDatabase.database().reference().child("initiatives").child(initiative.databaseKey)
@@ -97,12 +152,13 @@ class FirebaseAPI {
         //Create the ref for the GeoFire location of the initiative, if it has one.
         var geofireRef: FIRDatabaseReference? = nil
         
-        //Create the ref for the chat
-        var chatRef = FIRDatabase.database().reference().child("Chats").child(initiativeKey)
-        
         if initiative.associatedLandmark == nil {
             geofireRef = FIRDatabase.database().reference().child("geofire").child(initiativeKey)
         }
+        
+        //Create the ref for the chat
+        let chatRef = FIRDatabase.database().reference().child("Chats").child(initiativeKey)
+        
         
         //Get the data located at the old location
         targetInitiativeRef.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -135,13 +191,13 @@ class FirebaseAPI {
             
             //Once everything is complete, delete the info from the old location...
             targetInitiativeRef.removeValue(completionBlock: { (error, ref) in
-                print("WARNING: Initiative \(initiative.name) with key \(initiativeKey) has expired and has been archived")
+                print("WARNING: Initiative \(initiative.name) with key \(initiativeKey) is being archived")
                 if let error = error {
                     print(error.localizedDescription)
                 }
             })
             
-            //...remove the info from the GeoFire location, should it exist...
+            //...remove the info from the GeoFire location, should have a GeoFire location...
             if let geofireRef = geofireRef {
                 geofireRef.removeValue(completionBlock: { (error, ref) in
                     if let error = error {
@@ -211,6 +267,7 @@ class FirebaseAPI {
         
         membersRef.setValue(true, forKey: memberKey)
     }
+    
     
     static func retrieveInitiativesFor(userKey: String, completion: @escaping ([Initiative]) -> Void) {
         let userInitiativeRef = FIRDatabase.database().reference().child("users").child(userKey).child("initiatives")

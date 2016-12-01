@@ -9,16 +9,22 @@
 import Foundation
 import UIKit
 
+protocol DropPinDelegate: class {
+    func startInitiative()
+}
 
 class DropPinDetail: UIView {
+    
+    weak var delegate: DropPinDelegate?
         
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
+
     @IBAction func startInitiativePressed(_ sender: Any) {
-        
+        delegate?.startInitiative()
     }
     
     @IBOutlet weak var startInitiativeButton: UIButton!

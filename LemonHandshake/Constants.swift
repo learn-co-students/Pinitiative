@@ -14,6 +14,7 @@ struct Constants {
     static let dropPinSegueText = "dropPinSegue"
     static let customMarkerText = "Custom Marker"
     static let markedLocationText = "Marked Location"
+    static let startInitiativeSegue = "startInitiativeSegue"
     
     
     
