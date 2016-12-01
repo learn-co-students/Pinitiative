@@ -16,19 +16,17 @@ extension FirebaseAPI {
     
     typealias Kilometers = Double
     
-    
     //static let ref: FIRDatabaseReference { return FIRDatabase.database().reference() }
     
     static func geoFirePullNearbyLandmarks(within range: Kilometers, ofLocation location: CLLocation, completion: @escaping (Landmark)->Void) {
         var geoFireRef: FIRDatabaseReference { return FirebaseAPI.ref.child("geofire") }
         
-        
         //Property sets
-        let mapStore = MapDataStore.sharedInstance
+        let store = MapDataStore.sharedInstance
         
         let userLocation = location
         
-        print("LOCATION: \(mapStore.userCoordinate)")
+        print("LOCATION: \(store.userCoordinate)")
         
         guard let geoFire = GeoFire(firebaseRef: geoFireRef) else { print("FAILURE: GeoFire failed to create non nil value from geoFireRef"); return }
         //
@@ -42,7 +40,7 @@ extension FirebaseAPI {
             
             FirebaseAPI.retrieveLandmark(withKey: key, completion: { (landmark) in
                 print("SUCCESS: Retrieved data for \(landmark.name)")
-                mapStore.landmarks.append(landmark)
+                store.landmarks.append(landmark)
                 
                 completion(landmark)
             })

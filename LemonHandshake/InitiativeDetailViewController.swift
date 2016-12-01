@@ -31,6 +31,7 @@ class InitiativeDetailViewController: UIViewController {
     
     @IBOutlet weak var chatButtonLabel: UIButton!
     
+    
     var initiative: Initiative!
     
     var leader: User = User.blank
@@ -139,6 +140,7 @@ class InitiativeDetailViewController: UIViewController {
                 self.leaderTextLabel.text = "\(user.firstName) \(user.lastName)"
             }
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
