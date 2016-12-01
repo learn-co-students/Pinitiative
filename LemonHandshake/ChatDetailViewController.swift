@@ -30,7 +30,7 @@ class ChatDetailViewController: JSQMessagesViewController {
         collectionView.reloadData()
         
         self.senderId = "2"
-        self.senderDisplayName = "Tameika"
+        self.senderDisplayName = "Tameika Lawrence"
         
     }
     
@@ -160,9 +160,9 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         
-        let outgoingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: senderDisplayName, backgroundColor: UIColor.randomColor(), textColor: UIColor.randomColor(), font: UIFont.avenir, diameter: UInt(0.50))
+        let outgoingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: senderDisplayName, backgroundColor: UIColor.randomColor(), textColor: UIColor.randomColor(), font: UIFont.avenir, diameter: UInt(2.0))
         
-        let incomingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: senderDisplayName, backgroundColor: UIColor.randomColor(), textColor: UIColor.randomColor(), font: UIFont.avenir, diameter: UInt(0.50))
+        let incomingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: senderDisplayName, backgroundColor: UIColor.randomColor(), textColor: UIColor.randomColor(), font: UIFont.avenir, diameter: UInt(2.0))
         
         let message = messages[indexPath.item]
         if message.senderId == senderId {
@@ -183,10 +183,10 @@ extension UIColor {
         return UIColor(red:   CGFloat(drand48()),
                        green: CGFloat(drand48()),
                        blue:  CGFloat(drand48()),
-                       alpha: 1.0)
+                       alpha: 0.50)
     }
 }
 
 extension UIFont {
-    static let avenir = UIFont.init(name: "Avenir-Medium", size: 1.0)
+    static let avenir = UIFont.init(name: "Avenir", size: 1.0)
 }
