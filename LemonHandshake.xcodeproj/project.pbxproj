@@ -168,13 +168,6 @@
 			name = Tools;
 			sourceTree = "<group>";
 		};
-		8309A9E31DDCE1F500484700 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
 		8309AA061DDE04BC00484700 /* Models */ = {
 			isa = PBXGroup;
 			children = (
