@@ -14,9 +14,7 @@ import SnapKit
 
 class MapViewController: UIViewController, MGLMapViewDelegate {
     
-    @IBAction func myInitiativesButton(_ sender: Any) {
-    }
-    
+  
     
     var store = MapDataStore.sharedInstance
     var mapView: MGLMapView!
@@ -24,15 +22,31 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     var landmarks = [Landmark]()
     var geocoder = CLGeocoder()
     
+    @IBOutlet weak var searchMapLabel: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        refreshLandmarks()
-        print("Map view did load")
         createMap()
         view.addSubview(mapView)
         activateGestureRecognizer()
         mapView.delegate = self
+        setMapSearchButtonConstraints()
+
     }
+
+    
+    func mapViewRegionIsChanging(_ mapView: MGLMapView) {
+    
+        if String(format:"%.5f", mapView.centerCoordinate.latitude) != String(format:"%.5f", store.userLocation.coordinate.latitude) {
+            
+            searchMapLabel.isEnabled = true
+            searchMapLabel.isHidden = false
+   
+        }
+
+    }
+    
+   
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -42,15 +56,27 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        refreshLandmarks()
+        print("landmarks printed")
     }
     
     // MARK: - Navigation
     
     
     func refreshLandmarks(){
+        self.store.landmarks.removeAll()
+        self.landmarks.removeAll()
+        FirebaseAPI.geoFirePullNearbyLandmarks (within: 1, ofLocation: CLLocation(latitude: store.userLatitude, longitude: store.userLongitude)) { (landmark) in
+            self.store.landmarks.append(landmark)
+            self.addSinglePointAnnotation(for: landmark)
+        }
+    }
+    
+    func refreshMapLandmarks(){
         print("Refreshing Landmarks")
-        FirebaseAPI.geoFirePullNearbyLandmarks (within: 2, ofLocation: CLLocation(latitude: store.userLatitude, longitude: store.userLongitude)) { (landmark) in
+        self.store.landmarks.removeAll()
+        self.landmarks.removeAll()
+        FirebaseAPI.geoFirePullNearbyLandmarks (within: 1, ofLocation: CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)) { (landmark) in
             self.store.landmarks.append(landmark)
             self.addSinglePointAnnotation(for: landmark)
         }
@@ -65,6 +91,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.frame.size.height = view.frame.size.height
         view.addSubview(mapView)
         mapView.delegate = self
+        
     }
     
     func mapView(_ mapView: MGLMapView, didUpdate userLocation: MGLUserLocation?) {
@@ -77,7 +104,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.longitude = userLocation.coordinate.longitude
         mapView.setCenter(center, animated: true)
         print("LOCATION: Coordinate\(store.userCoordinate) should equal \(userLocation.coordinate)")
-        refreshLandmarks()
+        
     }
     
     
@@ -215,6 +242,33 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapBounds = mapView.visibleCoordinateBounds
         //landmarks = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
         addPointAnnotations()
+    }
+    
+    
+    
+    @IBAction func searchMapButton(_ sender: Any) {
+        print("HEEEEY")
+        refreshMapLandmarks()
+        
+    }
+    
+    func setMapSearchButtonConstraints() {
+            searchMapLabel.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self.view)
+            make.centerY.equalTo(self.view).multipliedBy(0.15)
+            make.width.equalTo(200)
+            make.height.equalTo(45)
+            searchMapLabel.backgroundColor = UIColor.blue
+            searchMapLabel.alpha = 0.6
+            searchMapLabel.layer.borderWidth = 1
+            searchMapLabel.layer.cornerRadius = 20
+        }
+        self.view.bringSubview(toFront: searchMapLabel)
+        searchMapLabel.isEnabled = false
+        searchMapLabel.isHidden = true
+        
+        print("BUTTON SET HIDDEN")
+
     }
     
 }
