@@ -31,6 +31,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         activateGestureRecognizer()
         mapView.delegate = self
         setMapSearchButtonConstraints()
+        
+        
 
     }
 
@@ -56,8 +58,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        refreshLandmarks()
-        print("landmarks printed")
+        
     }
     
     // MARK: - Navigation
@@ -66,7 +67,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     func refreshLandmarks(){
         self.store.landmarks.removeAll()
         self.landmarks.removeAll()
-        FirebaseAPI.geoFirePullNearbyLandmarks (within: 1, ofLocation: CLLocation(latitude: store.userLatitude, longitude: store.userLongitude)) { (landmark) in
+        FirebaseAPI.geoFirePullNearbyLandmarks (within: 1.0, ofLocation: CLLocation(latitude: store.userLatitude, longitude: store.userLongitude)) { (landmark) in
             self.store.landmarks.append(landmark)
             self.addSinglePointAnnotation(for: landmark)
         }
@@ -76,7 +77,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         print("Refreshing Landmarks")
         self.store.landmarks.removeAll()
         self.landmarks.removeAll()
-        FirebaseAPI.geoFirePullNearbyLandmarks (within: 1, ofLocation: CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)) { (landmark) in
+        self.mapView.removeAnnotations(mapView.annotations!)
+        FirebaseAPI.geoFirePullNearbyLandmarks (within: 1.0, ofLocation: CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)) { (landmark) in
             self.store.landmarks.append(landmark)
             self.addSinglePointAnnotation(for: landmark)
         }
@@ -87,7 +89,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.styleURL = store.styleURL
         mapView.showsUserLocation = true
-        mapView.zoomLevel = 10
+        mapView.zoomLevel = 13
         mapView.frame.size.height = view.frame.size.height
         view.addSubview(mapView)
         mapView.delegate = self
@@ -104,6 +106,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.longitude = userLocation.coordinate.longitude
         mapView.setCenter(center, animated: true)
         print("LOCATION: Coordinate\(store.userCoordinate) should equal \(userLocation.coordinate)")
+        refreshLandmarks()
         
     }
     
