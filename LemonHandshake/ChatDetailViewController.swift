@@ -14,13 +14,14 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.orange)
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.blue)
+    
+    //let incomingBubble = JSQMessagesAvatarImage.
+    
     var messages = [JSQMessage]()
     
     var ref: FIRDatabaseReference!
-    fileprivate var refHandle: FIRDatabaseHandle!
     
     var initiative: Initiative!
-    //testing with rand generated initiative id
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +30,7 @@ class ChatDetailViewController: JSQMessagesViewController {
         collectionView.reloadData()
         
         self.senderId = "2"
-        self.senderDisplayName = "Tameika"
-        
-//        let uuid = UserDefaults.standard.object(forKey: "UUID") as? String
-//        if let myID = uuid{
-//            //then do something with uuid
-//        }else{
-//            let newId = UUID().uuidString
-//            UserDefaults.standard.set(newId, forKey: "UUID")
-//        }
+        self.senderDisplayName = "Tameika Lawrence"
         
     }
     
@@ -131,9 +124,6 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        //create a message object
-        //append it to the array
-        
         
         ref = FIRDatabase.database().reference()
         
@@ -147,10 +137,6 @@ class ChatDetailViewController: JSQMessagesViewController {
         dict["userID"] = self.senderId
         
         msgRef.childByAutoId().setValue(dict)
-//        guard let newMessage = JSQMessage(senderId: self.senderId, displayName: self.senderDisplayName, text: text) else { return }
-//        
-//        messages.append(newMessage)
-//        print(newMessage)
         
         self.finishSendingMessage()
         
@@ -173,12 +159,66 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
-        return nil
+        
+        
+        
+        let outgoingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: senderDisplayName), backgroundColor: UIColor.darkGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
+        
+        let incomingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: senderDisplayName), backgroundColor: UIColor.darkGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
+        
+        let message = messages[indexPath.item]
+        if message.senderId == senderId {
+            return outgoingAvatar
+        } else {
+            return incomingAvatar
+        }
+
     }
     
+    
+    
+    
+    
 
+}
+
+extension JSQMessagesViewController {
     
     
+    func generateInitials(senderDisplayName: String) -> String? {
+        
+        let nameCharacters = [Character](senderDisplayName.characters)
+        
+        guard !senderDisplayName.isEmpty, nameCharacters.first != " " else { return nil }
+        
+        guard nameCharacters.contains(" ") else { return String(nameCharacters.first!).uppercased() }
+        
+        let words = (nameCharacters.split(separator: " "))
+        
+        let firstWordArray = words.first!
+        
+        let lastWordArray = words.last!
+        
+        let firstNameInitial = String(firstWordArray.first!)
+        
+        let lastNameInitial = String(lastWordArray.first!)
+        
+        return firstNameInitial.uppercased() + lastNameInitial.uppercased()
+        
+    }
 }
 
 
+//
+//extension UIColor {
+//    static func randomColor() -> UIColor {
+//        return UIColor(red:   CGFloat(drand48()),
+//                       green: CGFloat(drand48()),
+//                       blue:  CGFloat(drand48()),
+//                       alpha: 0.50)
+//    }
+//}
+
+extension UIFont {
+    static let avenir = UIFont.init(name: "Avenir", size: 24.0)
+}
