@@ -14,6 +14,9 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.orange)
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.blue)
+    
+    //let incomingBubble = JSQMessagesAvatarImage.
+    
     var messages = [JSQMessage]()
     
     var ref: FIRDatabaseReference!
@@ -156,7 +159,18 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
-        return nil
+        
+        let outgoingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: senderDisplayName, backgroundColor: UIColor.randomColor(), textColor: UIColor.randomColor(), font: UIFont.avenir, diameter: UInt(0.50))
+        
+        let incomingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: senderDisplayName, backgroundColor: UIColor.randomColor(), textColor: UIColor.randomColor(), font: UIFont.avenir, diameter: UInt(0.50))
+        
+        let message = messages[indexPath.item]
+        if message.senderId == senderId {
+            return outgoingAvatar
+        } else {
+            return incomingAvatar
+        }
+
     }
     
 
@@ -164,4 +178,15 @@ class ChatDetailViewController: JSQMessagesViewController {
     
 }
 
+extension UIColor {
+    static func randomColor() -> UIColor {
+        return UIColor(red:   CGFloat(drand48()),
+                       green: CGFloat(drand48()),
+                       blue:  CGFloat(drand48()),
+                       alpha: 1.0)
+    }
+}
 
+extension UIFont {
+    static let avenir = UIFont.init(name: "Avenir-Medium", size: 1.0)
+}
