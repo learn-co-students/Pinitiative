@@ -16,6 +16,7 @@ class FirebaseAPI {
     static var ref: FIRDatabaseReference { return FIRDatabase.database().reference() }
     
     //MARK: - User functions
+    
     static func storeNewUser(id: String, firstName:String, lastName: String) {
         
         //Create a reference point for the user info
