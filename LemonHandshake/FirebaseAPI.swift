@@ -32,26 +32,31 @@ class FirebaseAPI {
     }
     
     static func retrieveUser(withKey key: String, completion: @escaping (User) -> Void ) {
+        
+        //Get the reference point where the user info should be
         let targetUserRef = FIRDatabase.database().reference().child("users").child(key)
         
+        //Get the data from the reference point
         targetUserRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let dictionary = snapshot.value as? [String: Any] else { print("FAILURE: Error with snaphsot for user with key: \(key))"); return }
             
+            //Convert the snapshot to a dictionary
+            guard let dictionary = snapshot.value as? [String: Any] else { print("FAILURE: Error with snaphsot for user (key: \(key))"); return }
+            
+            //Pull the necessary data from the database
             guard
                 let firstName = dictionary["firstName"] as? String,
                 let lastName = dictionary["lastName"] as? String
                 else { print("FAILURE: Could not parse data for user with key: \(key)"); return }
             
+            //Initialize a user class
             let user = User(firstName: firstName, lastName: lastName, databaseKey: key)
             
+            //Completion for use of the new user class
             completion(user)
         })
     }
     
-    static func archive(user: User) {
-        
-        //Easy access to the user key
-        let userKey = user.databaseKey
+    static func archive(userWithKey userKey: String) {
         
         //Create the ref for the old location of the user data
         let targetUserRef = FIRDatabase.database().reference().child("users").child(userKey)
@@ -63,7 +68,7 @@ class FirebaseAPI {
         targetUserRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
             //Convert the snapshot value to a usable dictionary
-            guard let dictionary = snapshot.value as? [String:Any] else { print("FAILURE: Error with snapshot for archiving user with key: \(user.databaseKey)"); return }
+            guard let dictionary = snapshot.value as? [String:Any] else { print("FAILURE: Error with snapshot for archiving user (key: \(userKey))"); return }
             
             //Take the initiative info out of the main dictionary
             guard let initiatives = dictionary["initiatives"] as? [String:Bool] else { print("");return }
@@ -90,12 +95,59 @@ class FirebaseAPI {
             
             //Once everything is complete, delete the info from the old location
             targetUserRef.removeValue(completionBlock: { (error, ref) in
-                print("WARNING: User \(user.firstName) \(user.lastName) with key \(userKey) is being archived")
+                print("WARNING: User (key: \(userKey)) is being archived")
                 if let error = error {
                     print(error.localizedDescription)
                 }
             })
         })
+    }
+    
+    static func initiativeLeaderRemove(userWithKey userKey: String, fromInitiativeWithKey initiativeKey: String) {
+        
+        //Create a ref that the member is stored in the intiative
+        let memberForInitiativeRef = FirebaseAPI.ref.child("initiatives").child(initiativeKey).child("members").child(userKey)
+        
+        //Create a ref that the initiative is stored in the user
+        let initiativeForUser = FirebaseAPI.ref.child("users").child(userKey).child("initiatives").child(initiativeKey)
+        
+        //Delete the ref where the member is stored in the initiave section
+        memberForInitiativeRef.removeValue { (error, ref) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        
+        //Delete the ref where the initiative is stored in the user section
+        initiativeForUser.removeValue { (error, ref) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        
+        //Create a report so that firebase has track of the incident
+        FirebaseAPI.reportUser(targetUserID: userKey, from: FirebaseAuth.currentUserID ?? "ERROR_NO_USER", report: "User was removed from initiative (key: \(initiativeKey) by leader (key: \(FirebaseAuth.currentUserID))")
+        
+    }
+    
+    static func userLeave(initiativeWithKey initiativeKey: String) {
+        
+        //Create a ref that the member is stored in the intiative
+        let memberForInitiativeRef = FirebaseAPI.ref.child("initiatives").child(initiativeKey).child("members").child(FirebaseAuth.currentUserID ?? "ERROR_NO_USER")
+        
+        //Create a ref that the initiative is stored in the user
+        let initiativeForUser = FirebaseAPI.ref.child("users").child(FirebaseAuth.currentUserID ?? "ERROR_NO_USER").child("initiatives").child(initiativeKey)
+        
+        //Set the boolean value from the initiaive member section to false
+        memberForInitiativeRef.setValue(false)
+        
+        //Set the boolean value from the user initiatives to false
+        initiativeForUser.setValue(false)
+    }
+    
+    static func retrieveMembers(forInitiativeWithKey initiativeKey: String, completion: ([User]) -> Void) {
+        
+        //Initiative ref
     }
     
     //MARK: - Initiative functions
