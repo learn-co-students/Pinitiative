@@ -202,9 +202,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="zYc-Au-Tv4" kind="presentation" identifier="annotationSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="MVg-bT-R5e"/>
-
                         <segue destination="qWx-m3-kEc" kind="presentation" identifier="dropPinSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="PpP-Ac-koJ"/>
-
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TU8-j5-9ac" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -655,7 +653,7 @@
             <objects>
                 <navigationController storyboardIdentifier="navID" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" toolbarHidden="NO" id="LMZ-rX-9f2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="U8J-BJ-syT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="U8J-BJ-syT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
