@@ -261,17 +261,14 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
             make.centerY.equalTo(self.view).multipliedBy(0.15)
             make.width.equalTo(200)
             make.height.equalTo(45)
-            searchMapLabel.backgroundColor = UIColor.blue
-            searchMapLabel.alpha = 0.6
+            searchMapLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
             searchMapLabel.layer.borderWidth = 1
             searchMapLabel.layer.cornerRadius = 20
         }
         self.view.bringSubview(toFront: searchMapLabel)
         searchMapLabel.isEnabled = false
         searchMapLabel.isHidden = true
-        
-        print("BUTTON SET HIDDEN")
-
+      
     }
     
 }
