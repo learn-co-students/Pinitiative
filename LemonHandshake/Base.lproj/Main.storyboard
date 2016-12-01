@@ -643,7 +643,7 @@
                     <navigationItem key="navigationItem" title="Initiative Details" id="fs2-j3-mBz"/>
                     <connections>
                         <outlet property="InitiativeNameLabel" destination="0pT-hP-UOp" id="b5A-QL-ID2"/>
-                        <outlet property="chatButtonLabel" destination="Cuu-YX-WYK" id="ivW-7K-WNf"/>
+                        <outlet property="chatButtonLabel" destination="Cuu-YX-WYK" id="efl-hH-wI4"/>
                         <outlet property="dateStartedLabel" destination="04b-Ru-O31" id="GDu-oO-bZa"/>
                         <outlet property="dateTextLabel" destination="877-89-fYU" id="suw-EL-wzo"/>
                         <outlet property="descriptionTextHere" destination="Ti0-xr-1mE" id="Vzl-g1-bEy"/>

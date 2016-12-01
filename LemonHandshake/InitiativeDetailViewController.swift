@@ -31,6 +31,7 @@ class InitiativeDetailViewController: UIViewController {
     
     @IBOutlet weak var chatButtonLabel: UIButton!
     
+    
     var initiative: Initiative!
     
     var leader: User = User.blank
