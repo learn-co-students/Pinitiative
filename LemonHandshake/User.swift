@@ -23,7 +23,10 @@ struct User {
     }
 }
 
+
 extension User {
+    
+    //Placeholder blank user value
     static var blank: User {
         return User(firstName: "", lastName: "", databaseKey: "")
     }

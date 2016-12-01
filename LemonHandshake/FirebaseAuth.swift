@@ -11,25 +11,6 @@ import FirebaseAuth
 
 class FirebaseAuth {
     
-    class func signUpUserWith(email: String, password: String) -> Error? {
-        var returnError: Error? = nil
-        
-        
-        return returnError
-    }
-    
-    class func signInUserWith(email: String, password: String) -> Error? {
-        var returnError: Error? = nil
-        
-        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
-            if let error = error {
-                returnError = error
-            }
-        })
-        
-        return returnError
-    }
-    
     class func signOutUser() -> Error? {
         do {
             try FIRAuth.auth()?.signOut()
@@ -41,6 +22,6 @@ class FirebaseAuth {
     }
     
     class var currentUserID: String? {
-        return FIRAuth.auth()?.currentUser?.uid
+        return FIRAuth.auth()?.currentUser?.uid ?? "ERROR_NO_USER"
     }
 }
