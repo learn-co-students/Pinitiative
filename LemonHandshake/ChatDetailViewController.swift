@@ -10,10 +10,12 @@ import UIKit
 import Firebase
 import JSQMessagesViewController
 
+
 class ChatDetailViewController: JSQMessagesViewController {
     
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.orange)
-    let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.blue)
+    let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.blueX)
+    //let x = JSQMessagesBubbleImageFactory().
     
     //let incomingBubble = JSQMessagesAvatarImage.
     
@@ -27,7 +29,9 @@ class ChatDetailViewController: JSQMessagesViewController {
         super.viewDidLoad()
         connectToChat()
         print(messages)
+        
         collectionView.reloadData()
+        collectionView.backgroundColor = UIColor.greenX
         
         self.senderId = "2"
         self.senderDisplayName = "Tameika Lawrence"
@@ -124,21 +128,28 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        if badWordFilter(text: text) == true {
+            print("don't send theyre cursing")
+        }else{
+            ref = FIRDatabase.database().reference()
+            
+            let chatRef = ref.child("Chats").child(initiative.databaseKey)
+            let msgRef = chatRef.child("Messages")
+            
+            var dict = [String:String]()
+            
+            dict["username"] = self.senderDisplayName
+            dict["message"] = text
+            dict["userID"] = self.senderId
+            
+            msgRef.childByAutoId().setValue(dict)
+            
+            self.finishSendingMessage()
+            
+        }
         
-        ref = FIRDatabase.database().reference()
-        
-        let chatRef = ref.child("Chats").child(initiative.databaseKey)
-        let msgRef = chatRef.child("Messages")
-        
-        var dict = [String:String]()
-        
-        dict["username"] = self.senderDisplayName
-        dict["message"] = text
-        dict["userID"] = self.senderId
-        
-        msgRef.childByAutoId().setValue(dict)
-        
-        self.finishSendingMessage()
+       
+
         
     }
     
@@ -176,11 +187,50 @@ class ChatDetailViewController: JSQMessagesViewController {
     }
     
     
+    func dequeueTypingIndicatorFooterView(for indexPath: IndexPath!) -> JSQMessagesTypingIndicatorFooterView! {
+        
     
-    
+   
+        let chatCell = dequeueTypingIndicatorFooterView(for: indexPath)
+        
+        chatCell?.configure(withEllipsisColor: UIColor.lightGray, messageBubble: UIColor.darkGray, shouldDisplayOnLeft: true, for: self.collectionView)
+        
+        if self.senderId == senderId, indexPath.item == indexPath.count + 1 {
+            
+        }
+        return chatCell
+    }
     
 
+
+    
+    func badWordFilter(text: String) -> Bool {
+    
+        let badWords = BadWords.sharedInstance.badWordsList
+        
+        let textArray = text.components(separatedBy: " ")
+        print(textArray)
+        for word in textArray{
+            if badWords.contains(word.lowercased()) {
+                
+                print("hey this person cursed")
+                let alert = UIAlertController(title: "Oops!", message: "You can't curse here.", preferredStyle: UIAlertControllerStyle.alert)
+                print("alert")
+                
+                let okAction = UIAlertAction(title: "OK Cool", style: .default, handler: nil)
+                
+                alert.addAction(okAction)
+                
+                self.present(alert, animated: true, completion: nil)
+                return true
+            }
+        }
+        return false
+    }
+    
+    
 }
+//end
 
 extension JSQMessagesViewController {
     
@@ -209,15 +259,14 @@ extension JSQMessagesViewController {
 }
 
 
-//
-//extension UIColor {
-//    static func randomColor() -> UIColor {
-//        return UIColor(red:   CGFloat(drand48()),
-//                       green: CGFloat(drand48()),
-//                       blue:  CGFloat(drand48()),
-//                       alpha: 0.50)
-//    }
-//}
+
+
+extension UIColor {
+    static let blueX = UIColor.init(red:0.00, green:0.33, blue:0.65, alpha:1.0)
+    static let greenX = UIColor(red:0.49, green:0.77, blue:0.46, alpha:1.0)
+    static let lightGreen = UIColor(red:0.72, green:1.00, blue:0.62, alpha:1.0)
+    static let purpleX = UIColor(red:0.15, green:0.07, blue:0.20, alpha:1.0)
+}
 
 extension UIFont {
     static let avenir = UIFont.init(name: "Avenir", size: 24.0)
