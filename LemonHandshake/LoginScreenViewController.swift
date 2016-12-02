@@ -61,9 +61,9 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
-            let navVC = storyboard.instantiateViewController(withIdentifier: "navID") as! UINavigationController
+            let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
             
-            present(navVC, animated: true, completion: { 
+            present(tabBarController, animated: true, completion: {
                 
             })
             

@@ -58,7 +58,7 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yXv-kh-WQO">
-                    <rect key="frame" x="76" y="90" width="224" height="104"/>
+                    <rect key="frame" x="74" y="90" width="226" height="104"/>
                 </imageView>
                 <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="fbZ-km-Ywq" userLabel="Address Stack View">
                     <rect key="frame" x="8" y="53" width="390" height="29"/>
@@ -84,7 +84,7 @@
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dV0-pc-T4l">
-                    <rect key="frame" x="0.0" y="244" width="374" height="31"/>
+                    <rect key="frame" x="24" y="224" width="326" height="41"/>
                     <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Start Initiative?">
                         <color key="titleColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -94,7 +94,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEy-sc-TFs">
-                    <rect key="frame" x="48" y="202" width="281" height="30"/>
+                    <rect key="frame" x="48" y="195" width="281" height="30"/>
                     <state key="normal" title="See Initiatives for this Landmark 📌">
                         <color key="titleColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
                     </state>
@@ -108,18 +108,18 @@
                 <constraint firstAttribute="bottom" secondItem="yXv-kh-WQO" secondAttribute="bottom" constant="81" id="0bg-8p-EYw"/>
                 <constraint firstItem="XTh-jV-gId" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="18G-2A-Vd5"/>
                 <constraint firstItem="TEy-sc-TFs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="48" id="5D8-ji-QYu"/>
-                <constraint firstAttribute="trailing" secondItem="dV0-pc-T4l" secondAttribute="trailing" id="Ltb-zk-vFN"/>
-                <constraint firstItem="dV0-pc-T4l" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="M18-tE-VeY"/>
-                <constraint firstItem="TEy-sc-TFs" firstAttribute="top" secondItem="yXv-kh-WQO" secondAttribute="bottom" constant="8" id="P2F-U2-jIy"/>
-                <constraint firstItem="dV0-pc-T4l" firstAttribute="top" secondItem="TEy-sc-TFs" secondAttribute="bottom" constant="12" id="SCH-vx-8rT"/>
+                <constraint firstAttribute="trailing" secondItem="dV0-pc-T4l" secondAttribute="trailing" constant="24" id="Ltb-zk-vFN"/>
+                <constraint firstItem="dV0-pc-T4l" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="M18-tE-VeY"/>
+                <constraint firstItem="TEy-sc-TFs" firstAttribute="top" secondItem="yXv-kh-WQO" secondAttribute="bottom" constant="1" id="P2F-U2-jIy"/>
+                <constraint firstItem="dV0-pc-T4l" firstAttribute="top" secondItem="TEy-sc-TFs" secondAttribute="bottom" constant="-1" id="SCH-vx-8rT"/>
                 <constraint firstAttribute="trailing" secondItem="XTh-jV-gId" secondAttribute="trailing" constant="9" id="Sjf-gV-4Vl"/>
                 <constraint firstItem="EmL-E3-baI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="djD-ZJ-yPA"/>
                 <constraint firstItem="yXv-kh-WQO" firstAttribute="top" secondItem="fbZ-km-Ywq" secondAttribute="bottom" constant="8" id="epA-Y6-vjX"/>
                 <constraint firstItem="fbZ-km-Ywq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="kbb-B1-Ug0"/>
-                <constraint firstItem="dV0-pc-T4l" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="pGI-KW-659"/>
+                <constraint firstItem="dV0-pc-T4l" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" constant="-10" id="pGI-KW-659"/>
                 <constraint firstItem="yXv-kh-WQO" firstAttribute="top" secondItem="XTh-jV-gId" secondAttribute="bottom" constant="16" id="sZm-tH-6yp"/>
                 <constraint firstAttribute="trailing" secondItem="fbZ-km-Ywq" secondAttribute="trailingMargin" constant="-24" id="v10-lf-awH"/>
-                <constraint firstItem="yXv-kh-WQO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="76" id="wxg-Tf-z8o"/>
+                <constraint firstItem="yXv-kh-WQO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="74" id="wxg-Tf-z8o"/>
                 <constraint firstAttribute="trailing" secondItem="yXv-kh-WQO" secondAttribute="trailing" constant="74" id="y24-Sb-wjA"/>
                 <constraint firstItem="EmL-E3-baI" firstAttribute="bottom" secondItem="fbZ-km-Ywq" secondAttribute="top" constant="-8" id="yMJ-mA-Qrj"/>
                 <constraint firstItem="EmL-E3-baI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="zaU-8D-p2n"/>
@@ -127,7 +127,7 @@
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="102" y="57.5"/>
+            <point key="canvasLocation" x="102" y="40.5"/>
         </view>
     </objects>
 </document>

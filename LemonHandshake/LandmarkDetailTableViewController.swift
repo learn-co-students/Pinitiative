@@ -9,7 +9,7 @@
 import UIKit
 
 class LandmarkDetailTableViewController: UITableViewController {
-    
+    //TODO: Create a Firebase Fetch data via landmark first.
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -12,12 +12,15 @@ import SnapKit
 
 class StartInitiativeViewController: UIViewController {
 
+    let mapStore = MapDataStore.sharedInstance
+    
     @IBAction func datePickerSwitch(_ sender: Any) {
-        
         datePickerView.isHidden = datePickerView.isHidden == false ? true : false
-        
-     
     }
+    
+    @IBOutlet weak var toggleText: UILabel!
+
+    @IBOutlet weak var datePickerSwitchOutlet: UISwitch!
     
     @IBOutlet weak var nameTextField: UITextField!
     
@@ -32,7 +35,7 @@ class StartInitiativeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let background = UIImage(named: "yellowRoad" )
+        let background = UIImage(named: "SnailTrail" )
         let imageView = UIImageView(image: background)
         self.view.addSubview(imageView)
         imageView.contentMode = .scaleAspectFill
@@ -42,8 +45,9 @@ class StartInitiativeViewController: UIViewController {
         addInitiativeLabel.snp.makeConstraints { (make) in
             make.bottomMargin.equalTo(self.view).multipliedBy(0.4)
             make.left.equalTo(self.view).offset(80)
+            
             make.width.equalTo(125)
-            addInitiativeLabel.layer.cornerRadius = 20
+            addInitiativeLabel.layer.cornerRadius = 15
             addInitiativeLabel.layer.borderColor = UIColor.white.cgColor
             addInitiativeLabel.layer.borderWidth = 1
         }
@@ -52,7 +56,7 @@ class StartInitiativeViewController: UIViewController {
             make.bottomMargin.equalTo(self.view).multipliedBy(0.4)
             make.right.equalTo(self.view).offset(-80)
             make.width.equalTo(125)
-            cancelInitiativeLabel.layer.cornerRadius = 20
+            cancelInitiativeLabel.layer.cornerRadius = 15
             cancelInitiativeLabel.layer.borderColor = UIColor.white.cgColor
             cancelInitiativeLabel.layer.borderWidth = 1
         }
@@ -80,24 +84,30 @@ class StartInitiativeViewController: UIViewController {
         }
 
         datePickerView.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.96)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.90)
             make.centerX.equalTo(self.view)
             make.width.equalTo(self.view).multipliedBy(0.8)
             make.height.equalTo(125)
             datePickerView.backgroundColor = UIColor.white.withAlphaComponent(0.8)
             datePickerView.layer.cornerRadius = 20
             datePickerView.layer.borderWidth = 1
-           
+            datePickerView.layer.borderColor = UIColor.black.cgColor
         }
-
+        
+        datePickerSwitchOutlet.snp.makeConstraints { make in
+            make.topMargin.equalTo(self.view).offset(80)
+        }
+        
+        toggleText.snp.makeConstraints { (make) in
+//            make.edges.equalTo(self.view).inset(UIEdgeInsetsMake(60, 10, 80, 10))
+        }
+        
     }
  
   
     @IBAction func addInitiativeButton(_ sender: Any) {
         
         if descriptionTextField.text != "" && nameTextField.text != "" {
-            
-            let mapStore = MapDataStore.sharedInstance
             
             print("ADDING INITIATIVE AT \(mapStore.userCoordinate)")
             

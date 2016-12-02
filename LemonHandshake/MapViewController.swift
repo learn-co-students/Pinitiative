@@ -77,6 +77,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         print("Refreshing Landmarks")
         self.store.landmarks.removeAll()
         self.landmarks.removeAll()
+        //JCB unwrap annotations to prevent from crashing that if there are annotations.
+//        guard let annotations = mapView.annotations else { return }
+//        self.mapView.removeAnnotations(annotations)
         self.mapView.removeAnnotations(mapView.annotations!)
         FirebaseAPI.geoFirePullNearbyLandmarks (within: 1.0, ofLocation: CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)) { (landmark) in
             self.store.landmarks.append(landmark)
