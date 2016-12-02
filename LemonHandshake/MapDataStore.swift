@@ -33,10 +33,4 @@ class MapDataStore {
 
 
 
-enum StoryboardID: String {
-    case loginVC = "login-vc"
-    case navID = "navID"
-}
-
-
 
