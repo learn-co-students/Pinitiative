@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="s9O-gW-dqR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -123,7 +123,7 @@
                     </view>
                     <connections>
                         <outlet property="landmarkDetailView" destination="aB7-kw-958" id="8ca-tA-hwS"/>
-                        <segue destination="akF-xd-ri0" kind="presentation" identifier="startInitiativeSegue" id="sAA-Oh-vL2"/>
+                        <segue destination="aCW-WW-5xi" kind="presentation" identifier="startInitiativeSegue" id="sAA-Oh-vL2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsi-Bm-W0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,7 +160,7 @@
                         <viewControllerLayoutGuide type="bottom" id="K1f-mO-0bs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Eur-dh-AHX">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MAP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8C-5F-AMU">
@@ -280,7 +280,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ObC-vA-XmS">
                             <color key="tintColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="akF-xd-ri0" kind="presentation" identifier="addInitiativeSegue" id="vbW-6v-bue"/>
+                                <segue destination="aCW-WW-5xi" kind="presentation" identifier="addInitiativeSegue" id="vbW-6v-bue"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -392,7 +392,7 @@
             </objects>
             <point key="canvasLocation" x="1666" y="1710"/>
         </scene>
-        <!--Start Initiative View Controller-->
+        <!--Start Initiative-->
         <scene sceneID="FO1-nA-bP0">
             <objects>
                 <viewController id="akF-xd-ri0" customClass="StartInitiativeViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
@@ -407,8 +407,11 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFr-DC-OuP">
                                 <rect key="frame" x="63" y="393" width="85" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.23921568627450981" green="1" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Add"/>
+                                <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="addInitiativeButton:" destination="akF-xd-ri0" eventType="touchUpInside" id="yhU-PZ-qdF"/>
                                 </connections>
@@ -416,8 +419,11 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9id-9g-hh0">
                                 <rect key="frame" x="223" y="393" width="98" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.23921568627450981" green="1" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Cancel"/>
+                                <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="cancelInitiativeButton:" destination="akF-xd-ri0" eventType="touchUpInside" id="Abs-aE-kbK"/>
                                 </connections>
@@ -450,16 +456,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="CrB-71-OE2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Start Initiative" id="CJV-Gd-gCD"/>
-                                </items>
-                            </navigationBar>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wuv-QU-gNC">
                                 <rect key="frame" x="295" y="73" width="51" height="31"/>
                                 <connections>
@@ -469,23 +465,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Wuv-QU-gNC" firstAttribute="top" secondItem="CrB-71-OE2" secondAttribute="bottom" constant="29" id="BEv-im-TMC"/>
                             <constraint firstItem="wbf-YF-hlz" firstAttribute="centerX" secondItem="Wuv-QU-gNC" secondAttribute="centerX" id="JGU-Pf-j8l"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wuv-QU-gNC" secondAttribute="trailing" constant="35" id="c8x-Uv-SsX"/>
                             <constraint firstItem="wbf-YF-hlz" firstAttribute="top" secondItem="Wuv-QU-gNC" secondAttribute="bottom" constant="5" id="zme-GL-17z"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Start Initiative" id="Njv-Mu-jq2"/>
                     <connections>
                         <outlet property="addInitiativeLabel" destination="BFr-DC-OuP" id="YbK-Ow-WAi"/>
                         <outlet property="cancelInitiativeLabel" destination="9id-9g-hh0" id="wJK-aT-wt3"/>
+                        <outlet property="datePickerSwitchOutlet" destination="Wuv-QU-gNC" id="nfg-IX-Tev"/>
                         <outlet property="datePickerView" destination="dox-PN-faY" id="bSb-lC-kZh"/>
                         <outlet property="descriptionTextField" destination="Ob0-L4-rha" id="9QR-T7-AKi"/>
                         <outlet property="nameTextField" destination="Ydp-6m-YFA" id="Teq-Tn-nGr"/>
+                        <outlet property="toggleText" destination="wbf-YF-hlz" id="QOo-CS-Kub"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQz-Qv-hEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="406" y="715"/>
+            <point key="canvasLocation" x="1344.8" y="714.69265367316348"/>
         </scene>
         <!--Member Management-->
         <scene sceneID="HjF-sy-o6p">
@@ -678,7 +676,7 @@
                     </view>
                     <connections>
                         <outlet property="dropPinDetailView" destination="ISX-gG-Op3" id="KoS-4G-7uu"/>
-                        <segue destination="akF-xd-ri0" kind="presentation" identifier="startInitiativeSegue" id="Kku-2h-Z5m"/>
+                        <segue destination="aCW-WW-5xi" kind="presentation" identifier="startInitiativeSegue" id="Kku-2h-Z5m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QAv-PE-iay" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -688,10 +686,10 @@
         <!--Map-->
         <scene sceneID="ybT-Mf-W5A">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RDO-Jx-V96" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="RDO-Jx-V96" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="Map" id="meg-bg-2nx"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="CzC-3E-i3N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CzC-3E-i3N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -702,6 +700,10 @@
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="tJc-Jh-Tcu">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="3CJ-NX-deg" kind="relationship" relationship="rootViewController" id="1B3-nu-5Xm"/>
                     </connections>
@@ -713,7 +715,7 @@
         <!--My Initiatives-->
         <scene sceneID="BCz-cr-NKa">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KrN-1v-R4P" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="KrN-1v-R4P" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Initiatives" image="My Initiative" id="NiF-Ry-voJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z12-fv-UBG">
@@ -736,7 +738,7 @@
         <!--Local Initiatives-->
         <scene sceneID="4PQ-4G-ySA">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sxl-hE-GQH" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="Sxl-hE-GQH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Local Initiatives" image="Local Initiatives" id="XmQ-dQ-dCm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="X01-Hg-KyK">
@@ -764,7 +766,7 @@
         <!--Settings-->
         <scene sceneID="Lu2-v4-eBs">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PTO-CC-tKo" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="PTO-CC-tKo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="jLX-J0-C1k"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bGS-9c-q27">
@@ -784,6 +786,26 @@
             </objects>
             <point key="canvasLocation" x="-1714.4000000000001" y="2996.8515742128939"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WXS-hE-K6t">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="aCW-WW-5xi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wmd-kA-3gP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="akF-xd-ri0" kind="relationship" relationship="rootViewController" id="jnW-C3-Igh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vhg-bP-rx1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="405.60000000000002" y="714.69265367316348"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Local Initiatives" width="40" height="40"/>
@@ -795,7 +817,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Psa-7L-h9L"/>
-        <segue reference="vbW-6v-bue"/>
         <segue reference="peZ-TE-S1e"/>
+        <segue reference="vbW-6v-bue"/>
     </inferredMetricsTieBreakers>
 </document>
