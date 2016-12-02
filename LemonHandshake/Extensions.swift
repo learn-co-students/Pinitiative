@@ -13,6 +13,13 @@ extension Notification.Name {
     static let closeMainVC = Notification.Name("close-main-view-controller")
 }
 
+enum StoryboardID: String {
+    case loginVC = "login-vc"
+//    case navID = "navID"
+    case tabBarControl = "tabBarController"
+}
+
+
 extension Date {
     func formattedAs(_ string: String) -> String {
         let dateFormatter = DateFormatter()
@@ -26,3 +33,4 @@ extension Date {
         return self.addingTimeInterval(seconds)
     }
 }
+

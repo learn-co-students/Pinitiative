@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LandmarkDetailViewController: UIViewController {
+class LandmarkDetailViewController: UIViewController, LandmarkDetailDelegate {
 
     @IBOutlet weak var landmarkDetailView: LandmarkDetail!
 
@@ -17,7 +17,7 @@ class LandmarkDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         landmarkDetailView.layer.cornerRadius = 15
-
+        landmarkDetailView.delegate = self
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissViewController))
             view.addGestureRecognizer(tapGestureRecognizer)
     }
@@ -39,12 +39,19 @@ class LandmarkDetailViewController: UIViewController {
             landmarkDetailView.addressLabel.text = "Test address"
             landmarkDetailView.propertyTypeIcon.image = hospital.icon
         }
-        
-
     }
     
     func dismissViewController() {
         dismiss(animated: true, completion: nil)
     }
+    
+    func startInitiative() {
+        performSegue(withIdentifier: Constants.startInitiativeSegue, sender: self.landmark)
+    }
+    
+    func listLandmarkInitiative() {
+        //will create another TVC for list of landmarks
+    }
+
 
 }
