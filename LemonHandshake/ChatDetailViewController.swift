@@ -9,25 +9,31 @@
 import UIKit
 import Firebase
 import JSQMessagesViewController
+import SnapKit
 
 
 class ChatDetailViewController: JSQMessagesViewController {
     
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.orange)
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.blueX)
-    //let x = JSQMessagesBubbleImageFactory().
-    
-    //let incomingBubble = JSQMessagesAvatarImage.
     
     var messages = [JSQMessage]()
     
     var ref: FIRDatabaseReference!
     
-    var initiative: Initiative!
+    var initiative: Initiative! {
+        didSet {
+            connectToChat()
+            collectionView.reloadData()
+
+        }
+    }
+    
+    @IBOutlet weak var containerView: UIView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        connectToChat()
         print(messages)
         
         collectionView.reloadData()
@@ -35,7 +41,6 @@ class ChatDetailViewController: JSQMessagesViewController {
         
         self.senderId = "2"
         self.senderDisplayName = "Tameika Lawrence"
-        
     }
     
     
@@ -52,7 +57,6 @@ class ChatDetailViewController: JSQMessagesViewController {
         let messageDictionary = snapshot.value as! [String:String]
         print("Dictionary \(messageDictionary)")
         
-        
         guard let username = messageDictionary["username"] else { return }
         guard let message = messageDictionary["message"] else { return }
         guard let userID = messageDictionary["userID"] else { return }
@@ -60,16 +64,13 @@ class ChatDetailViewController: JSQMessagesViewController {
         print(username)
         print(message)
         print(userID)
-        
-        
+            
         guard let jsqMessage = JSQMessage(senderId: userID, displayName: username, text: message) else { return }
 
         self.messages.append(jsqMessage)
         self.collectionView.reloadData()
             
-            
         })
-        
         
         
         let usersRef = ref.child("Members").child(initiative.databaseKey)
@@ -93,18 +94,13 @@ class ChatDetailViewController: JSQMessagesViewController {
                     
                     usersRef.setValue(userInfo)
                    
-                
                 })
-                
                 
             }
             
-            
-            
         })
-        
-        
     }
+    
     
     
     
@@ -147,10 +143,6 @@ class ChatDetailViewController: JSQMessagesViewController {
             self.finishSendingMessage()
             
         }
-        
-       
-
-        
     }
     
     
@@ -189,9 +181,7 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     func dequeueTypingIndicatorFooterView(for indexPath: IndexPath!) -> JSQMessagesTypingIndicatorFooterView! {
         
-    
-   
-        let chatCell = dequeueTypingIndicatorFooterView(for: indexPath)
+           let chatCell = dequeueTypingIndicatorFooterView(for: indexPath)
         
         chatCell?.configure(withEllipsisColor: UIColor.lightGray, messageBubble: UIColor.darkGray, shouldDisplayOnLeft: true, for: self.collectionView)
         
@@ -232,6 +222,18 @@ class ChatDetailViewController: JSQMessagesViewController {
 }
 //end
 
+
+
+
+
+
+
+
+
+
+
+
+//will move to Constants -> BadWords
 extension JSQMessagesViewController {
     
     
@@ -260,7 +262,7 @@ extension JSQMessagesViewController {
 
 
 
-
+//will move to Constants -> Extensions
 extension UIColor {
     static let blueX = UIColor.init(red:0.00, green:0.33, blue:0.65, alpha:1.0)
     static let greenX = UIColor(red:0.49, green:0.77, blue:0.46, alpha:1.0)
@@ -268,6 +270,7 @@ extension UIColor {
     static let purpleX = UIColor(red:0.15, green:0.07, blue:0.20, alpha:1.0)
 }
 
+//will move to Constants -> Extensions
 extension UIFont {
     static let avenir = UIFont.init(name: "Avenir", size: 24.0)
 }
