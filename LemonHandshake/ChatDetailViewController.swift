@@ -29,6 +29,7 @@ class ChatDetailViewController: JSQMessagesViewController {
         super.viewDidLoad()
         connectToChat()
         print(messages)
+        
         collectionView.reloadData()
         collectionView.backgroundColor = UIColor.greenX
         
@@ -127,21 +128,28 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        if badWordFilter(text: text) == true {
+            print("don't send theyre cursing")
+        }else{
+            ref = FIRDatabase.database().reference()
+            
+            let chatRef = ref.child("Chats").child(initiative.databaseKey)
+            let msgRef = chatRef.child("Messages")
+            
+            var dict = [String:String]()
+            
+            dict["username"] = self.senderDisplayName
+            dict["message"] = text
+            dict["userID"] = self.senderId
+            
+            msgRef.childByAutoId().setValue(dict)
+            
+            self.finishSendingMessage()
+            
+        }
         
-        ref = FIRDatabase.database().reference()
-        
-        let chatRef = ref.child("Chats").child(initiative.databaseKey)
-        let msgRef = chatRef.child("Messages")
-        
-        var dict = [String:String]()
-        
-        dict["username"] = self.senderDisplayName
-        dict["message"] = text
-        dict["userID"] = self.senderId
-        
-        msgRef.childByAutoId().setValue(dict)
-        
-        self.finishSendingMessage()
+       
+
         
     }
     
@@ -194,9 +202,35 @@ class ChatDetailViewController: JSQMessagesViewController {
     }
     
 
+
+    
+    func badWordFilter(text: String) -> Bool {
+    
+        let badWords = BadWords.sharedInstance.badWordsList
+        
+        let textArray = text.components(separatedBy: " ")
+        print(textArray)
+        for word in textArray{
+            if badWords.contains(word.lowercased()) {
+                
+                print("hey this person cursed")
+                let alert = UIAlertController(title: "Oops!", message: "You can't curse here.", preferredStyle: UIAlertControllerStyle.alert)
+                print("alert")
+                
+                let okAction = UIAlertAction(title: "OK Cool", style: .default, handler: nil)
+                
+                alert.addAction(okAction)
+                
+                self.present(alert, animated: true, completion: nil)
+                return true
+            }
+        }
+        return false
+    }
+    
+    
 }
 //end
-
 
 extension JSQMessagesViewController {
     
