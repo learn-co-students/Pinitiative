@@ -1,4 +1,4 @@
-//
+    //
 //  InitiativeDetailViewController.swift
 //  LemonHandshake
 //
@@ -140,6 +140,7 @@ class InitiativeDetailViewController: UIViewController {
                 self.leaderTextLabel.text = "\(user.firstName) \(user.lastName)"
             }
         }
+        
     }
 
     override func didReceiveMemoryWarning() {

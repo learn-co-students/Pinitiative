@@ -3,6 +3,7 @@
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 Team_Lemon_Handshake_iOS_0916.mobileprovision
+Certificates.p12
 
 ## Build generated
 build/

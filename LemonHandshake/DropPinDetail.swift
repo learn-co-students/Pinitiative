@@ -44,8 +44,7 @@ class DropPinDetail: UIView {
     func commonInit() {
         Bundle.main.loadNibNamed("DropPinDetail", owner: self, options: nil)
         addSubview(contentView)
-        
-//        startInitiativeButton.backgroundColor = UIColor.black
+    
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
