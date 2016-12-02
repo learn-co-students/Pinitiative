@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -160,7 +160,7 @@
                         <viewControllerLayoutGuide type="bottom" id="K1f-mO-0bs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Eur-dh-AHX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MAP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8C-5F-AMU">
@@ -198,7 +198,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TU8-j5-9ac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1073" y="425"/>
-            <point key="canvasLocation" x="37.600000000000001" y="31.934032983508249"/>
         </scene>
         <!--My Initiatives-->
         <scene sceneID="MST-I5-qQp">
@@ -374,7 +373,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Qx2-Am-AKr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Win-Vc-GJI">
-                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CHAT DETAIL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofH-EJ-LCw">
@@ -635,12 +634,7 @@
                 <tabBarController storyboardIdentifier="tabBarController" id="s9O-gW-dqR" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="0yc-mk-Ldm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                <navigationController storyboardIdentifier="navID" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" toolbarHidden="NO" id="LMZ-rX-9f2" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="U8J-BJ-syT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="selectedImageTintColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
@@ -697,7 +691,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RDO-Jx-V96" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="Map" id="meg-bg-2nx"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CzC-3E-i3N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="CzC-3E-i3N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -800,11 +794,8 @@
         <image name="backgroundNYC" width="1326" height="1291"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="h5K-wb-Q3f"/>
-        <segue reference="peZ-TE-S1e"/>
+        <segue reference="Psa-7L-h9L"/>
         <segue reference="vbW-6v-bue"/>
-        <segue reference="zkx-6j-hXv"/>
-        <segue reference="09l-Va-NrD"/>
-        <segue reference="nR9-YX-1Fo"/>
+        <segue reference="peZ-TE-S1e"/>
     </inferredMetricsTieBreakers>
 </document>

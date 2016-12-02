@@ -89,11 +89,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.styleURL = store.styleURL
         mapView.showsUserLocation = true
-<<<<<<< HEAD
         mapView.zoomLevel = 12
-=======
-        mapView.zoomLevel = 13
->>>>>>> master
         mapView.frame.size.height = view.frame.size.height
         view.addSubview(mapView)
         mapView.delegate = self
