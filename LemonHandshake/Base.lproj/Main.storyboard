@@ -809,6 +809,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oZJ-bQ-jhT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2305" y="1637"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="WXS-hE-K6t">
             <objects>
