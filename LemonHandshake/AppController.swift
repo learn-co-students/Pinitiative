@@ -33,7 +33,8 @@ class AppController: UIViewController {
        
         if FIRAuth.auth()?.currentUser != nil {
 
-        actingViewController = loadViewController(withID: .navID)
+//        actingViewController = loadViewController(withID: .navID)
+        actingViewController = loadViewController(withID: .tabBarControl)
         
         } else {
         
@@ -60,12 +61,14 @@ class AppController: UIViewController {
            
             return storyboard.instantiateViewController(withIdentifier: id.rawValue) as! LoginScreenViewController
         
-        case .navID:
-           
-            let navVC = storyboard.instantiateViewController(withIdentifier: "navID") as! UINavigationController
+//        case .navID:
+//           
+//            let navVC = storyboard.instantiateViewController(withIdentifier: "navID") as! UINavigationController
+//            
+//            return navVC
+        case .tabBarControl:
             
-            return navVC
-            
+            return storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
         }
     }
     
@@ -83,7 +86,8 @@ class AppController: UIViewController {
         
         switch notification.name {
         case Notification.Name.closeLoginVC:
-            switchToViewController(withID: .navID)
+    //      switchToViewController(withID: .navID)  - JCB changing to Tab Bar Control
+            switchToViewController(withID: .tabBarControl)
         default:
             fatalError("ERROR: Unable to match notification name")
         }

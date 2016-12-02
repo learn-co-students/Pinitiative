@@ -16,7 +16,6 @@
 		1B1E94311DEB720E00F7EFEC /* Initiative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1E94301DEB720E00F7EFEC /* Initiative.swift */; };
 		1B1E94331DEB733700F7EFEC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1E94321DEB733700F7EFEC /* User.swift */; };
 		1B5CB0161DE9D5FF00C090E0 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CB0151DE9D5FF00C090E0 /* FirebaseAPI.swift */; };
-		1BC785F21DEE17C600CC9C16 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC785F11DEE17C600CC9C16 /* Date.swift */; };
 		8309A9E51DDCE21400484700 /* MapDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8309A9E41DDCE21400484700 /* MapDataStore.swift */; };
 		832662A51DDF541900126B99 /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832662A41DDF541900126B99 /* CustomPointAnnotation.swift */; };
 		832662A91DDF5EEB00126B99 /* park2.png in Resources */ = {isa = PBXBuildFile; fileRef = 832662A81DDF5EEB00126B99 /* park2.png */; };
@@ -44,6 +43,7 @@
 		BC6244E31DDA798D00AE6523 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DD1DDA798D00AE6523 /* MapViewController.swift */; };
 		BC6244E41DDA798D00AE6523 /* MyInitiativesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */; };
 		BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */; };
+		BC7AAE251DF2037F00B2A5B9 /* ChatContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7AAE241DF2037F00B2A5B9 /* ChatContainerViewController.swift */; };
 		BC87E4A81DDB87E800980939 /* MemberManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */; };
 		BCAAF03D1DEC859900D78419 /* BadWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAAF03C1DEC859900D78419 /* BadWords.swift */; };
 		BCB137B91DE5EBD200C15CDD /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */; };
@@ -62,7 +62,6 @@
 		1B1E94301DEB720E00F7EFEC /* Initiative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Initiative.swift; sourceTree = "<group>"; };
 		1B1E94321DEB733700F7EFEC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1B5CB0151DE9D5FF00C090E0 /* FirebaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
-		1BC785F11DEE17C600CC9C16 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LemonHandshake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake.debug.xcconfig"; sourceTree = "<group>"; };
 		8309A9E41DDCE21400484700 /* MapDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDataStore.swift; sourceTree = "<group>"; };
 		832662A41DDF541900126B99 /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
@@ -92,6 +91,7 @@
 		BC6244DD1DDA798D00AE6523 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInitiativesTableViewController.swift; sourceTree = "<group>"; };
 		BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartInitiativeViewController.swift; sourceTree = "<group>"; };
+		BC7AAE241DF2037F00B2A5B9 /* ChatContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContainerViewController.swift; sourceTree = "<group>"; };
 		BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberManagementViewController.swift; sourceTree = "<group>"; };
 		BCAAF03C1DEC859900D78419 /* BadWords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadWords.swift; sourceTree = "<group>"; };
 		BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
@@ -131,13 +131,11 @@
 		1B10965D1DDA50CE00609104 /* LemonHandshake */ = {
 			isa = PBXGroup;
 			children = (
-				1BC785F01DEE17BD00CC9C16 /* Tools */,
 				BC5688C91DEE2242005FC0D8 /* Main.storyboard */,
 				837C2F641DE4ACB400E076C9 /* Constants */,
 				8309AA061DDE04BC00484700 /* Models */,
 				1B10965E1DDA50CE00609104 /* AppDelegate.swift */,
 				1B10B1A21DE4C8EF006E38A7 /* Firebase */,
-				1B1096601DDA50CE00609104 /* ViewController.swift */,
 				BC87E4A61DDB862F00980939 /* Controllers */,
 				83D2E8491DE4ECE30095C068 /* Xibs */,
 				1B1096651DDA50CE00609104 /* Assets.xcassets */,
@@ -158,14 +156,6 @@
 				1B5CB0151DE9D5FF00C090E0 /* FirebaseAPI.swift */,
 			);
 			name = Firebase;
-			sourceTree = "<group>";
-		};
-		1BC785F01DEE17BD00CC9C16 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				1BC785F11DEE17C600CC9C16 /* Date.swift */,
-			);
-			name = Tools;
 			sourceTree = "<group>";
 		};
 		8309AA061DDE04BC00484700 /* Models */ = {
@@ -221,6 +211,7 @@
 		BC87E4A61DDB862F00980939 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1B1096601DDA50CE00609104 /* ViewController.swift */,
 				BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */,
 				BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */,
 				BC6244DB1DDA798D00AE6523 /* LandmarkDetailTableViewController.swift */,
@@ -236,6 +227,7 @@
 				83509E411DE63F9300D8C18B /* LandmarkDetailViewController.swift */,
 				BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */,
 				BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */,
+				BC7AAE241DF2037F00B2A5B9 /* ChatContainerViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -284,7 +276,7 @@
 				TargetAttributes = {
 					1B10965A1DDA50CE00609104 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = GXEX28B97C;
+						DevelopmentTeam = 3WL69W834X;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -381,8 +373,8 @@
 			files = (
 				BC5688C71DEE1DC5005FC0D8 /* LandmarkDetailViewController.swift in Sources */,
 				1B1096731DDA665B00609104 /* FirebaseAuth.swift in Sources */,
-				1BC785F21DEE17C600CC9C16 /* Date.swift in Sources */,
 				83E865CA1DECFEC900336BC4 /* DropPinLocation.swift in Sources */,
+				BC7AAE251DF2037F00B2A5B9 /* ChatContainerViewController.swift in Sources */,
 				837C2F631DE4AC9F00E076C9 /* Extensions.swift in Sources */,
 				BC6244E11DDA798D00AE6523 /* LandmarkDetailTableViewController.swift in Sources */,
 				1B5CB0161DE9D5FF00C090E0 /* FirebaseAPI.swift in Sources */,
@@ -537,11 +529,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = GXEX28B97C;
+				DEVELOPMENT_TEAM = 3WL69W834X;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flatiron.TeamLemonHandshake;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Flatiron.pinititative;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -554,11 +546,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = GXEX28B97C;
+				DEVELOPMENT_TEAM = 3WL69W834X;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flatiron.TeamLemonHandshake;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Flatiron.pinititative;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

@@ -1,4 +1,4 @@
-//
+    //
 //  InitiativeDetailViewController.swift
 //  LemonHandshake
 //
@@ -30,6 +30,7 @@ class InitiativeDetailViewController: UIViewController {
     @IBOutlet weak var descriptionTextHere: UILabel!
     
     @IBOutlet weak var chatButtonLabel: UIButton!
+    
     
     var initiative: Initiative!
     
@@ -139,6 +140,7 @@ class InitiativeDetailViewController: UIViewController {
                 self.leaderTextLabel.text = "\(user.firstName) \(user.lastName)"
             }
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -156,7 +158,7 @@ class InitiativeDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "chatButtonSegue" {
-            let dest = segue.destination as? ChatDetailViewController
+            let dest = segue.destination as? ChatContainerViewController
             dest?.initiative = initiative
         }
     }
