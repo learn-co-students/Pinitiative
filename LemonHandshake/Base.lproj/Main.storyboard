@@ -92,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2004" y="-535"/>
+            <point key="canvasLocation" x="-2830" y="-36"/>
         </scene>
         <!--Landmark Detail View Controller-->
         <scene sceneID="571-q6-DgQ">
@@ -149,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRL-LR-RsY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2846" y="-370"/>
+            <point key="canvasLocation" x="-3673" y="129"/>
         </scene>
         <!--Pinitiative-->
         <scene sceneID="AjW-Cj-b0s">
@@ -687,7 +687,7 @@
         <!--Map-->
         <scene sceneID="ybT-Mf-W5A">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="RDO-Jx-V96" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" hidesBarsOnTap="YES" id="RDO-Jx-V96" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="Map" id="meg-bg-2nx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CzC-3E-i3N">
