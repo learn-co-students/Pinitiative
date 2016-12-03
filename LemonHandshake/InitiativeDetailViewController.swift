@@ -158,7 +158,7 @@ class InitiativeDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "chatButtonSegue" {
-            let dest = segue.destination as? ChatDetailViewController
+            let dest = segue.destination as? ChatContainerViewController
             dest?.initiative = initiative
         }
     }

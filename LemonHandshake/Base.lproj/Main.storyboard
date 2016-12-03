@@ -367,7 +367,7 @@
         <!--Chat-->
         <scene sceneID="raU-l5-UBM">
             <objects>
-                <viewController id="vIA-zt-Yj7" customClass="ChatDetailViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vIA-zt-Yj7" customClass="ChatContainerViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ljh-dM-hOQ"/>
                         <viewControllerLayoutGuide type="bottom" id="Qx2-Am-AKr"/>
@@ -376,22 +376,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CHAT DETAIL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofH-EJ-LCw">
-                                <rect key="frame" x="119" y="241" width="136" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="It1-hF-7VB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <connections>
+                                    <segue destination="sQv-dn-UMy" kind="embed" id="Yfg-cu-8sH"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.78138069865018478" green="1" blue="0.7145054945380187" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Qx2-Am-AKr" firstAttribute="top" secondItem="It1-hF-7VB" secondAttribute="bottom" id="81f-73-hM7"/>
+                            <constraint firstAttribute="trailing" secondItem="It1-hF-7VB" secondAttribute="trailing" id="Nkv-KO-zHl"/>
+                            <constraint firstItem="It1-hF-7VB" firstAttribute="top" secondItem="Win-Vc-GJI" secondAttribute="top" id="WHu-6g-fva"/>
+                            <constraint firstItem="It1-hF-7VB" firstAttribute="leading" secondItem="Win-Vc-GJI" secondAttribute="leading" id="p35-dP-ggZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Chat" id="s5g-Tz-sqH"/>
+                    <connections>
+                        <outlet property="containerView" destination="It1-hF-7VB" id="vL5-l4-ZEp"/>
+                        <outlet property="view" destination="Win-Vc-GJI" id="oEC-cn-Ocq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8c-69-Dtl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1666" y="1710"/>
+            <point key="canvasLocation" x="1397.5999999999999" y="1637.6311844077961"/>
         </scene>
         <!--Start Initiative-->
         <scene sceneID="FO1-nA-bP0">
@@ -786,6 +795,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hwv-ko-2Be" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1714.4000000000001" y="2996.8515742128939"/>
+        </scene>
+        <!--Chat Detail View Controller-->
+        <scene sceneID="d1o-zU-lx6">
+            <objects>
+                <viewController id="sQv-dn-UMy" customClass="ChatDetailViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e7S-Li-c87">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oZJ-bQ-jhT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2305" y="1637"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WXS-hE-K6t">
