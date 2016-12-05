@@ -37,7 +37,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.delegate = self
         setMapSearchButtonConstraints()
         
-        let imageView = UIImageView(image: IconConstants.logoIcon )
+        let imageView = UIImageView(image: IconConstants.fullLogo )
+        imageView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 45)
+        imageView.contentMode = .scaleAspectFit
         navBar.titleView = imageView
         
         shouldPresentNewUserInfo()
@@ -99,7 +101,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.styleURL = store.styleURL
         mapView.showsUserLocation = true
-        mapView.zoomLevel = 12
+        mapView.zoomLevel = 13.5
         mapView.frame.size.height = view.frame.size.height
         view.addSubview(mapView)
         mapView.delegate = self
@@ -271,7 +273,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
             make.centerY.equalTo(self.view).multipliedBy(0.33)
             make.width.equalTo(200)
             make.height.equalTo(45)
-            searchMapLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
+            searchMapLabel.backgroundColor = UIColor.themeBlue.withAlphaComponent(0.5)
             searchMapLabel.layer.borderWidth = 1
             searchMapLabel.layer.cornerRadius = 20
         }
