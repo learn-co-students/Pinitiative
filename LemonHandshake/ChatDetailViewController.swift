@@ -29,6 +29,7 @@ class ChatDetailViewController: JSQMessagesViewController {
         }
     }
     
+//    var initiative = Initiative(name: "Hello", latitude: 0, longitude: 0, databaseKey: "Testing", leader: "Me", initiativeDescription: "Fun times", createdAt: Date(), associatedDate: Date(), expirationDate: Date.distantFuture)
     
     @IBOutlet weak var containerView: UIView!
 
@@ -37,26 +38,46 @@ class ChatDetailViewController: JSQMessagesViewController {
         super.viewDidLoad()
         print(messages)
         
+        connectToChat()
         collectionView.reloadData()
         collectionView.backgroundColor = UIColor.greenX
         
-        self.senderId = FirebaseAuth.currentUserID
-        //self.senderDisplayName =
-        
-        
+        senderId = FirebaseAuth.currentUserID
+        senderDisplayName = fetchUsername()
         
     }
+    
+   
+    func fetchUsername() -> String {
+        
+        guard let uid = FirebaseAuth.currentUserID else { return "no id" }
+        let userRef = FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            print(snapshot)
+            
+            guard let dictionary = snapshot.value as? [String : Any] else { return }
+            
+                guard let firstName = dictionary["firstName"] as? String else { return }
+                guard let lastName = dictionary["lastName"] as? String else { return }
+            
+                let name = (firstName + " " + lastName)
+                return name
+            
+        }, withCancel: nil)
+    }
+    
+    
     
     
     func connectToChat() {
         
         ref = FIRDatabase.database().reference()
         
+        guard let initiative = initiative else { return }
         let chatRef = ref.child("Chats").child(initiative.databaseKey)
         let msgRef = chatRef.child("Messages")
         
         msgRef.observe(.childAdded, with: { snapshot in
-        print(snapshot.value)
+        print(snapshot.value as Any)
             
         let messageDictionary = snapshot.value as! [String:String]
         print("Dictionary \(messageDictionary)")
@@ -132,7 +153,7 @@ class ChatDetailViewController: JSQMessagesViewController {
             print("don't send theyre cursing")
         }else{
             ref = FIRDatabase.database().reference()
-            
+            guard let initiative = initiative else { return }
             let chatRef = ref.child("Chats").child(initiative.databaseKey)
             let msgRef = chatRef.child("Messages")
             
@@ -187,7 +208,7 @@ class ChatDetailViewController: JSQMessagesViewController {
         
            let chatCell = dequeueTypingIndicatorFooterView(for: indexPath)
         
-        chatCell?.configure(withEllipsisColor: UIColor.lightGray, messageBubble: UIColor.darkGray, shouldDisplayOnLeft: true, for: self.collectionView)
+        chatCell?.configure(withEllipsisColor: UIColor.lightGray, messageBubble: UIColor.lightGray, shouldDisplayOnLeft: true, for: self.collectionView)
         
         if self.senderId == senderId, indexPath.item == indexPath.count + 1 {
             
@@ -222,8 +243,8 @@ class ChatDetailViewController: JSQMessagesViewController {
         return false
     }
     
-    
 }
+
 //end
 
 

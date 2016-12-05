@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -699,7 +699,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="RDO-Jx-V96" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="Map" id="meg-bg-2nx"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CzC-3E-i3N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CzC-3E-i3N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -728,7 +728,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="KrN-1v-R4P" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Initiatives" image="My Initiative" id="NiF-Ry-voJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z12-fv-UBG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z12-fv-UBG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -751,7 +751,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="Sxl-hE-GQH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Local Initiatives" image="Local Initiatives" id="XmQ-dQ-dCm"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="X01-Hg-KyK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X01-Hg-KyK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -779,7 +779,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="PTO-CC-tKo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="jLX-J0-C1k"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bGS-9c-q27">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bGS-9c-q27">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -800,6 +800,10 @@
         <scene sceneID="d1o-zU-lx6">
             <objects>
                 <viewController id="sQv-dn-UMy" customClass="ChatDetailViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fYI-Bc-xYO"/>
+                        <viewControllerLayoutGuide type="bottom" id="OSN-zC-dnM"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="e7S-Li-c87">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -815,7 +819,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="aCW-WW-5xi" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wmd-kA-3gP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wmd-kA-3gP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
