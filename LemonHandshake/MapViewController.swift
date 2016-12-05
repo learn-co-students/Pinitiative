@@ -23,12 +23,14 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     var geocoder = CLGeocoder()
     
     
+    
     @IBOutlet weak var navBar: UINavigationItem!
     
     @IBOutlet weak var searchMapLabel: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         createMap()
         view.addSubview(mapView)
         activateGestureRecognizer()
@@ -37,7 +39,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         
         let imageView = UIImageView(image: IconConstants.logoIcon )
         navBar.titleView = imageView
-
+        
+        shouldPresentNewUserInfo()
     }
 
     
@@ -309,4 +312,15 @@ extension MapViewController {
         }
     }
     
+}
+
+//MARK: - Test For New User Screen
+extension MapViewController {
+    func shouldPresentNewUserInfo() {
+        FirebaseAPI.test(forUserWithKey: FirebaseAuth.currentUserID) { (doesExist) in
+            if !doesExist {
+                self.present(NewUserInfoViewController(), animated: true)
+            }
+        }
+    }
 }
