@@ -261,7 +261,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     func setMapSearchButtonConstraints() {
             searchMapLabel.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).multipliedBy(0.15)
+            make.centerY.equalTo(self.view).multipliedBy(0.3)
             make.width.equalTo(200)
             make.height.equalTo(45)
             searchMapLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
