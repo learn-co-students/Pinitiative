@@ -29,6 +29,7 @@ class ChatDetailViewController: JSQMessagesViewController {
         }
     }
     
+    
     @IBOutlet weak var containerView: UIView!
 
     
@@ -39,8 +40,11 @@ class ChatDetailViewController: JSQMessagesViewController {
         collectionView.reloadData()
         collectionView.backgroundColor = UIColor.greenX
         
-        self.senderId = "2"
-        self.senderDisplayName = "Tameika Lawrence"
+        self.senderId = FirebaseAuth.currentUserID
+        //self.senderDisplayName =
+        
+        
+        
     }
     
     
@@ -192,7 +196,7 @@ class ChatDetailViewController: JSQMessagesViewController {
     }
     
 
-
+    // FILTERING TOOLBAR INPUT
     
     func badWordFilter(text: String) -> Bool {
     
@@ -234,43 +238,43 @@ class ChatDetailViewController: JSQMessagesViewController {
 
 
 //will move to Constants -> BadWords
-extension JSQMessagesViewController {
-    
-    
-    func generateInitials(senderDisplayName: String) -> String? {
+    extension JSQMessagesViewController {
         
-        let nameCharacters = [Character](senderDisplayName.characters)
         
-        guard !senderDisplayName.isEmpty, nameCharacters.first != " " else { return nil }
-        
-        guard nameCharacters.contains(" ") else { return String(nameCharacters.first!).uppercased() }
-        
-        let words = (nameCharacters.split(separator: " "))
-        
-        let firstWordArray = words.first!
-        
-        let lastWordArray = words.last!
-        
-        let firstNameInitial = String(firstWordArray.first!)
-        
-        let lastNameInitial = String(lastWordArray.first!)
-        
-        return firstNameInitial.uppercased() + lastNameInitial.uppercased()
-        
+        func generateInitials(senderDisplayName: String) -> String? {
+            
+            let nameCharacters = [Character](senderDisplayName.characters)
+            
+            guard !senderDisplayName.isEmpty, nameCharacters.first != " " else { return nil }
+            
+            guard nameCharacters.contains(" ") else { return String(nameCharacters.first!).uppercased() }
+            
+            let words = (nameCharacters.split(separator: " "))
+            
+            let firstWordArray = words.first!
+            
+            let lastWordArray = words.last!
+            
+            let firstNameInitial = String(firstWordArray.first!)
+            
+            let lastNameInitial = String(lastWordArray.first!)
+            
+            return firstNameInitial.uppercased() + lastNameInitial.uppercased()
+            
+        }
     }
-}
 
 
 
 //will move to Constants -> Extensions
-extension UIColor {
-    static let blueX = UIColor.init(red:0.00, green:0.33, blue:0.65, alpha:1.0)
-    static let greenX = UIColor(red:0.49, green:0.77, blue:0.46, alpha:1.0)
-    static let lightGreen = UIColor(red:0.72, green:1.00, blue:0.62, alpha:1.0)
-    static let purpleX = UIColor(red:0.15, green:0.07, blue:0.20, alpha:1.0)
-}
+    extension UIColor {
+        static let blueX = UIColor.init(red:0.00, green:0.33, blue:0.65, alpha:1.0)
+        static let greenX = UIColor(red:0.49, green:0.77, blue:0.46, alpha:1.0)
+        static let lightGreen = UIColor(red:0.72, green:1.00, blue:0.62, alpha:1.0)
+        static let purpleX = UIColor(red:0.15, green:0.07, blue:0.20, alpha:1.0)
+    }
 
 //will move to Constants -> Extensions
-extension UIFont {
-    static let avenir = UIFont.init(name: "Avenir", size: 24.0)
-}
+    extension UIFont {
+        static let avenir = UIFont.init(name: "Avenir", size: 24.0)
+    }
