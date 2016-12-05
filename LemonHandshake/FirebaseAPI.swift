@@ -156,8 +156,8 @@ class FirebaseAPI {
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             print("SNAPSHOT: \(snapshot.value)")
-            let value = snapshot.value as? String
-            doesExist(value == "null")
+            let value = snapshot.value as? [String:Any] ?? nil
+            doesExist(value != nil)
             
         })
     }
