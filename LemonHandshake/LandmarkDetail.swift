@@ -61,9 +61,8 @@ class LandmarkDetail: UIView {
     func commonInit() {
         Bundle.main.loadNibNamed("LandmarkDetail", owner: self, options: nil)
         addSubview(contentView)
-        
+        contentView.layer.cornerRadius = 15
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        
         contentView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true

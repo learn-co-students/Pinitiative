@@ -123,7 +123,7 @@
                     </view>
                     <connections>
                         <outlet property="landmarkDetailView" destination="aB7-kw-958" id="8ca-tA-hwS"/>
-                        <segue destination="aCW-WW-5xi" kind="presentation" identifier="startInitiativeSegue" id="sAA-Oh-vL2"/>
+                        <segue destination="tMf-1M-mfM" kind="presentation" identifier="startInitiativeSegue" id="5Sz-62-ogl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsi-Bm-W0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -151,7 +151,7 @@
             </objects>
             <point key="canvasLocation" x="-3673" y="129"/>
         </scene>
-        <!--Pinitiative-->
+        <!--Map View Controller-->
         <scene sceneID="AjW-Cj-b0s">
             <objects>
                 <viewController storyboardIdentifier="mapVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3CJ-NX-deg" customClass="MapViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
@@ -182,14 +182,16 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Pinitiative" id="qGh-Ym-BAw">
-                        <barButtonItem key="rightBarButtonItem" image="Tips and Tricks" style="plain" id="e9R-Lc-g7d">
+                    <navigationItem key="navigationItem" id="qGh-Ym-BAw">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="e9R-Lc-g7d">
                             <color key="tintColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="navBar" destination="qGh-Ym-BAw" id="gYS-de-biv"/>
                         <outlet property="searchMapLabel" destination="r5M-nV-gRP" id="Pif-89-4om"/>
                         <segue destination="zYc-Au-Tv4" kind="presentation" identifier="annotationSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="MVg-bT-R5e"/>
                         <segue destination="qWx-m3-kEc" kind="presentation" identifier="dropPinSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="PpP-Ac-koJ"/>
@@ -280,7 +282,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ObC-vA-XmS">
                             <color key="tintColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="aCW-WW-5xi" kind="presentation" identifier="addInitiativeSegue" id="vbW-6v-bue"/>
+                                <segue destination="tMf-1M-mfM" kind="presentation" identifier="addInitiative" id="8Dw-II-qlA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -493,7 +495,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQz-Qv-hEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1344.8" y="714.69265367316348"/>
+            <point key="canvasLocation" x="4956" y="283.80809595202402"/>
+        </scene>
+        <!--Start Initiative-->
+        <scene sceneID="gNZ-xD-csn">
+            <objects>
+                <viewController title="Start Initiative" id="DSn-2I-C2a" customClass="StartInitiativeNewViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pbA-Mg-qpH"/>
+                        <viewControllerLayoutGuide type="bottom" id="xm9-6X-Eio"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1LM-89-zWe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEJ-R8-lkT">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JEJ-R8-lkT" firstAttribute="top" secondItem="pbA-Mg-qpH" secondAttribute="bottom" id="4W9-e8-Hzb"/>
+                            <constraint firstItem="JEJ-R8-lkT" firstAttribute="leading" secondItem="1LM-89-zWe" secondAttribute="leading" id="Us0-LY-SWV"/>
+                            <constraint firstAttribute="trailing" secondItem="JEJ-R8-lkT" secondAttribute="trailing" id="Vmc-Ln-SPQ"/>
+                            <constraint firstItem="xm9-6X-Eio" firstAttribute="top" secondItem="JEJ-R8-lkT" secondAttribute="bottom" id="ghj-Ga-dpm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Start Initiative" id="i6F-9H-EsC">
+                        <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="9oL-qf-Wl1">
+                            <connections>
+                                <action selector="savePressed:" destination="DSn-2I-C2a" id="7bn-uh-MNJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="formerView" destination="JEJ-R8-lkT" id="nbs-FQ-l2V"/>
+                        <outlet property="saveButton" destination="9oL-qf-Wl1" id="eFd-xM-zdm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zHl-sZ-yqJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2540" y="284"/>
         </scene>
         <!--Member Management-->
         <scene sceneID="HjF-sy-o6p">
@@ -686,20 +729,20 @@
                     </view>
                     <connections>
                         <outlet property="dropPinDetailView" destination="ISX-gG-Op3" id="KoS-4G-7uu"/>
-                        <segue destination="aCW-WW-5xi" kind="presentation" identifier="startInitiativeSegue" id="Kku-2h-Z5m"/>
+                        <segue destination="tMf-1M-mfM" kind="presentation" identifier="startInitiativeSegue" id="psZ-cA-ibZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QAv-PE-iay" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="788" y="-370"/>
+            <point key="canvasLocation" x="794" y="-370"/>
         </scene>
         <!--Map-->
         <scene sceneID="ybT-Mf-W5A">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" hidesBarsOnTap="YES" id="RDO-Jx-V96" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RDO-Jx-V96" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="Map" id="meg-bg-2nx"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CzC-3E-i3N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CzC-3E-i3N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -728,7 +771,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="KrN-1v-R4P" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Initiatives" image="My Initiative" id="NiF-Ry-voJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z12-fv-UBG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z12-fv-UBG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -751,7 +794,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="Sxl-hE-GQH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Local Initiatives" image="Local Initiatives" id="XmQ-dQ-dCm"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="X01-Hg-KyK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X01-Hg-KyK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -779,7 +822,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="PTO-CC-tKo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="jLX-J0-C1k"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bGS-9c-q27">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bGS-9c-q27">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -800,6 +843,10 @@
         <scene sceneID="d1o-zU-lx6">
             <objects>
                 <viewController id="sQv-dn-UMy" customClass="ChatDetailViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ITf-aI-bBz"/>
+                        <viewControllerLayoutGuide type="bottom" id="MUI-5h-A0H"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="e7S-Li-c87">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -810,25 +857,55 @@
             </objects>
             <point key="canvasLocation" x="2305" y="1637"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="WXS-hE-K6t">
+        <!--Table View Controller-->
+        <scene sceneID="rI2-li-25a">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="aCW-WW-5xi" sceneMemberID="viewController">
+                <tableViewController id="Wgg-dV-O09" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Ar-Ns-anF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iw4-Cr-Bh2">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iw4-Cr-Bh2" id="XWy-lA-sg5">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Wgg-dV-O09" id="Ow7-TE-xXf"/>
+                            <outlet property="delegate" destination="Wgg-dV-O09" id="MDb-1b-mow"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Esy-Lr-tsA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60" y="668"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fPD-0i-HM6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tMf-1M-mfM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wmd-kA-3gP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="INL-Wu-Urh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="akF-xd-ri0" kind="relationship" relationship="rootViewController" id="jnW-C3-Igh"/>
+                        <segue destination="DSn-2I-C2a" kind="relationship" relationship="rootViewController" id="gch-Qy-mPP"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vhg-bP-rx1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tKH-TK-S2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405.60000000000002" y="714.69265367316348"/>
+            <point key="canvasLocation" x="1398" y="703"/>
         </scene>
     </scenes>
     <resources>
@@ -836,12 +913,11 @@
         <image name="Map" width="40" height="40"/>
         <image name="My Initiative" width="60" height="60"/>
         <image name="Settings" width="60" height="60"/>
-        <image name="Tips and Tricks" width="40" height="40"/>
         <image name="backgroundNYC" width="1326" height="1291"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="5Sz-62-ogl"/>
         <segue reference="Psa-7L-h9L"/>
         <segue reference="peZ-TE-S1e"/>
-        <segue reference="vbW-6v-bue"/>
     </inferredMetricsTieBreakers>
 </document>

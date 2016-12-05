@@ -12,6 +12,7 @@ pod 'FirebaseUI'
 pod 'GoogleSignIn'
 pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
 pod 'JSQMessagesViewController', '~> 7.3'
+pod 'Former'
 
 end
 

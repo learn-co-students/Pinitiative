@@ -28,6 +28,8 @@
 		837C2F5A1DE4942500E076C9 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C2F591DE4942500E076C9 /* AppController.swift */; };
 		837C2F631DE4AC9F00E076C9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C2F621DE4AC9F00E076C9 /* Extensions.swift */; };
 		837C2F661DE4B64500E076C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837C2F651DE4B64500E076C9 /* GoogleService-Info.plist */; };
+		83873B031DF3827F00FF71FB /* StartInitiativeNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83873B021DF3827F00FF71FB /* StartInitiativeNewViewController.swift */; };
+		83873B051DF382E500FF71FB /* FormManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83873B041DF382E500FF71FB /* FormManager.swift */; };
 		83D2E84B1DE4EF310095C068 /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2E84A1DE4EF310095C068 /* LandmarkDetail.swift */; };
 		83E865CA1DECFEC900336BC4 /* DropPinLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E865C91DECFEC900336BC4 /* DropPinLocation.swift */; };
 		83EF6B781DEE0B9B00756913 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF6B771DEE0B9B00756913 /* Constants.swift */; };
@@ -76,6 +78,8 @@
 		837C2F591DE4942500E076C9 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		837C2F621DE4AC9F00E076C9 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		837C2F651DE4B64500E076C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		83873B021DF3827F00FF71FB /* StartInitiativeNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartInitiativeNewViewController.swift; sourceTree = "<group>"; };
+		83873B041DF382E500FF71FB /* FormManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormManager.swift; sourceTree = "<group>"; };
 		83D2E84A1DE4EF310095C068 /* LandmarkDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
 		83E865C91DECFEC900336BC4 /* DropPinLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropPinLocation.swift; sourceTree = "<group>"; };
 		83EF6B771DEE0B9B00756913 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 				BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */,
 				BC6244DD1DDA798D00AE6523 /* MapViewController.swift */,
 				BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */,
+				83873B021DF3827F00FF71FB /* StartInitiativeNewViewController.swift */,
+				83873B041DF382E500FF71FB /* FormManager.swift */,
 				BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */,
 				92764CEF1DE34635007115E9 /* MyInitiativesTableViewCell.swift */,
 				92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */,
@@ -378,6 +384,7 @@
 				837C2F631DE4AC9F00E076C9 /* Extensions.swift in Sources */,
 				BC6244E11DDA798D00AE6523 /* LandmarkDetailTableViewController.swift in Sources */,
 				1B5CB0161DE9D5FF00C090E0 /* FirebaseAPI.swift in Sources */,
+				83873B051DF382E500FF71FB /* FormManager.swift in Sources */,
 				83EF6B781DEE0B9B00756913 /* Constants.swift in Sources */,
 				8309A9E51DDCE21400484700 /* MapDataStore.swift in Sources */,
 				83358ACA1DECBD0E0045B170 /* DropPinDetail.swift in Sources */,
@@ -385,6 +392,7 @@
 				BC6244E21DDA798D00AE6523 /* LoginScreenViewController.swift in Sources */,
 				1B1E94311DEB720E00F7EFEC /* Initiative.swift in Sources */,
 				832662AD1DDF7AEB00126B99 /* MapDataModels.swift in Sources */,
+				83873B031DF3827F00FF71FB /* StartInitiativeNewViewController.swift in Sources */,
 				1B1096611DDA50CE00609104 /* ViewController.swift in Sources */,
 				1B1E94331DEB733700F7EFEC /* User.swift in Sources */,
 				BC43C33B1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift in Sources */,
