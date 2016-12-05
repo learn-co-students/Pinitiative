@@ -22,16 +22,10 @@ class StartInitiativeNewViewController: FormViewController {
         if isSaved {
             let alertController = UIAlertController(title: nil, message: "\(form.nameText) added to your initiatives!", preferredStyle: UIAlertControllerStyle.alert)
             
-            
-            
             let okAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.default) { completion -> Void in
-                
-                //                print("THE DATE SELECTED IS: \(self.datePickerView.date)")
-                
                 self.dismiss(animated: true, completion: nil)
-                // might need to reload datastore here.
-                
             }
+            
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
             
@@ -42,6 +36,10 @@ class StartInitiativeNewViewController: FormViewController {
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func cancel(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     
