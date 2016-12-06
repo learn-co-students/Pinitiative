@@ -19,6 +19,7 @@ class ChatContainerViewController: UIViewController {
         
         let vc = self.childViewControllers.first! as! ChatDetailViewController
         vc.initiative = initiative
+        
 
     }
 

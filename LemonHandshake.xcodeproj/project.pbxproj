@@ -98,6 +98,7 @@
 		BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberManagementViewController.swift; sourceTree = "<group>"; };
 		BCAAF03C1DEC859900D78419 /* BadWords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadWords.swift; sourceTree = "<group>"; };
 		BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
+		BCBA1B331DF74C6900262202 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D9D87A0442C341DFD63FA7AE /* Pods-LemonHandshake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LemonHandshake.release.xcconfig"; path = "Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,6 +218,7 @@
 			children = (
 				1B0EC6741DF74D7300297C8C /* NewUserInfoViewController.swift */,
 				BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */,
+				BC7AAE241DF2037F00B2A5B9 /* ChatContainerViewController.swift */,
 				BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */,
 				BC6244DB1DDA798D00AE6523 /* LandmarkDetailTableViewController.swift */,
 				BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */,
@@ -232,7 +234,6 @@
 				92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */,
 				BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */,
 				92764CEF1DE34635007115E9 /* MyInitiativesTableViewCell.swift */,
-				BC7AAE241DF2037F00B2A5B9 /* ChatContainerViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -281,7 +282,7 @@
 				TargetAttributes = {
 					1B10965A1DDA50CE00609104 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 3WL69W834X;
+						DevelopmentTeam = GXEX28B97C;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -431,6 +432,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BC5688CA1DEE2242005FC0D8 /* Base */,
+				BCBA1B331DF74C6900262202 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -541,7 +543,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LemonHandshake/LemonHandshake.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3WL69W834X;
+				DEVELOPMENT_TEAM = GXEX28B97C;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -559,7 +561,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LemonHandshake/LemonHandshake.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3WL69W834X;
+				DEVELOPMENT_TEAM = GXEX28B97C;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
