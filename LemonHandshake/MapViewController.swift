@@ -35,8 +35,10 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         setMapSearchButtonConstraints()
         
 
-        let imageView = UIImageView(image: IconConstants.logoIcon )
+        let imageView = UIImageView(image: IconConstants.fullLogo)
         navBar.titleView = imageView
+        navBar.titleView?.layer.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 45)
+        navBar.titleView?.contentMode = .scaleAspectFit
         
         shouldPresentNewUserInfo()
         

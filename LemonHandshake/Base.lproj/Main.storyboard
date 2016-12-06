@@ -32,7 +32,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="A7CBEB9B-95BD-4CFB-B992-E96F3E435F04" translatesAutoresizingMaskIntoConstraints="NO" id="tBT-f7-dch">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="6D369271-970B-4605-9B66-8FA34A0F6EFA" translatesAutoresizingMaskIntoConstraints="NO" id="tBT-f7-dch">
                                 <rect key="frame" x="87" y="548" width="189" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -161,11 +161,7 @@
                         <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="qGh-Ym-BAw">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="e9R-Lc-g7d">
-                            <color key="tintColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="qGh-Ym-BAw"/>
                     <connections>
                         <outlet property="navBar" destination="qGh-Ym-BAw" id="gYS-de-biv"/>
                         <outlet property="searchMapLabel" destination="r5M-nV-gRP" id="Pif-89-4om"/>
@@ -769,7 +765,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="A7CBEB9B-95BD-4CFB-B992-E96F3E435F04" width="826" height="250">
+        <image name="6D369271-970B-4605-9B66-8FA34A0F6EFA" width="826" height="250">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -14599,7 +14595,7 @@ AAAEAQAAAAAAAABBAAAAAAAAAAAAAAAAAAylGA
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="h5K-wb-Q3f"/>
+        <segue reference="peZ-TE-S1e"/>
         <segue reference="u0l-zG-162"/>
-        <segue reference="nR9-YX-1Fo"/>
     </inferredMetricsTieBreakers>
 </document>
