@@ -19,82 +19,57 @@ class InitiativeDetailViewController: UIViewController {
     
     @IBOutlet weak var leaderLabel: UILabel!
     
-    @IBOutlet weak var leaderTextLabel: UILabel!
-    
-    @IBOutlet weak var totalFollowersLabel: UILabel!
-    
-    @IBOutlet weak var dateTextLabel: UILabel!
-    
     @IBOutlet weak var followersTextLabel: UILabel!
     
-    @IBOutlet weak var descriptionTextHere: UITextView!
+    @IBOutlet weak var descriptionTextField: UITextView!
+    
+    @IBOutlet weak var descriptionTextHere: UIView!
     
     @IBOutlet weak var chatButtonLabel: UIButton!
     
+    @IBOutlet weak var topSeparatorView: UIView!
     
     var initiative: Initiative!
     
     var leader: User = User.blank
     
-    
-    
+    var userIsMember: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        chatButtonLabel.isHidden = true
+        
+        testIfUserIsMember()
+        
         populateInitiativeData()
         retrieveLeaderName()
         
-        let background = UIImage(named: "purpleBenches" )
-        let imageView = UIImageView(image: background)
-        self.view.addSubview(imageView)
-        imageView.contentMode = .scaleAspectFill
-        imageView.alpha = 0.5
-        view.sendSubview(toBack: imageView)
+        self.view.backgroundColor = UIColor.themeBlue
         
         InitiativeNameLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.05)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.15)
             make.centerX.equalTo(self.view)
             make.width.equalTo(400)
 
         }
         
         dateStartedLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.17)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.21)
             make.left.equalTo(self.view).offset(30)
-            make.width.equalTo(200)
-
-        }
-        
-        dateTextLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.17)
-            make.right.equalTo(self.view).offset(-30)
-            make.width.equalTo(200)
+            make.width.equalTo(self.view).offset(-60)
 
         }
         
         leaderLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.24)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.26)
             make.left.equalTo(self.view).offset(30)
-            make.width.equalTo(200)
+            make.width.equalTo(self.view).offset(-60)
 
         }
         
-        leaderTextLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.24)
-            make.right.equalTo(self.view).offset(-30)
-            make.width.equalTo(200)
-
-        }
-        
-        totalFollowersLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.31)
-            make.left.equalTo(self.view).offset(30)
-            make.width.equalTo(200)
-
-        }
         followersTextLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.31)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.32)
             make.right.equalTo(self.view).offset(-30)
             make.width.equalTo(200)
 
@@ -102,7 +77,7 @@ class InitiativeDetailViewController: UIViewController {
         
         
         descriptionTextHere.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.75)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.7)
             make.centerX.equalTo(self.view)
             make.width.equalTo(325)
             make.height.equalTo(200)
@@ -110,9 +85,16 @@ class InitiativeDetailViewController: UIViewController {
             descriptionTextHere.layer.borderColor = UIColor.black.cgColor
             descriptionTextHere.layer.borderWidth = 1
         }
-
+        
+        descriptionTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        descriptionTextField.centerYAnchor.constraint(equalTo: descriptionTextHere.centerYAnchor).isActive = true
+        descriptionTextField.centerXAnchor.constraint(equalTo: descriptionTextHere.centerXAnchor).isActive = true
+        descriptionTextField.widthAnchor.constraint(equalTo: descriptionTextHere.widthAnchor, multiplier: 0.9).isActive = true
+        descriptionTextField.heightAnchor.constraint(equalTo: descriptionTextHere.heightAnchor, multiplier: 0.9).isActive = true
+        
         chatButtonLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.95)
+            make.bottomMargin.equalTo(self.view).multipliedBy(0.8)
             make.width.equalTo(200)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
@@ -120,15 +102,32 @@ class InitiativeDetailViewController: UIViewController {
             chatButtonLabel.layer.borderColor = UIColor.black.cgColor
             chatButtonLabel.layer.borderWidth = 1
         }
-
+        
+        topSeparatorView.translatesAutoresizingMaskIntoConstraints = false
+        
+        topSeparatorView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.view.frame.height * 0.16).isActive = true
+        topSeparatorView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: -10).isActive = true
+        topSeparatorView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 10).isActive = true
+        topSeparatorView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.19).isActive = true
+        
+        topSeparatorView.layer.borderWidth = 2
+        topSeparatorView.layer.borderColor = UIColor.themePurple.cgColor
+        
+        chatButtonLabel.addTarget(self, action: #selector(chatButtonTapped), for: .touchUpInside)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        testIfUserIsMember()
     }
     
     func populateInitiativeData() {
         InitiativeNameLabel.text = initiative.name
-        dateTextLabel.text = initiative.createdAt.formattedAs("MM/dd/yy")
-        leaderTextLabel.text = ""
-        followersTextLabel.text = "\(initiative.members.count)"
-        descriptionTextHere.text = initiative.initiativeDescription
+        dateStartedLabel.text = "Started: \(initiative.createdAt.formattedAs("MM/dd/yy"))"
+        leaderLabel.text = "Leader: "
+        followersTextLabel.text = "Followers: \(initiative.members.count)"
+        descriptionTextField.text = initiative.initiativeDescription
     }
     
     func retrieveLeaderName() {
@@ -136,29 +135,44 @@ class InitiativeDetailViewController: UIViewController {
         FirebaseAPI.retrieveUser(withKey: initiative.leader) { (user) in
             self.leader = user
             OperationQueue.main.addOperation {
-                self.leaderTextLabel.text = "\(user.firstName) \(user.lastName)"
+                self.leaderLabel.text = "Leader: \(user.firstName) \(user.lastName)"
             }
         }
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
+    func testIfUserIsMember() {
+        FirebaseAPI.test(ifUserWithID: FirebaseAuth.currentUserID, isMemberOfInitiativeWithID: initiative.databaseKey) { (userIsMember) in
+            self.userIsMember = userIsMember
+        
+            OperationQueue.main.addOperation {
+                if userIsMember {
+                    self.chatButtonLabel.titleLabel?.text = "Chat"
+                } else {
+                    self.chatButtonLabel.titleLabel?.text = "Join"
+                }
+                
+                self.chatButtonLabel.isHidden = false
+            }
+        }
+    }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
+    func chatButtonTapped() {
+        if userIsMember {
+            performSegue(withIdentifier: "chatButtonSegue", sender: self)
+        }
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "chatButtonSegue" {
-            let dest = segue.destination as? ChatContainerViewController
-            dest?.initiative = initiative
+                let dest = segue.destination as? ChatContainerViewController
+                dest?.initiative = initiative
         }
     }
     

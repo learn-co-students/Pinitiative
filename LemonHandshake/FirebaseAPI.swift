@@ -364,6 +364,19 @@ class FirebaseAPI {
         
     }
     
+    static func test(ifUserWithID userID: String, isMemberOfInitiativeWithID initiativeID: String, userIsMember: @escaping (Bool) -> Void) {
+        let ref = FIRDatabase.database().reference().child("initiatives").child(initiativeID).child("members").child(userID)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            print("SNAPSHOT: \(snapshot.value)")
+            let value = snapshot.value as? Bool ?? nil
+            print(value != nil)
+            userIsMember(value != nil)
+            
+        })
+    }
+    
+    
     //MARK: - Landmark functions
     static func retrieveLandmark(withKey key: String, completion: @escaping (Landmark)->Void ) {
         let targetLandmarkRef = FIRDatabase.database().reference().child("landmarks").child(key)
