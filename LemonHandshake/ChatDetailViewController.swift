@@ -29,6 +29,8 @@ class ChatDetailViewController: JSQMessagesViewController {
         }
     }
     
+    var user = User.blank
+    
 //    var initiative = Initiative(name: "Hello", latitude: 0, longitude: 0, databaseKey: "Testing", leader: "Me", initiativeDescription: "Fun times", createdAt: Date(), associatedDate: Date(), expirationDate: Date.distantFuture)
     
     @IBOutlet weak var containerView: UIView!
@@ -43,28 +45,32 @@ class ChatDetailViewController: JSQMessagesViewController {
         collectionView.backgroundColor = UIColor.greenX
         
         senderId = FirebaseAuth.currentUserID
-        senderDisplayName = fetchUsername()
+        FirebaseAPI.retrieveUser(withKey: senderId!) { (user) in
+            let fullName = user.firstName + " " + user.lastName
+            self.senderDisplayName = fullName
+            
+        }
         
     }
     
-   
-    func fetchUsername() -> String {
-        
-        guard let uid = FirebaseAuth.currentUserID else { return "no id" }
-        let userRef = FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            print(snapshot)
-            
-            guard let dictionary = snapshot.value as? [String : Any] else { return }
-            
-                guard let firstName = dictionary["firstName"] as? String else { return }
-                guard let lastName = dictionary["lastName"] as? String else { return }
-            
-                let name = (firstName + " " + lastName)
-                return name
-            
-        }, withCancel: nil)
-    }
-    
+//   
+//    func fetchUsername() -> String {
+//        
+//        guard let uid = FirebaseAuth.currentUserID else { return "no id" }
+//        let userRef = FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+//            print(snapshot)
+//
+//            guard let dictionary = snapshot.value as? [String : Any] else { return }
+//            
+//                guard let firstName = dictionary["firstName"] as? String else { return }
+//                guard let lastName = dictionary["lastName"] as? String else { return }
+//            
+//                let name = (firstName + " " + lastName)
+//                return name
+//            
+//        }, withCancel: nil)
+//    }
+//    
     
     
     
