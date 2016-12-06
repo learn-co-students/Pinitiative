@@ -138,6 +138,8 @@ class InitiativeDetailViewController: UIViewController {
         chatButtonLabel.addTarget(self, action: #selector(chatButtonTapped), for: .touchUpInside)
         joinButton.addTarget(self, action: #selector(joinInitiativeTapped), for: .touchUpInside)
         leaveButton.addTarget(self, action: #selector(leaveInitiativeTapped), for: .touchUpInside)
+        
+        descriptionTextField.scrollRectToVisible(CGRect(origin: CGPoint(x: 0, y: 0), size: descriptionTextField.frame.size), animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -165,14 +167,16 @@ class InitiativeDetailViewController: UIViewController {
     }
     
     func testIfUserIsMember() {
-        FirebaseAPI.test(ifUserWithID: FirebaseAuth.currentUserID, isMemberOfInitiativeWithID: initiative.databaseKey) { (userIsMember) in
-            self.userIsMember = userIsMember
-        
-            OperationQueue.main.addOperation {
-                if userIsMember {
-                    self.leaveButton.isHidden = false
-                } else {
-                    self.joinButton.isHidden = false
+        if FirebaseAuth.currentUserID != initiative.leader {
+            FirebaseAPI.test(ifUserWithID: FirebaseAuth.currentUserID, isMemberOfInitiativeWithID: initiative.databaseKey) { (userIsMember) in
+                self.userIsMember = userIsMember
+                
+                OperationQueue.main.addOperation {
+                    if userIsMember {
+                        self.leaveButton.isHidden = false
+                    } else {
+                        self.joinButton.isHidden = false
+                    }
                 }
             }
         }

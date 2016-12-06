@@ -310,7 +310,7 @@ class FirebaseAPI {
                 let latitude = dictionary["latitude"] as? Double,
                 let longitude = dictionary["longitude"] as? Double,
                 let leader = dictionary["leader"] as? String,
-                let members = dictionary["members"] as? [String:Any],
+                let members = dictionary["members"] as? [String:Bool],
                 let createdAt = dictionary["createdAt"] as? TimeInterval,
                 let expirationDate = dictionary["expirationDate"] as? TimeInterval
                 else { print("FAILURE: Could not parse data for initiative with key: \(key)");return }
@@ -327,7 +327,9 @@ class FirebaseAPI {
                     var initiative = Initiative(name: name, associatedLandmark: landmark, databaseKey: key, leader: leader, initiativeDescription: initiativeDescription, createdAt: Date(timeIntervalSince1970: createdAt), associatedDate: associatedDate, expirationDate: Date(timeIntervalSince1970: expirationDate))
                     
                     for member in members {
-                        initiative.members.append(member.key)
+                        if member.value {
+                            initiative.members.append(member.key)
+                        }
                     }
                     
                     completion(initiative)
@@ -335,7 +337,9 @@ class FirebaseAPI {
             } else {
                 var initiative = Initiative(name: name, latitude: latitude, longitude: longitude, databaseKey: key, leader: leader, initiativeDescription: initiativeDescription, createdAt: Date(timeIntervalSince1970: createdAt), associatedDate: associatedDate, expirationDate: Date(timeIntervalSince1970: expirationDate))
                 for member in members {
-                    initiative.members.append(member.key)
+                    if member.value {
+                        initiative.members.append(member.key)
+                    }
                 }
                 completion(initiative)
             }
@@ -386,7 +390,11 @@ class FirebaseAPI {
             print("SNAPSHOT: \(snapshot.value)")
             let value = snapshot.value as? Bool ?? nil
             print(value != nil)
-            userIsMember(value != nil)
+            if value != nil {
+                userIsMember(value!)
+            } else {
+                userIsMember(false)
+            }
             
         })
     }
