@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f82-wG-XHm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -32,7 +32,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="2B78C226-18E3-4ABA-8B7E-7E140A17A10F" translatesAutoresizingMaskIntoConstraints="NO" id="tBT-f7-dch">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="CE82B7AD-CE0B-401F-8895-BD0C104E9B84" translatesAutoresizingMaskIntoConstraints="NO" id="tBT-f7-dch">
                                 <rect key="frame" x="87" y="548" width="189" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -543,7 +543,6 @@
                         <outlet property="InitiativeNameLabel" destination="0pT-hP-UOp" id="b5A-QL-ID2"/>
                         <outlet property="chatButtonLabel" destination="Cuu-YX-WYK" id="efl-hH-wI4"/>
                         <outlet property="dateStartedLabel" destination="04b-Ru-O31" id="GDu-oO-bZa"/>
-                        <outlet property="dateTextLabel" destination="877-89-fYU" id="suw-EL-wzo"/>
                         <outlet property="descriptionTextHere" destination="Ti0-xr-1mE" id="Vzl-g1-bEy"/>
                         <outlet property="followersTextLabel" destination="6v5-kw-mT3" id="1VV-3m-sd1"/>
                         <outlet property="leaderLabel" destination="BaP-FE-8bW" id="a82-1R-2Yi"/>
@@ -762,7 +761,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2B78C226-18E3-4ABA-8B7E-7E140A17A10F" width="826" height="250">
+        <image name="CE82B7AD-CE0B-401F-8895-BD0C104E9B84" width="826" height="250">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
