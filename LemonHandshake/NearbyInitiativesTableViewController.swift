@@ -19,12 +19,12 @@ class NearbyInitiativesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let background = UIImage(named: "gardenRoad" )
-        let imageView = UIImageView(image: background)
-        self.view.addSubview(imageView)
-        imageView.contentMode = .scaleAspectFill
-        imageView.alpha = 0.4
-        view.sendSubview(toBack: imageView)
+//        let background = UIImage(named: "gardenRoad" )
+//        let imageView = UIImageView(image: background)
+//        self.view.addSubview(imageView)
+//        imageView.contentMode = .scaleAspectFill
+//        imageView.alpha = 0.4
+//        view.sendSubview(toBack: imageView)
         
         retrieveNearbyInitiatives()
     }
@@ -63,47 +63,46 @@ class NearbyInitiativesTableViewController: UITableViewController {
         // add the below to a xib file?
         
         
-        cell.backgroundColor = UIColor.clear
-        cell.layer.borderColor = UIColor.blue.cgColor
-        cell.layer.borderWidth = 2
-        
-        cell.nearbyInitiativeNameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(cell.contentView)
-            make.centerX.equalTo(cell.contentView.center)
-        }
-        
-        cell.dateStartedLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(cell.contentView).offset(40)
-            make.leftMargin.equalTo(cell.contentView).offset(20)
-            
-        }
-        
-        cell.dateTextLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(cell.contentView).offset(40)
-            make.rightMargin.equalTo(cell.contentView).offset(-20)
-
-        }
-        
-        cell.followersLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(cell.contentView).offset(80)
-            make.leftMargin.equalTo(cell.contentView).offset(20)
-
-        }
-
-        cell.followersTextLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(cell.contentView).offset(80)
-            make.rightMargin.equalTo(cell.contentView).offset(-20)
-
-        }
-
+//        cell.backgroundColor = UIColor.clear
+//        cell.layer.borderColor = UIColor.blue.cgColor
+//        cell.layer.borderWidth = 2
+//        
+//        cell.nearbyInitiativeNameLabel.snp.makeConstraints { (make) in
+//            make.top.equalTo(cell.contentView)
+//            make.centerX.equalTo(cell.contentView.center)
+//        }
+//        
+//        cell.dateStartedLabel.snp.makeConstraints { (make) in
+//            make.top.equalTo(cell.contentView).offset(40)
+//            make.leftMargin.equalTo(cell.contentView).offset(20)
+//            
+//        }
+//        
+//        cell.dateTextLabel.snp.makeConstraints { (make) in
+//            make.top.equalTo(cell.contentView).offset(40)
+//            make.rightMargin.equalTo(cell.contentView).offset(-20)
+//
+//        }
+//        
+//        cell.followersLabel.snp.makeConstraints { (make) in
+//            make.top.equalTo(cell.contentView).offset(80)
+//            make.leftMargin.equalTo(cell.contentView).offset(20)
+//
+//        }
+//
+//        cell.followersTextLabel.snp.makeConstraints { (make) in
+//            make.top.equalTo(cell.contentView).offset(80)
+//            make.rightMargin.equalTo(cell.contentView).offset(-20)
+//
+//        }
+//
         
 
         let initiative = nearbyInitiatives[indexPath.row]
         
         cell.nearbyInitiativeNameLabel.text = initiative.name
-        cell.dateTextLabel.text = initiative.createdAt.formattedAs("MMMM dd, yyyy")
-        cell.followersTextLabel.text = "\(initiative.members.count)"
-
+        cell.dateStartedLabel.text = "Start Date: \(initiative.createdAt.formattedAs("MM/dd/yyyy"))"
+        cell.followersLabel.text = "Followers: \(initiative.members.count)"
         return cell
     }
   
