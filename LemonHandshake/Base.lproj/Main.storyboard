@@ -27,38 +27,20 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundNYC" translatesAutoresizingMaskIntoConstraints="NO" id="ZYF-zz-pgF">
                                 <rect key="frame" x="16" y="20" width="343" height="647"/>
                             </imageView>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eUU-sG-AM7">
-                                <rect key="frame" x="139" y="406" width="97" height="30"/>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QxU-hd-0Kl">
+                                <rect key="frame" x="0.0" y="539" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LlD-ba-HN0">
-                                <rect key="frame" x="139" y="474" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iew-4C-wM3">
-                                <rect key="frame" x="164" y="571" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.094924178900000003" green="1" blue="0.0" alpha="0.74789870689655169" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="25"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" red="0.023557692307692335" green="0.023557692307692335" blue="0.023557692307692335" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IbH-UL-d9W"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlO-mL-ohw">
+                                <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="fullLogo" translatesAutoresizingMaskIntoConstraints="NO" id="tBT-f7-dch">
+                                <rect key="frame" x="87" y="548" width="189" height="55"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlO-mL-ohw">
                                 <rect key="frame" x="139" y="617" width="85" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.74560883620689655" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="17"/>
+                                <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                 <state key="normal" title="Login or Create Account">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -79,14 +61,13 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="createAccountButtonView" destination="qlO-mL-ohw" id="KCv-QN-Y5c"/>
-                        <outlet property="loginButtonView" destination="Iew-4C-wM3" id="p44-I0-lPs"/>
-                        <outlet property="passwordTextField" destination="LlD-ba-HN0" id="Z4y-M3-MOs"/>
-                        <outlet property="usernameTextField" destination="eUU-sG-AM7" id="6Jx-uY-T0H"/>
+                        <outlet property="createAccountFrameView" destination="QxU-hd-0Kl" id="45w-c5-vte"/>
+                        <outlet property="fullLogoImageView" destination="tBT-f7-dch" id="Afs-b8-gKS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2830" y="-36"/>
+            <point key="canvasLocation" x="-2831.1999999999998" y="-36.431784107946029"/>
         </scene>
         <!--Landmark Detail View Controller-->
         <scene sceneID="571-q6-DgQ">
@@ -908,6 +889,7 @@
         <image name="Settings" width="60" height="60"/>
         <image name="Tips and Tricks" width="40" height="40"/>
         <image name="backgroundNYC" width="1326" height="1291"/>
+        <image name="fullLogo" width="826" height="250"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Psa-7L-h9L"/>

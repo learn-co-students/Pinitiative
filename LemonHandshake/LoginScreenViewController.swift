@@ -17,14 +17,6 @@ import FirebaseGoogleAuthUI
 class LoginScreenViewController: UIViewController, FUIAuthDelegate {
 
     
-    @IBOutlet weak var usernameTextField: UITextField!
-    
-    @IBOutlet weak var passwordTextField: UITextField!
-    
-    @IBAction func loginButton(_ sender: Any) {
-        
-    }
-    
     @IBAction func createAccountButton(_ sender: Any) {
         let authUI = FUIAuth.init(uiWith: FIRAuth.auth()!)
         
@@ -37,9 +29,9 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
         self.present(authViewController!, animated: true)
     }
     
-    @IBOutlet weak var loginButtonView: UIButton!
-    
+    @IBOutlet weak var createAccountFrameView: UIView!
     @IBOutlet weak var createAccountButtonView: UIButton!
+    @IBOutlet weak var fullLogoImageView: UIImageView!
    
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,42 +64,32 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
         super.viewDidLoad()
         
         
-        
-        usernameTextField.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).offset(-410)
-            make.centerX.equalTo(self.view.center)
-            make.width.equalTo(200)
-            usernameTextField.layer.cornerRadius = 15
-            usernameTextField.layer.borderColor = UIColor.black.cgColor
-            usernameTextField.layer.borderWidth = 1
-        }
-        
-        passwordTextField.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).offset(-360)
-            make.centerX.equalTo(self.view.center)
-            make.width.equalTo(200)
-            passwordTextField.layer.cornerRadius = 15
-            passwordTextField.layer.borderColor = UIColor.black.cgColor
-            passwordTextField.layer.borderWidth = 1
-        }
-        
-        loginButtonView.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).offset(-300)
-            make.centerX.equalTo(self.view.center)
-            make.width.equalTo(150)
-            loginButtonView.layer.cornerRadius = 20
-            loginButtonView.layer.borderColor = UIColor.white.cgColor
-            loginButtonView.layer.borderWidth = 1
-        }
-        
-        createAccountButtonView.snp.makeConstraints { (make) in
+        createAccountFrameView.snp.makeConstraints { (make) in
             make.bottomMargin.equalTo(self.view).offset(0)
             make.centerX.equalTo(self.view.center)
             make.width.equalTo(self.view).multipliedBy(1.05)
-            make.height.equalTo(self.view).multipliedBy(0.08)
-            createAccountButtonView.layer.borderColor = UIColor.themeOrange.cgColor
-            createAccountButtonView.layer.borderWidth = 3
+            make.height.equalTo(self.view).multipliedBy(0.2)
+            createAccountFrameView.layer.borderColor = UIColor.themeOrange.cgColor
+            createAccountFrameView.layer.borderWidth = 3
         }
+        
+        createAccountButtonView.translatesAutoresizingMaskIntoConstraints = false
+        
+        createAccountButtonView.centerXAnchor.constraint(equalTo: createAccountFrameView.centerXAnchor).isActive = true
+        createAccountButtonView.centerYAnchor.constraint(equalTo: createAccountFrameView.centerYAnchor, constant: createAccountFrameView.frame.height * 0.2).isActive = true
+        createAccountButtonView.heightAnchor.constraint(equalTo: createAccountFrameView.heightAnchor, multiplier: 0.3).isActive = true
+        createAccountButtonView.widthAnchor.constraint(equalTo: createAccountFrameView.widthAnchor, multiplier: 0.5).isActive = true
+        
+        createAccountButtonView.layer.cornerRadius = 10
+        createAccountButtonView.layer.borderColor = UIColor.themeOrange.cgColor
+        createAccountButtonView.layer.borderWidth = 3
+        
+        fullLogoImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        fullLogoImageView.centerXAnchor.constraint(equalTo: createAccountFrameView.centerXAnchor).isActive = true
+        fullLogoImageView.centerYAnchor.constraint(equalTo: createAccountFrameView.centerYAnchor, constant: createAccountFrameView.frame.height * -0.25).isActive = true
+        fullLogoImageView.heightAnchor.constraint(equalTo: createAccountFrameView.heightAnchor, multiplier: 0.5).isActive = true
+        fullLogoImageView.widthAnchor.constraint(equalTo: createAccountFrameView.widthAnchor, multiplier: 1).isActive = true
         
       
 }
