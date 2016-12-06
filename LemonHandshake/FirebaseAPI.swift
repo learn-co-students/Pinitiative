@@ -358,13 +358,15 @@ class FirebaseAPI {
         let userInitiativeRef = FIRDatabase.database().reference().child("users").child(userKey).child("initiatives")
         
         userInitiativeRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let dictionary = snapshot.value as? [String:Any] {
+            if let dictionary = snapshot.value as? [String:Bool] {
                 
                 var initiativeKeys = [String]()
                 var initiatives = [Initiative]()
                 
                 for item in dictionary {
-                    initiativeKeys.append(item.key)
+                    if item.value {
+                        initiativeKeys.append(item.key)
+                    }
                 }
                 
                 for initiativeKey in initiativeKeys {
@@ -387,7 +389,6 @@ class FirebaseAPI {
         let ref = FIRDatabase.database().reference().child("initiatives").child(initiativeID).child("members").child(userID)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            print("SNAPSHOT: \(snapshot.value)")
             let value = snapshot.value as? Bool ?? nil
             print(value != nil)
             if value != nil {
