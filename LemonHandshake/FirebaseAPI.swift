@@ -19,6 +19,8 @@ class FirebaseAPI {
     
     static func storeNewUser(id: String, firstName:String, lastName: String) {
         
+        print("In Store New User")
+        
         //Create a reference point for the user info
         let newUserRef = FIRDatabase.database().reference().child("users").child(id)
         

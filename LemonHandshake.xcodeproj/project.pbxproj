@@ -54,6 +54,7 @@
 /* Begin PBXFileReference section */
 		1B0EC61F1DF5FF3700297C8C /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		1B0EC6231DF6088900297C8C /* NewUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewUserInfoViewController.swift; path = ../NewUserInfoViewController.swift; sourceTree = "<group>"; };
+		1B0EC6731DF70B4700297C8C /* LemonHandshake.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LemonHandshake.entitlements; sourceTree = "<group>"; };
 		1B10965B1DDA50CE00609104 /* LemonHandshake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LemonHandshake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B10965E1DDA50CE00609104 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B1096651DDA50CE00609104 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 		1B10965D1DDA50CE00609104 /* LemonHandshake */ = {
 			isa = PBXGroup;
 			children = (
+				1B0EC6731DF70B4700297C8C /* LemonHandshake.entitlements */,
 				BC5688C91DEE2242005FC0D8 /* Main.storyboard */,
 				837C2F641DE4ACB400E076C9 /* Constants */,
 				8309AA061DDE04BC00484700 /* Models */,
@@ -281,6 +283,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 3WL69W834X;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -532,6 +539,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LemonHandshake/LemonHandshake.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3WL69W834X;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
@@ -549,6 +557,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LemonHandshake/LemonHandshake.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3WL69W834X;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;

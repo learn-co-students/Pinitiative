@@ -37,18 +37,6 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print("PROGRESS: View Will Appear Runs")
-        
-        let userID = FirebaseAuth.currentUserID
-        
-        let ref = FIRDatabase.database().reference().child("users").child(userID)
-        
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.value as? [String:String] == nil {
-                FirebaseAPI.storeNewUser(id: userID, firstName: "Test", lastName: "Name")
-            }
-        })
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController

@@ -32,7 +32,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="1AD07853-E480-402B-91B0-8DCA90CD70CE" translatesAutoresizingMaskIntoConstraints="NO" id="tBT-f7-dch">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="45F13579-B773-4C9D-A7CE-8AFFED56A993" translatesAutoresizingMaskIntoConstraints="NO" id="tBT-f7-dch">
                                 <rect key="frame" x="87" y="548" width="189" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -369,99 +369,6 @@
             <point key="canvasLocation" x="1397.5999999999999" y="1637.6311844077961"/>
         </scene>
         <!--Start Initiative-->
-        <scene sceneID="FO1-nA-bP0">
-            <objects>
-                <viewController id="akF-xd-ri0" customClass="StartInitiativeViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ffs-MT-9Zu"/>
-                        <viewControllerLayoutGuide type="bottom" id="usu-eI-qLl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="O5c-gi-naU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFr-DC-OuP">
-                                <rect key="frame" x="63" y="393" width="85" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <state key="normal" title="Add">
-                                    <color key="titleColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="addInitiativeButton:" destination="akF-xd-ri0" eventType="touchUpInside" id="yhU-PZ-qdF"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9id-9g-hh0">
-                                <rect key="frame" x="223" y="393" width="98" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelInitiativeButton:" destination="akF-xd-ri0" eventType="touchUpInside" id="Abs-aE-kbK"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ydp-6m-YFA">
-                                <rect key="frame" x="16" y="74" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="dox-PN-faY">
-                                <rect key="frame" x="53" y="226" width="263" height="137"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <date key="date" timeIntervalSinceReferenceDate="501607314.42383498">
-                                    <!--2016-11-23 15:21:54 +0000-->
-                                </date>
-                            </datePicker>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tell us a little about your initiative" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ob0-L4-rha">
-                                <rect key="frame" x="16" y="112" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Toggle Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbf-YF-hlz">
-                                <rect key="frame" x="298" y="117" width="42" height="21"/>
-                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wuv-QU-gNC">
-                                <rect key="frame" x="295" y="73" width="51" height="31"/>
-                                <connections>
-                                    <action selector="datePickerSwitch:" destination="akF-xd-ri0" eventType="valueChanged" id="QMx-G1-WcJ"/>
-                                </connections>
-                            </switch>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="wbf-YF-hlz" firstAttribute="centerX" secondItem="Wuv-QU-gNC" secondAttribute="centerX" id="JGU-Pf-j8l"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Wuv-QU-gNC" secondAttribute="trailing" constant="35" id="c8x-Uv-SsX"/>
-                            <constraint firstItem="wbf-YF-hlz" firstAttribute="top" secondItem="Wuv-QU-gNC" secondAttribute="bottom" constant="5" id="zme-GL-17z"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Start Initiative" id="Njv-Mu-jq2"/>
-                    <connections>
-                        <outlet property="addInitiativeLabel" destination="BFr-DC-OuP" id="YbK-Ow-WAi"/>
-                        <outlet property="cancelInitiativeLabel" destination="9id-9g-hh0" id="wJK-aT-wt3"/>
-                        <outlet property="datePickerSwitchOutlet" destination="Wuv-QU-gNC" id="nfg-IX-Tev"/>
-                        <outlet property="datePickerView" destination="dox-PN-faY" id="bSb-lC-kZh"/>
-                        <outlet property="descriptionTextField" destination="Ob0-L4-rha" id="9QR-T7-AKi"/>
-                        <outlet property="nameTextField" destination="Ydp-6m-YFA" id="Teq-Tn-nGr"/>
-                        <outlet property="toggleText" destination="wbf-YF-hlz" id="QOo-CS-Kub"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YQz-Qv-hEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4956" y="283.80809595202402"/>
-        </scene>
-        <!--Start Initiative-->
         <scene sceneID="gNZ-xD-csn">
             <objects>
                 <viewController title="Start Initiative" id="DSn-2I-C2a" customClass="StartInitiativeNewViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
@@ -713,7 +620,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="Map" id="meg-bg-2nx"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CzC-3E-i3N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CzC-3E-i3N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -743,7 +650,7 @@
                     <tabBarItem key="tabBarItem" title="My Initiatives" image="My Initiative" id="NiF-Ry-voJ"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z12-fv-UBG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z12-fv-UBG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -796,7 +703,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="jLX-J0-C1k"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bGS-9c-q27">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bGS-9c-q27">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -831,34 +738,6 @@
             </objects>
             <point key="canvasLocation" x="2305" y="1637"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="rI2-li-25a">
-            <objects>
-                <tableViewController id="Wgg-dV-O09" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Ar-Ns-anF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iw4-Cr-Bh2">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iw4-Cr-Bh2" id="XWy-lA-sg5">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Wgg-dV-O09" id="Ow7-TE-xXf"/>
-                            <outlet property="delegate" destination="Wgg-dV-O09" id="MDb-1b-mow"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Esy-Lr-tsA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="60" y="668"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="fPD-0i-HM6">
             <objects>
@@ -883,7 +762,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1AD07853-E480-402B-91B0-8DCA90CD70CE" width="826" height="250">
+        <image name="45F13579-B773-4C9D-A7CE-8AFFED56A993" width="826" height="250">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -14712,8 +14591,8 @@ AAAEAQAAAAAAAABBAAAAAAAAAAAAAAAAAAylGA
         <image name="backgroundNYC" width="1326" height="1291"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Psa-7L-h9L"/>
         <segue reference="nR9-YX-1Fo"/>
+        <segue reference="h5K-wb-Q3f"/>
         <segue reference="u0l-zG-162"/>
     </inferredMetricsTieBreakers>
 </document>
