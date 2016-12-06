@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B0EC6201DF5FF3700297C8C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0EC61F1DF5FF3700297C8C /* UIColor.swift */; };
-		1B0EC6241DF6088900297C8C /* NewUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0EC6231DF6088900297C8C /* NewUserInfoViewController.swift */; };
+		1B0EC6751DF74D7300297C8C /* NewUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0EC6741DF74D7300297C8C /* NewUserInfoViewController.swift */; };
 		1B10965F1DDA50CE00609104 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10965E1DDA50CE00609104 /* AppDelegate.swift */; };
 		1B1096661DDA50CE00609104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096651DDA50CE00609104 /* Assets.xcassets */; };
 		1B1096691DDA50CE00609104 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096671DDA50CE00609104 /* LaunchScreen.storyboard */; };
@@ -53,8 +53,8 @@
 
 /* Begin PBXFileReference section */
 		1B0EC61F1DF5FF3700297C8C /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		1B0EC6231DF6088900297C8C /* NewUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewUserInfoViewController.swift; path = ../NewUserInfoViewController.swift; sourceTree = "<group>"; };
 		1B0EC6731DF70B4700297C8C /* LemonHandshake.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LemonHandshake.entitlements; sourceTree = "<group>"; };
+		1B0EC6741DF74D7300297C8C /* NewUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserInfoViewController.swift; sourceTree = "<group>"; };
 		1B10965B1DDA50CE00609104 /* LemonHandshake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LemonHandshake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B10965E1DDA50CE00609104 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B1096651DDA50CE00609104 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 		BC87E4A61DDB862F00980939 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1B0EC6231DF6088900297C8C /* NewUserInfoViewController.swift */,
+				1B0EC6741DF74D7300297C8C /* NewUserInfoViewController.swift */,
 				BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */,
 				BC7AAE241DF2037F00B2A5B9 /* ChatContainerViewController.swift */,
 				BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */,
@@ -383,7 +383,6 @@
 				BC5688C71DEE1DC5005FC0D8 /* LandmarkDetailViewController.swift in Sources */,
 				1B1096731DDA665B00609104 /* FirebaseAuth.swift in Sources */,
 				83E865CA1DECFEC900336BC4 /* DropPinLocation.swift in Sources */,
-				1B0EC6241DF6088900297C8C /* NewUserInfoViewController.swift in Sources */,
 				BC7AAE251DF2037F00B2A5B9 /* ChatContainerViewController.swift in Sources */,
 				837C2F631DE4AC9F00E076C9 /* Extensions.swift in Sources */,
 				BC6244E11DDA798D00AE6523 /* LandmarkDetailTableViewController.swift in Sources */,
@@ -405,6 +404,7 @@
 				1B10B1A41DE4C8F9006E38A7 /* GeoFire.swift in Sources */,
 				8326CB281DECD923009EC996 /* DropPinDetailViewController.swift in Sources */,
 				BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */,
+				1B0EC6751DF74D7300297C8C /* NewUserInfoViewController.swift in Sources */,
 				BCAAF03D1DEC859900D78419 /* BadWords.swift in Sources */,
 				837C2F5A1DE4942500E076C9 /* AppController.swift in Sources */,
 				92764CF61DE37F11007115E9 /* NearbyInitiativesDetailCell.swift in Sources */,
