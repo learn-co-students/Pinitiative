@@ -213,6 +213,7 @@
 			children = (
 				1B1096601DDA50CE00609104 /* ViewController.swift */,
 				BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */,
+				BC7AAE241DF2037F00B2A5B9 /* ChatContainerViewController.swift */,
 				BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */,
 				BC6244DB1DDA798D00AE6523 /* LandmarkDetailTableViewController.swift */,
 				BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */,
@@ -227,7 +228,6 @@
 				83509E411DE63F9300D8C18B /* LandmarkDetailViewController.swift */,
 				BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */,
 				BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */,
-				BC7AAE241DF2037F00B2A5B9 /* ChatContainerViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

@@ -725,7 +725,7 @@
         <!--My Initiatives-->
         <scene sceneID="BCz-cr-NKa">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="KrN-1v-R4P" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KrN-1v-R4P" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Initiatives" image="My Initiative" id="NiF-Ry-voJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="z12-fv-UBG">
@@ -748,7 +748,7 @@
         <!--Local Initiatives-->
         <scene sceneID="4PQ-4G-ySA">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="Sxl-hE-GQH" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sxl-hE-GQH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Local Initiatives" image="Local Initiatives" id="XmQ-dQ-dCm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="X01-Hg-KyK">
@@ -845,7 +845,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Psa-7L-h9L"/>
-        <segue reference="peZ-TE-S1e"/>
         <segue reference="vbW-6v-bue"/>
+        <segue reference="nR9-YX-1Fo"/>
     </inferredMetricsTieBreakers>
 </document>

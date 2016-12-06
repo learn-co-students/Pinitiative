@@ -16,6 +16,7 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.orange)
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.blueX)
+    var image: String!
     
     var messages = [JSQMessage]()
     
@@ -29,7 +30,6 @@ class ChatDetailViewController: JSQMessagesViewController {
         }
     }
     
-    var user = User.blank
     
 //    var initiative = Initiative(name: "Hello", latitude: 0, longitude: 0, databaseKey: "Testing", leader: "Me", initiativeDescription: "Fun times", createdAt: Date(), associatedDate: Date(), expirationDate: Date.distantFuture)
     
@@ -40,37 +40,23 @@ class ChatDetailViewController: JSQMessagesViewController {
         super.viewDidLoad()
         print(messages)
         
+        self.inputToolbar.contentView.leftBarButtonItem = nil
         connectToChat()
         collectionView.reloadData()
         collectionView.backgroundColor = UIColor.greenX
-        
+        jsq_setCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
         senderId = FirebaseAuth.currentUserID
-        FirebaseAPI.retrieveUser(withKey: senderId!) { (user) in
-            let fullName = user.firstName + " " + user.lastName
-            self.senderDisplayName = fullName
-            
-        }
+        senderDisplayName = "tameika lawrence"
+        
+//        FirebaseAPI.retrieveUser(withKey: senderId!) { (user) in
+//            let fullName = user.firstName + " " + user.lastName
+//            if self.senderDisplayName != nil {
+//                self.senderDisplayName = fullName
+//            }
+//        }
         
     }
     
-//   
-//    func fetchUsername() -> String {
-//        
-//        guard let uid = FirebaseAuth.currentUserID else { return "no id" }
-//        let userRef = FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-//            print(snapshot)
-//
-//            guard let dictionary = snapshot.value as? [String : Any] else { return }
-//            
-//                guard let firstName = dictionary["firstName"] as? String else { return }
-//                guard let lastName = dictionary["lastName"] as? String else { return }
-//            
-//                let name = (firstName + " " + lastName)
-//                return name
-//            
-//        }, withCancel: nil)
-//    }
-//    
     
     
     
@@ -172,11 +158,20 @@ class ChatDetailViewController: JSQMessagesViewController {
             msgRef.childByAutoId().setValue(dict)
             
             self.finishSendingMessage()
-            
+            jsq_setCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
         }
     }
     
+    // move to constants or extensions or at all?
+    func jsq_setCollectionViewInsetsTopValue(_ top: CGFloat, bottomValue bottom: CGFloat) {
+        var insets = UIEdgeInsetsMake(top, 0.0, bottom, 0.0)
+        self.collectionView!.contentInset = insets
+        self.collectionView!.scrollIndicatorInsets = insets
     
+        if self.automaticallyScrollsToMostRecentMessage {
+            self.scrollToBottom(animated: true)
+        }
+    }
     
     
     // FOR MESSAGE BUBBLES ATTRIBUTES
@@ -194,8 +189,6 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         
-        
-        
         let outgoingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: senderDisplayName), backgroundColor: UIColor.darkGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
         
         let incomingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: senderDisplayName), backgroundColor: UIColor.darkGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
@@ -210,17 +203,17 @@ class ChatDetailViewController: JSQMessagesViewController {
     }
     
     
-    func dequeueTypingIndicatorFooterView(for indexPath: IndexPath!) -> JSQMessagesTypingIndicatorFooterView! {
-        
-           let chatCell = dequeueTypingIndicatorFooterView(for: indexPath)
-        
-        chatCell?.configure(withEllipsisColor: UIColor.lightGray, messageBubble: UIColor.lightGray, shouldDisplayOnLeft: true, for: self.collectionView)
-        
-        if self.senderId == senderId, indexPath.item == indexPath.count + 1 {
-            
-        }
-        return chatCell
-    }
+//    func dequeueTypingIndicatorFooterView(for indexPath: IndexPath!) -> JSQMessagesTypingIndicatorFooterView! {
+//        
+//           let chatCell = dequeueTypingIndicatorFooterView(for: indexPath)
+//        
+//        chatCell?.configure(withEllipsisColor: UIColor.lightGray, messageBubble: UIColor.lightGray, shouldDisplayOnLeft: true, for: self.collectionView)
+//        
+//        if self.senderId == senderId, indexPath.item == indexPath.count + 1 {
+//            
+//        }
+//        return chatCell
+//    }
     
 
     // FILTERING TOOLBAR INPUT

@@ -160,6 +160,7 @@ class InitiativeDetailViewController: UIViewController {
         if segue.identifier == "chatButtonSegue" {
             let dest = segue.destination as? ChatContainerViewController
             dest?.initiative = initiative
+            
         }
     }
     
