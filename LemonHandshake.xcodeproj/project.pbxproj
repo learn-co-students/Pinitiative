@@ -30,6 +30,8 @@
 		83873B031DF3827F00FF71FB /* StartInitiativeNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83873B021DF3827F00FF71FB /* StartInitiativeNewViewController.swift */; };
 		83873B051DF382E500FF71FB /* FormManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83873B041DF382E500FF71FB /* FormManager.swift */; };
 		83D2E84B1DE4EF310095C068 /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2E84A1DE4EF310095C068 /* LandmarkDetail.swift */; };
+		83D8FE581DF726C0007C6066 /* PushButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8FE571DF726C0007C6066 /* PushButtonView.swift */; };
+		83D8FE5A1DF76DA5007C6066 /* LandmarkDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8FE591DF76DA5007C6066 /* LandmarkDetailTableViewCell.swift */; };
 		83E865CA1DECFEC900336BC4 /* DropPinLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E865C91DECFEC900336BC4 /* DropPinLocation.swift */; };
 		83EF6B781DEE0B9B00756913 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF6B771DEE0B9B00756913 /* Constants.swift */; };
 		926753A91DEDE2E000256968 /* calendarHTML.html in Resources */ = {isa = PBXBuildFile; fileRef = 926753A81DEDE2E000256968 /* calendarHTML.html */; };
@@ -79,6 +81,8 @@
 		83873B021DF3827F00FF71FB /* StartInitiativeNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartInitiativeNewViewController.swift; sourceTree = "<group>"; };
 		83873B041DF382E500FF71FB /* FormManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormManager.swift; sourceTree = "<group>"; };
 		83D2E84A1DE4EF310095C068 /* LandmarkDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
+		83D8FE571DF726C0007C6066 /* PushButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushButtonView.swift; sourceTree = "<group>"; };
+		83D8FE591DF76DA5007C6066 /* LandmarkDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandmarkDetailTableViewCell.swift; sourceTree = "<group>"; };
 		83E865C91DECFEC900336BC4 /* DropPinLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropPinLocation.swift; sourceTree = "<group>"; };
 		83EF6B771DEE0B9B00756913 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		926753A81DEDE2E000256968 /* calendarHTML.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = calendarHTML.html; sourceTree = "<group>"; };
@@ -214,9 +218,9 @@
 			isa = PBXGroup;
 			children = (
 				1B0EC6231DF6088900297C8C /* NewUserInfoViewController.swift */,
+				83D8FE571DF726C0007C6066 /* PushButtonView.swift */,
 				BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */,
 				BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */,
-				BC6244DB1DDA798D00AE6523 /* LandmarkDetailTableViewController.swift */,
 				BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */,
 				BC6244DD1DDA798D00AE6523 /* MapViewController.swift */,
 				BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */,
@@ -225,6 +229,8 @@
 				BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */,
 				837C2F591DE4942500E076C9 /* AppController.swift */,
 				8326CB271DECD923009EC996 /* DropPinDetailViewController.swift */,
+				83D8FE591DF76DA5007C6066 /* LandmarkDetailTableViewCell.swift */,
+				BC6244DB1DDA798D00AE6523 /* LandmarkDetailTableViewController.swift */,
 				83509E411DE63F9300D8C18B /* LandmarkDetailViewController.swift */,
 				BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */,
 				92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */,
@@ -392,11 +398,13 @@
 				1B1E94331DEB733700F7EFEC /* User.swift in Sources */,
 				BC43C33B1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift in Sources */,
 				1B10965F1DDA50CE00609104 /* AppDelegate.swift in Sources */,
+				83D8FE5A1DF76DA5007C6066 /* LandmarkDetailTableViewCell.swift in Sources */,
 				BC6244E01DDA798D00AE6523 /* InitiativeDetailViewController.swift in Sources */,
 				BCB137B91DE5EBD200C15CDD /* ChatDetailViewController.swift in Sources */,
 				1B10B1A41DE4C8F9006E38A7 /* GeoFire.swift in Sources */,
 				8326CB281DECD923009EC996 /* DropPinDetailViewController.swift in Sources */,
 				BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */,
+				83D8FE581DF726C0007C6066 /* PushButtonView.swift in Sources */,
 				BCAAF03D1DEC859900D78419 /* BadWords.swift in Sources */,
 				837C2F5A1DE4942500E076C9 /* AppController.swift in Sources */,
 				92764CF61DE37F11007115E9 /* NearbyInitiativesDetailCell.swift in Sources */,

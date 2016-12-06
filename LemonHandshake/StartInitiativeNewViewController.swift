@@ -9,15 +9,22 @@
 import UIKit
 import Former
 
-class StartInitiativeNewViewController: FormViewController {
-    
+class StartInitiativeNewViewController: UIViewController {
     
     var form = FormManager()
     var formView: UIView!
+    var landmark: Landmark!
+    var sender = ""
+    
+    @IBOutlet weak var closeButton: UIView!
+    @IBOutlet weak var closeCircleButton: UIButton!
+    
+    @IBOutlet weak var saveCircleButton: UIButton!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     @IBAction func savePressed(_ sender: UIButton) {
-        let isSaved = form.saveInitiative()
+        let isSaved = form.saveInitiative(landmark)
         
         if isSaved {
             let alertController = UIAlertController(title: nil, message: "\(form.nameText) added to your initiatives!", preferredStyle: UIAlertControllerStyle.alert)
@@ -52,4 +59,5 @@ class StartInitiativeNewViewController: FormViewController {
         formerView.addSubview((form.view)!)
     }
     
+  
 }

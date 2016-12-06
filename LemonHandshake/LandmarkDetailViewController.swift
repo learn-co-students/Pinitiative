@@ -51,7 +51,17 @@ class LandmarkDetailViewController: UIViewController, LandmarkDetailDelegate {
     
     func listLandmarkInitiative() {
         //will create another TVC for list of landmarks
+        performSegue(withIdentifier: Constants.landmarkInitiativeSegue, sender: self.landmark)
     }
-
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destNC = segue.destination as! UINavigationController
+        if segue.identifier == Constants.landmarkInitiativeSegue {
+            let destVC = destNC.topViewController as!  LandmarkDetailTableViewController
+            destVC.landmark = self.landmark
+        } else if segue.identifier == Constants.startInitiativeSegue {
+            let destVC = destNC.topViewController as! StartInitiativeNewViewController
+            destVC.landmark = self.landmark
+        }
+    }
 }

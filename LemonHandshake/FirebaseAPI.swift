@@ -155,7 +155,6 @@ class FirebaseAPI {
         let ref = FIRDatabase.database().reference().child("users").child(userID)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            print("SNAPSHOT: \(snapshot.value)")
             let value = snapshot.value as? [String:Any] ?? nil
             doesExist(value != nil)
             
@@ -165,9 +164,9 @@ class FirebaseAPI {
     //MARK: - Initiative functions
     
     static func storeNewInitiative(_ initiative: Initiative) {
-
+        
         var initiativeRef = FIRDatabase.database().reference().child("initiatives").child(initiative.databaseKey)
-
+        
         
         var serializedData: [String: Any] = [
             "name": initiative.name,
@@ -179,17 +178,17 @@ class FirebaseAPI {
             "createdAt": initiative.createdAt.timeIntervalSince1970,
             "expirationDate": initiative.createdAt.timeIntervalSince1970
         ]
+        
         if let landmarkID = initiative.associatedLandmark?.databaseKey {
+            //Assign to initiativeRef
             serializedData["landmarkID"] = landmarkID
             
-            initiativeRef = initiativeRef.child(landmarkID)
-
+            //            initiativeRef = initiativeRef.child(landmarkID)
         }
         if let associatedDate = initiative.associatedDate {
             serializedData["associatedDate"] = associatedDate.timeIntervalSince1970
         }
         
-
         initiativeRef.setValue(serializedData)
         
         
@@ -199,8 +198,16 @@ class FirebaseAPI {
         
         if initiative.associatedLandmark == nil {
             FirebaseAPI.geoFireStoreNewInitiative(at: initiative.location, key: initiative.databaseKey)
+        } else {
+            //MARK: JCB Add an initiative to landmark
+            let landmarkRef = FIRDatabase.database().reference().child("landmarks").child((initiative.associatedLandmark?.databaseKey)!).child("initiatives")
+            
+            landmarkRef.updateChildValues([initiative.databaseKey:true])
         }
+        
+        
     }
+    
     
     static func archive(initiative: Initiative) {
         
@@ -298,17 +305,19 @@ class FirebaseAPI {
                 let expirationDate = dictionary["expirationDate"] as? TimeInterval
                 else { print("FAILURE: Could not parse data for initiative with key: \(key)");return }
             
-            if Date() > Date(timeIntervalSince1970: expirationDate).daysInFuture(30) {
+            if Date() > Date(timeIntervalSince1970: expirationDate).daysInFuture(30){
             }
             
-            
+            print("NAMEOF \(name)")
             let associatedDate: Date? = Date(optionalTimeIntervalSince1970: (dictionary["associatedDate"] as? TimeInterval) ?? nil)
-
             
-            if let landmark = dictionary["landmark"] as? String {
+            //JCB changed to landmarkID
+            if let landmark = dictionary["landmarkID"] as? String {
+                
                 FirebaseAPI.retrieveLandmark(withKey: landmark, completion: { (landmark) in
                     var initiative = Initiative(name: name, associatedLandmark: landmark, databaseKey: key, leader: leader, initiativeDescription: initiativeDescription, createdAt: Date(timeIntervalSince1970: createdAt), associatedDate: associatedDate, expirationDate: Date(timeIntervalSince1970: expirationDate))
-                    
+//
+                
                     for member in members {
                         initiative.members.append(member.key)
                     }
@@ -362,22 +371,50 @@ class FirebaseAPI {
         
     }
     
+    //MARK: JCB Add function to retrieve initiative using landmark key
+    static func retrieveInitiativeFor(landmarkKey: String, completion: @escaping ([Initiative])->Void) {
+        
+        let landmarkRef = FIRDatabase.database().reference().child("landmarks").child(landmarkKey).child("initiatives")
+        
+        landmarkRef.observeSingleEvent(of: .value, with: {
+            snapshot in
+            if let dictionary = snapshot.value as? [String: Any] {
+                var initiativeKeys = [String]()
+                var initiatives = [Initiative]()
+                
+                for item in dictionary {
+                    initiativeKeys.append(item.key)
+                }
+                
+                for initiativeKey in initiativeKeys {
+                    FirebaseAPI.retrieveInitiative(withKey: initiativeKey, completion: { (initiative) in
+                        initiatives.append(initiative)
+                        if initiativeKeys.count == initiatives.count {
+                            completion(initiatives)
+                        }
+                    })
+                }
+            }
+        })
+    }
+    
     //MARK: - Landmark functions
     static func retrieveLandmark(withKey key: String, completion: @escaping (Landmark)->Void ) {
         let targetLandmarkRef = FIRDatabase.database().reference().child("landmarks").child(key)
         
         targetLandmarkRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let dictionary = snapshot.value as? [String: String] else { print("FAILURE: Error with snapshot for landmark with key: \(key)");return }
-            guard let type = dictionary["type"] else { print("FAILURE: Could not retrieve landmark type for landmark with key: \(key)"); return }
+            //JCB Changing to [String: Any] since we're saving initiatives in Landmarks
+            guard let dictionary = snapshot.value as? [String: Any] else { print("FAILURE: Error with snapshot for landmark with key: \(key)");return }
+            guard let type = dictionary["type"] as? String else { print("FAILURE: Could not retrieve landmark type for landmark with key: \(key)"); return }
             
             switch type {
             case "hospital":
                 guard
-                    let name = dictionary["name"],
-                    let facilityType = dictionary["facilityType"],
-                    let latitudeString = dictionary["latitude"],
+                    let name = dictionary["name"] as? String, //JCB see comment above this one
+                    let facilityType = dictionary["facilityType"] as? String, //JCB
+                    let latitudeString = dictionary["latitude"] as? String, //JCB
                     let latitude = Double(latitudeString),
-                    let longitudeString = dictionary["longitude"],
+                    let longitudeString = dictionary["longitude"] as? String, //JCB
                     let longitude = Double(longitudeString)
                     else { print("FAILURE: Could not parse data for landmark with key: \(key)"); return}
                 
@@ -388,13 +425,13 @@ class FirebaseAPI {
                 completion(hospital)
             case "park":
                 guard
-                    let name = dictionary["name"],
-                    let address = dictionary["address"],
-                    let acresString = dictionary["acres"],
+                    let name = dictionary["name"] as? String,
+                    let address = dictionary["address"] as? String,
+                    let acresString = dictionary["acres"] as? String,
                     let acres = Double(acresString),
-                    let latitudeString = dictionary["latitude"],
+                    let latitudeString = dictionary["latitude"] as? String,
                     let latitude = Double(latitudeString),
-                    let longitudeString = dictionary["longitude"],
+                    let longitudeString = dictionary["longitude"] as? String,
                     let longitude = Double(longitudeString)
                     else { print("FAILURE: Could not parse data for landmark with key: \(key)"); return }
                 
@@ -403,7 +440,7 @@ class FirebaseAPI {
                 let park = Park(name: name, address: address, coordinates: coordinates, databaseKey: key, acres: acres)
                 
                 completion(park)
-            
+                
             default:
                 print("FAILURE: Could not recognize type \"\(type)\" for landmark with key: \(key)")
             }
@@ -436,6 +473,11 @@ class FirebaseAPI {
         reportRef.updateChildValues(serializedReportInfo)
     }
     
+    
+    //JCB Add function to retrieve Name of Leader
+    static func retrieveLeaderName(leaderKey: String, completion: (String)-> Void) {
+//        let userRef = FIRDatabase.database().reference().child(")
+    }
     
 }
 

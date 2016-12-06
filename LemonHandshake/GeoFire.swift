@@ -57,6 +57,7 @@ extension FirebaseAPI {
     }
     
     static func geoFirePullNearbyInitiatives(within range: Kilometers, ofLocation location: CLLocation, completion: @escaping (Initiative)->Void ) {
+        print("TEST")
         
         print("PROGRESS: Pulling Nearby initiatives")
         let geoFireRef: FIRDatabaseReference = FirebaseAPI.ref.child("geofire").child("initiatives")
