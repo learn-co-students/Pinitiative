@@ -11,69 +11,73 @@ import Mapbox
 import UIKit
 
 
-enum LandmarkType: String {
-    case school = "School"
-    case park = "Park"
-    case hospital = "Hospital"
-}
 
-protocol Landmark {
-    var name: String { get set }
-    var coordinates: CLLocationCoordinate2D { get set }
-    var type: LandmarkType { get }
-    var databaseKey: String { get set }
-}
-
-extension Landmark {
+class Landmark {
     
-    var longitude: Double {  return self.coordinates.longitude }
-    var latitude: Double { return self.coordinates.latitude }
-    
-    var icon: UIImage {
-        switch type {
-//        case .fireStation:
-//            return UIImage(named: "firemen")!
-        case .school:
-            return UIImage(named: "school")!
-        case .park:
-            return UIImage(named: "forest")!
-//        case .policeStation:
-//            return UIImage(named: "police")!
-        case .hospital:
-        return UIImage(named: "hospital-building")!
+    var address: String
+    var agency: String
+    var borough: String
+    var latitude: Double
+    var longitude: Double
+    var name: String
+    var useDescription: String
+    var coordinates: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
- }
-}
-
-
-struct Hospital: Landmark {
-    var name: String
-    var coordinates: CLLocationCoordinate2D
-    var type: LandmarkType { return .hospital }
     var databaseKey: String
-    var facilityType: String
+    var icon: UIImage {
+        
+        switch self.agency {
+        
+        case "EDU", "CUNY", "ACS", "EDUC", "HRA", "NYPL"/*NYpublibrary*/:
+            return UIImage(named: "school")!
+            
+        case "FIRE":
+            return UIImage(named: "firemen")!
+            
+        case "PARKS", "SANIT", "DEP":
+            return UIImage(named: "forest")!
+            
+        case "NYPD","NYCHA", "COURT", "DCAS", "DOT", "ACS", "CORR":
+            return UIImage(named: "police")!
+            
+        case "HLTH", "DHS", "HHC", "AGING", "OCME", "HRA":
+            return UIImage(named: "hospital-building")!
+            
+        default:
+            let image = UIImage(named: "drop_pin_marker")!
+            
+            let iconSize = CGSize(width: 20, height: 20)
+            
+            image.size.equalTo(iconSize)
+            
+            return image
+        }
+    }
+    
+    
+   
+    init(address: String, agency: String, borough: String, latitude: Double, longitude: Double, name: String, useDescription: String, databaseKey: String){
+        
+        self.address = address
+        self.agency = agency
+        self.borough = borough
+        self.latitude = latitude
+        self.longitude = longitude
+        self.name = name
+        self.useDescription = useDescription
+        self.databaseKey = databaseKey
+        
+    }
 }
 
-struct Park: Landmark {
-    var name: String
-    var address: String
-    var coordinates: CLLocationCoordinate2D
-    var type: LandmarkType { return .park }
-    var databaseKey: String
-    var acres: Double
-}
 
-struct School: Landmark {
-    var name: String
-    var address: String
-    var coordinates: CLLocationCoordinate2D
-    var type: LandmarkType { return .school }
-    var databaseKey: String
-}
+
+
 
 
 enum LocationType: String {
-    case school = "school"
+    case EDUC = "school"
     case policeStation = "policeStation"
     case fireStation = "fireStation"
     case park = "park"

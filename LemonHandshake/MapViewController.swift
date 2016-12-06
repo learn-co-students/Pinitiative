@@ -14,8 +14,6 @@ import SnapKit
 
 class MapViewController: UIViewController, MGLMapViewDelegate {
     
-  
-    
     var store = MapDataStore.sharedInstance
     var mapView: MGLMapView!
     var mapBounds = MGLCoordinateBounds()
@@ -32,19 +30,17 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         super.viewDidLoad()
         
         createMap()
-        view.addSubview(mapView)
         activateGestureRecognizer()
         mapView.delegate = self
         setMapSearchButtonConstraints()
         
-        let imageView = UIImageView(image: IconConstants.fullLogo )
-        imageView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 45)
-        imageView.contentMode = .scaleAspectFit
+
+        let imageView = UIImageView(image: IconConstants.logoIcon )
         navBar.titleView = imageView
         
         shouldPresentNewUserInfo()
+        
     }
-
     
     func mapViewRegionIsChanging(_ mapView: MGLMapView) {
     
@@ -76,6 +72,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     func refreshLandmarks(){
         self.store.landmarks.removeAll()
         self.landmarks.removeAll()
+
         FirebaseAPI.geoFirePullNearbyLandmarks (within: 1.0, ofLocation: CLLocation(latitude: store.userLatitude, longitude: store.userLongitude)) { (landmark) in
             self.store.landmarks.append(landmark)
             self.addSinglePointAnnotation(for: landmark)
@@ -83,16 +80,16 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     }
     
     func refreshMapLandmarks(){
-        print("Refreshing Landmarks")
         self.store.landmarks.removeAll()
         self.landmarks.removeAll()
-        //JCB unwrap annotations to prevent from crashing that if there are annotations.
+        
         guard let annotations = mapView.annotations else { return }
-        self.mapView.removeAnnotations(annotations)
-//        self.mapView.removeAnnotations(mapView.annotations!)
+            mapView.removeAnnotations(annotations)
+
         FirebaseAPI.geoFirePullNearbyLandmarks (within: 1.0, ofLocation: CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)) { (landmark) in
             self.store.landmarks.append(landmark)
             self.addSinglePointAnnotation(for: landmark)
+            
         }
     }
     
@@ -101,7 +98,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.styleURL = store.styleURL
         mapView.showsUserLocation = true
-        mapView.zoomLevel = 13.5
+        mapView.zoomLevel = 12
         mapView.frame.size.height = view.frame.size.height
         view.addSubview(mapView)
         mapView.delegate = self
@@ -127,47 +124,75 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     func addPointAnnotations() {
         var pointAnnotations = [CustomPointAnnotation]()
         
-        print(landmarks.count)
         for landmark in landmarks {
-            if let landmark = landmark as? Park {
-                let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
-                point.image = landmark.icon
-                point.reuseIdentifier = landmark.type.rawValue
-                pointAnnotations.append(point)
-            } else if let landmark = landmark as? School {
-                let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
-                point.image = landmark.icon
-                point.reuseIdentifier = landmark.type.rawValue
-                pointAnnotations.append(point)
-            } else if let landmark = landmark as? Hospital {
-                let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.facilityType, databaseKey: landmark.databaseKey)
-                point.image = landmark.icon
-                point.reuseIdentifier = landmark.type.rawValue
-                pointAnnotations.append(point)
+            let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey, image: landmark.icon)
+            
+            var id: String {
+                switch landmark.agency {
+                case "EDU", "CUNY", "ACS", "EDUC", "HRA", "NYPL"/*NYpublibrary*/:
+                    return "school"
+                    
+                case "FIRE":
+                    return "firemen"
+                    
+                case "PARKS", "SANIT", "DEP":
+                    return "forest"
+                    
+                case "NYPD","NYCHA", "COURT", "DCAS", "DOT", "ACS", "CORR":
+                    return "police"
+                    
+                case "HLTH", "DHS", "HHC", "AGING", "OCME", "HRA":
+                    return "hospital-building"
+                    
+                default:
+                    return "drop_pin_marker"
+                }
+                
             }
+            print("THIS IS THE POINTS AGENCY CONVERTED INTO AN ICON STRING\(id)")
+            
+            point.reuseIdentifier = id
+            
+               // point.reuseIdentifier = landmark.type.rawValue
+                pointAnnotations.append(point)
+
         }
         mapView.addAnnotations(pointAnnotations)
+        print("THIS IS THE COUNT \(landmarks.count)")
     }
     
     func addSinglePointAnnotation(for landmark: Landmark) {
         
-        if let landmark = landmark as? Park {
-            let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
-            point.image = landmark.icon
-            point.reuseIdentifier = landmark.type.rawValue
-            mapView.addAnnotation(point)
-        } else if let landmark = landmark as? School {
-            let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey)
-            point.image = landmark.icon
-            point.reuseIdentifier = landmark.type.rawValue
-            mapView.addAnnotation(point)
-        } else if let landmark = landmark as? Hospital {
-            let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.facilityType, databaseKey: landmark.databaseKey)
-            point.image = landmark.icon
-            point.reuseIdentifier = landmark.type.rawValue
-            mapView.addAnnotation(point)
-        }
+            let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey, image: landmark.icon)
         
+            var id: String {
+                   switch landmark.agency {
+                    case "EDU", "CUNY", "ACS", "EDUC", "HRA", "NYPL"/*NYpublibrary*/:
+                        return "school"
+            
+                    case "FIRE":
+                        return "firemen"
+            
+                    case "PARKS", "SANIT", "DEP":
+                        return "forest"
+            
+                    case "NYPD","NYCHA", "COURT", "DCAS", "DOT", "ACS", "CORR":
+                        return "police"
+            
+                    case "HLTH", "DHS", "HHC", "AGING", "OCME", "HRA":
+                        return "hospital-building"
+                        
+                    default:
+                        return "drop_pin_marker"
+                    }
+            
+            }
+            print("THIS IS THE POINTS AGENCY CONVERTED INTO AN ICON STRING\(id)")
+            point.reuseIdentifier = id
+
+            print("THIS IS THE Agency \(landmark.agency)")
+        
+        mapView.addAnnotation(point)
     }
     
     
@@ -187,7 +212,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     
     
     func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
-        
+        print("MAPVIEW 1234 firing")
         if let point = annotation as? CustomPointAnnotation,
             let image = point.image,
             let reuseIdentifier = point.reuseIdentifier {
@@ -241,7 +266,16 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
                     geocodeAddress = address
                 }
         
-            let markedLocation = CustomPointAnnotation(coordinate: longPressCoordinate, title: Constants.markedLocationText, subtitle: geocodeAddress, databaseKey: "")
+            let image = UIImage(named: "drop_pin_marker")!
+            
+            let iconSize = CGSize(width: 20, height: 20)
+            
+            image.size.equalTo(iconSize)
+            
+    
+            let markedLocation = CustomPointAnnotation(coordinate: longPressCoordinate, title: Constants.markedLocationText, subtitle: geocodeAddress, databaseKey: "", image: image)
+            
+          
             //test need geocoding for mapbox
             markedLocation.reuseIdentifier = Constants.customMarkerText
             self.mapView.addAnnotation(markedLocation)
@@ -255,14 +289,13 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     
     func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
         mapBounds = mapView.visibleCoordinateBounds
-        //landmarks = setVisibleAnnotationsForVisibleCoordinates(mapBounds)
         addPointAnnotations()
     }
     
     
     
     @IBAction func searchMapButton(_ sender: Any) {
-        print("HEEEEY")
+        print("SEARCHING FOR NEW LOCATIONS")
         refreshMapLandmarks()
         
     }
@@ -273,7 +306,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
             make.centerY.equalTo(self.view).multipliedBy(0.33)
             make.width.equalTo(200)
             make.height.equalTo(45)
-            searchMapLabel.backgroundColor = UIColor.themeBlue.withAlphaComponent(0.5)
+            searchMapLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
             searchMapLabel.layer.borderWidth = 1
             searchMapLabel.layer.cornerRadius = 20
         }
@@ -283,7 +316,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
       
     }
     
-}
+ }
+
 
 
 
@@ -294,35 +328,32 @@ extension MapViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == Constants.annotationSegueText {
-            
+            print(segue.identifier)
             let destVC = segue.destination as! LandmarkDetailViewController
             
-            if let landmark = sender as? School {
-                destVC.landmark = landmark
-            } else if let landmark = sender as? Hospital {
-                destVC.landmark = landmark
-            } else if let landmark = sender as? Park {
-                destVC.landmark = landmark
+            if let landmark = sender {
+                destVC.landmark = landmark as! Landmark
+            print(landmark)
             }
+        }
             
-            
-        } else if segue.identifier == Constants.dropPinSegueText {
-            
+            if segue.identifier == Constants.dropPinSegueText {
+            print(segue.identifier)
             let destVC = segue.destination as! DropPinDetailViewController
             destVC.location = sender as! DropPinLocation
             
+            }
         }
-    }
     
 }
 
 //MARK: - Test For New User Screen
 extension MapViewController {
     func shouldPresentNewUserInfo() {
-        FirebaseAPI.test(forUserWithKey: FirebaseAuth.currentUserID) { (doesExist) in
-            if !doesExist {
+//        FirebaseAPI.test(forUserWithKey: FirebaseAuth.currentUserID) { (doesExist) in
+//            if !doesExist {
                 self.present(NewUserInfoViewController(), animated: true)
-            }
-        }
+//            }
+//        }
     }
 }
