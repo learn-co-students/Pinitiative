@@ -350,10 +350,10 @@ extension MapViewController {
 //MARK: - Test For New User Screen
 extension MapViewController {
     func shouldPresentNewUserInfo() {
-//        FirebaseAPI.test(forUserWithKey: FirebaseAuth.currentUserID) { (doesExist) in
-//            if !doesExist {
+        FirebaseAPI.test(forUserWithKey: FirebaseAuth.currentUserID) { (doesExist) in
+            if !doesExist {
                 self.present(NewUserInfoViewController(), animated: true)
-//            }
-//        }
+            }
+        }
     }
 }
