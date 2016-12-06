@@ -129,17 +129,17 @@ class FirebaseAPI {
         }
         
         //Create a report so that firebase has track of the incident
-        FirebaseAPI.reportUser(targetUserID: userKey, from: FirebaseAuth.currentUserID ?? "ERROR_NO_USER", report: "User was removed from initiative (key: \(initiativeKey) by leader (key: \(FirebaseAuth.currentUserID))")
+        FirebaseAPI.reportUser(targetUserID: userKey, from: FirebaseAuth.currentUserID, report: "User was removed from initiative (key: \(initiativeKey) by leader (key: \(FirebaseAuth.currentUserID))")
         
     }
     
     static func userLeave(initiativeWithKey initiativeKey: String) {
         
         //Create a ref that the member is stored in the intiative
-        let memberForInitiativeRef = FirebaseAPI.ref.child("initiatives").child(initiativeKey).child("members").child(FirebaseAuth.currentUserID ?? "ERROR_NO_USER")
+        let memberForInitiativeRef = FirebaseAPI.ref.child("initiatives").child(initiativeKey).child("members").child(FirebaseAuth.currentUserID)
         
         //Create a ref that the initiative is stored in the user
-        let initiativeForUser = FirebaseAPI.ref.child("users").child(FirebaseAuth.currentUserID ?? "ERROR_NO_USER").child("initiatives").child(initiativeKey)
+        let initiativeForUser = FirebaseAPI.ref.child("users").child(FirebaseAuth.currentUserID).child("initiatives").child(initiativeKey)
         
         //Set the boolean value from the initiaive member section to false
         memberForInitiativeRef.setValue(false)

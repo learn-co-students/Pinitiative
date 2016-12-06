@@ -27,7 +27,7 @@ class InitiativeDetailViewController: UIViewController {
     
     @IBOutlet weak var followersTextLabel: UILabel!
     
-    @IBOutlet weak var descriptionTextHere: UILabel!
+    @IBOutlet weak var descriptionTextHere: UITextView!
     
     @IBOutlet weak var chatButtonLabel: UIButton!
     
@@ -109,7 +109,6 @@ class InitiativeDetailViewController: UIViewController {
             descriptionTextHere.layer.cornerRadius = 20
             descriptionTextHere.layer.borderColor = UIColor.black.cgColor
             descriptionTextHere.layer.borderWidth = 1
-
         }
 
         chatButtonLabel.snp.makeConstraints { (make) in
