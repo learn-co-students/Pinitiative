@@ -46,14 +46,15 @@ class ChatDetailViewController: JSQMessagesViewController {
         collectionView.backgroundColor = UIColor.greenX
         jsq_setCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
         senderId = FirebaseAuth.currentUserID
-        senderDisplayName = "tameika lawrence"
+        //senderDisplayName = "tameika lawrence"
         
-//        FirebaseAPI.retrieveUser(withKey: senderId!) { (user) in
-//            let fullName = user.firstName + " " + user.lastName
-//            if self.senderDisplayName != nil {
-//                self.senderDisplayName = fullName
-//            }
-//        }
+        
+        
+        FirebaseAPI.retrieveUser(withKey: senderId!) { (user) in
+            let fullName = user.firstName + " " + user.lastName
+                self.senderDisplayName = fullName
+            
+        }
         
     }
     
