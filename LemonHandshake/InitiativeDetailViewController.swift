@@ -40,8 +40,6 @@ class InitiativeDetailViewController: UIViewController {
         
         chatButtonLabel.isHidden = true
         
-        testIfUserIsMember()
-        
         populateInitiativeData()
         retrieveLeaderName()
         
@@ -147,12 +145,8 @@ class InitiativeDetailViewController: UIViewController {
         
             OperationQueue.main.addOperation {
                 if userIsMember {
-                    self.chatButtonLabel.titleLabel?.text = "Chat"
-                } else {
-                    self.chatButtonLabel.titleLabel?.text = "Join"
+                    self.chatButtonLabel.isHidden = false
                 }
-                
-                self.chatButtonLabel.isHidden = false
             }
         }
     }
@@ -161,11 +155,7 @@ class InitiativeDetailViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
-    func chatButtonTapped() {
-        if userIsMember {
-            performSegue(withIdentifier: "chatButtonSegue", sender: self)
-        }
-    }
+    func chatButtonTapped() { performSegue(withIdentifier: "chatButtonSegue", sender: self) }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
