@@ -153,6 +153,17 @@ class FirebaseAPI {
         //Initiative ref
     }
     
+    static func test(forUserWithKey userID: String, doesExist: @escaping (Bool) -> Void) {
+        let ref = FIRDatabase.database().reference().child("users").child(userID)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            print("SNAPSHOT: \(snapshot.value)")
+            let value = snapshot.value as? [String:Any] ?? nil
+            doesExist(value != nil)
+            
+        })
+    }
+    
     //MARK: - Initiative functions
     
     static func storeNewInitiative(_ initiative: Initiative) {
