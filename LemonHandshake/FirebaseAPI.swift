@@ -19,6 +19,8 @@ class FirebaseAPI {
     
     static func storeNewUser(id: String, firstName:String, lastName: String) {
         
+        print("In Store New User")
+        
         //Create a reference point for the user info
         let newUserRef = FIRDatabase.database().reference().child("users").child(id)
         
@@ -127,23 +129,38 @@ class FirebaseAPI {
         }
         
         //Create a report so that firebase has track of the incident
-        FirebaseAPI.reportUser(targetUserID: userKey, from: FirebaseAuth.currentUserID ?? "ERROR_NO_USER", report: "User was removed from initiative (key: \(initiativeKey) by leader (key: \(FirebaseAuth.currentUserID))")
+        FirebaseAPI.reportUser(targetUserID: userKey, from: FirebaseAuth.currentUserID, report: "User was removed from initiative (key: \(initiativeKey) by leader (key: \(FirebaseAuth.currentUserID))")
         
     }
     
     static func userLeave(initiativeWithKey initiativeKey: String) {
         
         //Create a ref that the member is stored in the intiative
-        let memberForInitiativeRef = FirebaseAPI.ref.child("initiatives").child(initiativeKey).child("members").child(FirebaseAuth.currentUserID ?? "ERROR_NO_USER")
+        let memberForInitiativeRef = FirebaseAPI.ref.child("initiatives").child(initiativeKey).child("members").child(FirebaseAuth.currentUserID)
         
         //Create a ref that the initiative is stored in the user
-        let initiativeForUser = FirebaseAPI.ref.child("users").child(FirebaseAuth.currentUserID ?? "ERROR_NO_USER").child("initiatives").child(initiativeKey)
+        let initiativeForUser = FirebaseAPI.ref.child("users").child(FirebaseAuth.currentUserID).child("initiatives").child(initiativeKey)
         
         //Set the boolean value from the initiaive member section to false
         memberForInitiativeRef.setValue(false)
         
         //Set the boolean value from the user initiatives to false
         initiativeForUser.setValue(false)
+    }
+    
+    static func userJoin(initiativeWithKey initiativeKey: String) {
+        
+        //Create a ref that the member is to be stored in the intiative
+        let memberForInitiativeRef = FirebaseAPI.ref.child("initiatives").child(initiativeKey).child("members").child(FirebaseAuth.currentUserID)
+        
+        //Create a ref that the initiative is to be stored in the user
+        let initiativeForUser = FirebaseAPI.ref.child("users").child(FirebaseAuth.currentUserID).child("initiatives").child(initiativeKey)
+        
+        //Set the boolean value from the initiaive member section to true
+        memberForInitiativeRef.setValue(true)
+        
+        //Set the boolean value from the user initiatives to true
+        initiativeForUser.setValue(true)
     }
     
     static func retrieveMembers(forInitiativeWithKey initiativeKey: String, completion: ([User]) -> Void) {
@@ -300,7 +317,7 @@ class FirebaseAPI {
                 let latitude = dictionary["latitude"] as? Double,
                 let longitude = dictionary["longitude"] as? Double,
                 let leader = dictionary["leader"] as? String,
-                let members = dictionary["members"] as? [String:Any],
+                let members = dictionary["members"] as? [String:Bool],
                 let createdAt = dictionary["createdAt"] as? TimeInterval,
                 let expirationDate = dictionary["expirationDate"] as? TimeInterval
                 else { print("FAILURE: Could not parse data for initiative with key: \(key)");return }
@@ -319,7 +336,9 @@ class FirebaseAPI {
 //
                 
                     for member in members {
-                        initiative.members.append(member.key)
+                        if member.value {
+                            initiative.members.append(member.key)
+                        }
                     }
                     
                     completion(initiative)
@@ -327,7 +346,9 @@ class FirebaseAPI {
             } else {
                 var initiative = Initiative(name: name, latitude: latitude, longitude: longitude, databaseKey: key, leader: leader, initiativeDescription: initiativeDescription, createdAt: Date(timeIntervalSince1970: createdAt), associatedDate: associatedDate, expirationDate: Date(timeIntervalSince1970: expirationDate))
                 for member in members {
-                    initiative.members.append(member.key)
+                    if member.value {
+                        initiative.members.append(member.key)
+                    }
                 }
                 completion(initiative)
             }
@@ -346,13 +367,15 @@ class FirebaseAPI {
         let userInitiativeRef = FIRDatabase.database().reference().child("users").child(userKey).child("initiatives")
         
         userInitiativeRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let dictionary = snapshot.value as? [String:Any] {
+            if let dictionary = snapshot.value as? [String:Bool] {
                 
                 var initiativeKeys = [String]()
                 var initiatives = [Initiative]()
                 
                 for item in dictionary {
-                    initiativeKeys.append(item.key)
+                    if item.value {
+                        initiativeKeys.append(item.key)
+                    }
                 }
                 
                 for initiativeKey in initiativeKeys {
@@ -371,6 +394,7 @@ class FirebaseAPI {
         
     }
     
+
     //MARK: JCB Add function to retrieve initiative using landmark key
     static func retrieveInitiativeFor(landmarkKey: String, completion: @escaping ([Initiative])->Void) {
         
@@ -398,52 +422,90 @@ class FirebaseAPI {
         })
     }
     
+
+    static func test(ifUserWithID userID: String, isMemberOfInitiativeWithID initiativeID: String, userIsMember: @escaping (Bool) -> Void) {
+        let ref = FIRDatabase.database().reference().child("initiatives").child(initiativeID).child("members").child(userID)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? Bool ?? nil
+            print(value != nil)
+            if value != nil {
+                userIsMember(value!)
+            } else {
+                userIsMember(false)
+            }
+            
+        })
+    }
+    
+    
+
     //MARK: - Landmark functions
     static func retrieveLandmark(withKey key: String, completion: @escaping (Landmark)->Void ) {
         let targetLandmarkRef = FIRDatabase.database().reference().child("landmarks").child(key)
         
         targetLandmarkRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            //JCB Changing to [String: Any] since we're saving initiatives in Landmarks
+//<<<<<<< HEAD
+//            //JCB Changing to [String: Any] since we're saving initiatives in Landmarks
+//            guard let dictionary = snapshot.value as? [String: Any] else { print("FAILURE: Error with snapshot for landmark with key: \(key)");return }
+//            guard let type = dictionary["type"] as? String else { print("FAILURE: Could not retrieve landmark type for landmark with key: \(key)"); return }
+//            
+//            switch type {
+//            case "hospital":
+//                guard
+//                    let name = dictionary["name"] as? String, //JCB see comment above this one
+//                    let facilityType = dictionary["facilityType"] as? String, //JCB
+//                    let latitudeString = dictionary["latitude"] as? String, //JCB
+//                    let latitude = Double(latitudeString),
+//                    let longitudeString = dictionary["longitude"] as? String, //JCB
+//                    let longitude = Double(longitudeString)
+//                    else { print("FAILURE: Could not parse data for landmark with key: \(key)"); return}
+//                
+//                let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+//                
+//                let hospital = Hospital(name: name, coordinates: coordinates, databaseKey: key, facilityType: facilityType)
+//                
+//                completion(hospital)
+//            case "park":
+//                guard
+//                    let name = dictionary["name"] as? String,
+//                    let address = dictionary["address"] as? String,
+//                    let acresString = dictionary["acres"] as? String,
+//                    let acres = Double(acresString),
+//                    let latitudeString = dictionary["latitude"] as? String,
+//                    let latitude = Double(latitudeString),
+//                    let longitudeString = dictionary["longitude"] as? String,
+//                    let longitude = Double(longitudeString)
+//                    else { print("FAILURE: Could not parse data for landmark with key: \(key)"); return }
+//                
+//                let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+//                
+//                let park = Park(name: name, address: address, coordinates: coordinates, databaseKey: key, acres: acres)
+//                
+//                completion(park)
+//                
+//            default:
+//                print("FAILURE: Could not recognize type \"\(type)\" for landmark with key: \(key)")
+//            }
+//=======
+            print("SNAPSHOT VALUE \(snapshot.value)")
             guard let dictionary = snapshot.value as? [String: Any] else { print("FAILURE: Error with snapshot for landmark with key: \(key)");return }
-            guard let type = dictionary["type"] as? String else { print("FAILURE: Could not retrieve landmark type for landmark with key: \(key)"); return }
             
-            switch type {
-            case "hospital":
-                guard
-                    let name = dictionary["name"] as? String, //JCB see comment above this one
-                    let facilityType = dictionary["facilityType"] as? String, //JCB
-                    let latitudeString = dictionary["latitude"] as? String, //JCB
-                    let latitude = Double(latitudeString),
-                    let longitudeString = dictionary["longitude"] as? String, //JCB
-                    let longitude = Double(longitudeString)
-                    else { print("FAILURE: Could not parse data for landmark with key: \(key)"); return}
-                
-                let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                
-                let hospital = Hospital(name: name, coordinates: coordinates, databaseKey: key, facilityType: facilityType)
-                
-                completion(hospital)
-            case "park":
-                guard
-                    let name = dictionary["name"] as? String,
-                    let address = dictionary["address"] as? String,
-                    let acresString = dictionary["acres"] as? String,
-                    let acres = Double(acresString),
-                    let latitudeString = dictionary["latitude"] as? String,
-                    let latitude = Double(latitudeString),
-                    let longitudeString = dictionary["longitude"] as? String,
-                    let longitude = Double(longitudeString)
-                    else { print("FAILURE: Could not parse data for landmark with key: \(key)"); return }
-                
-                let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                
-                let park = Park(name: name, address: address, coordinates: coordinates, databaseKey: key, acres: acres)
-                
-                completion(park)
-                
-            default:
-                print("FAILURE: Could not recognize type \"\(type)\" for landmark with key: \(key)")
-            }
+            
+            guard let address = dictionary["address"],
+                let agency = dictionary["agency"],
+                let borough = dictionary["borough"],
+                let latitude = dictionary["latitude"],
+                let longitude = dictionary["longitude"],
+                let name = dictionary["name"],
+                let useDescription = dictionary["useDescription"]
+                else { print("FAILURE: Could not parse data for landmark with key: \(key)"); return}
+            
+            let newLandmark = Landmark(address: address as! String, agency: agency as! String, borough: borough as! String, latitude: latitude as! Double, longitude: longitude as! Double, name: name as! String, useDescription: useDescription as! String, databaseKey: key)
+            
+            completion(newLandmark)
+
+//>>>>>>> master
             
         })
     }

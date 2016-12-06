@@ -57,7 +57,7 @@ extension Initiative: CustomStringConvertible {
         
         let key = FIRDatabase.database().reference().childByAutoId().key
         
-        let initiative =  Initiative(name: initiativeName, associatedLandmark: landmark, databaseKey: key, leader: FirebaseAuth.currentUserID ?? "", initiativeDescription: initiativeDescription, createdAt: Date(), associatedDate: associatedDate, expirationDate: Date().daysInFuture(30))
+        let initiative =  Initiative(name: initiativeName, associatedLandmark: landmark, databaseKey: key, leader: FirebaseAuth.currentUserID, initiativeDescription: initiativeDescription, createdAt: Date(), associatedDate: associatedDate, expirationDate: Date().daysInFuture(30))
         
         FirebaseAPI.storeNewInitiative(initiative)
         
@@ -67,7 +67,7 @@ extension Initiative: CustomStringConvertible {
         
         let key = FIRDatabase.database().reference().childByAutoId().key
         
-        let initiative =  Initiative(name: initiativeName, latitude: latitude, longitude: longitude, databaseKey: key, leader: FirebaseAuth.currentUserID ?? "", initiativeDescription: initiativeDescription, createdAt: Date(), associatedDate: associatedDate, expirationDate: Date().daysInFuture(30))
+        let initiative =  Initiative(name: initiativeName, latitude: latitude, longitude: longitude, databaseKey: key, leader: FirebaseAuth.currentUserID, initiativeDescription: initiativeDescription, createdAt: Date(), associatedDate: associatedDate, expirationDate: Date().daysInFuture(30))
         
         FirebaseAPI.storeNewInitiative(initiative)
         

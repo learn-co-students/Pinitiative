@@ -16,6 +16,7 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.orange)
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.blueX)
+    var image: String!
     
     var messages = [JSQMessage]()
     
@@ -29,6 +30,9 @@ class ChatDetailViewController: JSQMessagesViewController {
         }
     }
     
+    
+//    var initiative = Initiative(name: "Hello", latitude: 0, longitude: 0, databaseKey: "Testing", leader: "Me", initiativeDescription: "Fun times", createdAt: Date(), associatedDate: Date(), expirationDate: Date.distantFuture)
+    
     @IBOutlet weak var containerView: UIView!
 
     
@@ -36,23 +40,37 @@ class ChatDetailViewController: JSQMessagesViewController {
         super.viewDidLoad()
         print(messages)
         
+        self.inputToolbar.contentView.leftBarButtonItem = nil
+        connectToChat()
         collectionView.reloadData()
         collectionView.backgroundColor = UIColor.greenX
+        jsq_setCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
+        senderId = FirebaseAuth.currentUserID
+        //senderDisplayName = "tameika lawrence"
         
-        self.senderId = "2"
-        self.senderDisplayName = "Tameika Lawrence"
+        
+        
+        FirebaseAPI.retrieveUser(withKey: senderId!) { (user) in
+            let fullName = user.firstName + " " + user.lastName
+                self.senderDisplayName = fullName
+            
+        }
+        
     }
+    
+    
     
     
     func connectToChat() {
         
         ref = FIRDatabase.database().reference()
         
+        guard let initiative = initiative else { return }
         let chatRef = ref.child("Chats").child(initiative.databaseKey)
         let msgRef = chatRef.child("Messages")
         
         msgRef.observe(.childAdded, with: { snapshot in
-        print(snapshot.value)
+        print(snapshot.value as Any)
             
         let messageDictionary = snapshot.value as! [String:String]
         print("Dictionary \(messageDictionary)")
@@ -128,7 +146,7 @@ class ChatDetailViewController: JSQMessagesViewController {
             print("don't send theyre cursing")
         }else{
             ref = FIRDatabase.database().reference()
-            
+            guard let initiative = initiative else { return }
             let chatRef = ref.child("Chats").child(initiative.databaseKey)
             let msgRef = chatRef.child("Messages")
             
@@ -141,11 +159,20 @@ class ChatDetailViewController: JSQMessagesViewController {
             msgRef.childByAutoId().setValue(dict)
             
             self.finishSendingMessage()
-            
+            jsq_setCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
         }
     }
     
+    // move to constants or extensions or at all?
+    func jsq_setCollectionViewInsetsTopValue(_ top: CGFloat, bottomValue bottom: CGFloat) {
+        var insets = UIEdgeInsetsMake(top, 0.0, bottom, 0.0)
+        self.collectionView!.contentInset = insets
+        self.collectionView!.scrollIndicatorInsets = insets
     
+        if self.automaticallyScrollsToMostRecentMessage {
+            self.scrollToBottom(animated: true)
+        }
+    }
     
     
     // FOR MESSAGE BUBBLES ATTRIBUTES
@@ -163,8 +190,6 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         
-        
-        
         let outgoingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: senderDisplayName), backgroundColor: UIColor.darkGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
         
         let incomingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: senderDisplayName), backgroundColor: UIColor.darkGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
@@ -179,20 +204,20 @@ class ChatDetailViewController: JSQMessagesViewController {
     }
     
     
-    func dequeueTypingIndicatorFooterView(for indexPath: IndexPath!) -> JSQMessagesTypingIndicatorFooterView! {
-        
-           let chatCell = dequeueTypingIndicatorFooterView(for: indexPath)
-        
-        chatCell?.configure(withEllipsisColor: UIColor.lightGray, messageBubble: UIColor.darkGray, shouldDisplayOnLeft: true, for: self.collectionView)
-        
-        if self.senderId == senderId, indexPath.item == indexPath.count + 1 {
-            
-        }
-        return chatCell
-    }
+//    func dequeueTypingIndicatorFooterView(for indexPath: IndexPath!) -> JSQMessagesTypingIndicatorFooterView! {
+//        
+//           let chatCell = dequeueTypingIndicatorFooterView(for: indexPath)
+//        
+//        chatCell?.configure(withEllipsisColor: UIColor.lightGray, messageBubble: UIColor.lightGray, shouldDisplayOnLeft: true, for: self.collectionView)
+//        
+//        if self.senderId == senderId, indexPath.item == indexPath.count + 1 {
+//            
+//        }
+//        return chatCell
+//    }
     
 
-
+    // FILTERING TOOLBAR INPUT
     
     func badWordFilter(text: String) -> Bool {
     
@@ -218,8 +243,8 @@ class ChatDetailViewController: JSQMessagesViewController {
         return false
     }
     
-    
 }
+
 //end
 
 
@@ -234,43 +259,43 @@ class ChatDetailViewController: JSQMessagesViewController {
 
 
 //will move to Constants -> BadWords
-extension JSQMessagesViewController {
-    
-    
-    func generateInitials(senderDisplayName: String) -> String? {
+    extension JSQMessagesViewController {
         
-        let nameCharacters = [Character](senderDisplayName.characters)
         
-        guard !senderDisplayName.isEmpty, nameCharacters.first != " " else { return nil }
-        
-        guard nameCharacters.contains(" ") else { return String(nameCharacters.first!).uppercased() }
-        
-        let words = (nameCharacters.split(separator: " "))
-        
-        let firstWordArray = words.first!
-        
-        let lastWordArray = words.last!
-        
-        let firstNameInitial = String(firstWordArray.first!)
-        
-        let lastNameInitial = String(lastWordArray.first!)
-        
-        return firstNameInitial.uppercased() + lastNameInitial.uppercased()
-        
+        func generateInitials(senderDisplayName: String) -> String? {
+            
+            let nameCharacters = [Character](senderDisplayName.characters)
+            
+            guard !senderDisplayName.isEmpty, nameCharacters.first != " " else { return nil }
+            
+            guard nameCharacters.contains(" ") else { return String(nameCharacters.first!).uppercased() }
+            
+            let words = (nameCharacters.split(separator: " "))
+            
+            let firstWordArray = words.first!
+            
+            let lastWordArray = words.last!
+            
+            let firstNameInitial = String(firstWordArray.first!)
+            
+            let lastNameInitial = String(lastWordArray.first!)
+            
+            return firstNameInitial.uppercased() + lastNameInitial.uppercased()
+            
+        }
     }
-}
 
 
 
 //will move to Constants -> Extensions
-extension UIColor {
-    static let blueX = UIColor.init(red:0.00, green:0.33, blue:0.65, alpha:1.0)
-    static let greenX = UIColor(red:0.49, green:0.77, blue:0.46, alpha:1.0)
-    static let lightGreen = UIColor(red:0.72, green:1.00, blue:0.62, alpha:1.0)
-    static let purpleX = UIColor(red:0.15, green:0.07, blue:0.20, alpha:1.0)
-}
+    extension UIColor {
+        static let blueX = UIColor.init(red:0.00, green:0.33, blue:0.65, alpha:1.0)
+        static let greenX = UIColor(red:0.49, green:0.77, blue:0.46, alpha:1.0)
+        static let lightGreen = UIColor(red:0.72, green:1.00, blue:0.62, alpha:1.0)
+        static let purpleX = UIColor(red:0.15, green:0.07, blue:0.20, alpha:1.0)
+    }
 
 //will move to Constants -> Extensions
-extension UIFont {
-    static let avenir = UIFont.init(name: "Avenir", size: 24.0)
-}
+    extension UIFont {
+        static let avenir = UIFont.init(name: "Avenir", size: 24.0)
+    }

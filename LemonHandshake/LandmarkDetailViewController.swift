@@ -26,19 +26,19 @@ class LandmarkDetailViewController: UIViewController, LandmarkDetailDelegate {
         super.viewWillAppear(animated)
         
         landmarkDetailView.nameLabel.text = landmark.name
-        if landmark.type == .school {
-            let school = landmark as! School
-            landmarkDetailView.addressLabel.text = school.address
-            landmarkDetailView.propertyTypeIcon.image = school.icon
-        } else if landmark.type == .park {
-            let park = landmark as! Park
-            landmarkDetailView.addressLabel.text = park.address
-            landmarkDetailView.propertyTypeIcon.image = park.icon
-        } else if landmark.type == .hospital {
-            let hospital = landmark as! Hospital
-            landmarkDetailView.addressLabel.text = "Test address"
-            landmarkDetailView.propertyTypeIcon.image = hospital.icon
-        }
+//        if landmark.type == .school {
+//            let school = landmark as! School
+//            landmarkDetailView.addressLabel.text = school.address
+//            landmarkDetailView.propertyTypeIcon.image = school.icon
+//        } else if landmark.type == .park {
+//            let park = landmark as! Park
+//            landmarkDetailView.addressLabel.text = park.address
+//            landmarkDetailView.propertyTypeIcon.image = park.icon
+//        } else if landmark.type == .hospital {
+//            let hospital = landmark as! Hospital
+//            landmarkDetailView.addressLabel.text = "Test address"
+//            landmarkDetailView.propertyTypeIcon.image = hospital.icon
+//        }
     }
     
     func dismissViewController() {

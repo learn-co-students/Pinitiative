@@ -145,9 +145,12 @@ class NewUserInfoViewController: UIViewController, UITextFieldDelegate {
     }
     
     func didTapSubmitButton() {
-        if let firstName = firstNameTextField.text, let lastName = lastNameTextField.text {
-            FirebaseAPI.storeNewUser(id: FirebaseAuth.currentUserID, firstName: firstName, lastName: lastName)
-            dismiss(animated: true)
+        if firstNameTextField.text != "", lastNameTextField.text != "" {
+            if let firstName = firstNameTextField.text, let lastName = lastNameTextField.text {
+                FirebaseAPI.storeNewUser(id: FirebaseAuth.currentUserID, firstName: firstName, lastName: lastName)
+                dismiss(animated: true)
+                print("This is working, storing \(firstName) \(lastName) with ID: \(FirebaseAuth.currentUserID)")
+            }
         }
     }
 

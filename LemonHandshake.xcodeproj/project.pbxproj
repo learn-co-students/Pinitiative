@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B0EC6201DF5FF3700297C8C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0EC61F1DF5FF3700297C8C /* UIColor.swift */; };
-		1B0EC6241DF6088900297C8C /* NewUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0EC6231DF6088900297C8C /* NewUserInfoViewController.swift */; };
+		1B0EC6751DF74D7300297C8C /* NewUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0EC6741DF74D7300297C8C /* NewUserInfoViewController.swift */; };
 		1B10965F1DDA50CE00609104 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10965E1DDA50CE00609104 /* AppDelegate.swift */; };
 		1B1096661DDA50CE00609104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096651DDA50CE00609104 /* Assets.xcassets */; };
 		1B1096691DDA50CE00609104 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096671DDA50CE00609104 /* LaunchScreen.storyboard */; };
@@ -26,7 +26,6 @@
 		8355FD221DE4CC9C00A30A80 /* LandmarkDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8355FD211DE4CC9C00A30A80 /* LandmarkDetail.xib */; };
 		837C2F5A1DE4942500E076C9 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C2F591DE4942500E076C9 /* AppController.swift */; };
 		837C2F631DE4AC9F00E076C9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C2F621DE4AC9F00E076C9 /* Extensions.swift */; };
-		837C2F661DE4B64500E076C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 837C2F651DE4B64500E076C9 /* GoogleService-Info.plist */; };
 		83873B031DF3827F00FF71FB /* StartInitiativeNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83873B021DF3827F00FF71FB /* StartInitiativeNewViewController.swift */; };
 		83873B051DF382E500FF71FB /* FormManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83873B041DF382E500FF71FB /* FormManager.swift */; };
 		83D2E84B1DE4EF310095C068 /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2E84A1DE4EF310095C068 /* LandmarkDetail.swift */; };
@@ -34,6 +33,7 @@
 		83D8FE5A1DF76DA5007C6066 /* LandmarkDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8FE591DF76DA5007C6066 /* LandmarkDetailTableViewCell.swift */; };
 		83E865CA1DECFEC900336BC4 /* DropPinLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E865C91DECFEC900336BC4 /* DropPinLocation.swift */; };
 		83EF6B781DEE0B9B00756913 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF6B771DEE0B9B00756913 /* Constants.swift */; };
+		923861EB1DF70174007E2140 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 923861EA1DF70174007E2140 /* GoogleService-Info.plist */; };
 		926753A91DEDE2E000256968 /* calendarHTML.html in Resources */ = {isa = PBXBuildFile; fileRef = 926753A81DEDE2E000256968 /* calendarHTML.html */; };
 		92764CF01DE34635007115E9 /* MyInitiativesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92764CEF1DE34635007115E9 /* MyInitiativesTableViewCell.swift */; };
 		92764CF61DE37F11007115E9 /* NearbyInitiativesDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */; };
@@ -55,7 +55,8 @@
 
 /* Begin PBXFileReference section */
 		1B0EC61F1DF5FF3700297C8C /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		1B0EC6231DF6088900297C8C /* NewUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewUserInfoViewController.swift; path = ../NewUserInfoViewController.swift; sourceTree = "<group>"; };
+		1B0EC6731DF70B4700297C8C /* LemonHandshake.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LemonHandshake.entitlements; sourceTree = "<group>"; };
+		1B0EC6741DF74D7300297C8C /* NewUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserInfoViewController.swift; sourceTree = "<group>"; };
 		1B10965B1DDA50CE00609104 /* LemonHandshake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LemonHandshake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B10965E1DDA50CE00609104 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B1096651DDA50CE00609104 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -77,7 +78,6 @@
 		8355FD211DE4CC9C00A30A80 /* LandmarkDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandmarkDetail.xib; sourceTree = "<group>"; };
 		837C2F591DE4942500E076C9 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		837C2F621DE4AC9F00E076C9 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		837C2F651DE4B64500E076C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		83873B021DF3827F00FF71FB /* StartInitiativeNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartInitiativeNewViewController.swift; sourceTree = "<group>"; };
 		83873B041DF382E500FF71FB /* FormManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormManager.swift; sourceTree = "<group>"; };
 		83D2E84A1DE4EF310095C068 /* LandmarkDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
@@ -85,6 +85,7 @@
 		83D8FE591DF76DA5007C6066 /* LandmarkDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandmarkDetailTableViewCell.swift; sourceTree = "<group>"; };
 		83E865C91DECFEC900336BC4 /* DropPinLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropPinLocation.swift; sourceTree = "<group>"; };
 		83EF6B771DEE0B9B00756913 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		923861EA1DF70174007E2140 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		926753A81DEDE2E000256968 /* calendarHTML.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = calendarHTML.html; sourceTree = "<group>"; };
 		92764CEF1DE34635007115E9 /* MyInitiativesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInitiativesTableViewCell.swift; sourceTree = "<group>"; };
 		92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyInitiativesDetailCell.swift; sourceTree = "<group>"; };
@@ -137,6 +138,7 @@
 		1B10965D1DDA50CE00609104 /* LemonHandshake */ = {
 			isa = PBXGroup;
 			children = (
+				1B0EC6731DF70B4700297C8C /* LemonHandshake.entitlements */,
 				BC5688C91DEE2242005FC0D8 /* Main.storyboard */,
 				837C2F641DE4ACB400E076C9 /* Constants */,
 				8309AA061DDE04BC00484700 /* Models */,
@@ -147,8 +149,8 @@
 				1B1096651DDA50CE00609104 /* Assets.xcassets */,
 				926753A81DEDE2E000256968 /* calendarHTML.html */,
 				1B1096671DDA50CE00609104 /* LaunchScreen.storyboard */,
+				923861EA1DF70174007E2140 /* GoogleService-Info.plist */,
 				1B10966A1DDA50CE00609104 /* Info.plist */,
-				837C2F651DE4B64500E076C9 /* GoogleService-Info.plist */,
 			);
 			path = LemonHandshake;
 			sourceTree = "<group>";
@@ -217,9 +219,10 @@
 		BC87E4A61DDB862F00980939 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1B0EC6231DF6088900297C8C /* NewUserInfoViewController.swift */,
-				83D8FE571DF726C0007C6066 /* PushButtonView.swift */,
+
+				1B0EC6741DF74D7300297C8C /* NewUserInfoViewController.swift */,
 				BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */,
+				BC7AAE241DF2037F00B2A5B9 /* ChatContainerViewController.swift */,
 				BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */,
 				BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */,
 				BC6244DD1DDA798D00AE6523 /* MapViewController.swift */,
@@ -236,7 +239,6 @@
 				92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */,
 				BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */,
 				92764CEF1DE34635007115E9 /* MyInitiativesTableViewCell.swift */,
-				BC7AAE241DF2037F00B2A5B9 /* ChatContainerViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -285,8 +287,13 @@
 				TargetAttributes = {
 					1B10965A1DDA50CE00609104 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 3WL69W834X;
+						DevelopmentTeam = GXEX28B97C;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -314,10 +321,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				83358AC81DECBC600045B170 /* DropPinDetail.xib in Resources */,
+				923861EB1DF70174007E2140 /* GoogleService-Info.plist in Resources */,
 				1B1096691DDA50CE00609104 /* LaunchScreen.storyboard in Resources */,
 				1B1096661DDA50CE00609104 /* Assets.xcassets in Resources */,
 				926753A91DEDE2E000256968 /* calendarHTML.html in Resources */,
-				837C2F661DE4B64500E076C9 /* GoogleService-Info.plist in Resources */,
 				BC5688CB1DEE2242005FC0D8 /* Main.storyboard in Resources */,
 				8355FD221DE4CC9C00A30A80 /* LandmarkDetail.xib in Resources */,
 			);
@@ -381,7 +388,6 @@
 				BC5688C71DEE1DC5005FC0D8 /* LandmarkDetailViewController.swift in Sources */,
 				1B1096731DDA665B00609104 /* FirebaseAuth.swift in Sources */,
 				83E865CA1DECFEC900336BC4 /* DropPinLocation.swift in Sources */,
-				1B0EC6241DF6088900297C8C /* NewUserInfoViewController.swift in Sources */,
 				BC7AAE251DF2037F00B2A5B9 /* ChatContainerViewController.swift in Sources */,
 				837C2F631DE4AC9F00E076C9 /* Extensions.swift in Sources */,
 				BC6244E11DDA798D00AE6523 /* LandmarkDetailTableViewController.swift in Sources */,
@@ -404,7 +410,7 @@
 				1B10B1A41DE4C8F9006E38A7 /* GeoFire.swift in Sources */,
 				8326CB281DECD923009EC996 /* DropPinDetailViewController.swift in Sources */,
 				BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */,
-				83D8FE581DF726C0007C6066 /* PushButtonView.swift in Sources */,
+				1B0EC6751DF74D7300297C8C /* NewUserInfoViewController.swift in Sources */,
 				BCAAF03D1DEC859900D78419 /* BadWords.swift in Sources */,
 				837C2F5A1DE4942500E076C9 /* AppController.swift in Sources */,
 				92764CF61DE37F11007115E9 /* NearbyInitiativesDetailCell.swift in Sources */,
@@ -540,8 +546,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LemonHandshake/LemonHandshake.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3WL69W834X;
+				DEVELOPMENT_TEAM = GXEX28B97C;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -557,8 +564,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LemonHandshake/LemonHandshake.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3WL69W834X;
+				DEVELOPMENT_TEAM = GXEX28B97C;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
