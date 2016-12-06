@@ -6,7 +6,7 @@
 //  Copyright © 2016 Flatiron School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension Notification.Name {
     static let closeLoginVC = Notification.Name("close-login-view-controller")
@@ -34,3 +34,13 @@ extension Date {
     }
 }
 
+extension UIView {
+    func constrainTo(_ view: UIView, multiplier: CGFloat = 1){
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        self.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: multiplier).isActive = true
+        self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier).isActive = true
+    }
+}

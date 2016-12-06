@@ -23,11 +23,12 @@ class CustomPointAnnotation: NSObject, MGLAnnotation {
     
     var databaseKey: String
     
-    init(coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?, databaseKey: String) {
+    init(coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?, databaseKey: String, image: UIImage) {
         self.coordinate = coordinate
         self.title = title
         self.subtitle = subtitle
         self.databaseKey = databaseKey
+        self.image = image
     }
     
     

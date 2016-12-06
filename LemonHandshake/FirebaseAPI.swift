@@ -19,6 +19,8 @@ class FirebaseAPI {
     
     static func storeNewUser(id: String, firstName:String, lastName: String) {
         
+        print("In Store New User")
+        
         //Create a reference point for the user info
         let newUserRef = FIRDatabase.database().reference().child("users").child(id)
         
@@ -149,6 +151,17 @@ class FirebaseAPI {
     static func retrieveMembers(forInitiativeWithKey initiativeKey: String, completion: ([User]) -> Void) {
         
         //Initiative ref
+    }
+    
+    static func test(forUserWithKey userID: String, doesExist: @escaping (Bool) -> Void) {
+        let ref = FIRDatabase.database().reference().child("users").child(userID)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            print("SNAPSHOT: \(snapshot.value)")
+            let value = snapshot.value as? [String:Any] ?? nil
+            doesExist(value != nil)
+            
+        })
     }
     
     //MARK: - Initiative functions
@@ -356,46 +369,27 @@ class FirebaseAPI {
         let targetLandmarkRef = FIRDatabase.database().reference().child("landmarks").child(key)
         
         targetLandmarkRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let dictionary = snapshot.value as? [String: String] else { print("FAILURE: Error with snapshot for landmark with key: \(key)");return }
-            guard let type = dictionary["type"] else { print("FAILURE: Could not retrieve landmark type for landmark with key: \(key)"); return }
+            print("SNAPSHOT VALUE \(snapshot.value)")
+            guard let dictionary = snapshot.value as? [String: Any] else { print("FAILURE: Error with snapshot for landmark with key: \(key)");return }
+        //    guard let type = dictionary["type"] else { print("FAILURE: Could not retrieve landmark type for landmark with key: \(key)"); return }
             
-            switch type {
-            case "hospital":
-                guard
-                    let name = dictionary["name"],
-                    let facilityType = dictionary["facilityType"],
-                    let latitudeString = dictionary["latitude"],
-                    let latitude = Double(latitudeString),
-                    let longitudeString = dictionary["longitude"],
-                    let longitude = Double(longitudeString)
-                    else { print("FAILURE: Could not parse data for landmark with key: \(key)"); return}
-                
-                let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                
-                let hospital = Hospital(name: name, coordinates: coordinates, databaseKey: key, facilityType: facilityType)
-                
-                completion(hospital)
-            case "park":
-                guard
-                    let name = dictionary["name"],
-                    let address = dictionary["address"],
-                    let acresString = dictionary["acres"],
-                    let acres = Double(acresString),
-                    let latitudeString = dictionary["latitude"],
-                    let latitude = Double(latitudeString),
-                    let longitudeString = dictionary["longitude"],
-                    let longitude = Double(longitudeString)
-                    else { print("FAILURE: Could not parse data for landmark with key: \(key)"); return }
-                
-                let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                
-                let park = Park(name: name, address: address, coordinates: coordinates, databaseKey: key, acres: acres)
-                
-                completion(park)
+
+            guard let address = dictionary["address"],
+            let agency = dictionary["agency"],
+            let borough = dictionary["borough"],
+            let latitude = dictionary["latitude"],
+            let longitude = dictionary["longitude"],
+            let name = dictionary["name"],
+            let useDescription = dictionary["useDescription"]
             
-            default:
-                print("FAILURE: Could not recognize type \"\(type)\" for landmark with key: \(key)")
-            }
+            else { print("FAILURE: Could not parse data for landmark with key: \(key)"); return}
+                
+            let coordinates = CLLocationCoordinate2D(latitude: latitude as! Double, longitude: longitude as! Double)
+            
+            let newLandmark = Landmark(address: address as! String, agency: agency as! String, borough: borough as! String, latitude: latitude as! Double, longitude: longitude as! Double, name: name as! String, useDescription: useDescription as! String, databaseKey: key)
+            
+            completion(newLandmark)
+
             
         })
     }

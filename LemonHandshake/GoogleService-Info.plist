@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>647843702644-8hnseatvkiqjir6epbetc74pfukpjus1.apps.googleusercontent.com</string>
+	<string>88670146773-f5t34r4cm7s5svp93d864hip3a4vhs20.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.647843702644-8hnseatvkiqjir6epbetc74pfukpjus1</string>
+	<string>com.googleusercontent.apps.88670146773-f5t34r4cm7s5svp93d864hip3a4vhs20</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA-F0ecMwaonFcLqX1uPLjyDh8iQH4Ewc4</string>
+	<string>AIzaSyD0kLbNJIh4BDW9trUfFUBQoIeB_67Wn6k</string>
 	<key>GCM_SENDER_ID</key>
-	<string>647843702644</string>
+	<string>88670146773</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.flatiron.TeamLemonHandshake</string>
+	<string>com.flatironschool.team-lemon-handshake</string>
 	<key>PROJECT_ID</key>
-	<string>lemon-handshake-flatiron-c90ca</string>
+	<string>pinitiative-7fb64</string>
 	<key>STORAGE_BUCKET</key>
-	<string>lemon-handshake-flatiron-c90ca.appspot.com</string>
+	<string>pinitiative-7fb64.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:647843702644:ios:6006c4d5859dc87a</string>
+	<string>1:88670146773:ios:cad1b9a7e60bf796</string>
 	<key>DATABASE_URL</key>
-	<string>https://lemon-handshake-flatiron-c90ca.firebaseio.com</string>
+	<string>https://pinitiative-7fb64.firebaseio.com</string>
 </dict>
 </plist>

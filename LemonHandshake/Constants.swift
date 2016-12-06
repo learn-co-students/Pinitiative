@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constants {
     
@@ -17,7 +18,17 @@ struct Constants {
     static let startInitiativeSegue = "startInitiativeSegue"
     
     
+}
 
-    
-    
+struct IconConstants {
+    static let fullLogo = UIImage(named: "fullLogo")
+    static let logoIcon = UIImage(named: "Logo")
+}
+
+enum font: String {
+    case avenirNext = "Avenir Next"
+}
+
+enum fontSize: CGFloat {
+    case tableLabel = 18
 }

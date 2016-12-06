@@ -19,14 +19,12 @@ class MyInitiativesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let background = UIImage(named: "gardenRoad" )
-        let imageView = UIImageView(image: background)
-        self.view.addSubview(imageView)
-        imageView.contentMode = .scaleAspectFill
-        imageView.alpha = 0.4
-        view.sendSubview(toBack: imageView)
-        
-        
+//        let background = UIImage(named: "police_Background")
+//        let imageView = UIImageView(image: background)
+//        self.view.addSubview(imageView)
+//        imageView.contentMode = .scaleAspectFill
+//        imageView.alpha = 1.0
+//        view.sendSubview(toBack: imageView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,46 +52,46 @@ class MyInitiativesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "initiativeCell", for: indexPath) as! MyInitiativesTableViewCell
 
-        cell.backgroundColor = UIColor.clear
-        cell.layer.borderColor = UIColor.green.cgColor
-        cell.layer.borderWidth = 2
+//        cell.backgroundColor = UIColor.clear
+//        cell.layer.borderColor = UIColor.green.cgColor
+//        cell.layer.borderWidth = 2
         
-        cell.initiativeLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(cell.contentView)
-            make.centerX.equalTo(cell.contentView.center)
-        }
-        
-        cell.dateStartedLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(cell.contentView).offset(40)
-            make.leftMargin.equalTo(cell.contentView).offset(20)
-            
-        }
-        
-        cell.dateLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(cell.contentView).offset(40)
-            make.rightMargin.equalTo(cell.contentView).offset(-20)
-            
-        }
-        
-        cell.followersLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(cell.contentView).offset(80)
-            make.leftMargin.equalTo(cell.contentView).offset(20)
-            
-        }
-        
-        cell.followersTextLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(cell.contentView).offset(80)
-            make.rightMargin.equalTo(cell.contentView).offset(-20)
-            
-        }
-        
+//        cell.initiativeLabel.snp.makeConstraints { (make) in
+////            make.top.equalTo(cell.contentView)
+//            make.top.equalTo(cell.contentView).offset(40)
+//            make.centerX.equalTo(cell.contentView.center)
+//        }
+//
+//        cell.dateLabel.snp.makeConstraints { (make) in
+//            make.top.equalTo(cell.contentView).offset(60)
+//            make.leftMargin.equalTo(cell.contentView).offset(20)
+//            
+//        }
+//
+//        cell.dateLabel.snp.makeConstraints { (make) in
+//            make.top.equalTo(cell.contentView).offset(40)
+//            make.rightMargin.equalTo(cell.contentView).offset(-20)
+//            
+//        }
+//        
+//        cell.followersLabel.snp.makeConstraints { (make) in
+//            make.top.equalTo(cell.contentView).offset(80)
+//            make.leftMargin.equalTo(cell.contentView).offset(20)
+//            
+//        }
+//        
+//        cell.followersTextLabel.snp.makeConstraints { (make) in
+//            make.top.equalTo(cell.contentView).offset(80)
+//            make.rightMargin.equalTo(cell.contentView).offset(-20)
+//            
+//        }
+//        
         let userInitiative = userInitiatives[indexPath.row]
-        
-        cell.initiativeLabel.text = userInitiative.name
-        cell.followersLabel.text = "\(userInitiative.members.count)"
-        cell.dateLabel.text = userInitiative.createdAt.formattedAs("MMMM dd, yyyy")
- 
-       
+//        
+//          cell.landmarkLabel.text = userInitiative.associatedLandmark?.name
+          cell.initiativeLabel.text = userInitiative.name
+          cell.followersLabel.text = "Followers: \(userInitiative.members.count)"
+          cell.dateLabel.text = "Start date: \(userInitiative.createdAt.formattedAs("MM/dd/yyyy"))"
         return cell
     }
     

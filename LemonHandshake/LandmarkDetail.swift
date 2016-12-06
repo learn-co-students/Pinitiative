@@ -39,15 +39,8 @@ class LandmarkDetail: UIView {
     
     var landmark: Landmark! {
         didSet {
-            if landmark.type == .school {
-                let school = landmark as! School
-                addressLabel.text = school.address
-            } else if landmark.type == .park {
-                let park = landmark as! Park
-                addressLabel.text = park.address
-            } else {
-                addressLabel.text = "Watch out for next update!"
-            }
+            
+            addressLabel.text = landmark.address
             nameLabel.text = landmark.name
             propertyTypeIcon.image = landmark.icon
         }
@@ -61,9 +54,8 @@ class LandmarkDetail: UIView {
     func commonInit() {
         Bundle.main.loadNibNamed("LandmarkDetail", owner: self, options: nil)
         addSubview(contentView)
-        
+        contentView.layer.cornerRadius = 15
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        
         contentView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
