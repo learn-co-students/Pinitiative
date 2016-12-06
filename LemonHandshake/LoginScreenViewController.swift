@@ -16,7 +16,6 @@ import FirebaseGoogleAuthUI
 
 class LoginScreenViewController: UIViewController, FUIAuthDelegate {
 
-    @IBOutlet weak var backgroundView: UIImageView!
     
     @IBOutlet weak var usernameTextField: UITextField!
     
@@ -42,7 +41,6 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
     
     @IBOutlet weak var createAccountButtonView: UIButton!
    
-    @IBOutlet weak var applicationLogo: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -69,68 +67,50 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
         
         
     }
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-            backgroundView.snp.makeConstraints { (make) in
-            make.height.equalTo(self.view)
-            make.width.equalTo(self.view).multipliedBy(2)
-            make.center.equalTo(self.view).offset(50)
-            }
         
-            usernameTextField.snp.makeConstraints { (make) in
+        
+        
+        usernameTextField.snp.makeConstraints { (make) in
             make.bottomMargin.equalTo(self.view).offset(-410)
             make.centerX.equalTo(self.view.center)
             make.width.equalTo(200)
             usernameTextField.layer.cornerRadius = 15
             usernameTextField.layer.borderColor = UIColor.black.cgColor
             usernameTextField.layer.borderWidth = 1
-            }
+        }
         
-            passwordTextField.snp.makeConstraints { (make) in
+        passwordTextField.snp.makeConstraints { (make) in
             make.bottomMargin.equalTo(self.view).offset(-360)
             make.centerX.equalTo(self.view.center)
             make.width.equalTo(200)
             passwordTextField.layer.cornerRadius = 15
             passwordTextField.layer.borderColor = UIColor.black.cgColor
             passwordTextField.layer.borderWidth = 1
-            }
+        }
         
-            loginButtonView.snp.makeConstraints { (make) in
+        loginButtonView.snp.makeConstraints { (make) in
             make.bottomMargin.equalTo(self.view).offset(-300)
             make.centerX.equalTo(self.view.center)
             make.width.equalTo(150)
             loginButtonView.layer.cornerRadius = 20
             loginButtonView.layer.borderColor = UIColor.white.cgColor
             loginButtonView.layer.borderWidth = 1
-            }
+        }
         
-            createAccountButtonView.snp.makeConstraints { (make) in
+        createAccountButtonView.snp.makeConstraints { (make) in
             make.bottomMargin.equalTo(self.view).offset(0)
             make.centerX.equalTo(self.view.center)
             make.width.equalTo(self.view).multipliedBy(1.05)
             make.height.equalTo(self.view).multipliedBy(0.08)
-            createAccountButtonView.layer.borderColor = UIColor.green.cgColor
+            createAccountButtonView.layer.borderColor = UIColor.themeOrange.cgColor
             createAccountButtonView.layer.borderWidth = 3
-            }
-        
-            applicationLogo.snp.makeConstraints { (make) in
-            make.topMargin.equalTo(self.view).offset(0)
-            make.centerX.equalTo(self.view.center)
-            make.width.equalTo(self.view).multipliedBy(1.05)
-            make.height.equalTo(self.view).multipliedBy(0.15)
-            applicationLogo.layer.borderColor = UIColor.green.cgColor
-            applicationLogo.layer.borderWidth = 3
-        
         }
+        
       
 }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "loginToMapSegue" {
-            let dest = segue.destination
-        }
-    }
     
     
     // conforming to Firebase UI protocol
