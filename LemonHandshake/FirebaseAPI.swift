@@ -148,6 +148,21 @@ class FirebaseAPI {
         initiativeForUser.setValue(false)
     }
     
+    static func userJoin(initiativeWithKey initiativeKey: String) {
+        
+        //Create a ref that the member is to be stored in the intiative
+        let memberForInitiativeRef = FirebaseAPI.ref.child("initiatives").child(initiativeKey).child("members").child(FirebaseAuth.currentUserID)
+        
+        //Create a ref that the initiative is to be stored in the user
+        let initiativeForUser = FirebaseAPI.ref.child("users").child(FirebaseAuth.currentUserID).child("initiatives").child(initiativeKey)
+        
+        //Set the boolean value from the initiaive member section to true
+        memberForInitiativeRef.setValue(true)
+        
+        //Set the boolean value from the user initiatives to true
+        initiativeForUser.setValue(true)
+    }
+    
     static func retrieveMembers(forInitiativeWithKey initiativeKey: String, completion: ([User]) -> Void) {
         
         //Initiative ref
@@ -384,20 +399,16 @@ class FirebaseAPI {
         targetLandmarkRef.observeSingleEvent(of: .value, with: { (snapshot) in
             print("SNAPSHOT VALUE \(snapshot.value)")
             guard let dictionary = snapshot.value as? [String: Any] else { print("FAILURE: Error with snapshot for landmark with key: \(key)");return }
-        //    guard let type = dictionary["type"] else { print("FAILURE: Could not retrieve landmark type for landmark with key: \(key)"); return }
             
-
+            
             guard let address = dictionary["address"],
-            let agency = dictionary["agency"],
-            let borough = dictionary["borough"],
-            let latitude = dictionary["latitude"],
-            let longitude = dictionary["longitude"],
-            let name = dictionary["name"],
-            let useDescription = dictionary["useDescription"]
-            
-            else { print("FAILURE: Could not parse data for landmark with key: \(key)"); return}
-                
-            let coordinates = CLLocationCoordinate2D(latitude: latitude as! Double, longitude: longitude as! Double)
+                let agency = dictionary["agency"],
+                let borough = dictionary["borough"],
+                let latitude = dictionary["latitude"],
+                let longitude = dictionary["longitude"],
+                let name = dictionary["name"],
+                let useDescription = dictionary["useDescription"]
+                else { print("FAILURE: Could not parse data for landmark with key: \(key)"); return}
             
             let newLandmark = Landmark(address: address as! String, agency: agency as! String, borough: borough as! String, latitude: latitude as! Double, longitude: longitude as! Double, name: name as! String, useDescription: useDescription as! String, databaseKey: key)
             

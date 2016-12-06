@@ -29,6 +29,10 @@ class InitiativeDetailViewController: UIViewController {
     
     @IBOutlet weak var topSeparatorView: UIView!
     
+    @IBOutlet weak var leaveButton: UIButton!
+    
+    @IBOutlet weak var joinButton: UIButton!
+    
     var initiative: Initiative!
     
     var leader: User = User.blank
@@ -37,8 +41,6 @@ class InitiativeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        chatButtonLabel.isHidden = true
         
         populateInitiativeData()
         retrieveLeaderName()
@@ -109,9 +111,33 @@ class InitiativeDetailViewController: UIViewController {
         topSeparatorView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.19).isActive = true
         
         topSeparatorView.layer.borderWidth = 2
-        topSeparatorView.layer.borderColor = UIColor.themePurple.cgColor
+        topSeparatorView.layer.borderColor = UIColor.themeOrange.cgColor
+        
+        joinButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        joinButton.bottomAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: -10).isActive = true
+        joinButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.frame.width * 0.07).isActive = true
+        joinButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.15).isActive = true
+        joinButton.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.1).isActive = true
+        
+        joinButton.layer.cornerRadius = 10
+        joinButton.layer.borderWidth = 1
+        joinButton.layer.borderColor = UIColor.black.cgColor
+        
+        leaveButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        leaveButton.bottomAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: -10).isActive = true
+        leaveButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.frame.width * 0.07).isActive = true
+        leaveButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.15).isActive = true
+        leaveButton.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.1).isActive = true
+        
+        leaveButton.layer.cornerRadius = 10
+        leaveButton.layer.borderWidth = 1
+        leaveButton.layer.borderColor = UIColor.black.cgColor
         
         chatButtonLabel.addTarget(self, action: #selector(chatButtonTapped), for: .touchUpInside)
+        joinButton.addTarget(self, action: #selector(joinInitiativeTapped), for: .touchUpInside)
+        leaveButton.addTarget(self, action: #selector(leaveInitiativeTapped), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -129,7 +155,6 @@ class InitiativeDetailViewController: UIViewController {
     }
     
     func retrieveLeaderName() {
-        print("Retrieving leader name for key: \(initiative.leader)")
         FirebaseAPI.retrieveUser(withKey: initiative.leader) { (user) in
             self.leader = user
             OperationQueue.main.addOperation {
@@ -145,8 +170,42 @@ class InitiativeDetailViewController: UIViewController {
         
             OperationQueue.main.addOperation {
                 if userIsMember {
-                    self.chatButtonLabel.isHidden = false
+                    self.leaveButton.isHidden = false
+                } else {
+                    self.joinButton.isHidden = false
                 }
+            }
+        }
+    }
+    
+    func joinInitiativeTapped() {
+        FirebaseAPI.userJoin(initiativeWithKey: initiative.databaseKey)
+        joinButton.isHidden = true
+        leaveButton.isHidden = false
+        
+        
+        FirebaseAPI.retrieveInitiative(withKey: initiative.databaseKey) { (initiative) in
+            self.initiative = initiative
+            
+            OperationQueue.main.addOperation {
+                self.populateInitiativeData()
+                self.retrieveLeaderName()
+            }
+        }
+    }
+    
+    func leaveInitiativeTapped() {
+        FirebaseAPI.userLeave(initiativeWithKey: initiative.databaseKey)
+        joinButton.isHidden = false
+        leaveButton.isHidden = true
+        
+        
+        FirebaseAPI.retrieveInitiative(withKey: initiative.databaseKey) { (initiative) in
+            self.initiative = initiative
+            
+            OperationQueue.main.addOperation {
+                self.populateInitiativeData()
+                self.retrieveLeaderName()
             }
         }
     }
