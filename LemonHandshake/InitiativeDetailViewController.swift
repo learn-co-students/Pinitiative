@@ -173,7 +173,6 @@ class InitiativeDetailViewController: UIViewController {
         manageButton.layer.borderWidth = 1
         manageButton.layer.borderColor = UIColor.black.cgColor
         
-        chatButtonLabel.addTarget(self, action: #selector(chatButtonTapped), for: .touchUpInside)
         joinButton.addTarget(self, action: #selector(joinInitiativeTapped), for: .touchUpInside)
         leaveButton.addTarget(self, action: #selector(leaveInitiativeTapped), for: .touchUpInside)
         
@@ -270,7 +269,6 @@ class InitiativeDetailViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
-    func chatButtonTapped() { performSegue(withIdentifier: "chatButtonSegue", sender: self) }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

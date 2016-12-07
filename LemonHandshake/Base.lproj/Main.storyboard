@@ -32,7 +32,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="DF7F7231-5518-4CBC-B077-DC9667CF025B" translatesAutoresizingMaskIntoConstraints="NO" id="tBT-f7-dch">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="FC473EC3-6D74-410C-84E0-9C49BE480C17" translatesAutoresizingMaskIntoConstraints="NO" id="tBT-f7-dch">
                                 <rect key="frame" x="87" y="548" width="189" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -893,7 +893,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DF7F7231-5518-4CBC-B077-DC9667CF025B" width="826" height="250">
+        <image name="FC473EC3-6D74-410C-84E0-9C49BE480C17" width="826" height="250">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
