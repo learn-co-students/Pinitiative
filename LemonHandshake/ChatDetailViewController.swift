@@ -35,6 +35,8 @@ class ChatDetailViewController: JSQMessagesViewController {
         
         
         
+        tabBarController?.tabBar.isHidden = true
+        
         
         print(messages)
         
@@ -44,11 +46,6 @@ class ChatDetailViewController: JSQMessagesViewController {
 
         collectionView.backgroundColor = UIColor.greenX
         jsq_setCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
-
-        
-        
-        
-        self.senderDisplayName = user.firstName + user.lastName
         
         connectToChat()
 
@@ -155,10 +152,16 @@ class ChatDetailViewController: JSQMessagesViewController {
             dict["message"] = text
             dict["userID"] = self.senderId
             
-            msgRef.childByAutoId().setValue(dict)
+        
             
-            self.finishSendingMessage()
-            jsq_setCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
+            msgRef.childByAutoId().setValue(dict, withCompletionBlock: { (erorr, ref) in
+                
+                
+                self.finishSendingMessage()
+                self.jsq_setCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
+                
+            })
+            
         }
     }
     

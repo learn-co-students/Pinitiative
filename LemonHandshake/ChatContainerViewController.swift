@@ -18,7 +18,7 @@ class ChatContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSUserDefaults()
+        NSUserDefaultsStore()
         
         
         let vc = self.childViewControllers.first! as! ChatDetailViewController
@@ -33,13 +33,16 @@ class ChatContainerViewController: UIViewController {
     }
 
    
-    func NSUserDefaults() {
+    func NSUserDefaultsStore() {
         
         let defaults = UserDefaults.standard
         let senderId = user.databaseKey
         let senderDisplayName = "\(user.firstName) \(user.lastName)"
-        defaults.set(senderDisplayName, forKey: senderId)
         
+        print("\n")
+        print("Sender Display Name: \(senderDisplayName)")
+        
+        defaults.set(senderDisplayName, forKey: senderId)
     }
    
     
