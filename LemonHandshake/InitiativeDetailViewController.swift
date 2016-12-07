@@ -68,6 +68,8 @@ class InitiativeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.testForBan()
+
         
         populateInitiativeData()
         retrieveLeaderName()
@@ -235,7 +237,7 @@ class InitiativeDetailViewController: UIViewController {
         print("5")
         FirebaseAPI.bansForUser(WithKey: FirebaseAuth.currentUserID) { (bans) in
             print("6")
-            if bans[self.initiative.databaseKey] == nil {
+            if bans[self.initiative.databaseKey] == true {
                 print("7")
                 OperationQueue.main.addOperation {
                     print("8")

@@ -44,6 +44,7 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
             } catch {
                 print("ERROR SIGNING OUT USER")
             }
+            NotificationCenter.default.post(name: .closeMainVC, object: nil, userInfo: nil)
         }
     }
     
@@ -117,7 +118,7 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
         super.viewDidLoad()
         let requestObj = NSURLRequest(url: myURL!)
         
-        setUpViews()
+        
         
         calendarWebView.snp.makeConstraints { (make) in
             make.width.equalTo(415)
@@ -126,6 +127,12 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
             make.bottomMargin.equalTo(self.view).offset(10)
         }
         calendarWebView.loadRequest(requestObj as URLRequest)
+        
+        let scale = self.view.frame.width / 415
+        
+        calendarWebView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        
+        setUpViews()
     }
     
     func setUpViews() {
@@ -164,9 +171,12 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
         deleteAccountButton.layer.borderColor = UIColor.black.cgColor
         deleteAccountButton.layer.borderWidth = 2
         
+        
+        let scale = self.view.frame.width / 415
+        
         calendarLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        calendarLabel.bottomAnchor.constraint(equalTo: calendarWebView.topAnchor, constant: -10).isActive = true
+        calendarLabel.bottomAnchor.constraint(equalTo: calendarWebView.topAnchor, constant: 180 * (1 - scale)).isActive = true
         calendarLabel.centerXAnchor.constraint(equalTo: calendarWebView.centerXAnchor).isActive = true
         calendarLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         calendarLabel.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.05).isActive = true
