@@ -24,7 +24,7 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
         
         authUI?.providers = [FUIGoogleAuth()]
         //            FUIFacebookAuth(), FUIGoogleAuth()]
-        
+                
         let authViewController = authUI?.authViewController()
         self.present(authViewController!, animated: true)
     }
