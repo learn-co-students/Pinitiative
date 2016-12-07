@@ -204,14 +204,20 @@ class InitiativeDetailViewController: UIViewController {
     }
     
     func testIfUserIsMember() {
+        print("Testing for user")
         if FirebaseAuth.currentUserID != initiative.leader {
+            print("1")
             FirebaseAPI.test(ifUserWithID: FirebaseAuth.currentUserID, isMemberOfInitiativeWithID: initiative.databaseKey) { (userIsMember) in
+                print("2")
                 self.userIsMember = userIsMember
                 
                 OperationQueue.main.addOperation {
+                    
+                    print("3")
                     if userIsMember {
                         self.leaveButton.isHidden = false
                     } else {
+                        print("4")
                         self.testForBan()
                         self.chatButtonLabel.isHidden = true
                     }
@@ -224,9 +230,17 @@ class InitiativeDetailViewController: UIViewController {
     }
     
     func testForBan() {
+        print("5")
         FirebaseAPI.bansForUser(WithKey: FirebaseAuth.currentUserID) { (bans) in
+            print("6")
             if bans[self.initiative.databaseKey] == nil {
-                self.joinButton.isHidden = false
+                print("7")
+                OperationQueue.main.addOperation {
+                    print("8")
+                    self.joinButton.isHidden = true
+                }
+            } else {
+                print("User is banned, join button will not turn on")
             }
         }
     }
@@ -234,6 +248,7 @@ class InitiativeDetailViewController: UIViewController {
     func joinInitiativeTapped() {
         FirebaseAPI.userJoin(initiativeWithKey: initiative.databaseKey)
         joinButton.isHidden = true
+        print("User has joined the initiative, join button turning off")
         leaveButton.isHidden = false
         chatButtonLabel.isHidden = false
         
@@ -251,6 +266,7 @@ class InitiativeDetailViewController: UIViewController {
     func leaveInitiativeTapped() {
         FirebaseAPI.userLeave(initiativeWithKey: initiative.databaseKey)
         joinButton.isHidden = false
+        print("User has left the initiative, join button turning on")
         leaveButton.isHidden = true
         chatButtonLabel.isHidden = true
         
