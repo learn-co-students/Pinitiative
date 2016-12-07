@@ -13,7 +13,13 @@ class InitiativeManagementViewController: UIViewController, UITableViewDelegate,
 
     @IBOutlet weak var memberTable: UITableView!
     
+    @IBOutlet weak var initiativeNameTextField: UITextField!
     
+    @IBOutlet weak var initiativeDescriptionTextView: UITextView!
+    
+    @IBOutlet weak var saveButton: UIButton!
+    
+    @IBOutlet weak var deleteInitiativeButton: UIButton!
     
     var initiative: Initiative!
     var members = [User]()
@@ -21,20 +27,28 @@ class InitiativeManagementViewController: UIViewController, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpTextFields()
+        
         memberTable.delegate = self
         memberTable.dataSource = self
-        memberTable.allowsMultipleSelection = true
-        
-//        let vc = MFMailComposeViewController()
-//        MFMailComposeViewController.canSendMail(){
-//            
-//        }
-        
-        
+        memberTable.allowsSelection = false
         
         getUsers()
         
     }
+    
+    func setUpTextFields() {
+        
+        initiativeNameTextField.text = initiative.name
+        initiativeDescriptionTextView.text = initiative.initiativeDescription
+        
+    }
+    
+    func setUpButtons() {
+        saveButton.layer.cornerRadius = 10
+        deleteInitiativeButton.layer.cornerRadius = 10
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -50,7 +64,6 @@ class InitiativeManagementViewController: UIViewController, UITableViewDelegate,
     }
     
     func getUsers() {
-        print("Getting Users")
         
         FirebaseAPI.retrieveMembers(forInitiativeWithKey: initiative.databaseKey) { (users) in
             
@@ -61,8 +74,6 @@ class InitiativeManagementViewController: UIViewController, UITableViewDelegate,
                     break
                 }
             }
-            print("Got users:")
-            dump(users)
             OperationQueue.main.addOperation {
                 self.memberTable.reloadData()
             }
@@ -99,4 +110,13 @@ class InitiativeManagementViewController: UIViewController, UITableViewDelegate,
         }
     }
 
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        if initiativeNameTextField.text != "" && initiativeDescriptionTextView.text != "" {
+            
+        }
+    }
+    
+    @IBAction func deleteInitiativeButtonTapped(_ sender: Any) {
+    }
 }

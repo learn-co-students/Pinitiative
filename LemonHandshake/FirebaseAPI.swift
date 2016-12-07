@@ -245,6 +245,14 @@ class FirebaseAPI {
         })
     }
     
+    static func updateInitiative(withKey initiativeKey: String, withName name: String, description: String) {
+        let initiativeRef = FirebaseAPI.ref.child("initiatives").child(initiativeKey)
+        
+        let newInfo = ["name": name, "initiativeDescription": description]
+        
+        initiativeRef.updateChildValues(newInfo)
+    }
+    
     //MARK: - Initiative functions
     
     static func storeNewInitiative(_ initiative: Initiative) {

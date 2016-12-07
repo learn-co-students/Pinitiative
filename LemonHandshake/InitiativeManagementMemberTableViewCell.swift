@@ -16,8 +16,15 @@ class InitiativeManagementMemberTableViewCell: UITableViewCell {
     var banButton = UIButton()
     
     override func layoutSubviews() {
+        setUpCells()
         setUpButtons()
         setUpTextLabel()
+    }
+    
+    func setUpCells() {
+        self.layer.cornerRadius = 10
+        self.layer.borderColor = UIColor.themePurple.cgColor
+        self.layer.borderWidth = 2
     }
     
     func setUpButtons() {
@@ -33,6 +40,7 @@ class InitiativeManagementMemberTableViewCell: UITableViewCell {
         banButton.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
         banButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         banButton.widthAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 1.5).isActive = true
+        banButton.layer.cornerRadius = 10
         
         removeButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -40,6 +48,7 @@ class InitiativeManagementMemberTableViewCell: UITableViewCell {
         removeButton.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
         removeButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         removeButton.widthAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 1.5).isActive = true
+        removeButton.layer.cornerRadius = 10
     }
     
     func setUpTextLabel() {
@@ -47,7 +56,7 @@ class InitiativeManagementMemberTableViewCell: UITableViewCell {
         
         textLabel?.translatesAutoresizingMaskIntoConstraints = false
         
-        textLabel?.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
+        textLabel?.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10).isActive = true
         textLabel?.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
         textLabel?.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         textLabel?.trailingAnchor.constraint(equalTo: removeButton.leadingAnchor).isActive = true
