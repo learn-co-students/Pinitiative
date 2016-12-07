@@ -55,6 +55,7 @@ class StartInitiativeNewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        form.landmark = landmark
         form.makeStartInitiativeForm()
         formerView.addSubview((form.view)!)
     }
