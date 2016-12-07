@@ -15,8 +15,10 @@ class DropPinDetailViewController: UIViewController, DropPinDelegate {
     var location: DropPinLocation!
     
     override func viewDidLoad() {
-    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissViewController))
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissViewController))
         view.addGestureRecognizer(tapGestureRecognizer)
+        dropPinDetailView.layer.cornerRadius = 15
         dropPinDetailView.delegate = self
     }
     
@@ -28,10 +30,10 @@ class DropPinDetailViewController: UIViewController, DropPinDelegate {
     func dismissViewController() {
         dismiss(animated: true, completion: nil)
     }
-
+    
     func startInitiative() {
         performSegue(withIdentifier: Constants.startInitiativeSegue, sender: self.location)
     }
-
+    
 }
 

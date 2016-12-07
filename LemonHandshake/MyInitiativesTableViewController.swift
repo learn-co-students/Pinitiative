@@ -18,33 +18,27 @@ class MyInitiativesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let background = UIImage(named: "police_Background")
-//        let imageView = UIImageView(image: background)
-//        self.view.addSubview(imageView)
-//        imageView.contentMode = .scaleAspectFill
-//        imageView.alpha = 1.0
-//        view.sendSubview(toBack: imageView)
+//        animateBackground()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FirebaseAPI.retrieveInitiativesFor(userKey: FirebaseAuth.currentUserID ?? "") { (initiatives) in
+        FirebaseAPI.retrieveInitiativesFor(userKey: FirebaseAuth.currentUserID ) { (initiatives) in
             self.userInitiatives = initiatives
-            self.tableView.reloadData()
+            OperationQueue.main.addOperation {
+                self.tableView.reloadData()
+            }
         }
     }
     
 
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-       
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
         return userInitiatives.count
     }
 
@@ -52,7 +46,7 @@ class MyInitiativesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "initiativeCell", for: indexPath) as! MyInitiativesTableViewCell
 
-//        cell.backgroundColor = UIColor.clear
+            cell.contentView.backgroundColor = UIColor.clear
 //        cell.layer.borderColor = UIColor.green.cgColor
 //        cell.layer.borderWidth = 2
         
@@ -99,10 +93,32 @@ class MyInitiativesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "initiativeToDetailSegue" {
             let dest = segue.destination as! InitiativeDetailViewController
-            
             dest.initiative = userInitiatives[(tableView.indexPathForSelectedRow?.row)!]
         }
     }
     
-
+    func animateBackground() {
+        let backgrounds = ["fireStationBackground", "schoolBackground", "policeBackground", "park"]
+        
+        var counter = 0
+        
+        while counter < backgrounds.count - 1 {
+        backgrounds.forEach { (background) in
+                let imageView = UIImageView(image: UIImage(named: backgrounds[counter]))
+                self.view.addSubview(imageView)
+            
+                let nextImageView = UIImageView(image: UIImage(named: backgrounds[counter + 1]))
+                nextImageView.alpha = 0.0
+                self.view.insertSubview(imageView, aboveSubview: nextImageView)
+            
+            UIView.animate(withDuration: 2.0, delay: 2.0, options: .curveEaseOut, animations: {
+                nextImageView.alpha = 1.0
+            }, completion: { _ in
+                imageView.image = nextImageView.image
+                imageView.contentMode = .scaleAspectFit
+                imageView.alpha = 0.5
+                nextImageView.removeFromSuperview() }) }
+            counter += 1
+        }
+    }
 }

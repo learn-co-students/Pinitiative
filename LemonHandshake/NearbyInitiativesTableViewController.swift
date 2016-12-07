@@ -37,6 +37,7 @@ class NearbyInitiativesTableViewController: UITableViewController {
     
     func retrieveNearbyInitiatives() {
         FirebaseAPI.geoFirePullNearbyInitiatives(within: 0.5, ofLocation: store.userLocation) { (initiative) in
+            
             self.nearbyInitiatives.append(initiative)
             OperationQueue.main.addOperation {
                 self.tableView.reloadData()
