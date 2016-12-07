@@ -163,7 +163,7 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
         deleteAccountButton.translatesAutoresizingMaskIntoConstraints = false
         
         deleteAccountButton.topAnchor.constraint(equalTo: memberNameLabel.bottomAnchor, constant: 10).isActive = true
-        deleteAccountButton.widthAnchor.constraint(equalTo: logoutButton.widthAnchor, multiplier: 1.4).isActive = true
+        deleteAccountButton.widthAnchor.constraint(equalTo: logoutButton.widthAnchor, multiplier: 1.6).isActive = true
         deleteAccountButton.heightAnchor.constraint(equalTo: logoutButton.heightAnchor).isActive = true
         deleteAccountButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: self.view.frame.width * 0.25).isActive = true
         
