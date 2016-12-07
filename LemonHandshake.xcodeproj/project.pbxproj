@@ -230,7 +230,6 @@
 				BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */,
 				1B0EC6771DF7672500297C8C /* InitiativeManagementViewController.swift */,
 				1B0D30C71DF83AC4007F5250 /* InitiativeManagementMemberTableViewCell.swift */,
-				BC6244DB1DDA798D00AE6523 /* LandmarkDetailTableViewController.swift */,
 				BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */,
 				BC6244DD1DDA798D00AE6523 /* MapViewController.swift */,
 				BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */,
