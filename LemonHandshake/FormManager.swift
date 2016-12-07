@@ -118,11 +118,11 @@ class FormManager: FormViewController {
         
     }
     
-    func saveInitiative(_ landmark: Landmark) -> Bool {
+    func saveInitiative(_ landmark: Landmark?) -> Bool {
         if !nameText.isEmpty && !descriptionText.isEmpty {
             print("ADDING INITIATIVE AT \(mapStore.userCoordinate)")
             
-            if !landmark.databaseKey.isEmpty {
+            if let landmark = landmark {
             Initiative.startNewInitiativeAtLandmark(landmark: landmark, initiativeName: nameText, initiativeDescription: descriptionText, associatedDate: date)
             } else {
             Initiative.startNewInitiativeAtLocation(latitude: mapStore.userLatitude, longitude: mapStore.userLongitude, initiativeName: nameText, initiativeDescription: descriptionText, associatedDate: date)

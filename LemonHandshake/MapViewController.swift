@@ -130,7 +130,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.latitude = userLocation.coordinate.latitude
         mapView.longitude = userLocation.coordinate.longitude
         mapView.setCenter(center, animated: true)
-        print("LOCATION: Coordinate\(store.userCoordinate) should equal \(userLocation.coordinate)")
         if shouldPullGeofire {
             refreshLandmarks()
             shouldPullGeofire = false
