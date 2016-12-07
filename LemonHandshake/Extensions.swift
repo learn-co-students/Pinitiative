@@ -11,6 +11,7 @@ import UIKit
 extension Notification.Name {
     static let closeLoginVC = Notification.Name("close-login-view-controller")
     static let closeMainVC = Notification.Name("close-main-view-controller")
+    static let sendFeedback = Notification.Name("present-mail-view-controller")
 }
 
 enum StoryboardID: String {

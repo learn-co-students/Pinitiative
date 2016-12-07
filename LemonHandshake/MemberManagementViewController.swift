@@ -23,13 +23,59 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
     @IBOutlet weak var memberNameLabel: UILabel!
     // shows name of user
     
-    @IBOutlet weak var joinDateLabel: UILabel!
-    // shows date user joined
-    
+    @IBOutlet weak var initiativeCountLabel: UILabel!
     
     @IBAction func giveFeedbackButton(_ sender: Any) {
         
+        let mailComposeViewController = configuredMailComposeViewController()
+        print(mailComposeViewController.description)
+        if MFMailComposeViewController.canSendMail() {
+        
+            self.present(mailComposeViewController, animated: true, completion: nil)
+        
+        } else {
+        
+            self.showSendMailErrorAlert()
+        }
+        
+    
     }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        
+        let mailComposerVC = MFMailComposeViewController()
+
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        mailComposerVC.setToRecipients(["zeitlin1@gmail.com"])
+        mailComposerVC.setSubject("TEST EMAIL FROM APP")
+        mailComposerVC.setMessageBody("Sending e-mail in-app is not so bad!", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    
+    func mailcomposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     @IBAction func logoutButton(_ sender: Any) {
         
@@ -59,6 +105,11 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
         super.viewDidLoad()
         let requestObj = NSURLRequest(url: myURL!)
         
+        FirebaseAPI.retrieveUser(withKey: FirebaseAuth.currentUserID, completion: { (user) in
+            self.memberNameLabel.text = (user.firstName + " " + user.lastName)
+            self.initiativeCountLabel.text = String(describing: user.initiatives.count)
+        })
+
         calendarWebView.snp.makeConstraints { (make) in
             make.width.equalTo(415)
             make.height.equalTo(360)
@@ -68,9 +119,7 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
         calendarWebView.loadRequest(requestObj as URLRequest)
     }
     
-    func MFMailComposeViewController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
-    }
+   
 }
 
 
