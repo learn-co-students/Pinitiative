@@ -53,7 +53,7 @@ class MyInitiativesTableViewController: UITableViewController {
         let userInitiative = userInitiatives[indexPath.row]
            cell.initiativeLabel.text = userInitiative.name
            cell.followersLabel.text = "Members: \(userInitiative.members.count)"
-           cell.dateLabel.text = "Initiative date: \(userInitiative.createdAt.formattedAs("MM/dd/yyyy"))"
+           cell.dateLabel.text = "Start date: \(userInitiative.createdAt.formattedAs("MM/dd/yyyy"))"
         if userInitiative.associatedLandmark != nil {
             if let landmark = userInitiative.associatedLandmark {
                 cell.landmarkLabel.text = " \(landmark.name)"

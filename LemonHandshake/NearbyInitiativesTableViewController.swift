@@ -98,12 +98,19 @@ class NearbyInitiativesTableViewController: UITableViewController {
 //        }
 //
         
-
+            cell.contentView.backgroundColor = UIColor.clear
         let initiative = nearbyInitiatives[indexPath.row]
         
         cell.nearbyInitiativeNameLabel.text = initiative.name
         cell.dateStartedLabel.text = "Start Date: \(initiative.createdAt.formattedAs("MM/dd/yyyy"))"
         cell.followersLabel.text = "Followers: \(initiative.members.count)"
+        
+        if nearbyInitiatives[indexPath.row].associatedLandmark != nil {
+            if let landmark = nearbyInitiatives[indexPath.row].associatedLandmark {
+                cell.nearbyInitiativeNameLabel.text = " \(landmark.name)"
+                //cell.landmarkTypePreview.image = landmark.tableViewIcon }
+            }
+        }
         return cell
     }
   
