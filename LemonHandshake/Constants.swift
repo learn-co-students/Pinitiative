@@ -16,6 +16,7 @@ struct Constants {
     static let customMarkerText = "Custom Marker"
     static let markedLocationText = "Marked Location"
     static let startInitiativeSegue = "startInitiativeSegue"
+    static let landmarkInitiativeSegue = "landmarkInitiativeSegue"
     
     
 }
