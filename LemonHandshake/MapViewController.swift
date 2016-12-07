@@ -19,6 +19,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     var mapBounds = MGLCoordinateBounds()
     var landmarks = [Landmark]()
     var geocoder = CLGeocoder()
+    var shouldPullGeofire: Bool = true
     
     
     @IBOutlet weak var navBar: UINavigationItem!
@@ -33,6 +34,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        shouldPullGeofire = true
         
         createMap()
         activateGestureRecognizer()
@@ -100,9 +103,10 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.latitude = userLocation.coordinate.latitude
         mapView.longitude = userLocation.coordinate.longitude
         mapView.setCenter(center, animated: true)
-        print("LOCATION: Coordinate\(store.userCoordinate) should equal \(userLocation.coordinate)")
-        refreshLandmarks()
-        
+        if shouldPullGeofire {
+            refreshLandmarks()
+            shouldPullGeofire = false
+        }
     }
     
     func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {

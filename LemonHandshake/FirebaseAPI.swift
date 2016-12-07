@@ -70,12 +70,14 @@ class FirebaseAPI {
     }
     
     static func archive(userWithKey userKey: String) {
+        let user = FIRAuth.auth()?.currentUser
+        
         
         //Create the ref for the old location of the user data
         let targetUserRef = FIRDatabase.database().reference().child("users").child(userKey)
         
         //Create the ref for the new location of the user data in the archive section
-        let archivedInitiativeRef = FIRDatabase.database().reference().child("archives").child("users").child(userKey)
+        let archivedInitiativeRef = FIRDatabase.database().reference().child("archive").child("users").child(userKey)
         
         //Get the data located at the old location in the database
         targetUserRef.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -84,7 +86,7 @@ class FirebaseAPI {
             guard let dictionary = snapshot.value as? [String:Any] else { print("FAILURE: Error with snapshot for archiving user (key: \(userKey))"); return }
             
             //Take the initiative info out of the main dictionary
-            guard let initiatives = dictionary["initiatives"] as? [String:Bool] else { print("");return }
+            let initiatives = dictionary["initiatives"] as? [String:Bool] ?? ["noInitiatives":false]
             
             //Iterate over initiatives
             for initiative in initiatives {
@@ -113,7 +115,15 @@ class FirebaseAPI {
                     print(error.localizedDescription)
                 }
             })
+            
+            FirebaseAuth.signOutUser(completion: { (error) in
+                user?.delete(completion: { (error) in
+                    print("User Deleted from Firebase Auth")
+                    NotificationCenter.default.post(name: .closeMainVC, object: nil, userInfo: nil)
+                })
+            })
         })
+        
     }
     
     static func initiativeLeaderRemove(userWithKey userKey: String, fromInitiativeWithKey initiativeKey: String) {
