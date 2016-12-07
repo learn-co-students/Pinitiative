@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B0D30C81DF83AC4007F5250 /* InitiativeManagementMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0D30C71DF83AC4007F5250 /* InitiativeManagementMemberTableViewCell.swift */; };
 		1B0EC6201DF5FF3700297C8C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0EC61F1DF5FF3700297C8C /* UIColor.swift */; };
 		1B0EC6751DF74D7300297C8C /* NewUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0EC6741DF74D7300297C8C /* NewUserInfoViewController.swift */; };
+		1B0EC6781DF7672500297C8C /* InitiativeManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0EC6771DF7672500297C8C /* InitiativeManagementViewController.swift */; };
 		1B10965F1DDA50CE00609104 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10965E1DDA50CE00609104 /* AppDelegate.swift */; };
 		1B1096661DDA50CE00609104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096651DDA50CE00609104 /* Assets.xcassets */; };
 		1B1096691DDA50CE00609104 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B1096671DDA50CE00609104 /* LaunchScreen.storyboard */; };
@@ -52,9 +54,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B0D30C71DF83AC4007F5250 /* InitiativeManagementMemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiativeManagementMemberTableViewCell.swift; sourceTree = "<group>"; };
 		1B0EC61F1DF5FF3700297C8C /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		1B0EC6731DF70B4700297C8C /* LemonHandshake.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LemonHandshake.entitlements; sourceTree = "<group>"; };
 		1B0EC6741DF74D7300297C8C /* NewUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserInfoViewController.swift; sourceTree = "<group>"; };
+		1B0EC6771DF7672500297C8C /* InitiativeManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiativeManagementViewController.swift; sourceTree = "<group>"; };
 		1B10965B1DDA50CE00609104 /* LemonHandshake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LemonHandshake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B10965E1DDA50CE00609104 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B1096651DDA50CE00609104 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 				BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */,
 				BC7AAE241DF2037F00B2A5B9 /* ChatContainerViewController.swift */,
 				BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */,
+				1B0EC6771DF7672500297C8C /* InitiativeManagementViewController.swift */,
+				1B0D30C71DF83AC4007F5250 /* InitiativeManagementMemberTableViewCell.swift */,
 				BC6244DB1DDA798D00AE6523 /* LandmarkDetailTableViewController.swift */,
 				BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */,
 				BC6244DD1DDA798D00AE6523 /* MapViewController.swift */,
@@ -401,6 +407,7 @@
 				BC6244E01DDA798D00AE6523 /* InitiativeDetailViewController.swift in Sources */,
 				BCB137B91DE5EBD200C15CDD /* ChatDetailViewController.swift in Sources */,
 				1B10B1A41DE4C8F9006E38A7 /* GeoFire.swift in Sources */,
+				1B0D30C81DF83AC4007F5250 /* InitiativeManagementMemberTableViewCell.swift in Sources */,
 				8326CB281DECD923009EC996 /* DropPinDetailViewController.swift in Sources */,
 				BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */,
 				1B0EC6751DF74D7300297C8C /* NewUserInfoViewController.swift in Sources */,
@@ -413,6 +420,7 @@
 				BC6244E41DDA798D00AE6523 /* MyInitiativesTableViewController.swift in Sources */,
 				83D2E84B1DE4EF310095C068 /* LandmarkDetail.swift in Sources */,
 				832662A51DDF541900126B99 /* CustomPointAnnotation.swift in Sources */,
+				1B0EC6781DF7672500297C8C /* InitiativeManagementViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

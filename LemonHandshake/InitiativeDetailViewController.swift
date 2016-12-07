@@ -33,6 +33,8 @@ class InitiativeDetailViewController: UIViewController {
     
     @IBOutlet weak var joinButton: UIButton!
     
+    @IBOutlet weak var manageButton: UIButton!
+    
     var initiative: Initiative!
     
     var leader: User = User.blank
@@ -135,6 +137,17 @@ class InitiativeDetailViewController: UIViewController {
         leaveButton.layer.borderWidth = 1
         leaveButton.layer.borderColor = UIColor.black.cgColor
         
+        manageButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        manageButton.bottomAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: -10).isActive = true
+        manageButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.frame.width * 0.07).isActive = true
+        manageButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.2).isActive = true
+        manageButton.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.1).isActive = true
+        
+        manageButton.layer.cornerRadius = 10
+        manageButton.layer.borderWidth = 1
+        manageButton.layer.borderColor = UIColor.black.cgColor
+        
         chatButtonLabel.addTarget(self, action: #selector(chatButtonTapped), for: .touchUpInside)
         joinButton.addTarget(self, action: #selector(joinInitiativeTapped), for: .touchUpInside)
         leaveButton.addTarget(self, action: #selector(leaveInitiativeTapped), for: .touchUpInside)
@@ -176,8 +189,17 @@ class InitiativeDetailViewController: UIViewController {
                         self.leaveButton.isHidden = false
                     } else {
                         self.joinButton.isHidden = false
+                        self.chatButtonLabel.isHidden = true
                     }
                 }
+            }
+        } else {
+            manageButton.isHidden = false
+        }
+        
+        FirebaseAPI.bansForUser(WithKey: FirebaseAuth.currentUserID) { (bans) in
+            if bans[self.initiative.databaseKey] == nil {
+                self.joinButton.isHidden = true
             }
         }
     }
@@ -186,6 +208,7 @@ class InitiativeDetailViewController: UIViewController {
         FirebaseAPI.userJoin(initiativeWithKey: initiative.databaseKey)
         joinButton.isHidden = true
         leaveButton.isHidden = false
+        chatButtonLabel.isHidden = false
         
         
         FirebaseAPI.retrieveInitiative(withKey: initiative.databaseKey) { (initiative) in
@@ -202,6 +225,7 @@ class InitiativeDetailViewController: UIViewController {
         FirebaseAPI.userLeave(initiativeWithKey: initiative.databaseKey)
         joinButton.isHidden = false
         leaveButton.isHidden = true
+        chatButtonLabel.isHidden = true
         
         
         FirebaseAPI.retrieveInitiative(withKey: initiative.databaseKey) { (initiative) in
@@ -224,8 +248,11 @@ class InitiativeDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "chatButtonSegue" {
-                let dest = segue.destination as? ChatContainerViewController
-                dest?.initiative = initiative
+            let dest = segue.destination as? ChatContainerViewController
+            dest?.initiative = initiative
+        } else if segue.identifier == "manageMembers" {
+            let dest = segue.destination as? InitiativeManagementViewController
+            dest?.initiative = initiative
         }
     }
     
