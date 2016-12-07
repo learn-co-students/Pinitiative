@@ -30,7 +30,7 @@ class MyInitiativesTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FirebaseAPI.retrieveInitiativesFor(userKey: FirebaseAuth.currentUserID ?? "") { (initiatives) in
+        FirebaseAPI.retrieveInitiativesFor(userKey: FirebaseAuth.currentUserID) { (initiatives) in
             self.userInitiatives = initiatives
             self.tableView.reloadData()
         }

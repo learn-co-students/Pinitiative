@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class InitiativeManagementViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class InitiativeManagementViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MemberRemovalDelegate {
 
     @IBOutlet weak var memberTable: UITableView!
     
@@ -28,6 +28,7 @@ class InitiativeManagementViewController: UIViewController, UITableViewDelegate,
         super.viewDidLoad()
         
         setUpTextFields()
+        setUpButtons()
         
         memberTable.delegate = self
         memberTable.dataSource = self
@@ -59,6 +60,7 @@ class InitiativeManagementViewController: UIViewController, UITableViewDelegate,
         let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell") as? InitiativeManagementMemberTableViewCell
         
         cell?.member = members[indexPath.row]
+        cell?.delegate = self
         
         return cell!
     }
@@ -112,11 +114,85 @@ class InitiativeManagementViewController: UIViewController, UITableViewDelegate,
 
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+        let name = initiativeNameTextField.text!
+        let description = initiativeDescriptionTextView.text!
+        
         if initiativeNameTextField.text != "" && initiativeDescriptionTextView.text != "" {
+            FirebaseAPI.updateInitiative(withKey: initiative.databaseKey, withName: name, description: description)
             
+            
+            let alertController = UIAlertController(title: "Saved", message: "Your initiative has been updated.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { completion -> Void in
+                self.dismiss(animated: true, completion: nil)
+                
+                
+                let index = (self.navigationController?.viewControllers.count)! - 3
+                
+                let _ = self.navigationController?.popToViewController((self.navigationController?.viewControllers[index])!, animated: true)
+                
+            })
+            
+            
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     
     @IBAction func deleteInitiativeButtonTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Delete Initiative?", message: "This action cannot be undone.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { completion -> Void in
+            
+            FirebaseAPI.archive(initiative: self.initiative)
+            
+            let index = (self.navigationController?.viewControllers.count)! - 3
+            
+            let _ = self.navigationController?.popToViewController((self.navigationController?.viewControllers[index])!, animated: true)
+        }
+        
+        let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.default) { completion -> Void in
+        }
+        
+        
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func removeUser(withKey key: String) {
+        let alertController = UIAlertController(title: "Remove User?", message: "This will remove a user from the initiative, but they will be able to join again should they wish. To ban a user from accessing your initiative, press cancel and ban them. ", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { completion -> Void in
+            FirebaseAPI.initiativeLeaderRemove(userWithKey: key, fromInitiativeWithKey: self.initiative.databaseKey)
+            self.getUsers()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default) { completion -> Void in
+        }
+        
+        
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    func banUser(withKey key: String) {
+        let alertController = UIAlertController(title: "Ban User?", message: "This will ban a user from the initiative, and they will not be able to join again. To simply remove a user, please press cancel and remove them. ", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { completion -> Void in
+            FirebaseAPI.initiativeLeaderBan(userWithKey: key, fromInitiativeWithKey: self.initiative.databaseKey)
+            self.getUsers()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default) { completion -> Void in
+        }
+        
+        
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }

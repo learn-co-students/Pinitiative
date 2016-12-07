@@ -188,7 +188,7 @@ class InitiativeDetailViewController: UIViewController {
                     if userIsMember {
                         self.leaveButton.isHidden = false
                     } else {
-                        self.joinButton.isHidden = false
+                        self.testForBan()
                         self.chatButtonLabel.isHidden = true
                     }
                 }
@@ -197,9 +197,12 @@ class InitiativeDetailViewController: UIViewController {
             manageButton.isHidden = false
         }
         
+    }
+    
+    func testForBan() {
         FirebaseAPI.bansForUser(WithKey: FirebaseAuth.currentUserID) { (bans) in
             if bans[self.initiative.databaseKey] == nil {
-                self.joinButton.isHidden = true
+                self.joinButton.isHidden = false
             }
         }
     }

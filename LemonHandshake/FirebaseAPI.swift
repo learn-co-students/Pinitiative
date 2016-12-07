@@ -304,12 +304,9 @@ class FirebaseAPI {
         //Create the ref for the new location of the initiative data in the archive section
         let archivedInitiativeRef = FIRDatabase.database().reference().child("archive").child("initiatives").child(initiativeKey)
         
-        //Create the ref for the GeoFire location of the initiative, if it has one.
-        var geofireRef: FIRDatabaseReference? = nil
+        //Create the ref for the GeoFire location of the initiative
+        let geofireRef = FIRDatabase.database().reference().child("geofire").child(initiativeKey)
         
-        if initiative.associatedLandmark == nil {
-            geofireRef = FIRDatabase.database().reference().child("geofire").child(initiativeKey)
-        }
         
         //Create the ref for the chat
         let chatRef = FIRDatabase.database().reference().child("Chats").child(initiativeKey)
@@ -353,13 +350,12 @@ class FirebaseAPI {
             })
             
             //...remove the info from the GeoFire location, should have a GeoFire location...
-            if let geofireRef = geofireRef {
-                geofireRef.removeValue(completionBlock: { (error, ref) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    }
-                })
-            }
+            geofireRef.removeValue(completionBlock: { (error, ref) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+            })
+            
             
             //...and remove the chat from the database
             chatRef.removeValue(completionBlock: { (error, ref) in
