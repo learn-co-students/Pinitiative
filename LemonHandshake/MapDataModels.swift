@@ -31,19 +31,14 @@ class Landmark {
         
         case "EDU", "CUNY", "ACS", "EDUC", "HRA", "NYPL"/*NYpublibrary*/:
             return UIImage(named: "school")!
-            
         case "FIRE":
             return UIImage(named: "firemen")!
-            
         case "PARKS", "SANIT", "DEP":
             return UIImage(named: "forest")!
-            
         case "NYPD","NYCHA", "COURT", "DCAS", "DOT", "ACS", "CORR":
             return UIImage(named: "police")!
-            
         case "HLTH", "DHS", "HHC", "AGING", "OCME", "HRA":
             return UIImage(named: "hospital-building")!
-            
         default:
             let image = UIImage(named: "drop_pin_marker")!
             
@@ -53,6 +48,25 @@ class Landmark {
             
             return image
         }
+    }
+    
+    //JCB tableViewIcon: New! Dec 7, 2016
+    var tableViewIcon: UIImage {
+        switch self.agency {
+        case "EDU", "CUNY", "ACS", "EDUC", "HRA", "NYPL"/*NYpublibrary*/:
+            return UIImage(named: "schoolTableViewIcon")!
+        case "FIRE":
+            return UIImage(named: "fireTruckTableViewIcon")!
+        case "PARKS", "SANIT", "DEP":
+            return UIImage(named: "parkTableViewIcon")!
+        case "NYPD","NYCHA", "COURT", "DCAS", "DOT", "ACS", "CORR":
+            return UIImage(named: "policeTableViewIcon")!
+        case "HLTH", "DHS", "HHC", "AGING", "OCME", "HRA":
+            return UIImage(named: "hospitalTableViewIcon")!
+        default:
+            return UIImage(named: "CustomLandmarkTableViewIcon")!
+        }
+
     }
     
     

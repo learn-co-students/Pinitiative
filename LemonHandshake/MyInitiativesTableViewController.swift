@@ -16,6 +16,8 @@ class MyInitiativesTableViewController: UITableViewController {
 
     let store = MapDataStore.sharedInstance
     
+    @IBOutlet weak var lineView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        animateBackground()
@@ -23,6 +25,8 @@ class MyInitiativesTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        animateTableView()
         
         FirebaseAPI.retrieveInitiativesFor(userKey: FirebaseAuth.currentUserID ) { (initiatives) in
             self.userInitiatives = initiatives
@@ -32,8 +36,6 @@ class MyInitiativesTableViewController: UITableViewController {
         }
     }
     
-
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -43,49 +45,24 @@ class MyInitiativesTableViewController: UITableViewController {
     }
 
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "My Initiatives"
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "initiativeCell", for: indexPath) as! MyInitiativesTableViewCell
 
             cell.contentView.backgroundColor = UIColor.clear
-//        cell.layer.borderColor = UIColor.green.cgColor
-//        cell.layer.borderWidth = 2
-        
-//        cell.initiativeLabel.snp.makeConstraints { (make) in
-////            make.top.equalTo(cell.contentView)
-//            make.top.equalTo(cell.contentView).offset(40)
-//            make.centerX.equalTo(cell.contentView.center)
-//        }
-//
-//        cell.dateLabel.snp.makeConstraints { (make) in
-//            make.top.equalTo(cell.contentView).offset(60)
-//            make.leftMargin.equalTo(cell.contentView).offset(20)
-//            
-//        }
-//
-//        cell.dateLabel.snp.makeConstraints { (make) in
-//            make.top.equalTo(cell.contentView).offset(40)
-//            make.rightMargin.equalTo(cell.contentView).offset(-20)
-//            
-//        }
-//        
-//        cell.followersLabel.snp.makeConstraints { (make) in
-//            make.top.equalTo(cell.contentView).offset(80)
-//            make.leftMargin.equalTo(cell.contentView).offset(20)
-//            
-//        }
-//        
-//        cell.followersTextLabel.snp.makeConstraints { (make) in
-//            make.top.equalTo(cell.contentView).offset(80)
-//            make.rightMargin.equalTo(cell.contentView).offset(-20)
-//            
-//        }
-//        
         let userInitiative = userInitiatives[indexPath.row]
-//        
-//          cell.landmarkLabel.text = userInitiative.associatedLandmark?.name
-          cell.initiativeLabel.text = userInitiative.name
-          cell.followersLabel.text = "Followers: \(userInitiative.members.count)"
-          cell.dateLabel.text = "Start date: \(userInitiative.createdAt.formattedAs("MM/dd/yyyy"))"
+           cell.initiativeLabel.text = userInitiative.name
+           cell.followersLabel.text = "Members: \(userInitiative.members.count)"
+           cell.dateLabel.text = "Initiative date: \(userInitiative.createdAt.formattedAs("MM/dd/yyyy"))"
+        if userInitiative.associatedLandmark != nil {
+            if let landmark = userInitiative.associatedLandmark {
+                cell.landmarkLabel.text = " \(landmark.name)"
+                cell.landmarkTypePreview.image = landmark.tableViewIcon }
+        }
+        
         return cell
     }
     
@@ -97,28 +74,7 @@ class MyInitiativesTableViewController: UITableViewController {
         }
     }
     
-    func animateBackground() {
-        let backgrounds = ["fireStationBackground", "schoolBackground", "policeBackground", "park"]
+    func animateTableView() {
         
-        var counter = 0
-        
-        while counter < backgrounds.count - 1 {
-        backgrounds.forEach { (background) in
-                let imageView = UIImageView(image: UIImage(named: backgrounds[counter]))
-                self.view.addSubview(imageView)
-            
-                let nextImageView = UIImageView(image: UIImage(named: backgrounds[counter + 1]))
-                nextImageView.alpha = 0.0
-                self.view.insertSubview(imageView, aboveSubview: nextImageView)
-            
-            UIView.animate(withDuration: 2.0, delay: 2.0, options: .curveEaseOut, animations: {
-                nextImageView.alpha = 1.0
-            }, completion: { _ in
-                imageView.image = nextImageView.image
-                imageView.contentMode = .scaleAspectFit
-                imageView.alpha = 0.5
-                nextImageView.removeFromSuperview() }) }
-            counter += 1
-        }
     }
 }

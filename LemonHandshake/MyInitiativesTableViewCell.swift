@@ -20,5 +20,6 @@ class MyInitiativesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var landmarkLabel: UILabel!
     
-    @IBOutlet weak var PreviewLandmarkLabel: UIImageView!
+    @IBOutlet weak var landmarkTypePreview: UIImageView!
+    
 }

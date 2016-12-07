@@ -57,5 +57,4 @@ class LandmarkDetailTableViewController: UITableViewController {
         cell.noOfMembersLabel.text = String(initiative.members.count)
         return cell
     }
-    
 }
