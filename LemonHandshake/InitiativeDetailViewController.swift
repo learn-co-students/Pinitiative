@@ -41,6 +41,31 @@ class InitiativeDetailViewController: UIViewController {
     
     var userIsMember: Bool = false
     
+    var currentUserDisplayName  = ""
+    
+    var currentUser: User!
+    
+    @IBAction func chatButtonTapped(_ sender: UIButton) {
+        
+        print("GETTING CALLED????")
+        
+        let key = FirebaseAuth.currentUserID
+        
+        FirebaseAPI.retrieveUser(withKey: key) { (userDetails) in
+            
+            DispatchQueue.main.async {
+                
+                self.currentUserDisplayName = (userDetails.firstName + " "  + userDetails.lastName)
+                
+                self.currentUser = userDetails
+                
+                self.performSegue(withIdentifier: "chatButtonSegue", sender: nil)
+                
+            }
+        }
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -251,8 +276,14 @@ class InitiativeDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "chatButtonSegue" {
-            let dest = segue.destination as? ChatContainerViewController
-            dest?.initiative = initiative
+            let dest = segue.destination as! ChatDetailViewController
+            dest.initiative = initiative
+            dest.user = self.currentUser
+            dest.senderId = currentUser.databaseKey
+            
+            print("\n")
+            print("Sender ID of dest is \(dest.senderId)")
+            dest.senderDisplayName = currentUserDisplayName
         } else if segue.identifier == "manageMembers" {
             let dest = segue.destination as? InitiativeManagementViewController
             dest?.initiative = initiative
