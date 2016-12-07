@@ -21,6 +21,14 @@ class FirebaseAuth {
         return nil
     }
     
+    class func signOutUser(completion: (Error?)->Void) {
+        do {
+            try FIRAuth.auth()?.signOut()
+            completion(nil)
+        } catch {
+            completion(error)
+        }
+    }
     class var currentUserID: String {
         return FIRAuth.auth()?.currentUser?.uid ?? "ERROR_NO_USER"
     }

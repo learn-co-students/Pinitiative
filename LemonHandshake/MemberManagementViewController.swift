@@ -44,13 +44,29 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
             } catch {
                 print("ERROR SIGNING OUT USER")
             }
-            NotificationCenter.default.post(name: .closeMainVC, object: nil, userInfo: nil)
         }
     }
     
     
     @IBOutlet weak var deleteAccountButton: UIButton!
     @IBAction func deleteAccountButtonTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Delete Account?", message: "This action cannot be undone.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { completion -> Void in
+            
+            FirebaseAPI.archive(userWithKey: FirebaseAuth.currentUserID)
+            
+            NotificationCenter.default.post(name: .closeMainVC, object: nil, userInfo: nil)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default) { completion -> Void in
+        }
+        
+        
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBOutlet weak var calendarWebView: UIWebView!
