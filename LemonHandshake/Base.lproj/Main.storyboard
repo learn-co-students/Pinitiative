@@ -32,7 +32,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="B1FF4D06-6CCF-4A87-B84D-BC7C5ABFDF06" translatesAutoresizingMaskIntoConstraints="NO" id="tBT-f7-dch">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="B25475CE-F34A-4640-BBB2-27AD685921C1" translatesAutoresizingMaskIntoConstraints="NO" id="tBT-f7-dch">
                                 <rect key="frame" x="87" y="548" width="189" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -159,6 +159,14 @@
                                     <action selector="searchMapButton:" destination="3CJ-NX-deg" eventType="touchUpInside" id="5bU-sa-b8D"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCZ-m5-C3b">
+                                <rect key="frame" x="312" y="78" width="47" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="UserLocationArrow"/>
+                                <connections>
+                                    <action selector="userLocationEnabled:" destination="3CJ-NX-deg" eventType="touchUpInside" id="pT0-fb-4eb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -167,13 +175,14 @@
                     <connections>
                         <outlet property="navBar" destination="qGh-Ym-BAw" id="gYS-de-biv"/>
                         <outlet property="searchMapLabel" destination="r5M-nV-gRP" id="Pif-89-4om"/>
+                        <outlet property="userLocationButton" destination="vCZ-m5-C3b" id="7bX-Yx-zs3"/>
                         <segue destination="zYc-Au-Tv4" kind="presentation" identifier="annotationSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="MVg-bT-R5e"/>
                         <segue destination="qWx-m3-kEc" kind="presentation" identifier="dropPinSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="PpP-Ac-koJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TU8-j5-9ac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1073" y="425"/>
+            <point key="canvasLocation" x="-1074.4000000000001" y="424.13793103448279"/>
         </scene>
         <!--My Initiatives-->
         <scene sceneID="MST-I5-qQp">
@@ -182,8 +191,7 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="132" sectionHeaderHeight="28" sectionFooterHeight="28" id="FCy-Re-Rae">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexBackgroundColor" red="0.4433139626" green="0.80028194429999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.64313725489999995" green="0.80392156859999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="initiativeCell" rowHeight="132" id="HeM-41-JAi" customClass="MyInitiativesTableViewCell" customModule="LemonHandshake" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="132"/>
@@ -251,8 +259,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="134" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ohc-bL-pG8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexBackgroundColor" red="0.64313725489999995" green="0.80392156859999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.64313725489999995" green="0.80392156859999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="nearbyInitiatives" rowHeight="134" id="eiG-3N-CiO" customClass="NearbyInitiativesDetailCell" customModule="LemonHandshake" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="134"/>
@@ -956,7 +963,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="B1FF4D06-6CCF-4A87-B84D-BC7C5ABFDF06" width="826" height="250">
+        <image name="B25475CE-F34A-4640-BBB2-27AD685921C1" width="826" height="250">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -14781,11 +14788,12 @@ AAAEAQAAAAAAAABBAAAAAAAAAAAAAAAAAAylGA
         <image name="Map" width="40" height="40"/>
         <image name="My Initiative" width="60" height="60"/>
         <image name="Settings" width="60" height="60"/>
+        <image name="UserLocationArrow" width="20" height="20"/>
         <image name="backgroundNYC" width="1326" height="1291"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nR9-YX-1Fo"/>
         <segue reference="h5K-wb-Q3f"/>
+        <segue reference="peZ-TE-S1e"/>
         <segue reference="qh2-Sn-9oR"/>
     </inferredMetricsTieBreakers>
 </document>
