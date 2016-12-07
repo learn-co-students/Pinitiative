@@ -39,6 +39,22 @@ class InitiativeDetailViewController: UIViewController {
     
     var userIsMember: Bool = false
     
+    var currentUserDisplayName: String = ""
+    
+    var currentUser: User!
+    
+    @IBAction func chatButtonTapped(_ sender: UIButton) {
+        let key = FirebaseAuth.currentUserID
+        
+        
+        FirebaseAPI.retrieveUser(withKey: key) { (userDetails) in
+            let user2 = userDetails
+            self.currentUserDisplayName = userDetails.firstName + userDetails.lastName
+            self.currentUser = userDetails
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -135,7 +151,7 @@ class InitiativeDetailViewController: UIViewController {
         leaveButton.layer.borderWidth = 1
         leaveButton.layer.borderColor = UIColor.black.cgColor
         
-        chatButtonLabel.addTarget(self, action: #selector(chatButtonTapped), for: .touchUpInside)
+     //   chatButtonLabel.addTarget(self, action: #selector(chatButtonTapped), for: .touchUpInside)
         joinButton.addTarget(self, action: #selector(joinInitiativeTapped), for: .touchUpInside)
         leaveButton.addTarget(self, action: #selector(leaveInitiativeTapped), for: .touchUpInside)
         
@@ -218,14 +234,33 @@ class InitiativeDetailViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
-    func chatButtonTapped() { performSegue(withIdentifier: "chatButtonSegue", sender: self) }
+    var stupiduser = User.blank
+    
+    func chatButtonTapped() {
+        
+        FirebaseAPI.retrieveUser(withKey: FirebaseAuth.currentUserID) { (user) in
+            self.stupiduser = user
+            dump(user)
+            dump(self.stupiduser)
+            print("@@@@@@@@@@@@@@@@@@")
+//            self.performSegue(withIdentifier: "chatButtonSegue", sender: self)
+            
+            //self.performSegue(withIdentifier: "chatButtonSegue", sender: user)
+            
+            print("&&&&&&&&&&&&&&&&&&&&&&&")
+        }
+        
+        
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        print("***********************")
         if segue.identifier == "chatButtonSegue" {
-                let dest = segue.destination as? ChatContainerViewController
-                dest?.initiative = initiative
+            let dest = segue.destination as! ChatDetailViewController
+            dest.initiative = initiative
+            dest.user = self.currentUser
+            dest.senderDisplayName = currentUserDisplayName
         }
     }
     

@@ -41,7 +41,7 @@ class FirebaseAPI {
         
         //Get the data from the reference point
         targetUserRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            
+    
             //Convert the snapshot to a dictionary
             guard let dictionary = snapshot.value as? [String: Any] else { print("FAILURE: Error with snaphsot for user (key: \(key))"); return }
             
