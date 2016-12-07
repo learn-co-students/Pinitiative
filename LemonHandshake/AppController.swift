@@ -31,15 +31,15 @@ class AppController: UIViewController {
       
 //       FIRAuth.auth()?.addStateDidChangeListener { (auth, user) in
        
-        if FIRAuth.auth()?.currentUser != nil {
-
-//        actingViewController = loadViewController(withID: .navID)
-        actingViewController = loadViewController(withID: .tabBarControl)
-        
-        } else {
+//        if FIRAuth.auth()?.currentUser != nil {
+//
+////        actingViewController = loadViewController(withID: .navID)
+//        actingViewController = loadViewController(withID: .tabBarControl)
+//        
+//        } else {
         
         actingViewController = loadViewController(withID: .loginVC)
-        }
+//        }
     
         self.addActing(viewController: actingViewController)
      
@@ -48,6 +48,8 @@ class AppController: UIViewController {
     private func addNotificationObservers() {
         // close login view controller & switch to activities once user has obtained an authorization token
         NotificationCenter.default.addObserver(self, selector: #selector(switchViewController(with:)), name: .closeLoginVC, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(switchViewController(with:)), name: .closeMainVC , object: nil)
+        
     }
     
     // MARK: View Controller Handling
@@ -58,7 +60,7 @@ class AppController: UIViewController {
         
         switch id {
         case .loginVC:
-           
+            print("LOGOUT FLOW: return instantiated vc")
             return storyboard.instantiateViewController(withIdentifier: id.rawValue) as! LoginScreenViewController
         
 //        case .navID:
@@ -86,8 +88,13 @@ class AppController: UIViewController {
         
         switch notification.name {
         case Notification.Name.closeLoginVC:
-    //      switchToViewController(withID: .navID)  - JCB changing to Tab Bar Control
+            
             switchToViewController(withID: .tabBarControl)
+            
+        case Notification.Name.closeMainVC:
+            print("LOGOUT FLOW: switch to vc with storyboard id")
+            switchToViewController(withID: .loginVC)
+            
         default:
             fatalError("ERROR: Unable to match notification name")
         }
@@ -95,9 +102,11 @@ class AppController: UIViewController {
     
     private func switchToViewController(withID id: StoryboardID) {
         
+        print("LOGOUT FLOW: switch to instantiated vc. remove current vc.")
         let exitingViewController = actingViewController
         exitingViewController?.willMove(toParentViewController: nil)
         
+        print("LOGOUT FLOW: exiting view controller: \(exitingViewController)")
         actingViewController = loadViewController(withID: id)
         self.addChildViewController(actingViewController)
         

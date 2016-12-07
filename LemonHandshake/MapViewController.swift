@@ -151,7 +151,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
                 }
                 
             }
-            print("THIS IS THE POINTS AGENCY CONVERTED INTO AN ICON STRING\(id)")
+         
             
             point.reuseIdentifier = id
             
@@ -160,7 +160,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
 
         }
         mapView.addAnnotations(pointAnnotations)
-        print("THIS IS THE COUNT \(landmarks.count)")
+       
     }
     
     func addSinglePointAnnotation(for landmark: Landmark) {

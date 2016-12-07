@@ -37,21 +37,34 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-        
-        present(tabBarController, animated: true, completion: {
+        if let user = FIRAuth.auth()?.currentUser {
+           
+            NotificationCenter.default.post(name: .closeLoginVC, object: nil)
             
-        })
+        } else {
+            print("LOGIN FLOW: this is NOT a current user")
+        }
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        
+//        print("VIEW WILL APPEAR HAPPENING")
+//        
+//        let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+//        
+//        present(tabBarController, animated: true, completion: {
+//            print("TAB BAR PRESENTED")
+//            
+//        })
+        
+        
+        
         
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         createAccountFrameView.snp.makeConstraints { (make) in
             make.bottomMargin.equalTo(self.view).offset(0)
             make.centerX.equalTo(self.view.center)
