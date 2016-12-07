@@ -21,10 +21,15 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     var geocoder = CLGeocoder()
     
     
-    
     @IBOutlet weak var navBar: UINavigationItem!
     
     @IBOutlet weak var searchMapLabel: UIButton!
+    
+    @IBAction func userLocationEnabled(_ sender: UIButton) {
+        mapView.showsUserLocation = true
+    }
+    
+    @IBOutlet weak var userLocationButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +38,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         activateGestureRecognizer()
         mapView.delegate = self
         setMapSearchButtonConstraints()
+        setUserLocationArrowConstraints()
+        
+        self.view.bringSubview(toFront: userLocationButton)
         
 
         let imageView = UIImageView(image: IconConstants.fullLogo)
@@ -50,6 +58,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
             
             searchMapLabel.isEnabled = true
             searchMapLabel.isHidden = false
+            
+            mapView.showsUserLocation = false
    
         }
 
@@ -87,11 +97,12 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         
         guard let annotations = mapView.annotations else { return }
             mapView.removeAnnotations(annotations)
-
+        
         FirebaseAPI.geoFirePullNearbyLandmarks (within: 1.0, ofLocation: CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)) { (landmark) in
+            OperationQueue.main.addOperation {
             self.store.landmarks.append(landmark)
             self.addSinglePointAnnotation(for: landmark)
-            
+            }
         }
     }
     
@@ -151,7 +162,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
                 }
                 
             }
-            print("THIS IS THE POINTS AGENCY CONVERTED INTO AN ICON STRING\(id)")
+         
             
             point.reuseIdentifier = id
             
@@ -160,7 +171,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
 
         }
         mapView.addAnnotations(pointAnnotations)
-        print("THIS IS THE COUNT \(landmarks.count)")
+       
     }
     
     func addSinglePointAnnotation(for landmark: Landmark) {
@@ -292,6 +303,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
         mapBounds = mapView.visibleCoordinateBounds
         addPointAnnotations()
+        
     }
     
     
@@ -318,10 +330,24 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
       
     }
     
+    func setUserLocationArrowConstraints() {
+        userLocationButton.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self.view).multipliedBy(1.83)
+            make.centerY.equalTo(self.view).multipliedBy(0.33)
+    
+            make.width.equalTo(30)
+            make.height.equalTo(30)
+            
+//            userLocationButton.frame.size.height = 10
+//            userLocationButton.frame.size.width = 10
+            
+            userLocationButton.layer.borderWidth = 1
+            userLocationButton.alpha = 1.0
+            userLocationButton.layer.cornerRadius = 6
+            userLocationButton.backgroundColor = UIColor.themeBlue.withAlphaComponent(0.5)
+        }
  }
-
-
-
+}
 
 
 // MARK: - Segue
@@ -335,7 +361,6 @@ extension MapViewController {
             
             if let landmark = sender {
                 destVC.landmark = landmark as! Landmark
-            print(landmark)
             }
         }
             
@@ -343,14 +368,10 @@ extension MapViewController {
             print(segue.identifier)
             let destVC = segue.destination as! DropPinDetailViewController
             destVC.location = sender as! DropPinLocation
-            
             }
         }
-    
-}
 
 //MARK: - Test For New User Screen
-extension MapViewController {
     func shouldPresentNewUserInfo() {
         FirebaseAPI.test(forUserWithKey: FirebaseAuth.currentUserID) { (doesExist) in
             if !doesExist {

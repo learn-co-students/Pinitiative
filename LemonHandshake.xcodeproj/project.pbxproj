@@ -32,6 +32,7 @@
 		83873B031DF3827F00FF71FB /* StartInitiativeNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83873B021DF3827F00FF71FB /* StartInitiativeNewViewController.swift */; };
 		83873B051DF382E500FF71FB /* FormManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83873B041DF382E500FF71FB /* FormManager.swift */; };
 		83D2E84B1DE4EF310095C068 /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2E84A1DE4EF310095C068 /* LandmarkDetail.swift */; };
+		83D8FE5A1DF76DA5007C6066 /* LandmarkDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8FE591DF76DA5007C6066 /* LandmarkDetailTableViewCell.swift */; };
 		83E865CA1DECFEC900336BC4 /* DropPinLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E865C91DECFEC900336BC4 /* DropPinLocation.swift */; };
 		83EF6B781DEE0B9B00756913 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF6B771DEE0B9B00756913 /* Constants.swift */; };
 		923861EB1DF70174007E2140 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 923861EA1DF70174007E2140 /* GoogleService-Info.plist */; };
@@ -85,6 +86,7 @@
 		83873B021DF3827F00FF71FB /* StartInitiativeNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartInitiativeNewViewController.swift; sourceTree = "<group>"; };
 		83873B041DF382E500FF71FB /* FormManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormManager.swift; sourceTree = "<group>"; };
 		83D2E84A1DE4EF310095C068 /* LandmarkDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
+		83D8FE591DF76DA5007C6066 /* LandmarkDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandmarkDetailTableViewCell.swift; sourceTree = "<group>"; };
 		83E865C91DECFEC900336BC4 /* DropPinLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropPinLocation.swift; sourceTree = "<group>"; };
 		83EF6B771DEE0B9B00756913 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		923861EA1DF70174007E2140 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -237,6 +239,8 @@
 				BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */,
 				837C2F591DE4942500E076C9 /* AppController.swift */,
 				8326CB271DECD923009EC996 /* DropPinDetailViewController.swift */,
+				83D8FE591DF76DA5007C6066 /* LandmarkDetailTableViewCell.swift */,
+				BC6244DB1DDA798D00AE6523 /* LandmarkDetailTableViewController.swift */,
 				83509E411DE63F9300D8C18B /* LandmarkDetailViewController.swift */,
 				BC43C33A1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift */,
 				92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */,
@@ -290,7 +294,7 @@
 				TargetAttributes = {
 					1B10965A1DDA50CE00609104 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = GXEX28B97C;
+						DevelopmentTeam = KXY9EDFTF5;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -408,6 +412,7 @@
 				1B1E94331DEB733700F7EFEC /* User.swift in Sources */,
 				BC43C33B1DDB89E4000994ED /* NearbyInitiativesTableViewController.swift in Sources */,
 				1B10965F1DDA50CE00609104 /* AppDelegate.swift in Sources */,
+				83D8FE5A1DF76DA5007C6066 /* LandmarkDetailTableViewCell.swift in Sources */,
 				BC6244E01DDA798D00AE6523 /* InitiativeDetailViewController.swift in Sources */,
 				BCB137B91DE5EBD200C15CDD /* ChatDetailViewController.swift in Sources */,
 				1B10B1A41DE4C8F9006E38A7 /* GeoFire.swift in Sources */,
@@ -553,7 +558,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LemonHandshake/LemonHandshake.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = GXEX28B97C;
+				DEVELOPMENT_TEAM = KXY9EDFTF5;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -571,7 +576,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LemonHandshake/LemonHandshake.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = GXEX28B97C;
+				DEVELOPMENT_TEAM = KXY9EDFTF5;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
