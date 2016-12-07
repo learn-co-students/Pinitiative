@@ -41,7 +41,7 @@ class FirebaseAPI {
         
         //Get the data from the reference point
         targetUserRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            
+    
             //Convert the snapshot to a dictionary
             guard let dictionary = snapshot.value as? [String: Any] else { print("FAILURE: Error with snaphsot for user (key: \(key))"); return }
             
@@ -56,6 +56,16 @@ class FirebaseAPI {
             
             //Completion for use of the new user class
             completion(user)
+        })
+    }
+    
+    static func bansForUser(WithKey key: String, completion: @escaping ([String:Bool]) -> Void) {
+        let targetUserBansRef = FirebaseAPI.ref.child("users").child(key).child("bans")
+        
+        targetUserBansRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let dictionary = snapshot.value as? [String:Bool] else { return }
+            
+            completion(dictionary)
         })
     }
     
@@ -133,6 +143,38 @@ class FirebaseAPI {
         
     }
     
+    static func initiativeLeaderBan(userWithKey userKey: String, fromInitiativeWithKey initiativeKey: String) {
+        
+        //Create a ref that the member is stored in the intiative
+        let memberForInitiativeRef = FirebaseAPI.ref.child("initiatives").child(initiativeKey).child("members").child(userKey)
+        
+        let userRef = FirebaseAPI.ref.child("users").child(userKey)
+        
+        //Create a ref that the initiative is stored in the user
+        let initiativeForUser = userRef.child("initiatives").child(initiativeKey)
+        
+        //Delete the ref where the member is stored in the initiave section
+        memberForInitiativeRef.removeValue { (error, ref) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        
+        //Delete the ref where the initiative is stored in the user sections
+        initiativeForUser.removeValue { (error, ref) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        
+        //Log the ban on the user's profile
+        userRef.child("bans").updateChildValues([initiativeKey:true])
+        
+        //Create a report so that firebase has track of the incident
+        FirebaseAPI.reportUser(targetUserID: userKey, from: FirebaseAuth.currentUserID, report: "User was banned from initiative (key: \(initiativeKey) by leader (key: \(FirebaseAuth.currentUserID))")
+        
+    }
+    
     static func userLeave(initiativeWithKey initiativeKey: String) {
         
         //Create a ref that the member is stored in the intiative
@@ -163,9 +205,33 @@ class FirebaseAPI {
         initiativeForUser.setValue(true)
     }
     
-    static func retrieveMembers(forInitiativeWithKey initiativeKey: String, completion: ([User]) -> Void) {
+    static func retrieveMembers(forInitiativeWithKey initiativeKey: String, completion: @escaping ([User]) -> Void) {
         
         //Initiative ref
+        let membersRef = FirebaseAPI.ref.child("initiatives").child(initiativeKey).child("members")
+        
+        
+        
+        membersRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let dictionary = snapshot.value as? [String:Bool] else { print("ERROR: Cannot create dictionary out of snapshot value");return }
+            
+            var members = [User]()
+            var counter = 0
+            
+            for member in dictionary {
+                if member.value {
+                    FirebaseAPI.retrieveUser(withKey: member.key, completion: { (user) in
+                        members.append(user)
+                        
+                        counter += 1
+                        
+                        if counter == dictionary.count {
+                            completion(members)
+                        }
+                    })
+                }
+            }
+        })
     }
     
     static func test(forUserWithKey userID: String, doesExist: @escaping (Bool) -> Void) {
@@ -176,6 +242,14 @@ class FirebaseAPI {
             doesExist(value != nil)
             
         })
+    }
+    
+    static func updateInitiative(withKey initiativeKey: String, withName name: String, description: String) {
+        let initiativeRef = FirebaseAPI.ref.child("initiatives").child(initiativeKey)
+        
+        let newInfo = ["name": name, "initiativeDescription": description]
+        
+        initiativeRef.updateChildValues(newInfo)
     }
     
     //MARK: - Initiative functions
@@ -237,12 +311,9 @@ class FirebaseAPI {
         //Create the ref for the new location of the initiative data in the archive section
         let archivedInitiativeRef = FIRDatabase.database().reference().child("archive").child("initiatives").child(initiativeKey)
         
-        //Create the ref for the GeoFire location of the initiative, if it has one.
-        var geofireRef: FIRDatabaseReference? = nil
+        //Create the ref for the GeoFire location of the initiative
+        let geofireRef = FIRDatabase.database().reference().child("geofire").child(initiativeKey)
         
-        if initiative.associatedLandmark == nil {
-            geofireRef = FIRDatabase.database().reference().child("geofire").child(initiativeKey)
-        }
         
         //Create the ref for the chat
         let chatRef = FIRDatabase.database().reference().child("Chats").child(initiativeKey)
@@ -286,13 +357,12 @@ class FirebaseAPI {
             })
             
             //...remove the info from the GeoFire location, should have a GeoFire location...
-            if let geofireRef = geofireRef {
-                geofireRef.removeValue(completionBlock: { (error, ref) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    }
-                })
-            }
+            geofireRef.removeValue(completionBlock: { (error, ref) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+            })
+            
             
             //...and remove the chat from the database
             chatRef.removeValue(completionBlock: { (error, ref) in

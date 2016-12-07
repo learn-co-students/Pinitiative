@@ -14,6 +14,7 @@ struct User {
     
     var databaseKey: String
     
+    
     var initiatives = [String]()
     
     init(firstName:String, lastName: String, databaseKey:String) {
@@ -31,5 +32,13 @@ extension User {
         return User(firstName: "", lastName: "", databaseKey: "")
     }
 }
+
+
+
+
+    
+
+
+
 
 

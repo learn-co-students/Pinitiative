@@ -22,43 +22,39 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     var ref: FIRDatabaseReference!
     
-    var initiative: Initiative! {
-        didSet {
-            connectToChat()
-            collectionView.reloadData()
-
-        }
-    }
+    var initiative: Initiative!
     
-    
-//    var initiative = Initiative(name: "Hello", latitude: 0, longitude: 0, databaseKey: "Testing", leader: "Me", initiativeDescription: "Fun times", createdAt: Date(), associatedDate: Date(), expirationDate: Date.distantFuture)
+  
+    var user: User!
     
     @IBOutlet weak var containerView: UIView!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        tabBarController?.tabBar.isHidden = true
+        
+        
         print(messages)
         
+        
         self.inputToolbar.contentView.leftBarButtonItem = nil
-        connectToChat()
-        collectionView.reloadData()
+        
+
         collectionView.backgroundColor = UIColor.greenX
         jsq_setCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
-        senderId = FirebaseAuth.currentUserID
-        //senderDisplayName = "tameika lawrence"
+        
+        connectToChat()
+
         
         
-        
-        FirebaseAPI.retrieveUser(withKey: senderId!) { (user) in
-            let fullName = user.firstName + " " + user.lastName
-                self.senderDisplayName = fullName
-            
-        }
-        
+     //end of viewdidload
     }
     
-    
+
     
     
     func connectToChat() {
@@ -70,23 +66,23 @@ class ChatDetailViewController: JSQMessagesViewController {
         let msgRef = chatRef.child("Messages")
         
         msgRef.observe(.childAdded, with: { snapshot in
-        print(snapshot.value as Any)
+            print(snapshot.value as Any)
             
-        let messageDictionary = snapshot.value as! [String:String]
-        print("Dictionary \(messageDictionary)")
-        
-        guard let username = messageDictionary["username"] else { return }
-        guard let message = messageDictionary["message"] else { return }
-        guard let userID = messageDictionary["userID"] else { return }
-       
-        print(username)
-        print(message)
-        print(userID)
+            let messageDictionary = snapshot.value as! [String:String]
+            print("Dictionary \(messageDictionary)")
             
-        guard let jsqMessage = JSQMessage(senderId: userID, displayName: username, text: message) else { return }
-
-        self.messages.append(jsqMessage)
-        self.collectionView.reloadData()
+            guard let username = messageDictionary["username"] else { return }
+            guard let message = messageDictionary["message"] else { return }
+            guard let userID = messageDictionary["userID"] else { return }
+            
+            print(username)
+            print(message)
+            print(userID)
+            
+            guard let jsqMessage = JSQMessage(senderId: userID, displayName: username, text: message) else { return }
+            
+            self.messages.append(jsqMessage)
+            self.collectionView.reloadData()
             
         })
         
@@ -111,7 +107,7 @@ class ChatDetailViewController: JSQMessagesViewController {
                     let name = userInfo["name"] ?? "No Name"
                     
                     usersRef.setValue(userInfo)
-                   
+                    
                 })
                 
             }
@@ -156,10 +152,16 @@ class ChatDetailViewController: JSQMessagesViewController {
             dict["message"] = text
             dict["userID"] = self.senderId
             
-            msgRef.childByAutoId().setValue(dict)
+        
             
-            self.finishSendingMessage()
-            jsq_setCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
+            msgRef.childByAutoId().setValue(dict, withCompletionBlock: { (erorr, ref) in
+                
+                
+                self.finishSendingMessage()
+                self.jsq_setCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
+                
+            })
+            
         }
     }
     
