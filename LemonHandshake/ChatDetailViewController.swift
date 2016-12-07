@@ -24,53 +24,40 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     var initiative: Initiative!
     
-    //user
+  
     var user: User!
-    
-//    var initiative = Initiative(name: "Hello", latitude: 0, longitude: 0, databaseKey: "Testing", leader: "Me", initiativeDescription: "Fun times", createdAt: Date(), associatedDate: Date(), expirationDate: Date.distantFuture)
     
     @IBOutlet weak var containerView: UIView!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
         print(messages)
-        print("i got into viewdidload")
+        
         
         self.inputToolbar.contentView.leftBarButtonItem = nil
         
-//        collectionView.reloadData()
+
         collectionView.backgroundColor = UIColor.greenX
         jsq_setCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
-//        senderId = FirebaseAuth.currentUserID
-//        senderDisplayName = "bob"
-        print("i got passed senderID")
+
         
-        print("\(self.senderId)")
-        print("\(self.senderDisplayName)")
+        
+        
         self.senderDisplayName = user.firstName + user.lastName
         
         connectToChat()
-//        sleep(3)
+
         
         
      //end of viewdidload
     }
     
-    
-//    //JCB edited
-//    func retrieveUsername(complete: @escaping (String) -> () ) {
-////        print(1)
-////        print("\(self.senderId)")
-////        print(2)
-//        FirebaseAPI.retrieveUser(withKey: "Yfi3Q3NeeGaegCwqeE126y9cyon2") { (user) in
-//            print("\(self.senderId)")
-//            let senderDisplayName =  "\(user.firstName) \(user.lastName)"
-////            self.senderDisplayName =  "\(user.firstName) \(user.lastName)"
-//            complete(senderDisplayName)
-//        }
-////
-//    }
+
     
     
     func connectToChat() {

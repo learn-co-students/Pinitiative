@@ -32,3 +32,13 @@ extension User {
         return User(firstName: "", lastName: "", databaseKey: "")
     }
 }
+
+
+
+
+    
+
+
+
+
+

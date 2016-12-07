@@ -230,32 +230,10 @@ class InitiativeDetailViewController: UIViewController {
         }
     }
     
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    
-    var stupiduser = User.blank
-    
-    func chatButtonTapped() {
-        
-        FirebaseAPI.retrieveUser(withKey: FirebaseAuth.currentUserID) { (user) in
-            self.stupiduser = user
-            dump(user)
-            dump(self.stupiduser)
-            print("@@@@@@@@@@@@@@@@@@")
-//            self.performSegue(withIdentifier: "chatButtonSegue", sender: self)
-            
-            //self.performSegue(withIdentifier: "chatButtonSegue", sender: user)
-            
-            print("&&&&&&&&&&&&&&&&&&&&&&&")
-        }
-        
-        
-    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("***********************")
         if segue.identifier == "chatButtonSegue" {
             let dest = segue.destination as! ChatDetailViewController
             dest.initiative = initiative
