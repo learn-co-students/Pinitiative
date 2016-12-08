@@ -75,103 +75,25 @@ class InitiativeDetailViewController: UIViewController {
         retrieveLeaderName()
         
         self.view.backgroundColor = UIColor.themeBlue
+        descriptionTextHere.layer.cornerRadius = 20
+        descriptionTextHere.layer.borderColor = UIColor.black.cgColor
+        descriptionTextHere.layer.borderWidth = 1
         
-        InitiativeNameLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.15)
-            make.centerX.equalTo(self.view)
-            make.width.equalTo(400)
-
-        }
+        chatButtonLabel.layer.cornerRadius = 20
+        chatButtonLabel.layer.borderColor = UIColor.black.cgColor
+        chatButtonLabel.layer.borderWidth = 1
         
-        dateStartedLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.21)
-            make.left.equalTo(self.view).offset(30)
-            make.width.equalTo(self.view).offset(-60)
-
-        }
-        
-        leaderLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.26)
-            make.left.equalTo(self.view).offset(30)
-            make.width.equalTo(self.view).offset(-60)
-
-        }
-        
-        followersTextLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.32)
-            make.right.equalTo(self.view).offset(-30)
-            make.width.equalTo(200)
-
-        }
-        
-        
-        descriptionTextHere.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.7)
-            make.centerX.equalTo(self.view)
-            make.width.equalTo(325)
-            make.height.equalTo(200)
-            descriptionTextHere.layer.cornerRadius = 20
-            descriptionTextHere.layer.borderColor = UIColor.black.cgColor
-            descriptionTextHere.layer.borderWidth = 1
-        }
-        
-        descriptionTextField.translatesAutoresizingMaskIntoConstraints = false
-        
-        descriptionTextField.centerYAnchor.constraint(equalTo: descriptionTextHere.centerYAnchor).isActive = true
-        descriptionTextField.centerXAnchor.constraint(equalTo: descriptionTextHere.centerXAnchor).isActive = true
-        descriptionTextField.widthAnchor.constraint(equalTo: descriptionTextHere.widthAnchor, multiplier: 0.9).isActive = true
-        descriptionTextField.heightAnchor.constraint(equalTo: descriptionTextHere.heightAnchor, multiplier: 0.9).isActive = true
-        
-        chatButtonLabel.snp.makeConstraints { (make) in
-            make.bottomMargin.equalTo(self.view).multipliedBy(0.8)
-            make.width.equalTo(200)
-            make.height.equalTo(50)
-            make.centerX.equalTo(self.view)
-            chatButtonLabel.layer.cornerRadius = 20
-            chatButtonLabel.layer.borderColor = UIColor.black.cgColor
-            chatButtonLabel.layer.borderWidth = 1
-        }
-        
-        topSeparatorView.translatesAutoresizingMaskIntoConstraints = false
-        
-       
-        topSeparatorView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.view.frame.height * 0.16).isActive = true
-        topSeparatorView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: -10).isActive = true
-        topSeparatorView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 10).isActive = true
-        topSeparatorView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.19).isActive = true
         
         topSeparatorView.layer.borderWidth = 2
         topSeparatorView.layer.borderColor = UIColor.themeOrange.cgColor
         
-        joinButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        joinButton.bottomAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: -10).isActive = true
-        joinButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.frame.width * 0.07).isActive = true
-        joinButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.15).isActive = true
-        joinButton.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.1).isActive = true
-        
         joinButton.layer.cornerRadius = 10
         joinButton.layer.borderWidth = 1
         joinButton.layer.borderColor = UIColor.black.cgColor
-        
-        leaveButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        leaveButton.bottomAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: -10).isActive = true
-        leaveButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.frame.width * 0.07).isActive = true
-        leaveButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.15).isActive = true
-        leaveButton.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.1).isActive = true
-        
-        leaveButton.layer.cornerRadius = 10
+    
         leaveButton.layer.borderWidth = 1
         leaveButton.layer.borderColor = UIColor.black.cgColor
         
-        manageButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        manageButton.bottomAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: -10).isActive = true
-        manageButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.frame.width * 0.07).isActive = true
-        manageButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.3).isActive = true
-        manageButton.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.1).isActive = true
         
         manageButton.layer.cornerRadius = 10
         manageButton.layer.borderWidth = 1
