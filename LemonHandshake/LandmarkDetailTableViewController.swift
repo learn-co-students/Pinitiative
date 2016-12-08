@@ -55,6 +55,21 @@ class LandmarkDetailTableViewController: UITableViewController {
         cell.initiativeName.text = initiative.name
         cell.dateStartLabel.text = initiative.createdAt.formattedAs("MM/dd/yyyy")
         cell.noOfMembersLabel.text = String(initiative.members.count)
+        FirebaseAPI.retrieveUser(withKey: initiative.leader) { (user) in
+            OperationQueue.main.addOperation {
+                cell.leaderLabel.text = "Leader: \(user.firstName) \(user.lastName)"
+            }
+        }
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? InitiativeDetailViewController {
+            
+            dest.initiative = landmarkInitiatives[(tableView.indexPathForSelectedRow?.row)!]
+            FirebaseAPI.retrieveUser(withKey: FirebaseAuth.currentUserID, completion: { (user) in
+                dest.currentUser = user
+            })
+        }
     }
 }
