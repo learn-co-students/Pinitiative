@@ -32,6 +32,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="D186DD27-CED0-4639-BE45-98CE3418582E" translatesAutoresizingMaskIntoConstraints="NO" id="tBT-f7-dch">
+                                <rect key="frame" x="87" y="548" width="189" height="55"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlO-mL-ohw">
                                 <rect key="frame" x="139" y="617" width="85" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1105,6 +1109,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="D186DD27-CED0-4639-BE45-98CE3418582E" width="1326" height="1291"/>
         <image name="Local Initiatives" width="40" height="40"/>
         <image name="Map" width="40" height="40"/>
         <image name="My Initiative" width="60" height="60"/>

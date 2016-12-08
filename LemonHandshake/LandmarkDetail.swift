@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import CoreLocation
 
 protocol LandmarkDetailDelegate: class {
     func startInitiative()
@@ -17,6 +18,7 @@ protocol LandmarkDetailDelegate: class {
 class LandmarkDetail: UIView {
     
     weak var delegate: LandmarkDetailDelegate?
+     var geocoder = CLGeocoder()
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,7 +26,7 @@ class LandmarkDetail: UIView {
     @IBOutlet weak var propertyTypeIcon: UIImageView!
     @IBOutlet weak var propertyPreview: UIImageView!
     @IBOutlet weak var landmarkNameLabel: UILabel!
-    
+    @IBOutlet weak var addressHeader: UILabel!
     
     @IBAction func landmarkInitiativePressed(_ sender: UIButton) {
         delegate?.listLandmarkInitiative()
@@ -35,14 +37,12 @@ class LandmarkDetail: UIView {
         delegate?.startInitiative()
     }
     
-
-    
     var landmark: Landmark! {
         didSet {
-            
             addressLabel.text = landmark.address
             nameLabel.text = landmark.name
             propertyTypeIcon.image = landmark.icon
+            propertyPreview.image = landmark.tableViewIcon
         }
     }
     

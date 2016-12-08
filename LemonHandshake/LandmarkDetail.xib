@@ -12,7 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LandmarkDetail" customModule="LemonHandshake" customModuleProvider="target">
             <connections>
-                <outlet property="addressLabel" destination="e9h-cy-3zI" id="iHG-dI-5ai"/>
+                <outlet property="addressHeader" destination="r0y-Se-hRY" id="109-Cx-45i"/>
+                <outlet property="addressLabel" destination="e9h-cy-3zI" id="dZp-UJ-28i"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="J97-7f-nKO"/>
                 <outlet property="landmarkNameLabel" destination="Ail-0c-6hb" id="HQg-fM-Izd"/>
                 <outlet property="nameLabel" destination="EAp-82-Z2t" id="YUy-XM-L2B"/>
@@ -57,7 +58,7 @@
                         <constraint firstAttribute="width" constant="60" id="8Ny-5P-tIV"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yXv-kh-WQO">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yXv-kh-WQO">
                     <rect key="frame" x="74" y="90" width="226" height="104"/>
                 </imageView>
                 <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="fbZ-km-Ywq" userLabel="Address Stack View">

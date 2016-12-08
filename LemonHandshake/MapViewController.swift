@@ -45,7 +45,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         
         self.view.bringSubview(toFront: userLocationButton)
         
-
+        
         let imageView = UIImageView(image: IconConstants.fullLogo)
         navBar.titleView = imageView
         navBar.titleView?.layer.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 45)
@@ -56,19 +56,19 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     }
     
     func mapViewRegionIsChanging(_ mapView: MGLMapView) {
-    
+        
         if String(format:"%.5f", mapView.centerCoordinate.latitude) != String(format:"%.5f", store.userLocation.coordinate.latitude) {
             
             searchMapLabel.isEnabled = true
             searchMapLabel.isHidden = false
             
             mapView.showsUserLocation = false
-   
+            
         }
-
+        
     }
     
-   
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -81,34 +81,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         
     }
     
-    // MARK: - Navigation
-    
-    
-    func refreshLandmarks(){
-        self.store.landmarks.removeAll()
-        self.landmarks.removeAll()
-
-        FirebaseAPI.geoFirePullNearbyLandmarks (within: 1.0, ofLocation: CLLocation(latitude: store.userLatitude, longitude: store.userLongitude)) { (landmark) in
-            self.store.landmarks.append(landmark)
-            self.addSinglePointAnnotation(for: landmark)
-        }
-    }
-    
-    func refreshMapLandmarks(){
-        self.store.landmarks.removeAll()
-        self.landmarks.removeAll()
-        
-        guard let annotations = mapView.annotations else { return }
-            mapView.removeAnnotations(annotations)
-        
-        FirebaseAPI.geoFirePullNearbyLandmarks (within: 1.0, ofLocation: CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)) { (landmark) in
-            OperationQueue.main.addOperation {
-            self.store.landmarks.append(landmark)
-            self.addSinglePointAnnotation(for: landmark)
-            }
-        }
-    }
-    
+    // MARK: Map functions
     func createMap() {
         mapView = MGLMapView(frame: view.bounds)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -136,8 +109,59 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         }
     }
     
+    func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
+        mapBounds = mapView.visibleCoordinateBounds
+        addPointAnnotations()
+        
+    }
+    
+    func setUserLocationArrowConstraints() {
+        userLocationButton.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self.view).multipliedBy(1.83)
+            make.centerY.equalTo(self.view).multipliedBy(0.33)
+            
+            make.width.equalTo(30)
+            make.height.equalTo(30)
+            
+            //            userLocationButton.frame.size.height = 10
+            //            userLocationButton.frame.size.width = 10
+            
+            userLocationButton.layer.borderWidth = 1
+            userLocationButton.alpha = 1.0
+            userLocationButton.layer.cornerRadius = 6
+            userLocationButton.backgroundColor = UIColor.themeBlue.withAlphaComponent(0.5)
+        }
+    }
     
     
+    // MARK: Refresh Landmarks
+    func refreshLandmarks(){
+        self.store.landmarks.removeAll()
+        self.landmarks.removeAll()
+        
+        FirebaseAPI.geoFirePullNearbyLandmarks (within: 1.0, ofLocation: CLLocation(latitude: store.userLatitude, longitude: store.userLongitude)) { (landmark) in
+            self.store.landmarks.append(landmark)
+            self.addSinglePointAnnotation(for: landmark)
+        }
+    }
+    
+    func refreshMapLandmarks(){
+        self.store.landmarks.removeAll()
+        self.landmarks.removeAll()
+        
+        guard let annotations = mapView.annotations else { return }
+        mapView.removeAnnotations(annotations)
+        
+        FirebaseAPI.geoFirePullNearbyLandmarks (within: 1.0, ofLocation: CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)) { (landmark) in
+            OperationQueue.main.addOperation {
+                self.store.landmarks.append(landmark)
+                self.addSinglePointAnnotation(for: landmark)
+            }
+        }
+    }
+    
+    
+    // MARK: Annotations
     func addPointAnnotations() {
         var pointAnnotations = [CustomPointAnnotation]()
         
@@ -166,51 +190,80 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
                 }
                 
             }
-         
+            
             
             point.reuseIdentifier = id
             
-               // point.reuseIdentifier = landmark.type.rawValue
-                pointAnnotations.append(point)
-
+            // point.reuseIdentifier = landmark.type.rawValue
+            pointAnnotations.append(point)
+            
         }
         mapView.addAnnotations(pointAnnotations)
-       
+        
     }
     
     func addSinglePointAnnotation(for landmark: Landmark) {
         
-            let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey, image: landmark.icon)
+        let point = CustomPointAnnotation(coordinate: landmark.coordinates, title: landmark.name, subtitle: landmark.address, databaseKey: landmark.databaseKey, image: landmark.icon)
         
-            var id: String {
-                   switch landmark.agency {
-                    case "EDU", "CUNY", "ACS", "EDUC", "HRA", "NYPL"/*NYpublibrary*/:
-                        return "school"
-            
-                    case "FIRE":
-                        return "firemen"
-            
-                    case "PARKS", "SANIT", "DEP":
-                        return "forest"
-            
-                    case "NYPD","NYCHA", "COURT", "DCAS", "DOT", "ACS", "CORR":
-                        return "police"
-            
-                    case "HLTH", "DHS", "HHC", "AGING", "OCME", "HRA":
-                        return "hospital-building"
-                        
-                    default:
-                        return "drop_pin_marker"
-                    }
-            
+        var id: String {
+            switch landmark.agency {
+            case "EDU", "CUNY", "ACS", "EDUC", "HRA", "NYPL"/*NYpublibrary*/:
+                return "school"
+                
+            case "FIRE":
+                return "firemen"
+                
+            case "PARKS", "SANIT", "DEP":
+                return "forest"
+                
+            case "NYPD","NYCHA", "COURT", "DCAS", "DOT", "ACS", "CORR":
+                return "police"
+                
+            case "HLTH", "DHS", "HHC", "AGING", "OCME", "HRA":
+                return "hospital-building"
+                
+            default:
+                return "drop_pin_marker"
             }
-            print("THIS IS THE POINTS AGENCY CONVERTED INTO AN ICON STRING\(id)")
-            point.reuseIdentifier = id
-
-            print("THIS IS THE Agency \(landmark.agency)")
+            
+        }
+        print("THIS IS THE POINTS AGENCY CONVERTED INTO AN ICON STRING\(id)")
+        point.reuseIdentifier = id
+        
+        print("THIS IS THE Agency \(landmark.agency)")
         
         mapView.addAnnotation(point)
     }
+    
+    func addSinglePointAnnotation(for initiative: Initiative) {
+        
+        
+//        geocoder.reverseGeocodeLocation(location){
+//            placemarks, error in
+//            var address = String()
+//            
+//            if error != nil {
+//                address = "Cannot convert coordinate to address."
+//            }
+//            
+//            guard let unwrappedPlacemarks = placemarks else { return }
+//            if unwrappedPlacemarks.count > 0 {
+//                let placemark = unwrappedPlacemarks[0]
+//                let addressLines = placemark.addressDictionary?["FormattedAddressLines"] as! [String]
+//                for addressLine in addressLines {
+//                    address += (addressLine + " ")
+//                }
+//                geocodeAddress = address
+//            }
+//
+        
+        
+        
+        //        let point = CustomPointAnnotation(coordinate: initiative.location.coordinate, title: "Marked Location", subtitle: , databaseKey: <#T##String#>, image: <#T##UIImage#>)
+        
+    }
+    
     
     
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
@@ -248,6 +301,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     }
     
     
+    // MARK: Gesture Recognizer functions
     func activateGestureRecognizer() {
         let doubleTap = UITapGestureRecognizer(target: self, action: nil)
         doubleTap.numberOfTapsRequired = 2
@@ -269,57 +323,46 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
             placemarks, error in
             var address = String()
             
-                if error != nil {
-                    geocodeAddress = "Cannot convert coordinate to address."
+            if error != nil {
+                address = "Cannot convert coordinate to address."
+            }
+            
+            guard let unwrappedPlacemarks = placemarks else { return }
+            if unwrappedPlacemarks.count > 0 {
+                let placemark = unwrappedPlacemarks[0]
+                let addressLines = placemark.addressDictionary?["FormattedAddressLines"] as! [String]
+                for addressLine in addressLines {
+                    address += (addressLine + " ")
                 }
-                
-                guard let unwrappedPlacemarks = placemarks else { return }
-                if unwrappedPlacemarks.count > 0 {
-                    let placemark = unwrappedPlacemarks[0]
-                    let addressLines = placemark.addressDictionary?["FormattedAddressLines"] as! [String]
-                    for addressLine in addressLines {
-                        address += (addressLine + " ")
-                    }
-                    geocodeAddress = address
-                }
-        
+                geocodeAddress = address
+            }
+            
             let image = UIImage(named: "drop_pin_marker")!
             
             let iconSize = CGSize(width: 20, height: 20)
             
             image.size.equalTo(iconSize)
             
-    
+            
             let markedLocation = CustomPointAnnotation(coordinate: longPressCoordinate, title: Constants.markedLocationText, subtitle: geocodeAddress, databaseKey: "", image: image)
             
-          
-            //test need geocoding for mapbox
+            
             markedLocation.reuseIdentifier = Constants.customMarkerText
             self.mapView.addAnnotation(markedLocation)
             
             let senderLocation = DropPinLocation(coordinate: longPressCoordinate, address: geocodeAddress)
             
             self.performSegue(withIdentifier: Constants.dropPinSegueText, sender: senderLocation)
-    
         }
     }
-    
-    func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
-        mapBounds = mapView.visibleCoordinateBounds
-        addPointAnnotations()
-        
-    }
-    
-    
     
     @IBAction func searchMapButton(_ sender: Any) {
         print("SEARCHING FOR NEW LOCATIONS")
         refreshMapLandmarks()
-        
     }
     
     func setMapSearchButtonConstraints() {
-            searchMapLabel.snp.makeConstraints { (make) in
+        searchMapLabel.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.view)
             make.centerY.equalTo(self.view).multipliedBy(0.33)
             make.width.equalTo(200)
@@ -331,26 +374,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         self.view.bringSubview(toFront: searchMapLabel)
         searchMapLabel.isEnabled = false
         searchMapLabel.isHidden = true
-      
+        
     }
     
-    func setUserLocationArrowConstraints() {
-        userLocationButton.snp.makeConstraints { (make) in
-            make.centerX.equalTo(self.view).multipliedBy(1.83)
-            make.centerY.equalTo(self.view).multipliedBy(0.33)
-    
-            make.width.equalTo(30)
-            make.height.equalTo(30)
-            
-//            userLocationButton.frame.size.height = 10
-//            userLocationButton.frame.size.width = 10
-            
-            userLocationButton.layer.borderWidth = 1
-            userLocationButton.alpha = 1.0
-            userLocationButton.layer.cornerRadius = 6
-            userLocationButton.backgroundColor = UIColor.themeBlue.withAlphaComponent(0.5)
-        }
- }
 }
 
 
@@ -367,15 +393,15 @@ extension MapViewController {
                 destVC.landmark = landmark as! Landmark
             }
         }
-            
-            if segue.identifier == Constants.dropPinSegueText {
+        
+        if segue.identifier == Constants.dropPinSegueText {
             print(segue.identifier)
             let destVC = segue.destination as! DropPinDetailViewController
             destVC.location = sender as! DropPinLocation
-            }
         }
-
-//MARK: - Test For New User Screen
+    }
+    
+    //MARK: - Test For New User Screen
     func shouldPresentNewUserInfo() {
         FirebaseAPI.test(forUserWithKey: FirebaseAuth.currentUserID) { (doesExist) in
             if !doesExist {

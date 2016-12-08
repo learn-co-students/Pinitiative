@@ -23,6 +23,7 @@ class FormManager: FormViewController {
     var nameText = String()
     var descriptionText = String()
     var date = Date()
+    var landmark: Landmark!
     
     func makeStartInitiativeForm() {
         
@@ -30,6 +31,20 @@ class FormManager: FormViewController {
         
         let header = LabelViewFormer<FormLabelHeaderView>() { (view) in
             view.textLabel?.text = "Initiative Details"
+        }
+        
+        let landmarkDetail = LabelRowFormer<FormLabelCell>().configure { (row) in
+            row.cellSetup { (cell) in
+               cell.textLabel?.font = UIFont(name: font.avenirNext.rawValue, size: CGFloat(fontSize.tableLabel.rawValue))
+               cell.contentMode = .scaleAspectFill
+               cell.textLabel?.contentMode = .scaleAspectFit
+            
+                if self.landmark != nil {
+                    cell.textLabel?.text = "\(self.landmark.name)"
+                } else {
+                    cell.textLabel?.text = "Initiative for Custom Location"
+                }
+            }
         }
         
         let initiativeLabelRow = LabelRowFormer<FormLabelCell>().configure { (row) in
@@ -40,7 +55,7 @@ class FormManager: FormViewController {
         }
         
         let initiativeTextFieldRow = TextFieldRowFormer<FormTextFieldCell>().configure { (textfield) in
-            textfield.placeholder = "Give your initiative a name."
+            textfield.placeholder = "Give your initiative a name"
             textfield.cellSetup { (cell) in
                 cell.textLabel?.font = UIFont(name: font.avenirNext.rawValue, size: CGFloat(fontSize.tableLabel.rawValue))
                 }
@@ -59,7 +74,7 @@ class FormManager: FormViewController {
         
         
         let initiativeDescTextViewRow = TextViewRowFormer<FormTextViewCell>().configure { (textfield) in
-            textfield.placeholder = "Describe your initiative."
+            textfield.placeholder = "Describe your initiative"
             textfield.cellSetup{ (cell) in
                 cell.textLabel?.font = UIFont(name: font.avenirNext.rawValue, size: CGFloat(fontSize.tableLabel.rawValue))
             }
@@ -68,6 +83,7 @@ class FormManager: FormViewController {
         }
         
         let section1 = SectionFormer(rowFormer:
+            landmarkDetail,
             initiativeLabelRow,
             initiativeTextFieldRow,
             initiativeDescLabelRow,

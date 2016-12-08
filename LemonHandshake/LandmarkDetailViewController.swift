@@ -26,6 +26,12 @@ class LandmarkDetailViewController: UIViewController, LandmarkDetailDelegate {
         super.viewWillAppear(animated)
         
         landmarkDetailView.nameLabel.text = landmark.name
+        if landmark.address.isEmpty {
+            landmarkDetailView.addressHeader.isEnabled = false
+        } else {
+            landmarkDetailView.addressLabel.text = landmark.address
+        }
+        landmarkDetailView.propertyTypeIcon.image = landmark.tableViewIcon
 //        if landmark.type == .school {
 //            let school = landmark as! School
 //            landmarkDetailView.addressLabel.text = school.address
