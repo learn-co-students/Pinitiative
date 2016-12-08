@@ -97,9 +97,26 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController,didFinishWith result: MFMailComposeResult, error: Error?) {
-       
-        controller.dismiss(animated: true, completion: nil)
+
+            let alertController = UIAlertController(title: nil, message: "Thanks for the Feedback!", preferredStyle: UIAlertControllerStyle.alert)
+
+            let thanks = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default) { completion -> Void in
+        
+            self.dismiss(animated: true, completion: nil)
+
+            }
+        
+            alertController.addAction(thanks)
+
+            controller.dismiss(animated: true) {
+                self.present(alertController, animated: true, completion: nil)
+        }
+
     }
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
