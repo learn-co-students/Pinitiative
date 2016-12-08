@@ -58,6 +58,7 @@ class StartInitiativeNewViewController: UIViewController {
         form.landmark = landmark
         form.makeStartInitiativeForm()
         formerView.addSubview((form.view)!)
+        form.view.constrainTo(formerView)
     }
     
   

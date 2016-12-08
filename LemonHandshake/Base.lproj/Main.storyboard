@@ -370,10 +370,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ViS-c9-ery">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ViS-c9-ery">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p3G-za-B65" customClass="PushButtonView" customModule="LemonHandshake" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p3G-za-B65" customClass="PushButtonView" customModule="LemonHandshake" customModuleProvider="target">
                                         <rect key="frame" x="8" y="8" width="100" height="100"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xBG-sY-EQS">
@@ -394,20 +394,18 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EV8-Ir-0z5">
-                                <rect key="frame" x="0.0" y="118" width="375" height="541"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="589"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="EV8-Ir-0z5" firstAttribute="top" secondItem="qID-Op-9j8" secondAttribute="top" constant="118" id="B7Z-nY-Bzh"/>
+                            <constraint firstItem="EV8-Ir-0z5" firstAttribute="top" secondItem="qID-Op-9j8" secondAttribute="top" constant="70" id="B7Z-nY-Bzh"/>
                             <constraint firstItem="EV8-Ir-0z5" firstAttribute="leading" secondItem="qID-Op-9j8" secondAttribute="leading" id="Bnj-WT-oq5"/>
                             <constraint firstItem="ViS-c9-ery" firstAttribute="leading" secondItem="qID-Op-9j8" secondAttribute="leading" id="QBO-d8-f62"/>
                             <constraint firstAttribute="trailing" secondItem="ViS-c9-ery" secondAttribute="trailing" id="aTa-Ra-aos"/>
                             <constraint firstItem="ViS-c9-ery" firstAttribute="top" secondItem="qID-Op-9j8" secondAttribute="top" id="mJz-x3-vDN"/>
                             <constraint firstAttribute="trailing" secondItem="EV8-Ir-0z5" secondAttribute="trailing" id="nzU-aJ-rYP"/>
-                            <constraint firstItem="EV8-Ir-0z5" firstAttribute="top" secondItem="ViS-c9-ery" secondAttribute="bottom" constant="-8" id="piB-8B-PRD"/>
-                            <constraint firstItem="EV8-Ir-0z5" firstAttribute="top" secondItem="ViS-c9-ery" secondAttribute="bottom" constant="-8" id="vm4-58-06K"/>
                             <constraint firstItem="mgq-cF-n8y" firstAttribute="top" secondItem="EV8-Ir-0z5" secondAttribute="bottom" constant="8" id="w3y-3J-cMk"/>
                         </constraints>
                     </view>
@@ -862,7 +860,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="Map" id="meg-bg-2nx"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CzC-3E-i3N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CzC-3E-i3N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -892,7 +890,7 @@
                     <tabBarItem key="tabBarItem" title="My Initiatives" image="My Initiative" id="NiF-Ry-voJ"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z12-fv-UBG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z12-fv-UBG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -945,7 +943,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="jLX-J0-C1k"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bGS-9c-q27">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bGS-9c-q27">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1067,7 +1065,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nsZ-y6-Ust" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="51H-FX-n4A">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="51H-FX-n4A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1089,7 +1087,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Au1-fL-NDD" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="4aq-wc-L2P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="4aq-wc-L2P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1109,7 +1107,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="D186DD27-CED0-4639-BE45-98CE3418582E" width="1326" height="1291"/>-
+        <image name="D186DD27-CED0-4639-BE45-98CE3418582E" width="1326" height="1291"/>
         <image name="Local Initiatives" width="40" height="40"/>
         <image name="Map" width="40" height="40"/>
         <image name="My Initiative" width="60" height="60"/>
