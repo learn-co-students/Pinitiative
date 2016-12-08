@@ -132,6 +132,7 @@ class InitiativeDetailViewController: UIViewController {
         
         topSeparatorView.translatesAutoresizingMaskIntoConstraints = false
         
+       
         topSeparatorView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.view.frame.height * 0.16).isActive = true
         topSeparatorView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: -10).isActive = true
         topSeparatorView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 10).isActive = true
@@ -141,6 +142,7 @@ class InitiativeDetailViewController: UIViewController {
         topSeparatorView.layer.borderColor = UIColor.themeOrange.cgColor
         
         joinButton.translatesAutoresizingMaskIntoConstraints = false
+        
         
         joinButton.bottomAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: -10).isActive = true
         joinButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.frame.width * 0.07).isActive = true
@@ -178,13 +180,13 @@ class InitiativeDetailViewController: UIViewController {
         
         descriptionTextField.scrollRectToVisible(CGRect(origin: CGPoint(x: 0, y: 0), size: descriptionTextField.frame.size), animated: false)
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tabBarController?.tabBar.isHidden = false
+        
         testIfUserIsMember()
     }
-    
     func populateInitiativeData() {
         InitiativeNameLabel.text = initiative.name
         dateStartedLabel.text = "Started: \(initiative.createdAt.formattedAs("MM/dd/yy"))"

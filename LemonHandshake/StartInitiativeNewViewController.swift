@@ -13,7 +13,7 @@ class StartInitiativeNewViewController: UIViewController {
     
     var form = FormManager()
     var formView: UIView!
-    var landmark: Landmark!
+    var landmark: Landmark?
     var sender = ""
     
     @IBOutlet weak var closeButton: UIView!

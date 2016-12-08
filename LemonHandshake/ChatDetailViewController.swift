@@ -71,9 +71,14 @@ class ChatDetailViewController: JSQMessagesViewController {
             let messageDictionary = snapshot.value as! [String:String]
             print("Dictionary \(messageDictionary)")
             
+            
+            
             guard let username = messageDictionary["username"] else { return }
             guard let message = messageDictionary["message"] else { return }
             guard let userID = messageDictionary["userID"] else { return }
+            
+            
+            
             
             print(username)
             print(message)
@@ -192,16 +197,23 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         
-        let outgoingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: senderDisplayName), backgroundColor: UIColor.darkGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
+        let currentMessage = messages[indexPath.item]
+        let incomingUserName = currentMessage.senderDisplayName
         
-        let incomingAvatar = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: senderDisplayName), backgroundColor: UIColor.darkGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
-        
-        let message = messages[indexPath.item]
-        if message.senderId == senderId {
-            return outgoingAvatar
+        if currentMessage.senderId == senderId {
+            
+            // Outgoing
+            return JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: senderDisplayName), backgroundColor: UIColor.darkGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
+            
         } else {
-            return incomingAvatar
+            
+            // Incoming
+            return JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: incomingUserName ?? "No Name"), backgroundColor: UIColor.darkGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
+            
         }
+        
+        
+       
 
     }
     
