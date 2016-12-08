@@ -11,11 +11,15 @@ import UIKit
 
 protocol DropPinDelegate: class {
     func startInitiative()
+    func joinInitiative()
 }
 
 class DropPinDetail: UIView {
     
     weak var delegate: DropPinDelegate?
+    
+    var hasInitiative = false
+    var initiativeKey = ""
         
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -24,16 +28,28 @@ class DropPinDetail: UIView {
     @IBOutlet weak var longitudeLabel: UILabel!
 
     @IBAction func startInitiativePressed(_ sender: Any) {
-        delegate?.startInitiative()
+        if hasInitiative {
+            delegate?.joinInitiative() }
+        else {
+            delegate?.startInitiative()
+        }
     }
     
     @IBOutlet weak var startInitiativeButton: UIButton!
+    
     var location: DropPinLocation! { //custom class for drop Pin that has location
         didSet {
             addressLabel.text = location.address
             latitudeLabel.text = String(format: "%.2f", location.coordinate.latitude)
             longitudeLabel.text = String(format: "%.2f", location.coordinate.longitude)
-        }
+            
+            if location.withInitiative {
+               startInitiativeButton.setTitle("Join Initiative?", for: .normal)
+               self.hasInitiative = location.withInitiative
+            } else {
+                startInitiativeButton.setTitle("Start an Initiative?", for: .normal)
+            }
+    }
     }
     
     required init?(coder aDecoder: NSCoder) { //Create via storyboard
