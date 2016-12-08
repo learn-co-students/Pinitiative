@@ -43,7 +43,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.delegate = self
         setMapSearchButtonConstraints()
         setUserLocationArrowConstraints()
-        addAnnotationToMarkedLocations()
+//        addAnnotationToMarkedLocations() TODO
         self.view.bringSubview(toFront: userLocationButton)
         
         let imageView = UIImageView(image: IconConstants.fullLogo)
@@ -141,7 +141,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
                 mapView.removeAnnotations(annotations) }
         }
         
-        addAnnotationToMarkedLocations()
+//       addAnnotationToMarkedLocations() TODO
         FirebaseAPI.geoFirePullNearbyLandmarks (within: 1.0, ofLocation: CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)) { (landmark) in
             OperationQueue.main.addOperation {
                 self.store.landmarks.append(landmark)

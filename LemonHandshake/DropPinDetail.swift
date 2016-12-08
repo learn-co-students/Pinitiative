@@ -28,11 +28,11 @@ class DropPinDetail: UIView {
     @IBOutlet weak var longitudeLabel: UILabel!
 
     @IBAction func startInitiativePressed(_ sender: Any) {
-        if hasInitiative {
-            delegate?.joinInitiative() }
-        else {
+//        if hasInitiative {
+//            delegate?.joinInitiative() }
+//        else {
             delegate?.startInitiative()
-        }
+//        }
     }
     
     @IBOutlet weak var startInitiativeButton: UIButton!
@@ -42,13 +42,13 @@ class DropPinDetail: UIView {
             addressLabel.text = location.address
             latitudeLabel.text = String(format: "%.2f", location.coordinate.latitude)
             longitudeLabel.text = String(format: "%.2f", location.coordinate.longitude)
-            
-            if location.withInitiative {
-               startInitiativeButton.setTitle("Join Initiative?", for: .normal)
-               self.hasInitiative = location.withInitiative
-            } else {
+//            :TODO
+//            if location.withInitiative {
+//               startInitiativeButton.setTitle("Join Initiative?", for: .normal)
+//               self.hasInitiative = location.withInitiative
+//            } else {
                 startInitiativeButton.setTitle("Start an Initiative?", for: .normal)
-            }
+//            }
     }
     }
     
