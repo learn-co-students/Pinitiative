@@ -31,35 +31,18 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
     
     @IBOutlet weak var createAccountFrameView: UIView!
     @IBOutlet weak var createAccountButtonView: UIButton!
-    @IBOutlet weak var fullLogoImageView: UIImageView!
    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let user = FIRAuth.auth()?.currentUser {
+        if (FIRAuth.auth()?.currentUser) != nil {
            
             NotificationCenter.default.post(name: .closeLoginVC, object: nil)
             
         } else {
             print("LOGIN FLOW: this is NOT a current user")
         }
-        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        
-//        print("VIEW WILL APPEAR HAPPENING")
-//        
-//        let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-//        
-//        present(tabBarController, animated: true, completion: {
-//            print("TAB BAR PRESENTED")
-//            
-//        })
-        
-        
-        
-        
-        
     }
     
     override func viewDidLoad() {
@@ -77,32 +60,26 @@ class LoginScreenViewController: UIViewController, FUIAuthDelegate {
         createAccountButtonView.translatesAutoresizingMaskIntoConstraints = false
         
         createAccountButtonView.centerXAnchor.constraint(equalTo: createAccountFrameView.centerXAnchor).isActive = true
-        createAccountButtonView.centerYAnchor.constraint(equalTo: createAccountFrameView.centerYAnchor, constant: createAccountFrameView.frame.height * 0.2).isActive = true
-        createAccountButtonView.heightAnchor.constraint(equalTo: createAccountFrameView.heightAnchor, multiplier: 0.3).isActive = true
-        createAccountButtonView.widthAnchor.constraint(equalTo: createAccountFrameView.widthAnchor, multiplier: 0.5).isActive = true
+        createAccountButtonView.centerYAnchor.constraint(equalTo: createAccountFrameView.centerYAnchor).isActive = true
+        createAccountButtonView.heightAnchor.constraint(equalTo: createAccountFrameView.heightAnchor, multiplier: 0.4).isActive = true
+        createAccountButtonView.widthAnchor.constraint(equalTo: createAccountFrameView.widthAnchor, multiplier: 0.8).isActive = true
         
         createAccountButtonView.layer.cornerRadius = 10
         createAccountButtonView.layer.borderColor = UIColor.themeOrange.cgColor
         createAccountButtonView.layer.borderWidth = 3
         
-        fullLogoImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        fullLogoImageView.centerXAnchor.constraint(equalTo: createAccountFrameView.centerXAnchor).isActive = true
-        fullLogoImageView.centerYAnchor.constraint(equalTo: createAccountFrameView.centerYAnchor, constant: createAccountFrameView.frame.height * -0.25).isActive = true
-        fullLogoImageView.heightAnchor.constraint(equalTo: createAccountFrameView.heightAnchor, multiplier: 0.5).isActive = true
-        fullLogoImageView.widthAnchor.constraint(equalTo: createAccountFrameView.widthAnchor, multiplier: 1).isActive = true
         
-      
-}
+    }
     
     
     // conforming to Firebase UI protocol
     public func authUI(_ authUI: FUIAuth, didSignInWith user: FIRUser?, error: Error?) {
-    
+        
     }
     
     
-
+    
     
 }
 

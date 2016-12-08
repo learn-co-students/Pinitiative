@@ -26,20 +26,20 @@ extension FirebaseAPI {
         
         let userLocation = location
         
-        print("LOCATION: \(store.userCoordinate)")
-        
         guard let geoFire = GeoFire(firebaseRef: geoFireRef) else { print("FAILURE: GeoFire failed to create non nil value from geoFireRef"); return }
         //
         
         //Make Circle Query
         guard let circleQuery = geoFire.query(at: userLocation, withRadius: range) else { print("FAILURE: Failed to create non nil value for cicleQuery"); return }
         
+        
+        print("STARTING CIRCLE QUERY!")
         circleQuery.observe(.keyEntered) { (optionalKey, location) in
             guard let key = optionalKey else { print("FAILURE: Failed to retrieve key during circleQuery observe"); return }
             
+            print("CIRLCE QUERYING...")
             
             FirebaseAPI.retrieveLandmark(withKey: key, completion: { (landmark) in
-                print("SUCCESS: Retrieved data for \(landmark.name)")
                 store.landmarks.append(landmark)
                 
                 completion(landmark)

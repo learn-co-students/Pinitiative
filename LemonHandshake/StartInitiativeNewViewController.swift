@@ -13,7 +13,7 @@ class StartInitiativeNewViewController: UIViewController {
     
     var form = FormManager()
     var formView: UIView!
-    var landmark: Landmark!
+    var landmark: Landmark?
     var sender = ""
     
     @IBOutlet weak var closeButton: UIView!
@@ -55,8 +55,10 @@ class StartInitiativeNewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        form.landmark = landmark
         form.makeStartInitiativeForm()
         formerView.addSubview((form.view)!)
+        form.view.constrainTo(formerView)
     }
     
   
