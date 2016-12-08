@@ -32,7 +32,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="548F5858-8048-47FA-A4C1-445CE4F744D7" translatesAutoresizingMaskIntoConstraints="NO" id="tBT-f7-dch">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="BD776305-FBAA-4187-9513-72E480538C56" translatesAutoresizingMaskIntoConstraints="NO" id="tBT-f7-dch">
                                 <rect key="frame" x="87" y="548" width="189" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -284,24 +284,25 @@
         <scene sceneID="mD0-lR-aEp">
             <objects>
                 <tableViewController id="Dwn-du-dg8" customClass="NearbyInitiativesTableViewController" customModule="LemonHandshake" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="187" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ohc-bL-pG8">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="187" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ohc-bL-pG8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.40000000000000002" green="0.53333333329999999" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="nearbyInitiatives" rowHeight="246" id="eiG-3N-CiO" customClass="NearbyInitiativesDetailCell" customModule="LemonHandshake" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="nearbyInitiatives" rowHeight="246" id="eiG-3N-CiO" customClass="NearbyInitiativesDetailCell" customModule="LemonHandshake" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="246"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eiG-3N-CiO" id="BpV-ex-tVk">
+                                <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eiG-3N-CiO" id="BpV-ex-tVk">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="245"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xTy-Ka-Oxi" userLabel="Landmark Type">
-                                            <rect key="frame" x="97.5" y="16" width="230.5" height="107"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xTy-Ka-Oxi" userLabel="Landmark Type">
+                                            <rect key="frame" x="89" y="8" width="154.5" height="96.5"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGX-2w-e4P">
                                             <rect key="frame" x="0.0" y="243.5" width="414" height="1.5"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="1" green="0.53578642170000002" blue="0.1669550672" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1.5" id="Gkw-KJ-tLJ"/>
                                                 <constraint firstAttribute="width" constant="400" id="s9P-h9-22y"/>
@@ -351,9 +352,9 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.40000000000000002" green="0.53333333329999999" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="dateStartedLabel" destination="x0m-TU-DhO" id="dkg-HM-egE"/>
+                                    <outlet property="dateStartedLabel" destination="x0m-TU-DhO" id="N7X-DT-vdX"/>
                                     <outlet property="followersLabel" destination="E2Z-R3-TLq" id="Owf-ov-DbM"/>
-                                    <outlet property="nearbyInitiativeNameLabel" destination="yhA-XN-qb7" id="lUm-J3-d4F"/>
+                                    <outlet property="nearbyInitiativeNameLabel" destination="yhA-XN-qb7" id="Fxj-aM-KKi"/>
                                     <segue destination="qOK-cb-7fF" kind="show" identifier="localInitiativeDetail" id="nR9-YX-1Fo"/>
                                 </connections>
                             </tableViewCell>
@@ -1117,7 +1118,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="548F5858-8048-47FA-A4C1-445CE4F744D7" width="826" height="250">
+        <image name="BD776305-FBAA-4187-9513-72E480538C56" width="826" height="250">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -14946,8 +14947,8 @@ AAAEAQAAAAAAAABBAAAAAAAAAAAAAAAAAAylGA
         <image name="backgroundNYC" width="1326" height="1291"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nR9-YX-1Fo"/>
         <segue reference="h5K-wb-Q3f"/>
+        <segue reference="peZ-TE-S1e"/>
         <segue reference="qh2-Sn-9oR"/>
     </inferredMetricsTieBreakers>
 </document>
