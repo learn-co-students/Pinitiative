@@ -56,6 +56,18 @@ class FormManager: FormViewController {
         
         let initiativeTextFieldRow = TextFieldRowFormer<FormTextFieldCell>().configure { (textfield) in
             textfield.placeholder = "Give your initiative a name"
+            textfield.onTextChanged({ (input) in
+                print("Text change")
+                var edited = String()
+                
+                for character in input.characters {
+                    if edited.characters.count != 5 {
+                        edited += "\(character)"
+                    }
+                }
+                
+                textfield.text = edited
+            })
             textfield.cellSetup { (cell) in
                 cell.textLabel?.font = UIFont(name: font.avenirNext.rawValue, size: CGFloat(fontSize.tableLabel.rawValue))
                 }
@@ -63,7 +75,6 @@ class FormManager: FormViewController {
                 self.nameText = text
                 print(self.nameText)
         }
-
     
         let initiativeDescLabelRow = LabelRowFormer<FormLabelCell>().configure { (row) in
             row.cellSetup { (cell) in
