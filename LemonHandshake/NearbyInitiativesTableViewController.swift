@@ -61,59 +61,24 @@ class NearbyInitiativesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "nearbyInitiatives", for: indexPath) as! NearbyInitiativesDetailCell
 
-        // add the below to a xib file?
-        
-        
-//        cell.backgroundColor = UIColor.clear
-//        cell.layer.borderColor = UIColor.blue.cgColor
-//        cell.layer.borderWidth = 2
-//        
-//        cell.nearbyInitiativeNameLabel.snp.makeConstraints { (make) in
-//            make.top.equalTo(cell.contentView)
-//            make.centerX.equalTo(cell.contentView.center)
-//        }
-//        
-//        cell.dateStartedLabel.snp.makeConstraints { (make) in
-//            make.top.equalTo(cell.contentView).offset(40)
-//            make.leftMargin.equalTo(cell.contentView).offset(20)
-//            
-//        }
-//        
-//        cell.dateTextLabel.snp.makeConstraints { (make) in
-//            make.top.equalTo(cell.contentView).offset(40)
-//            make.rightMargin.equalTo(cell.contentView).offset(-20)
-//
-//        }
-//        
-//        cell.followersLabel.snp.makeConstraints { (make) in
-//            make.top.equalTo(cell.contentView).offset(80)
-//            make.leftMargin.equalTo(cell.contentView).offset(20)
-//
-//        }
-//
-//        cell.followersTextLabel.snp.makeConstraints { (make) in
-//            make.top.equalTo(cell.contentView).offset(80)
-//            make.rightMargin.equalTo(cell.contentView).offset(-20)
-//
-//        }
-//
-        
             cell.contentView.backgroundColor = UIColor.clear
-        let initiative = nearbyInitiatives[indexPath.row]
+        let nearbyInitiative = nearbyInitiatives[indexPath.row]
         
-        cell.nearbyInitiativeNameLabel.text = initiative.name
-        cell.dateStartedLabel.text = "Start Date: \(initiative.createdAt.formattedAs("MM/dd/yyyy"))"
-        cell.followersLabel.text = "Followers: \(initiative.members.count)"
+        cell.nearbyInitiativeNameLabel.text = nearbyInitiative.name
+        cell.dateStartedLabel.text = "Start Date: \(nearbyInitiative.createdAt.formattedAs("MM/dd/yyyy"))"
+        cell.followersLabel.text = "Followers: \(nearbyInitiative.members.count)"
         
-        if nearbyInitiatives[indexPath.row].associatedLandmark != nil {
-            if let landmark = nearbyInitiatives[indexPath.row].associatedLandmark {
+        if nearbyInitiative.associatedLandmark != nil {
+            if let landmark = nearbyInitiative.associatedLandmark {
                 cell.nearbyInitiativeNameLabel.text = " \(landmark.name)"
-                //cell.landmarkTypePreview.image = landmark.tableViewIcon }
-            }
+                cell.landmarkTypePreview.image = landmark.tableViewIcon }
         }
+        
         return cell
     }
-  
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "localInitiativeDetail" {
             guard let dest = segue.destination as? InitiativeDetailViewController else { return }
@@ -123,5 +88,7 @@ class NearbyInitiativesTableViewController: UITableViewController {
             dest.initiative = initiative
         }
     }
-   
+    
+    func animateTableView() {
+    }
 }
