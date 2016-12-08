@@ -13,51 +13,56 @@ import SnapKit
 class MyInitiativesTableViewController: UITableViewController {
     
     var userInitiatives = [Initiative]()
-
+    
     let store = MapDataStore.sharedInstance
     
     @IBOutlet weak var lineView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        animateBackground()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func retrieveMyInitiatives() {
         FirebaseAPI.retrieveInitiativesFor(userKey: FirebaseAuth.currentUserID) { (initiatives) in
-            self.userInitiatives = initiatives
+            initiatives.forEach{ initiative in
+                self.userInitiatives.append(initiative)
+            }
             OperationQueue.main.addOperation {
                 self.tableView.reloadData()
             }
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.userInitiatives.removeAll()
+        retrieveMyInitiatives()
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userInitiatives.count
     }
-
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "My Initiatives"
-    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "initiativeCell", for: indexPath) as! MyInitiativesTableViewCell
-
-            cell.contentView.backgroundColor = UIColor.clear
+        
+        cell.contentView.backgroundColor = UIColor.clear
         let userInitiative = userInitiatives[indexPath.row]
-           cell.initiativeLabel.text = userInitiative.name
-           cell.followersLabel.text = "Members: \(userInitiative.members.count)"
-           cell.dateLabel.text = "Start date: \(userInitiative.createdAt.formattedAs("MM/dd/yyyy"))"
+        cell.initiativeLabel.text = userInitiative.name
+        cell.followersLabel.text = "Members: \(userInitiative.members.count)"
+        cell.dateLabel.text = "Start date: \(userInitiative.createdAt.formattedAs("MM/dd/yyyy"))"
         if userInitiative.associatedLandmark != nil {
             if let landmark = userInitiative.associatedLandmark {
                 cell.landmarkLabel.text = " \(landmark.name)"
                 cell.landmarkTypePreview.image = landmark.tableViewIcon }
+        } else {
+            cell.landmarkLabel.text = "Custom Location"
+            cell.landmarkTypePreview.image = UIImage(named: "CustomLandmarkTableViewIcon")
         }
         
         return cell

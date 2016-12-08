@@ -11,24 +11,24 @@ import Foundation
 import SnapKit
 
 class NearbyInitiativesTableViewController: UITableViewController {
-
+    
     let store = MapDataStore.sharedInstance
     
     var nearbyInitiatives = [Initiative]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        let background = UIImage(named: "gardenRoad" )
-//        let imageView = UIImageView(image: background)
-//        self.view.addSubview(imageView)
-//        imageView.contentMode = .scaleAspectFill
-//        imageView.alpha = 0.4
-//        view.sendSubview(toBack: imageView)
+        
+        //        let background = UIImage(named: "gardenRoad" )
+        //        let imageView = UIImageView(image: background)
+        //        self.view.addSubview(imageView)
+        //        imageView.contentMode = .scaleAspectFill
+        //        imageView.alpha = 0.4
+        //        view.sendSubview(toBack: imageView)
         
         retrieveNearbyInitiatives()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -37,31 +37,30 @@ class NearbyInitiativesTableViewController: UITableViewController {
     
     func retrieveNearbyInitiatives() {
         FirebaseAPI.geoFirePullNearbyInitiatives(within: 0.5, ofLocation: store.userLocation) { (initiative) in
-            
             self.nearbyInitiatives.append(initiative)
             OperationQueue.main.addOperation {
                 self.tableView.reloadData()
             }
         }
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return nearbyInitiatives.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "nearbyInitiatives", for: indexPath) as! NearbyInitiativesDetailCell
-
-            cell.contentView.backgroundColor = UIColor.clear
+        
+        cell.contentView.backgroundColor = UIColor.clear
         let nearbyInitiative = nearbyInitiatives[indexPath.row]
         
         cell.nearbyInitiativeNameLabel.text = nearbyInitiative.name
@@ -70,10 +69,12 @@ class NearbyInitiativesTableViewController: UITableViewController {
         
         if nearbyInitiative.associatedLandmark != nil {
             if let landmark = nearbyInitiative.associatedLandmark {
-                cell.nearbyInitiativeNameLabel.text = " \(landmark.name)"
+                cell.landmarkLabel.text = " \(landmark.name)"
                 cell.landmarkTypePreview.image = landmark.tableViewIcon }
+        } else {
+            cell.landmarkLabel.text = "Custom Location"
+            cell.landmarkTypePreview.image = UIImage(named: "CustomLandmarkTableViewIcon")
         }
-        
         return cell
     }
     

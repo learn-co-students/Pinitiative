@@ -73,7 +73,6 @@ class FormManager: FormViewController {
                 }
             }.onTextChanged { (text) in
                 self.nameText = text
-                print(self.nameText)
         }
     
         let initiativeDescLabelRow = LabelRowFormer<FormLabelCell>().configure { (row) in
@@ -147,8 +146,7 @@ class FormManager: FormViewController {
     
     func saveInitiative(_ landmark: Landmark?) -> Bool {
         if !nameText.isEmpty && !descriptionText.isEmpty {
-            print("ADDING INITIATIVE AT \(mapStore.userCoordinate)")
-            
+        
             if let landmark = landmark {
             Initiative.startNewInitiativeAtLandmark(landmark: landmark, initiativeName: nameText, initiativeDescription: descriptionText, associatedDate: date)
             } else {

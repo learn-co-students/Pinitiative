@@ -25,9 +25,14 @@ class MapDataStore {
     var coordinates: [CLLocationCoordinate2D] = []
     var pointAnnotations: [MGLPointAnnotation] = []
     
+    var initiatives = [Initiative]()
    
     var zoomLevel = 0.0
     var styleURL = MGLStyle.streetsStyleURL(withVersion: 9)
+    
+//    func getInitiativesForUser() {
+//        self.initiatives
+//    }
     
 }
 
