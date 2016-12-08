@@ -68,6 +68,8 @@ class InitiativeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.testForBan()
+
         
         populateInitiativeData()
         retrieveLeaderName()
@@ -168,7 +170,7 @@ class InitiativeDetailViewController: UIViewController {
         
         manageButton.bottomAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: -10).isActive = true
         manageButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.frame.width * 0.07).isActive = true
-        manageButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.2).isActive = true
+        manageButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.3).isActive = true
         manageButton.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.1).isActive = true
         
         manageButton.layer.cornerRadius = 10
@@ -235,7 +237,7 @@ class InitiativeDetailViewController: UIViewController {
         print("5")
         FirebaseAPI.bansForUser(WithKey: FirebaseAuth.currentUserID) { (bans) in
             print("6")
-            if bans[self.initiative.databaseKey] == nil {
+            if bans[self.initiative.databaseKey] == true {
                 print("7")
                 OperationQueue.main.addOperation {
                     print("8")
