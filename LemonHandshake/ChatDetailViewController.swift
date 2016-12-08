@@ -203,12 +203,12 @@ class ChatDetailViewController: JSQMessagesViewController {
         if currentMessage.senderId == senderId {
             
             // Outgoing
-            return JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: senderDisplayName), backgroundColor: UIColor.darkGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
+            return JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: senderDisplayName), backgroundColor: UIColor.lightGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
             
         } else {
             
             // Incoming
-            return JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: incomingUserName ?? "No Name"), backgroundColor: UIColor.darkGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
+            return JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: incomingUserName ?? "No Name"), backgroundColor: UIColor.lightGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
             
         }
         

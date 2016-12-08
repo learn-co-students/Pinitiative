@@ -304,9 +304,10 @@ class FirebaseAPI {
             let landmarkRef = FIRDatabase.database().reference().child("landmarks").child((initiative.associatedLandmark?.databaseKey)!).child("initiatives")
             
             landmarkRef.updateChildValues([initiative.databaseKey:true])
+            
+            //JCB: Add Store new initiative to GeoFire
+            FirebaseAPI.geoFireStoreNewInitiative(at: initiative.location, key: initiative.databaseKey)
         }
-        
-        
     }
     
     
@@ -518,6 +519,17 @@ class FirebaseAPI {
         })
     }
     
+    //MARK: JCB added retrieved marked locations for initiatives
+    static func retrieveMarkedLocationsFromInitiatives(with key: String, completion: (String) -> Void) {
+        let initiativeRef = FIRDatabase.database().reference().child("initiatives").child(key)
+        initiativeRef.observeSingleEvent(of: .value, with: {
+            (snapshot) in
+            print(snapshot)
+        })
+    }
+    
+    
+
     
 
     //MARK: - Landmark functions
@@ -590,6 +602,7 @@ class FirebaseAPI {
         })
     }
     
+    
     //MARK: - Report based functions
     static func reportLandmark(for landmarkKey: String, by userKey: String, report: String) {
         let reportRef = FIRDatabase.database().reference().child("reports").child("landmarks").child(landmarkKey).childByAutoId()
@@ -620,7 +633,6 @@ class FirebaseAPI {
     static func retrieveLeaderName(leaderKey: String, completion: (String)-> Void) {
 //        let userRef = FIRDatabase.database().reference().child(")
     }
-    
 }
 
 extension Date {

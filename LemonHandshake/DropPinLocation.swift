@@ -15,6 +15,8 @@ struct DropPinLocation {
     
     var coordinate: CLLocationCoordinate2D
     var address: String
+    var withInitiative = false
+    var initiativeKey = ""
     
     init(coordinate: CLLocationCoordinate2D, address: String) {
         self.coordinate = coordinate

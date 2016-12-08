@@ -18,15 +18,10 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
     
     let myURL = Bundle.main.url(forResource: "calendarHTML", withExtension: "html")
     var mssgBody: String?
-    var mail: MFMailComposeViewController?
-    
+
     @IBOutlet weak var memberNameLabel: UILabel!
-    // shows name of user
     
     @IBOutlet weak var joinDateLabel: UILabel!
-    // shows date user joined
-    
-    
     
     @IBOutlet weak var logoutButton: UIButton!
     
@@ -48,7 +43,6 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
         }
     }
     
-    
     @IBOutlet weak var deleteAccountButton: UIButton!
     @IBAction func deleteAccountButtonTapped(_ sender: Any) {
         let alertController = UIAlertController(title: "Delete Account?", message: "This action cannot be undone.", preferredStyle: UIAlertControllerStyle.alert)
@@ -63,8 +57,6 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default) { completion -> Void in
         }
         
-        
-        
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
@@ -74,34 +66,29 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
     
     @IBOutlet weak var calendarLabel: UILabel!
     
-    
     @IBOutlet weak var feedbackButton: UIButton!
+    
+    
+    
+    
+    
     @IBAction func giveFeedbackButton(_ sender: Any) {
         
-        let mailComposeViewController = configuredMailComposeViewController()
-        print(mailComposeViewController.description)
-        if terribleMessyFunction() {
-            
-            self.present(mailComposeViewController, animated: true, completion: nil)
-            
-        } else {
-            
+        if !MFMailComposeViewController.canSendMail() {
+        
             self.showSendMailErrorAlert()
         }
+
+        let composeMail = MFMailComposeViewController()
         
+        composeMail.mailComposeDelegate = self
         
-    }
-    
-    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        composeMail.setToRecipients(["lemon.handshake.flatiron@gmail.com"])
+        composeMail.setSubject("Feedback for Pinitiative")
+        composeMail.setMessageBody("Tell us your thoughts", isHTML: false)
         
-        let mailComposerVC = terribleMessyVariable
-        
-        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
-        mailComposerVC.setToRecipients(["zeitlin1@gmail.com"])
-        mailComposerVC.setSubject("TEST EMAIL FROM APP")
-        mailComposerVC.setMessageBody("Sending e-mail in-app is not so bad!", isHTML: false)
-        
-        return mailComposerVC
+        self.present(composeMail, animated: true, completion: nil)
+
     }
     
     func showSendMailErrorAlert() {
@@ -109,16 +96,31 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
         sendMailErrorAlert.show()
     }
     
-    
-    func mailcomposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
+    func mailComposeController(_ controller: MFMailComposeViewController,didFinishWith result: MFMailComposeResult, error: Error?) {
+
+            let alertController = UIAlertController(title: nil, message: "Thanks for the Feedback!", preferredStyle: UIAlertControllerStyle.alert)
+
+            let thanks = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default) { completion -> Void in
+        
+            self.dismiss(animated: true, completion: nil)
+
+            }
+        
+            alertController.addAction(thanks)
+
+            controller.dismiss(animated: true) {
+                self.present(alertController, animated: true, completion: nil)
+        }
+
     }
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let requestObj = NSURLRequest(url: myURL!)
-        
-        
         
         calendarWebView.snp.makeConstraints { (make) in
             make.width.equalTo(415)
@@ -188,18 +190,5 @@ class MemberManagementViewController: UIViewController, MFMailComposeViewControl
         feedbackButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.4).isActive = true
         feedbackButton.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.1).isActive = true
     }
-    
-    func MFMailComposeViewController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
-    }
+
 }
-
-
-func terribleMessyFunction () -> Bool {
-    return MFMailComposeViewController.canSendMail()
-}
-
-var terribleMessyVariable: MFMailComposeViewController {
-    return MFMailComposeViewController()
-}
-

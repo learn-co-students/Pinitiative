@@ -77,4 +77,14 @@ extension FirebaseAPI {
         }
         
     }
+    
+    static func geoFirePullInitiativesAtNearbyLandmarks(within range: Kilometers, ofLocation location: CLLocation, completion: @escaping (Initiative)-> Void) {
+        
+        FirebaseAPI.geoFirePullNearbyLandmarks(within: range, ofLocation: location) { (landmark) in
+            FirebaseAPI.retrieveInitiative(withKey: landmark.databaseKey, completion: { (initiative) in
+                completion(initiative)
+            })
+        }
+        
+    }
 }

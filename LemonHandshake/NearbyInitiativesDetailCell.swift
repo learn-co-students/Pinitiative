@@ -18,9 +18,8 @@ class NearbyInitiativesDetailCell: UITableViewCell {
    
     @IBOutlet weak var followersLabel: UILabel!
    
-    @IBOutlet weak var dateTextLabel: UILabel!
-   
-    @IBOutlet weak var followersTextLabel: UILabel!
+    @IBOutlet weak var landmarkLabel: UILabel!
     
+    @IBOutlet weak var landmarkTypePreview: UIImageView!
 
 }
