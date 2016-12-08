@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JSQMessagesViewController
 
 extension Notification.Name {
     static let closeLoginVC = Notification.Name("close-login-view-controller")
@@ -43,4 +44,22 @@ extension UIView {
         self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: multiplier).isActive = true
         self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier).isActive = true
     }
+}
+
+extension JSQMessagesViewController {
+    func generateInitials(senderDisplayName: String) -> String? {
+        let nameCharacters = [Character](senderDisplayName.characters)
+        guard !senderDisplayName.isEmpty, nameCharacters.first != " " else { return nil }
+        guard nameCharacters.contains(" ") else { return String(nameCharacters.first!).uppercased() }
+        let words = (nameCharacters.split(separator: " "))
+        let firstWordArray = words.first!
+        let lastWordArray = words.last!
+        let firstNameInitial = String(firstWordArray.first!)
+        let lastNameInitial = String(lastWordArray.first!)
+        return firstNameInitial.uppercased() + lastNameInitial.uppercased()
+    }
+}
+
+extension UIFont {
+    static let avenir = UIFont.init(name: "Avenir", size: 24.0)
 }

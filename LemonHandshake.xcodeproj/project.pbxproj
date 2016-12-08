@@ -48,7 +48,6 @@
 		BC6244E31DDA798D00AE6523 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DD1DDA798D00AE6523 /* MapViewController.swift */; };
 		BC6244E41DDA798D00AE6523 /* MyInitiativesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */; };
 		BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */; };
-		BC7AAE251DF2037F00B2A5B9 /* ChatContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7AAE241DF2037F00B2A5B9 /* ChatContainerViewController.swift */; };
 		BC87E4A81DDB87E800980939 /* MemberManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */; };
 		BCAAF03D1DEC859900D78419 /* BadWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAAF03C1DEC859900D78419 /* BadWords.swift */; };
 		BCB137B91DE5EBD200C15CDD /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */; };
@@ -102,7 +101,6 @@
 		BC6244DD1DDA798D00AE6523 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInitiativesTableViewController.swift; sourceTree = "<group>"; };
 		BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartInitiativeViewController.swift; sourceTree = "<group>"; };
-		BC7AAE241DF2037F00B2A5B9 /* ChatContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContainerViewController.swift; sourceTree = "<group>"; };
 		BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberManagementViewController.swift; sourceTree = "<group>"; };
 		BCAAF03C1DEC859900D78419 /* BadWords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadWords.swift; sourceTree = "<group>"; };
 		BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 			children = (
 				1B0EC6741DF74D7300297C8C /* NewUserInfoViewController.swift */,
 				BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */,
-				BC7AAE241DF2037F00B2A5B9 /* ChatContainerViewController.swift */,
 				BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */,
 				1B0EC6771DF7672500297C8C /* InitiativeManagementViewController.swift */,
 				1B0D30C71DF83AC4007F5250 /* InitiativeManagementMemberTableViewCell.swift */,
@@ -394,7 +391,6 @@
 				BC5688C71DEE1DC5005FC0D8 /* LandmarkDetailViewController.swift in Sources */,
 				1B1096731DDA665B00609104 /* FirebaseAuth.swift in Sources */,
 				83E865CA1DECFEC900336BC4 /* DropPinLocation.swift in Sources */,
-				BC7AAE251DF2037F00B2A5B9 /* ChatContainerViewController.swift in Sources */,
 				837C2F631DE4AC9F00E076C9 /* Extensions.swift in Sources */,
 				BC6244E11DDA798D00AE6523 /* LandmarkDetailTableViewController.swift in Sources */,
 				1B5CB0161DE9D5FF00C090E0 /* FirebaseAPI.swift in Sources */,
