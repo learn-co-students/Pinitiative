@@ -17,100 +17,48 @@ class ChatDetailViewController: JSQMessagesViewController {
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.orange)
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.blueX)
     var image: String!
-    
     var messages = [JSQMessage]()
-    
     var ref: FIRDatabaseReference!
-    
     var initiative: Initiative!
-    
-  
     var user: User!
     
     @IBOutlet weak var containerView: UIView!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         tabBarController?.tabBar.isHidden = true
-        
-        
-        print(messages)
-        
-        
         self.inputToolbar.contentView.leftBarButtonItem = nil
-        
-
         collectionView.backgroundColor = UIColor.greenX
-        jsq_setCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
-        
+        jsqSetCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
         connectToChat()
-
-        
-        
-     //end of viewdidload
     }
-    
-
     
     
     func connectToChat() {
-        
         ref = FIRDatabase.database().reference()
-        
         guard let initiative = initiative else { return }
         let chatRef = ref.child("Chats").child(initiative.databaseKey)
         let msgRef = chatRef.child("Messages")
-        
         msgRef.observe(.childAdded, with: { snapshot in
-            print(snapshot.value as Any)
-            
             let messageDictionary = snapshot.value as! [String:String]
             print("Dictionary \(messageDictionary)")
-            
-            
-            
             guard let username = messageDictionary["username"] else { return }
             guard let message = messageDictionary["message"] else { return }
             guard let userID = messageDictionary["userID"] else { return }
-            
-            
-            
-            
-            print(username)
-            print(message)
-            print(userID)
-            
             guard let jsqMessage = JSQMessage(senderId: userID, displayName: username, text: message) else { return }
-            
             self.messages.append(jsqMessage)
             self.collectionView.reloadData()
-            
         })
         
-        
         let usersRef = ref.child("Members").child(initiative.databaseKey)
-        
         usersRef.observe(.childAdded, with: { snapshot in
-            
             let users = snapshot.value as! [String : String]
-            
             let userKeys = users.keys
-            // userKeys will be an array of [A712, B614]
-            
             for user in userKeys {
-                
                 let individualUserRef = self.ref.child("Users")
-                
                 individualUserRef.observeSingleEvent(of: .value, with: { snapshot in
-                    
                     let userInfo = snapshot.value as! [String : String]
-                    
                     let name = userInfo["name"] ?? "No Name"
-                    
                     usersRef.setValue(userInfo)
                     
                 })
@@ -122,7 +70,6 @@ class ChatDetailViewController: JSQMessagesViewController {
     
     
     
-    
     //FOR HANDLING MESSAGES IN VIEWCONTROLLER
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -130,17 +77,14 @@ class ChatDetailViewController: JSQMessagesViewController {
         return self.messages.count
     }
     
-    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         let data = messages[indexPath.row]
         return data
     }
     
-    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, didDeleteMessageAt indexPath: IndexPath!) {
         self.messages.remove(at: indexPath.row)
     }
-    
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         if badWordFilter(text: text) == true {
@@ -150,32 +94,22 @@ class ChatDetailViewController: JSQMessagesViewController {
             guard let initiative = initiative else { return }
             let chatRef = ref.child("Chats").child(initiative.databaseKey)
             let msgRef = chatRef.child("Messages")
-            
             var dict = [String:String]()
-            
             dict["username"] = self.senderDisplayName
             dict["message"] = text
             dict["userID"] = self.senderId
-            
-        
-            
             msgRef.childByAutoId().setValue(dict, withCompletionBlock: { (erorr, ref) in
-                
-                
                 self.finishSendingMessage()
-                self.jsq_setCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
-                
+                self.jsqSetCollectionViewInsetsTopValue(0.0, bottomValue: 100.0)
             })
-            
         }
     }
     
-    // move to constants or extensions or at all?
-    func jsq_setCollectionViewInsetsTopValue(_ top: CGFloat, bottomValue bottom: CGFloat) {
+    
+    func jsqSetCollectionViewInsetsTopValue(_ top: CGFloat, bottomValue bottom: CGFloat) {
         var insets = UIEdgeInsetsMake(top, 0.0, bottom, 0.0)
         self.collectionView!.contentInset = insets
         self.collectionView!.scrollIndicatorInsets = insets
-    
         if self.automaticallyScrollsToMostRecentMessage {
             self.scrollToBottom(animated: true)
         }
@@ -199,57 +133,26 @@ class ChatDetailViewController: JSQMessagesViewController {
         
         let currentMessage = messages[indexPath.item]
         let incomingUserName = currentMessage.senderDisplayName
-        
         if currentMessage.senderId == senderId {
-            
             // Outgoing
             return JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: senderDisplayName), backgroundColor: UIColor.lightGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
-            
         } else {
-            
             // Incoming
             return JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: generateInitials(senderDisplayName: incomingUserName ?? "No Name"), backgroundColor: UIColor.lightGray, textColor: UIColor.white, font: UIFont.avenir, diameter: UInt(50.0))
-            
         }
-        
-        
-       
-
     }
     
     
-//    func dequeueTypingIndicatorFooterView(for indexPath: IndexPath!) -> JSQMessagesTypingIndicatorFooterView! {
-//        
-//           let chatCell = dequeueTypingIndicatorFooterView(for: indexPath)
-//        
-//        chatCell?.configure(withEllipsisColor: UIColor.lightGray, messageBubble: UIColor.lightGray, shouldDisplayOnLeft: true, for: self.collectionView)
-//        
-//        if self.senderId == senderId, indexPath.item == indexPath.count + 1 {
-//            
-//        }
-//        return chatCell
-//    }
-    
-
     // FILTERING TOOLBAR INPUT
     
     func badWordFilter(text: String) -> Bool {
-    
         let badWords = BadWords.sharedInstance.badWordsList
-        
         let textArray = text.components(separatedBy: " ")
-        print(textArray)
         for word in textArray{
             if badWords.contains(word.lowercased()) {
-                
-                print("hey this person cursed")
                 let alert = UIAlertController(title: "Oops!", message: "You can't curse here.", preferredStyle: UIAlertControllerStyle.alert)
-                print("alert")
-                
                 let okAction = UIAlertAction(title: "OK Cool", style: .default, handler: nil)
-                
                 alert.addAction(okAction)
-                
                 self.present(alert, animated: true, completion: nil)
                 return true
             }
@@ -259,57 +162,6 @@ class ChatDetailViewController: JSQMessagesViewController {
     
 }
 
-//end
 
 
 
-
-
-
-
-
-
-
-
-
-//will move to Constants -> BadWords
-    extension JSQMessagesViewController {
-        
-        
-        func generateInitials(senderDisplayName: String) -> String? {
-            
-            let nameCharacters = [Character](senderDisplayName.characters)
-            
-            guard !senderDisplayName.isEmpty, nameCharacters.first != " " else { return nil }
-            
-            guard nameCharacters.contains(" ") else { return String(nameCharacters.first!).uppercased() }
-            
-            let words = (nameCharacters.split(separator: " "))
-            
-            let firstWordArray = words.first!
-            
-            let lastWordArray = words.last!
-            
-            let firstNameInitial = String(firstWordArray.first!)
-            
-            let lastNameInitial = String(lastWordArray.first!)
-            
-            return firstNameInitial.uppercased() + lastNameInitial.uppercased()
-            
-        }
-    }
-
-
-
-//will move to Constants -> Extensions
-    extension UIColor {
-        static let blueX = UIColor.init(red:0.00, green:0.33, blue:0.65, alpha:1.0)
-        static let greenX = UIColor(red:0.49, green:0.77, blue:0.46, alpha:1.0)
-        static let lightGreen = UIColor(red:0.72, green:1.00, blue:0.62, alpha:1.0)
-        static let purpleX = UIColor(red:0.15, green:0.07, blue:0.20, alpha:1.0)
-    }
-
-//will move to Constants -> Extensions
-    extension UIFont {
-        static let avenir = UIFont.init(name: "Avenir", size: 24.0)
-    }
