@@ -13,7 +13,7 @@ import SnapKit
 
 class InitiativeDetailViewController: UIViewController {
     
-    @IBOutlet weak var InitiativeNameLabel: UILabel!
+    @IBOutlet weak var initiativeNameLabel: UILabel!
     
     @IBOutlet weak var dateStartedLabel: UILabel!
     
@@ -112,7 +112,7 @@ class InitiativeDetailViewController: UIViewController {
         testIfUserIsMember()
     }
     func populateInitiativeData() {
-        InitiativeNameLabel.text = initiative.name
+        initiativeNameLabel.text = initiative.name
         dateStartedLabel.text = "Started: \(initiative.createdAt.formattedAs("MM/dd/yy"))"
         leaderLabel.text = "Leader: "
         followersTextLabel.text = "Followers: \(initiative.members.count)"
