@@ -153,7 +153,6 @@
 				1B1096671DDA50CE00609104 /* LaunchScreen.storyboard */,
 				923861EA1DF70174007E2140 /* GoogleService-Info.plist */,
 				1B10966A1DDA50CE00609104 /* Info.plist */,
-				1B0D30C91DF87EE1007F5250 /* MemberDeletionDelegate.swift */,
 			);
 			path = LemonHandshake;
 			sourceTree = "<group>";
@@ -222,6 +221,7 @@
 		BC87E4A61DDB862F00980939 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1B0D30C91DF87EE1007F5250 /* MemberDeletionDelegate.swift */,
 				1B0EC6741DF74D7300297C8C /* NewUserInfoViewController.swift */,
 				BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */,
 				BC6244DA1DDA798D00AE6523 /* InitiativeDetailViewController.swift */,
