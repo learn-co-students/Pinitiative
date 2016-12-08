@@ -36,5 +36,20 @@ class DropPinDetailViewController: UIViewController, DropPinDelegate {
         performSegue(withIdentifier: Constants.startInitiativeSegue, sender: self.location)
     }
     
+    func joinInitiative() {
+        FirebaseAPI.userJoin(initiativeWithKey: self.location.initiativeKey)
+        
+        let alertController = UIAlertController(title: nil, message: "You have been aadded to this initiative!", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "Done", style: UIAlertActionStyle.default) { completion -> Void in
+        
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        alertController.addAction(okAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }
 

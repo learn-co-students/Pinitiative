@@ -13,7 +13,7 @@ struct Constants {
     
     static let annotationSegueText = "annotationSegue"
     static let dropPinSegueText = "dropPinSegue"
-    static let customMarkerText = "Custom Marker"
+    static let customMarkerText = "drop_pin_marker"
     static let markedLocationText = "Marked Location"
     static let startInitiativeSegue = "startInitiativeSegue"
     static let landmarkInitiativeSegue = "landmarkInitiativeSegue"
