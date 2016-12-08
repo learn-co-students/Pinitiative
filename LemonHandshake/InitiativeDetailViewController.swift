@@ -170,7 +170,7 @@ class InitiativeDetailViewController: UIViewController {
         
         manageButton.bottomAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: -10).isActive = true
         manageButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.frame.width * 0.07).isActive = true
-        manageButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.2).isActive = true
+        manageButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.3).isActive = true
         manageButton.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.1).isActive = true
         
         manageButton.layer.cornerRadius = 10
