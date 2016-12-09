@@ -12,6 +12,8 @@ Other users will see your initiatives. When they're nearby, they will see your i
 
 ### Developers: Jhantelle Belleza, Anthony Zeitlin, Tameika Lawrence, and Christopher Boynton
 
+All four of the developers on this team were students at [the Flatiron School](https://flatironschool.com/) during the creation of the project.
+
 ## Database Maker Application
 This application uses another application to parse through NYC Open Data, geocode addresses, and write this organized data to Firebase. That app has [its own repository here.](https://github.com/Chrisb616/lemonHandshakeDatabaseMaker)
 
