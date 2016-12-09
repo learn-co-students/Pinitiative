@@ -4,6 +4,11 @@
 
 Pinitiative is a project made for [The Opportunity Project](http://opportunity.census.gov/) using landmark data from NYC Open Data.
 
+The idea behind Pinitiative came from the idea of people, interested in their helping their community, having trouble knowing about or meeting the other people who are interested in solving the issues that they see day to day. We wanted to create an app that eased that social barrier and allowed people to interact in a group based soley around an initiavite for which everyone shows passion.
+
+A user logging into "Pinitiative" for the first time will log in and be brought to a map screen which shows the local landmarks in their area. These landmarks include schools, parks, hospitals, police stations, and firestations. Users can click on a landmark and create an "initiative" about something that they care about. They, alternatively, can long-click on the map to create an initiative anywhere on the map.
+
+Other users will see your initiatives. When they're nearby, they will see your initiative. If they're interested, they'll join. You can then chat with those users, and begin to organize your social change!
 
 ## Database Maker Application
 This application uses another application to parse through NYC Open Data, geocode addresses, and write this organized data to Firebase. That app has [its own repository here.](https://github.com/Chrisb616/lemonHandshakeDatabaseMaker)
