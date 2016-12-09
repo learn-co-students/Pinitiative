@@ -20,6 +20,7 @@
 		1B1E94311DEB720E00F7EFEC /* Initiative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1E94301DEB720E00F7EFEC /* Initiative.swift */; };
 		1B1E94331DEB733700F7EFEC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1E94321DEB733700F7EFEC /* User.swift */; };
 		1B5CB0161DE9D5FF00C090E0 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CB0151DE9D5FF00C090E0 /* FirebaseAPI.swift */; };
+		1BFC9F7B1DFB282700ED906D /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFC9F7A1DFB282700ED906D /* TutorialViewController.swift */; };
 		8309A9E51DDCE21400484700 /* MapDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8309A9E41DDCE21400484700 /* MapDataStore.swift */; };
 		832662A51DDF541900126B99 /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832662A41DDF541900126B99 /* CustomPointAnnotation.swift */; };
 		832662AD1DDF7AEB00126B99 /* MapDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832662AC1DDF7AEB00126B99 /* MapDataModels.swift */; };
@@ -71,6 +72,7 @@
 		1B1E94301DEB720E00F7EFEC /* Initiative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Initiative.swift; sourceTree = "<group>"; };
 		1B1E94321DEB733700F7EFEC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1B5CB0151DE9D5FF00C090E0 /* FirebaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
+		1BFC9F7A1DFB282700ED906D /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		228FA69612FFFB62AF34BA33 /* Pods-LemonHandshake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LemonHandshake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LemonHandshake/Pods-LemonHandshake.debug.xcconfig"; sourceTree = "<group>"; };
 		8309A9E41DDCE21400484700 /* MapDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDataStore.swift; sourceTree = "<group>"; };
 		832662A41DDF541900126B99 /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				92764CF51DE37F11007115E9 /* NearbyInitiativesDetailCell.swift */,
 				BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */,
 				92764CEF1DE34635007115E9 /* MyInitiativesTableViewCell.swift */,
+				1BFC9F7A1DFB282700ED906D /* TutorialViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				1B5CB0161DE9D5FF00C090E0 /* FirebaseAPI.swift in Sources */,
 				83873B051DF382E500FF71FB /* FormManager.swift in Sources */,
 				83EF6B781DEE0B9B00756913 /* Constants.swift in Sources */,
+				1BFC9F7B1DFB282700ED906D /* TutorialViewController.swift in Sources */,
 				8309A9E51DDCE21400484700 /* MapDataStore.swift in Sources */,
 				83358ACA1DECBD0E0045B170 /* DropPinDetail.swift in Sources */,
 				92764CF01DE34635007115E9 /* MyInitiativesTableViewCell.swift in Sources */,
