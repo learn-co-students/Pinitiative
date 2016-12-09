@@ -85,34 +85,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFZ-nI-QtY">
-                                <rect key="frame" x="37" y="200" width="300" height="267"/>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFZ-nI-QtY" userLabel="Tutorial View">
+                                <rect key="frame" x="37" y="133.5" width="300" height="400"/>
                                 <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="tPm-GC-PLJ">
-                                        <rect key="frame" x="0.0" y="213.5" width="300" height="53.5"/>
-                                        <color key="currentPageIndicatorTintColor" red="0.84313725490000002" green="0.45882352939999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </pageControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylT-gk-fgM">
+                                        <rect key="frame" x="35" y="20" width="220" height="40"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="fullLogo" translatesAutoresizingMaskIntoConstraints="NO" id="oOC-Yf-gXF">
+                                        <rect key="frame" x="15" y="-30" width="270" height="160.5"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.29123598340000001" green="0.20208907130000001" blue="0.3416035771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="tPm-GC-PLJ" firstAttribute="height" secondItem="jFZ-nI-QtY" secondAttribute="height" multiplier="0.2" id="WYG-eh-2OF"/>
-                                    <constraint firstItem="tPm-GC-PLJ" firstAttribute="leading" secondItem="jFZ-nI-QtY" secondAttribute="leading" id="dmC-OA-lXW"/>
-                                    <constraint firstAttribute="trailing" secondItem="tPm-GC-PLJ" secondAttribute="trailing" id="drJ-WQ-B8N"/>
-                                    <constraint firstAttribute="bottom" secondItem="tPm-GC-PLJ" secondAttribute="bottom" id="s24-84-E2p"/>
+                                    <constraint firstItem="ylT-gk-fgM" firstAttribute="height" secondItem="jFZ-nI-QtY" secondAttribute="height" multiplier="0.1" id="0eW-Lb-6yf"/>
+                                    <constraint firstItem="oOC-Yf-gXF" firstAttribute="width" secondItem="jFZ-nI-QtY" secondAttribute="width" multiplier="0.9" id="6bO-E3-m0c"/>
+                                    <constraint firstItem="ylT-gk-fgM" firstAttribute="trailing" secondItem="oOC-Yf-gXF" secondAttribute="trailing" constant="-30" id="6yY-Q4-TSI"/>
+                                    <constraint firstItem="oOC-Yf-gXF" firstAttribute="top" secondItem="jFZ-nI-QtY" secondAttribute="top" constant="-30" id="Jmq-MJ-XbS"/>
+                                    <constraint firstItem="oOC-Yf-gXF" firstAttribute="centerX" secondItem="jFZ-nI-QtY" secondAttribute="centerX" id="V2C-WY-aKK"/>
+                                    <constraint firstItem="ylT-gk-fgM" firstAttribute="top" secondItem="jFZ-nI-QtY" secondAttribute="top" constant="20" id="ari-Zf-sy6"/>
+                                    <constraint firstItem="ylT-gk-fgM" firstAttribute="leading" secondItem="jFZ-nI-QtY" secondAttribute="leading" constant="35" id="pq3-gK-TIB"/>
+                                    <constraint firstItem="oOC-Yf-gXF" firstAttribute="height" secondItem="jFZ-nI-QtY" secondAttribute="height" multiplier="0.4" id="t3y-6J-Vmr"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zn-ST-dJ6" userLabel="TextAreaView">
+                                <rect key="frame" x="57" y="238" width="260" height="275.5"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xvO-Ke-lSC">
+                                        <rect key="frame" x="5" y="5" width="250" height="110"/>
+                                        <string key="text">    Pinitiative is a tool to help you join together with your friends, peers, and neighbors to make a difference in your community!</string>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="od3-Mx-phg">
+                                        <rect key="frame" x="5" y="133" width="250" height="137.5"/>
+                                        <string key="text">    To get started, click on a landmark or initiative on the map to see what your neighbors are passionate about. Or, start an initiative for yourself, either at a landmark, or by long-clicking on the map</string>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="od3-Mx-phg" secondAttribute="bottom" constant="5" id="BTs-g2-nei"/>
+                                    <constraint firstAttribute="trailing" secondItem="od3-Mx-phg" secondAttribute="trailing" constant="5" id="F24-7l-baw"/>
+                                    <constraint firstAttribute="trailing" secondItem="xvO-Ke-lSC" secondAttribute="trailing" constant="5" id="Lkm-mf-qpS"/>
+                                    <constraint firstItem="xvO-Ke-lSC" firstAttribute="top" secondItem="2zn-ST-dJ6" secondAttribute="top" constant="5" id="Oqx-Uz-vfQ"/>
+                                    <constraint firstItem="od3-Mx-phg" firstAttribute="height" secondItem="2zn-ST-dJ6" secondAttribute="height" multiplier="0.5" id="R0a-kB-sJl"/>
+                                    <constraint firstItem="od3-Mx-phg" firstAttribute="leading" secondItem="2zn-ST-dJ6" secondAttribute="leading" constant="5" id="TlY-dT-F5c"/>
+                                    <constraint firstItem="xvO-Ke-lSC" firstAttribute="height" secondItem="2zn-ST-dJ6" secondAttribute="height" multiplier="0.4" id="alH-rC-8uf"/>
+                                    <constraint firstItem="xvO-Ke-lSC" firstAttribute="leading" secondItem="2zn-ST-dJ6" secondAttribute="leading" constant="5" id="imI-Ee-IRJ"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.60961579619999995" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="2zn-ST-dJ6" firstAttribute="leading" secondItem="jFZ-nI-QtY" secondAttribute="leading" constant="20" id="0u9-D8-ArA"/>
                             <constraint firstItem="jFZ-nI-QtY" firstAttribute="centerY" secondItem="POz-QW-3Pe" secondAttribute="centerY" id="17V-Pv-ExS"/>
                             <constraint firstItem="jFZ-nI-QtY" firstAttribute="width" secondItem="POz-QW-3Pe" secondAttribute="width" multiplier="0.8" id="DtN-1f-MO3"/>
                             <constraint firstItem="jFZ-nI-QtY" firstAttribute="centerX" secondItem="POz-QW-3Pe" secondAttribute="centerX" id="QpH-Yw-1w5"/>
-                            <constraint firstItem="jFZ-nI-QtY" firstAttribute="height" secondItem="POz-QW-3Pe" secondAttribute="height" multiplier="0.4" id="gET-r1-FW1"/>
+                            <constraint firstItem="2zn-ST-dJ6" firstAttribute="bottom" secondItem="jFZ-nI-QtY" secondAttribute="bottom" constant="-20" id="UiN-gT-6Ed"/>
+                            <constraint firstItem="jFZ-nI-QtY" firstAttribute="height" secondItem="POz-QW-3Pe" secondAttribute="height" multiplier="0.6" id="gET-r1-FW1"/>
+                            <constraint firstItem="2zn-ST-dJ6" firstAttribute="trailing" secondItem="jFZ-nI-QtY" secondAttribute="trailing" constant="-20" id="nHO-0O-IvI"/>
+                            <constraint firstItem="2zn-ST-dJ6" firstAttribute="top" secondItem="oOC-Yf-gXF" secondAttribute="bottom" constant="-26" id="oUc-kY-EdA"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="containerView" destination="jFZ-nI-QtY" id="j9W-w3-x74"/>
+                        <outlet property="textAreaView" destination="2zn-ST-dJ6" id="ty0-fG-BKy"/>
+                        <outlet property="tutorialView" destination="jFZ-nI-QtY" id="ghd-xf-Zfq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Czz-wx-Swu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -983,7 +1025,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="Map" id="meg-bg-2nx"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CzC-3E-i3N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CzC-3E-i3N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.48627450979999998" green="0.7725490196" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1013,7 +1055,7 @@
                     <tabBarItem key="tabBarItem" title="My Initiatives" image="My Initiative" id="NiF-Ry-voJ"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z12-fv-UBG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="z12-fv-UBG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1037,7 +1079,7 @@
                     <tabBarItem key="tabBarItem" title="Local Initiatives" image="Local Initiatives" id="XmQ-dQ-dCm"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X01-Hg-KyK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="X01-Hg-KyK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1066,7 +1108,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="jLX-J0-C1k"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bGS-9c-q27">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bGS-9c-q27">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1189,7 +1231,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nsZ-y6-Ust" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="51H-FX-n4A">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="51H-FX-n4A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1212,7 +1254,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Au1-fL-NDD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="0K6-Eg-ooe"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="4aq-wc-L2P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="4aq-wc-L2P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1529411765" green="0.070588235289999995" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

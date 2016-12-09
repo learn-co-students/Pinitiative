@@ -10,23 +10,28 @@ import UIKit
 
 class TutorialViewController: UIViewController {
     
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var tutorialView: UIView!
+    @IBOutlet weak var textAreaView: UIView!
     
     var tapGestureRecognizer = UITapGestureRecognizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setUpContainer()
+        setUpViews()
         
         self.view.addGestureRecognizer(tapGestureRecognizer)
         tapGestureRecognizer.addTarget(self, action: #selector(dismissTutorial))
     }
     
-    func setUpContainer() {
-        containerView.layer.cornerRadius = 15
-        containerView.layer.borderWidth = 5
-        containerView.layer.borderColor = UIColor.themeOrange.cgColor
+    func setUpViews() {
+        tutorialView.layer.cornerRadius = 15
+        tutorialView.layer.borderWidth = 5
+        tutorialView.layer.borderColor = UIColor.themeOrange.cgColor
+        
+        textAreaView.layer.cornerRadius = 15
+        textAreaView.layer.borderWidth = 5
+        textAreaView.layer.borderColor = UIColor.black.cgColor
     }
     func dismissTutorial() {
         dismiss(animated: true, completion: nil)
