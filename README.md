@@ -17,12 +17,12 @@ First of all, in your podfile, instead of writing the pod that GeoFire asks you 
 
 Now run `pod install` in  your terminal. When you open up the workspace, you'll find that you get an error reading 'FirebaseDatabase/FirebaseDatabase.h file not found' when you try to build.
 
-To solve this, go to the file that has the error. Go to your navigator, and find the file 'FirebaseDatabase.h' in your structure.
+To solve this, go to your navigator. Go to Pods > FirebaseDatabase > Frameworks > FirebaseDatabase.framework. 
 
-![alt text](http://i.imgur.com/E2po94Z.png "Find the FirebaseDatabase.h file")
+![alt text](http://i.imgur.com/ZrVnvc0.png "Find the FirebaseDatabase.framework")
 
-Click and drag that file into the code file you're working with. When you release it, it should give you a file path. This is the correct file pat for your 'FirebaseDatabase.h' file. Now type `#import` before the path, and wrap the path in angled brackets `< >`.
+Select that file. In the utilities, inside of the File Inspector, check the box inside Target Membership that reads "GeoFire". 
 
-![alt text](http://i.imgur.com/duiX4O0.png "#import the file path")
+![alt text](http://i.imgur.com/KkoB6WW.png "Set the GeoFire Framwork to require.")
 
 As our repository has a .gitignore that ignores our pods, this has to be done each time you clone the project.
