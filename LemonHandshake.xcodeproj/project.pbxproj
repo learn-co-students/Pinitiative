@@ -291,7 +291,7 @@
 					1B10965A1DDA50CE00609104 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = KXY9EDFTF5;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -552,13 +552,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LemonHandshake/LemonHandshake.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = KXY9EDFTF5;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Flatiron.pinititative;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironschool.team-lemon-handshake";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "16607e9c-0e18-4ec5-a723-03963084a194";
+				PROVISIONING_PROFILE_SPECIFIER = "Team Lemon Handshake iOS 0916";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -570,13 +572,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LemonHandshake/LemonHandshake.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = KXY9EDFTF5;
 				INFOPLIST_FILE = LemonHandshake/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Flatiron.pinititative;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flatironschool.team-lemon-handshake";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "16607e9c-0e18-4ec5-a723-03963084a194";
+				PROVISIONING_PROFILE_SPECIFIER = "Team Lemon Handshake iOS 0916";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
