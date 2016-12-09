@@ -86,42 +86,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFZ-nI-QtY" userLabel="Tutorial View">
-                                <rect key="frame" x="37" y="133.5" width="300" height="400"/>
+                                <rect key="frame" x="37" y="66.5" width="300" height="534"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylT-gk-fgM">
-                                        <rect key="frame" x="35" y="20" width="220" height="40"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="ylT-gk-fgM">
+                                        <rect key="frame" x="120" y="20" width="135" height="53"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="fullLogo" translatesAutoresizingMaskIntoConstraints="NO" id="oOC-Yf-gXF">
-                                        <rect key="frame" x="15" y="-30" width="270" height="160.5"/>
+                                        <rect key="frame" x="15" y="-30" width="270" height="213"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.29123598340000001" green="0.20208907130000001" blue="0.3416035771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="ylT-gk-fgM" firstAttribute="height" secondItem="jFZ-nI-QtY" secondAttribute="height" multiplier="0.1" id="0eW-Lb-6yf"/>
+                                    <constraint firstItem="ylT-gk-fgM" firstAttribute="width" secondItem="oOC-Yf-gXF" secondAttribute="width" multiplier="0.5" id="5ly-h9-cVE"/>
                                     <constraint firstItem="oOC-Yf-gXF" firstAttribute="width" secondItem="jFZ-nI-QtY" secondAttribute="width" multiplier="0.9" id="6bO-E3-m0c"/>
                                     <constraint firstItem="ylT-gk-fgM" firstAttribute="trailing" secondItem="oOC-Yf-gXF" secondAttribute="trailing" constant="-30" id="6yY-Q4-TSI"/>
                                     <constraint firstItem="oOC-Yf-gXF" firstAttribute="top" secondItem="jFZ-nI-QtY" secondAttribute="top" constant="-30" id="Jmq-MJ-XbS"/>
                                     <constraint firstItem="oOC-Yf-gXF" firstAttribute="centerX" secondItem="jFZ-nI-QtY" secondAttribute="centerX" id="V2C-WY-aKK"/>
                                     <constraint firstItem="ylT-gk-fgM" firstAttribute="top" secondItem="jFZ-nI-QtY" secondAttribute="top" constant="20" id="ari-Zf-sy6"/>
-                                    <constraint firstItem="ylT-gk-fgM" firstAttribute="leading" secondItem="jFZ-nI-QtY" secondAttribute="leading" constant="35" id="pq3-gK-TIB"/>
                                     <constraint firstItem="oOC-Yf-gXF" firstAttribute="height" secondItem="jFZ-nI-QtY" secondAttribute="height" multiplier="0.4" id="t3y-6J-Vmr"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zn-ST-dJ6" userLabel="TextAreaView">
-                                <rect key="frame" x="57" y="238" width="260" height="275.5"/>
+                                <rect key="frame" x="57" y="223.5" width="260" height="357"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xvO-Ke-lSC">
-                                        <rect key="frame" x="5" y="5" width="250" height="110"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvO-Ke-lSC">
+                                        <rect key="frame" x="5" y="5" width="250" height="137.5"/>
                                         <string key="text">    Pinitiative is a tool to help you join together with your friends, peers, and neighbors to make a difference in your community!</string>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="od3-Mx-phg">
-                                        <rect key="frame" x="5" y="133" width="250" height="137.5"/>
-                                        <string key="text">    To get started, click on a landmark or initiative on the map to see what your neighbors are passionate about. Or, start an initiative for yourself, either at a landmark, or by long-clicking on the map</string>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="od3-Mx-phg">
+                                        <rect key="frame" x="5" y="142.5" width="250" height="209.5"/>
+                                        <string key="text">    To get started, click on a landmark or initiative on the map to see what your neighbors are passionate about. Or, start an initiative for yourself, either at a landmark, or by long-clicking on the map.</string>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -132,9 +132,9 @@
                                     <constraint firstAttribute="trailing" secondItem="od3-Mx-phg" secondAttribute="trailing" constant="5" id="F24-7l-baw"/>
                                     <constraint firstAttribute="trailing" secondItem="xvO-Ke-lSC" secondAttribute="trailing" constant="5" id="Lkm-mf-qpS"/>
                                     <constraint firstItem="xvO-Ke-lSC" firstAttribute="top" secondItem="2zn-ST-dJ6" secondAttribute="top" constant="5" id="Oqx-Uz-vfQ"/>
-                                    <constraint firstItem="od3-Mx-phg" firstAttribute="height" secondItem="2zn-ST-dJ6" secondAttribute="height" multiplier="0.5" id="R0a-kB-sJl"/>
+                                    <constraint firstItem="od3-Mx-phg" firstAttribute="height" secondItem="2zn-ST-dJ6" secondAttribute="height" multiplier="0.6" constant="-5" id="R0a-kB-sJl"/>
                                     <constraint firstItem="od3-Mx-phg" firstAttribute="leading" secondItem="2zn-ST-dJ6" secondAttribute="leading" constant="5" id="TlY-dT-F5c"/>
-                                    <constraint firstItem="xvO-Ke-lSC" firstAttribute="height" secondItem="2zn-ST-dJ6" secondAttribute="height" multiplier="0.4" id="alH-rC-8uf"/>
+                                    <constraint firstItem="xvO-Ke-lSC" firstAttribute="height" secondItem="2zn-ST-dJ6" secondAttribute="height" multiplier="0.4" constant="-5" id="alH-rC-8uf"/>
                                     <constraint firstItem="xvO-Ke-lSC" firstAttribute="leading" secondItem="2zn-ST-dJ6" secondAttribute="leading" constant="5" id="imI-Ee-IRJ"/>
                                 </constraints>
                             </view>
@@ -147,7 +147,7 @@
                             <constraint firstItem="jFZ-nI-QtY" firstAttribute="width" secondItem="POz-QW-3Pe" secondAttribute="width" multiplier="0.8" id="DtN-1f-MO3"/>
                             <constraint firstItem="jFZ-nI-QtY" firstAttribute="centerX" secondItem="POz-QW-3Pe" secondAttribute="centerX" id="QpH-Yw-1w5"/>
                             <constraint firstItem="2zn-ST-dJ6" firstAttribute="bottom" secondItem="jFZ-nI-QtY" secondAttribute="bottom" constant="-20" id="UiN-gT-6Ed"/>
-                            <constraint firstItem="jFZ-nI-QtY" firstAttribute="height" secondItem="POz-QW-3Pe" secondAttribute="height" multiplier="0.6" id="gET-r1-FW1"/>
+                            <constraint firstItem="jFZ-nI-QtY" firstAttribute="height" secondItem="POz-QW-3Pe" secondAttribute="height" multiplier="0.8" id="gET-r1-FW1"/>
                             <constraint firstItem="2zn-ST-dJ6" firstAttribute="trailing" secondItem="jFZ-nI-QtY" secondAttribute="trailing" constant="-20" id="nHO-0O-IvI"/>
                             <constraint firstItem="2zn-ST-dJ6" firstAttribute="top" secondItem="oOC-Yf-gXF" secondAttribute="bottom" constant="-26" id="oUc-kY-EdA"/>
                         </constraints>
