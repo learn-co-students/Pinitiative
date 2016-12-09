@@ -10,6 +10,8 @@ A user logging into "Pinitiative" for the first time will log in and be brought 
 
 Other users will see your initiatives. When they're nearby, they will see your initiative. If they're interested, they'll join. You can then chat with those users, and begin to organize your social change!
 
+### Developers: Jhantelle Belleza, Anthony Zeitlin, Tameika Lawrence, and Christopher Boynton
+
 ## Database Maker Application
 This application uses another application to parse through NYC Open Data, geocode addresses, and write this organized data to Firebase. That app has [its own repository here.](https://github.com/Chrisb616/lemonHandshakeDatabaseMaker)
 
