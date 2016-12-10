@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Former
+import CoreLocation
 
 class FormManager: FormViewController {
     
@@ -24,6 +25,7 @@ class FormManager: FormViewController {
     var descriptionText = String()
     var date = Date()
     var landmark: Landmark!
+    var markedLocation: DropPinLocation!
     
     func makeStartInitiativeForm() {
         
@@ -144,13 +146,12 @@ class FormManager: FormViewController {
         
     }
     
-    func saveInitiative(_ landmark: Landmark?) -> Bool {
+    func saveInitiative() -> Bool {
         if !nameText.isEmpty && !descriptionText.isEmpty {
-        
-            if let landmark = landmark {
+            if landmark != nil {
             Initiative.startNewInitiativeAtLandmark(landmark: landmark, initiativeName: nameText, initiativeDescription: descriptionText, associatedDate: date)
             } else {
-            Initiative.startNewInitiativeAtLocation(latitude: mapStore.userLatitude, longitude: mapStore.userLongitude, initiativeName: nameText, initiativeDescription: descriptionText, associatedDate: date)
+            Initiative.startNewInitiativeAtLocation(latitude: markedLocation.coordinate.latitude, longitude: markedLocation.coordinate.longitude, initiativeName: nameText, initiativeDescription: descriptionText, associatedDate: date)
             }
 
             return true

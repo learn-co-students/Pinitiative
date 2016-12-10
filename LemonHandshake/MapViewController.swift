@@ -33,6 +33,12 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     
     @IBOutlet weak var userLocationButton: UIButton!
     
+    @IBAction func searchMapButton(_ sender: Any) {
+        print("SEARCHING FOR NEW LOCATIONS")
+        refreshMapLandmarks()
+        addAnnotationToMarkedLocations()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +49,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.delegate = self
         setMapSearchButtonConstraints()
         setUserLocationArrowConstraints()
-//        addAnnotationToMarkedLocations() TODO
+        addAnnotationToMarkedLocations()
         self.view.bringSubview(toFront: userLocationButton)
         
         let imageView = UIImageView(image: IconConstants.fullLogo)
@@ -103,17 +109,17 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         mapView.longitude = userLocation.coordinate.longitude
         mapView.setCenter(center, animated: true)
         if shouldPullGeofire {
-            addAnnotationToMarkedLocations()
             refreshMapLandmarks()
+            addAnnotationToMarkedLocations()
             shouldPullGeofire = false
         }
     }
     
-    func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
-        mapBounds = mapView.visibleCoordinateBounds
-        addPointAnnotations()
-        
-    }
+//    func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
+//        mapBounds = mapView.visibleCoordinateBounds
+//        addPointAnnotations()
+//        
+//    }
     
     func setUserLocationArrowConstraints() {
         userLocationButton.snp.makeConstraints { (make) in
@@ -149,7 +155,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
             }
         }
         
-        
     }
     
     //MARK: JCB Refresh marked locations
@@ -160,9 +165,10 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
             //Use landmark class to instantiate the value for point annotation
             
             if initiative.associatedLandmark == nil {
+                print("Marked location: \(initiative.location.coordinate.longitude)")
                 let markedLocation = Landmark(address: "Marked Location", agency: "other", borough: "test", latitude: initiative.location.coordinate.latitude, longitude: initiative.location.coordinate.longitude, name: initiative.name, useDescription: "test", databaseKey: "test")
                 OperationQueue.main.addOperation {
-                    self.store.landmarks.append(markedLocation)
+//                    self.store.landmarks.append(markedLocation)
                     self.addSinglePointAnnotation(for: markedLocation)
                 }
             }
@@ -229,13 +235,14 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
                 
             case "HLTH", "DHS", "HHC", "AGING", "OCME", "HRA":
                 return "hospital-building"
-                
+            case "other":
+                return "Logo"
             default:
                 return "drop_pin_marker"
             }
             
         }
-        print("THIS IS THE POINTS AGENCY CONVERTED INTO AN ICON STRING\(id)")
+        print("THIS IS THE POINTS AGENCY CONVERTED INTO AN ICON STRING \(id)")
         point.reuseIdentifier = id
         
         print("THIS IS THE Agency \(landmark.agency)")
@@ -325,7 +332,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
             
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
             mapView.addGestureRecognizer(longPress)
-            
         }
         
         func handleLongPress(long: UILongPressGestureRecognizer) {
@@ -353,31 +359,13 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
                     geocodeAddress = address
                 }
                 
-                let image = UIImage(named: "drop_pin_marker")!
-                
-                let iconSize = CGSize(width: 20, height: 20)
-                
-                image.size.equalTo(iconSize)
-                
-                
-                let markedLocation = CustomPointAnnotation(coordinate: longPressCoordinate, title: Constants.markedLocationText, subtitle: geocodeAddress, databaseKey: "", image: image)
-                
-                
-                markedLocation.reuseIdentifier = Constants.customMarkerText
-                self.mapView.addAnnotation(markedLocation)
                 
                 let senderLocation = DropPinLocation(coordinate: longPressCoordinate, address: geocodeAddress)
-                
-                
                 
                 self.performSegue(withIdentifier: Constants.dropPinSegueText, sender: senderLocation)
             }
         }
-        
-        @IBAction func searchMapButton(_ sender: Any) {
-            print("SEARCHING FOR NEW LOCATIONS")
-            refreshMapLandmarks()
-        }
+    
         
         func setMapSearchButtonConstraints() {
             searchMapLabel.snp.makeConstraints { (make) in

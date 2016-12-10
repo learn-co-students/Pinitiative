@@ -40,8 +40,8 @@ class DropPinDetail: UIView {
     var location: DropPinLocation! { //custom class for drop Pin that has location
         didSet {
             addressLabel.text = location.address
-            latitudeLabel.text = String(format: "%.2f", location.coordinate.latitude)
-            longitudeLabel.text = String(format: "%.2f", location.coordinate.longitude)
+            latitudeLabel.text = String(format: "%.4f", location.coordinate.latitude)
+            longitudeLabel.text = String(format: "%.4f", location.coordinate.longitude)
 //            :TODO
 //            if location.withInitiative {
 //               startInitiativeButton.setTitle("Join Initiative?", for: .normal)
@@ -60,9 +60,9 @@ class DropPinDetail: UIView {
     func commonInit() {
         Bundle.main.loadNibNamed("DropPinDetail", owner: self, options: nil)
         addSubview(contentView)
-    
-        contentView.translatesAutoresizingMaskIntoConstraints = false
         
+        contentView.layer.cornerRadius = 15
+        contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true

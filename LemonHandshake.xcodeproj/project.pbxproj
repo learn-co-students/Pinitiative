@@ -47,7 +47,6 @@
 		BC6244E21DDA798D00AE6523 /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */; };
 		BC6244E31DDA798D00AE6523 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DD1DDA798D00AE6523 /* MapViewController.swift */; };
 		BC6244E41DDA798D00AE6523 /* MyInitiativesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */; };
-		BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */; };
 		BC87E4A81DDB87E800980939 /* MemberManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */; };
 		BCAAF03D1DEC859900D78419 /* BadWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAAF03C1DEC859900D78419 /* BadWords.swift */; };
 		BCB137B91DE5EBD200C15CDD /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */; };
@@ -100,7 +99,6 @@
 		BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
 		BC6244DD1DDA798D00AE6523 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BC6244DE1DDA798D00AE6523 /* MyInitiativesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInitiativesTableViewController.swift; sourceTree = "<group>"; };
-		BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartInitiativeViewController.swift; sourceTree = "<group>"; };
 		BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberManagementViewController.swift; sourceTree = "<group>"; };
 		BCAAF03C1DEC859900D78419 /* BadWords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadWords.swift; sourceTree = "<group>"; };
 		BCB137B81DE5EBD200C15CDD /* ChatDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 				1B0D30C71DF83AC4007F5250 /* InitiativeManagementMemberTableViewCell.swift */,
 				BC6244DC1DDA798D00AE6523 /* LoginScreenViewController.swift */,
 				BC6244DD1DDA798D00AE6523 /* MapViewController.swift */,
-				BC6244DF1DDA798D00AE6523 /* StartInitiativeViewController.swift */,
 				83873B021DF3827F00FF71FB /* StartInitiativeNewViewController.swift */,
 				83873B041DF382E500FF71FB /* FormManager.swift */,
 				BC87E4A71DDB87E800980939 /* MemberManagementViewController.swift */,
@@ -413,7 +410,6 @@
 				1B10B1A41DE4C8F9006E38A7 /* GeoFire.swift in Sources */,
 				1B0D30C81DF83AC4007F5250 /* InitiativeManagementMemberTableViewCell.swift in Sources */,
 				8326CB281DECD923009EC996 /* DropPinDetailViewController.swift in Sources */,
-				BC6244E51DDA798D00AE6523 /* StartInitiativeViewController.swift in Sources */,
 				1B0EC6751DF74D7300297C8C /* NewUserInfoViewController.swift in Sources */,
 				BCAAF03D1DEC859900D78419 /* BadWords.swift in Sources */,
 				837C2F5A1DE4942500E076C9 /* AppController.swift in Sources */,

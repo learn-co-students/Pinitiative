@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import SnapKit
+import FirebaseAuth
 
 class NearbyInitiativesTableViewController: UITableViewController {
     
@@ -18,20 +19,18 @@ class NearbyInitiativesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //        let background = UIImage(named: "gardenRoad" )
-        //        let imageView = UIImageView(image: background)
-        //        self.view.addSubview(imageView)
-        //        imageView.contentMode = .scaleAspectFill
-        //        imageView.alpha = 0.4
-        //        view.sendSubview(toBack: imageView)
-        
-        retrieveNearbyInitiatives()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if nearbyInitiatives.count > 0 {
+        self.nearbyInitiatives.removeAll()
+        }
+        retrieveNearbyInitiatives()
     }
     
     
@@ -73,12 +72,10 @@ class NearbyInitiativesTableViewController: UITableViewController {
                 cell.landmarkTypePreview.image = landmark.tableViewIcon }
         } else {
             cell.landmarkLabel.text = "Custom Location"
-            cell.landmarkTypePreview.image = UIImage(named: "CustomLandmarkTableViewIcon")
+            cell.landmarkTypePreview.image = UIImage(named: "CustomLocationTableViewIcon")
         }
         return cell
     }
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "localInitiativeDetail" {
@@ -92,4 +89,7 @@ class NearbyInitiativesTableViewController: UITableViewController {
     
     func animateTableView() {
     }
+    
+    
+        
 }

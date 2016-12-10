@@ -8,6 +8,7 @@
 
 import UIKit
 import Former
+import CoreLocation
 
 class StartInitiativeNewViewController: UIViewController {
     
@@ -15,6 +16,7 @@ class StartInitiativeNewViewController: UIViewController {
     var formView: UIView!
     var landmark: Landmark?
     var sender = ""
+    var markedLocation: DropPinLocation!
     
     @IBOutlet weak var closeButton: UIView!
     @IBOutlet weak var closeCircleButton: UIButton!
@@ -24,7 +26,7 @@ class StartInitiativeNewViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     @IBAction func savePressed(_ sender: UIButton) {
-        let isSaved = form.saveInitiative(landmark)
+        let isSaved = form.saveInitiative()
         
         if isSaved {
             let alertController = UIAlertController(title: nil, message: "\(form.nameText) added to your initiatives!", preferredStyle: UIAlertControllerStyle.alert)
@@ -55,7 +57,11 @@ class StartInitiativeNewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        form.landmark = landmark
+        if landmark != nil {
+            form.landmark = landmark }
+        else {
+            form.markedLocation = self.markedLocation
+        }
         form.makeStartInitiativeForm()
         formerView.addSubview((form.view)!)
         form.view.constrainTo(formerView)

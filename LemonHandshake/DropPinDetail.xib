@@ -49,16 +49,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0Js-3q-RYS" userLabel="Longitude Stack">
-                    <rect key="frame" x="186" y="114" width="92" height="39"/>
+                    <rect key="frame" x="186" y="114" width="100" height="39"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Longitude" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQ1-6w-Df5">
-                            <rect key="frame" x="14" y="0.0" width="64" height="17"/>
+                            <rect key="frame" x="14" y="0.0" width="72" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T59-GB-DlJ" userLabel="Longitude Value">
-                            <rect key="frame" x="14" y="22" width="64" height="17"/>
+                            <rect key="frame" x="0.0" y="22" width="100" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="MNO-zK-raG"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -66,8 +69,6 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="JQ1-6w-Df5" firstAttribute="leading" secondItem="0Js-3q-RYS" secondAttribute="leading" constant="14" id="Ej6-Qj-PBF"/>
-                        <constraint firstItem="JQ1-6w-Df5" firstAttribute="leading" secondItem="T59-GB-DlJ" secondAttribute="leading" id="pFf-rV-fiL"/>
-                        <constraint firstAttribute="width" constant="92" id="tY5-74-0cS"/>
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="CsR-PT-mT2" userLabel="Latitude Stack">
@@ -80,7 +81,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Latitude" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eu5-GG-bLI" userLabel="Latitude Value">
-                            <rect key="frame" x="29" y="22" width="52" height="17"/>
+                            <rect key="frame" x="5" y="22" width="100" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="A9y-B9-Q3m"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -88,7 +92,6 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="width" constant="110" id="3AR-Ve-Cgc"/>
-                        <constraint firstItem="2jF-AU-yVp" firstAttribute="leading" secondItem="eu5-GG-bLI" secondAttribute="leading" id="LZs-vb-tdY"/>
                         <constraint firstItem="2jF-AU-yVp" firstAttribute="leading" secondItem="CsR-PT-mT2" secondAttribute="leading" constant="29" id="XbM-ne-15S"/>
                     </constraints>
                 </stackView>

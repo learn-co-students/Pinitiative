@@ -33,7 +33,7 @@ class DropPinDetailViewController: UIViewController, DropPinDelegate {
     }
     
     func startInitiative() {
-        performSegue(withIdentifier: Constants.startInitiativeSegue, sender: self.location)
+        performSegue(withIdentifier: Constants.startInitiativeSegue, sender: nil)
     }
     
     func joinInitiative() {
@@ -51,5 +51,12 @@ class DropPinDetailViewController: UIViewController, DropPinDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destNC = segue.destination as! UINavigationController
+        let destVC = destNC.topViewController as! StartInitiativeNewViewController
+        destVC.markedLocation = self.location
+        
+    }
 }
 

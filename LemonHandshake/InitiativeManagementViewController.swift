@@ -155,7 +155,6 @@ class InitiativeManagementViewController: UIViewController, UITableViewDelegate,
         }
         
         
-        
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)

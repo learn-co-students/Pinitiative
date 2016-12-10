@@ -26,9 +26,9 @@ class MyInitiativesTableViewController: UITableViewController {
         FirebaseAPI.retrieveInitiativesFor(userKey: FirebaseAuth.currentUserID) { (initiatives) in
             initiatives.forEach{ initiative in
                 self.userInitiatives.append(initiative)
-            }
-            OperationQueue.main.addOperation {
-                self.tableView.reloadData()
+                OperationQueue.main.addOperation {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
@@ -62,9 +62,8 @@ class MyInitiativesTableViewController: UITableViewController {
                 cell.landmarkTypePreview.image = landmark.tableViewIcon }
         } else {
             cell.landmarkLabel.text = "Custom Location"
-            cell.landmarkTypePreview.image = UIImage(named: "CustomLandmarkTableViewIcon")
+            cell.landmarkTypePreview.image = UIImage(named: "CustomLocationTableViewIcon")
         }
-        
         return cell
     }
     
@@ -75,8 +74,34 @@ class MyInitiativesTableViewController: UITableViewController {
             dest.initiative = userInitiatives[(tableView.indexPathForSelectedRow?.row)!]
         }
     }
-    
-    func animateTableView() {
-        
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let initiative = userInitiatives[indexPath.row]
+            
+            if initiative.leader == FirebaseAuth.currentUserID {
+            let leaderAlertController = UIAlertController(title: "Delete Initiative", message: "This action cannot be undone.", preferredStyle: .alert)
+                
+                let okAction =  UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                   self.userInitiatives.removeAll()
+                   FirebaseAPI.archive(initiative: initiative)
+                    self.dismiss(animated: true, completion: nil)
+                    self.retrieveMyInitiatives()
+                    self.tableView.reloadData()
+                })
+               
+             leaderAlertController.addAction(okAction)
+             self.present(leaderAlertController, animated: true, completion: nil)
+            } else {
+                let notLeaderController = UIAlertController(title: "Warning", message: "You are  not the leader of this initiative, you cannot perform this operation", preferredStyle: .alert)
+                let okAction =  UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                    self.dismiss(animated: true, completion: nil)
+                })
+                
+                notLeaderController.addAction(okAction)
+                self.present(notLeaderController, animated: true, completion: nil)
+            }
+        }
     }
+
 }

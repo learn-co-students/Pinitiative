@@ -12,6 +12,9 @@ import JSQMessagesViewController
 extension Notification.Name {
     static let closeLoginVC = Notification.Name("close-login-view-controller")
     static let closeMainVC = Notification.Name("close-main-view-controller")
+    
+    //for My Initiative Table View Controller
+    static let retrieveInitiatives = Notification.Name("retrieve-initiatives")
 }
 
 enum StoryboardID: String {

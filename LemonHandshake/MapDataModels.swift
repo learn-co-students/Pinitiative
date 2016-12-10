@@ -39,12 +39,20 @@ class Landmark {
             return UIImage(named: "police")!
         case "HLTH", "DHS", "HHC", "AGING", "OCME", "HRA":
             return UIImage(named: "hospital-building")!
-        default:
-            let image = UIImage(named: "drop_pin_marker")!
+        case "other":
+            let image = UIImage(named: "Logo")!
             
             let iconSize = CGSize(width: 20, height: 20)
             
             image.size.equalTo(iconSize)
+            
+            return image
+        default:
+            let image = UIImage(named: "Logo")!
+//
+//            let iconSize = CGSize(width: 20, height: 20)
+//            
+//            image.size.equalTo(iconSize)
             
             return image
         }
@@ -63,6 +71,8 @@ class Landmark {
             return UIImage(named: "policeTableViewIcon")!
         case "HLTH", "DHS", "HHC", "AGING", "OCME", "HRA":
             return UIImage(named: "hospitalTableViewIcon")!
+        case "other":
+            return UIImage(named: "CustomLandmarkTableViewIcon")!
         default:
             return UIImage(named: "CustomLandmarkTableViewIcon")!
         }
