@@ -2,6 +2,8 @@
 
 # Pinitiative
 
+### Developers: [Jhantelle Belleza](https://github.com/jhantelleb), [Anthony Zeitlin](https://github.com/Zeitlin1), [Tameika Lawrence](https://github.com/tameika), and [Christopher Boynton](https://github.com/chrisb616).
+
 Pinitiative is a project made for [The Opportunity Project](http://opportunity.census.gov/) using landmark data from NYC Open Data.
 
 The idea behind Pinitiative came from the idea of people interested in helping their community. Having trouble knowing or meeting other people who are interested in solving the issues that they see day to day. We wanted to create an app that eased that social barrier and allowed people to interact in a group based solely around an initiavite for which everyone shows passion.
@@ -9,8 +11,6 @@ The idea behind Pinitiative came from the idea of people interested in helping t
 First time users of "Pinitiative" will log in and be brought to a map screen which shows the local landmarks in their area. These landmarks include schools, parks, hospitals, police stations, and firestations. Users can click on a landmark and create an "initiative" about something that they care about. They, alternatively, can long-click on the map to create an initiative anywhere on the map.
 
 Other users can see your initiatives. They can also see nearby initiatives. If they're interested, they can join and use the chat functionality to begin and organize your social change!
-
-### Developers: Jhantelle Belleza, Anthony Zeitlin, Tameika Lawrence, and Christopher Boynton
 
 All of the developers on this team were students at [The Flatiron School](https://flatironschool.com/) during the creation of the project.
 
