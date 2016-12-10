@@ -12,10 +12,10 @@ Other users can see your initiatives. They can also see nearby initiatives. If t
 
 ### Developers: Jhantelle Belleza, Anthony Zeitlin, Tameika Lawrence, and Christopher Boynton
 
-All four of the developers on this team were students at [The Flatiron School](https://flatironschool.com/) during the creation of the project.
+All of the developers on this team were students at [The Flatiron School](https://flatironschool.com/) during the creation of the project.
 
-## Database Maker Application
-This application uses another application to parse through NYC Open Data, geocode addresses, and write this organized data to Firebase. That app has [its own repository here.](https://github.com/Chrisb616/lemonHandshakeDatabaseMaker)
+## Pinitiative Database Maker
+This application uses another application to import NYC Open Data, then add, edit and write an organized data structure to Firebase. This allows for ease of use on Firebase, and for the use of [GeoFire](https://github.com/firebase/geofire-objc). That app has [its own repository here.](https://github.com/Chrisb616/PinitiativeDatabaseMaker)
 
 ## How to get GeoFire 1.1 working
 GeoFire hasn't been updated in some time. Until Firebase comes out with a new version for Swift 3, there are a few steps that need to be followed to get GeoFire up and running.
