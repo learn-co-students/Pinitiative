@@ -2,11 +2,20 @@
 
 # Pinitiative
 
+### Developers: [Jhantelle Belleza](https://github.com/jhantelleb), [Anthony Zeitlin](https://github.com/Zeitlin1), [Tameika Lawrence](https://github.com/tameika), and [Christopher Boynton](https://github.com/chrisb616).
+
 Pinitiative is a project made for [The Opportunity Project](http://opportunity.census.gov/) using landmark data from NYC Open Data.
 
+The idea behind Pinitiative came from the idea of people interested in helping their community. Having trouble knowing or meeting other people who are interested in solving the issues that they see day to day. We wanted to create an app that eased that social barrier and allowed people to interact in a group based solely around an initiavite for which everyone shows passion.
 
-## Database Maker Application
-This application uses another application to parse through NYC Open Data, geocode addresses, and write this organized data to Firebase. That app has [its own repository here.](https://github.com/Chrisb616/lemonHandshakeDatabaseMaker)
+First time users of "Pinitiative" will log in and be brought to a map screen which shows the local landmarks in their area. These landmarks include schools, parks, hospitals, police stations, and firestations. Users can click on a landmark and create an "initiative" about something that they care about. They, alternatively, can long-click on the map to create an initiative anywhere on the map.
+
+Other users can see your initiatives. They can also see nearby initiatives. If they're interested, they can join and use the chat functionality to begin and organize your social change!
+
+All of the developers on this team were students at [The Flatiron School](https://flatironschool.com/) during the creation of the project.
+
+## Pinitiative Database Maker
+This application uses another application to import NYC Open Data, then add, edit and write an organized data structure to Firebase. This allows for ease of use on Firebase, and for the use of [GeoFire](https://github.com/firebase/geofire-objc). That app has [its own repository here.](https://github.com/Chrisb616/PinitiativeDatabaseMaker)
 
 ## How to get GeoFire 1.1 working
 GeoFire hasn't been updated in some time. Until Firebase comes out with a new version for Swift 3, there are a few steps that need to be followed to get GeoFire up and running.
@@ -17,12 +26,12 @@ First of all, in your podfile, instead of writing the pod that GeoFire asks you 
 
 Now run `pod install` in  your terminal. When you open up the workspace, you'll find that you get an error reading 'FirebaseDatabase/FirebaseDatabase.h file not found' when you try to build.
 
-To solve this, go to the file that has the error. Go to your navigator, and find the file 'FirebaseDatabase.h' in your structure.
+To solve this, go to your navigator. Go to Pods > FirebaseDatabase > Frameworks > FirebaseDatabase.framework. 
 
-![alt text](http://i.imgur.com/E2po94Z.png "Find the FirebaseDatabase.h file")
+![alt text](http://i.imgur.com/ZrVnvc0.png "Find the FirebaseDatabase.framework")
 
-Click and drag that file into the code file you're working with. When you release it, it should give you a file path. This is the correct file pat for your 'FirebaseDatabase.h' file. Now type `#import` before the path, and wrap the path in angled brackets `< >`.
+Select that file. In the utilities, inside of the File Inspector, check the box inside Target Membership that reads "GeoFire". 
 
-![alt text](http://i.imgur.com/duiX4O0.png "#import the file path")
+![alt text](http://i.imgur.com/KkoB6WW.png "Set the GeoFire Framwork to require.")
 
 As our repository has a .gitignore that ignores our pods, this has to be done each time you clone the project.

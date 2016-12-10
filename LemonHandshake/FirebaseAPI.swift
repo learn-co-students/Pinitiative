@@ -477,7 +477,7 @@ class FirebaseAPI {
     
 
     //MARK: JCB Add function to retrieve initiative using landmark key
-    static func retrieveInitiativeFor(landmarkKey: String, completion: @escaping ([Initiative])->Void) {
+    static func retrieveInitiativeFor(landmarkKey: String, completion: @escaping (Initiative)->Void) {
         
         let landmarkRef = FIRDatabase.database().reference().child("landmarks").child(landmarkKey).child("initiatives")
         
@@ -485,7 +485,6 @@ class FirebaseAPI {
             snapshot in
             if let dictionary = snapshot.value as? [String: Any] {
                 var initiativeKeys = [String]()
-                var initiatives = [Initiative]()
                 
                 for item in dictionary {
                     initiativeKeys.append(item.key)
@@ -493,12 +492,11 @@ class FirebaseAPI {
                 
                 for initiativeKey in initiativeKeys {
                     FirebaseAPI.retrieveInitiative(withKey: initiativeKey, completion: { (initiative) in
-                        initiatives.append(initiative)
-                        if initiativeKeys.count == initiatives.count {
-                            completion(initiatives)
-                        }
+                        completion(initiative)
                     })
                 }
+            } else {
+                print("No initiatives")
             }
         })
     }

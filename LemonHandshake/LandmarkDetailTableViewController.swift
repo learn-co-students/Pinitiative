@@ -42,7 +42,7 @@ class LandmarkDetailTableViewController: UITableViewController {
     func getInitiativesForLandmark() {
         FirebaseAPI.retrieveInitiativeFor(landmarkKey: landmark.databaseKey, completion: {
             initiative in
-            self.landmarkInitiatives = initiative
+            self.landmarkInitiatives.append(initiative)
             OperationQueue.main.addOperation {
                 self.tableView.reloadData()
             }
