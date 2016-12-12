@@ -20,6 +20,7 @@ class LandmarkDetail: UIView {
     weak var delegate: LandmarkDetailDelegate?
      var geocoder = CLGeocoder()
     
+    @IBOutlet weak var startInitiativeButton: UIButton!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -60,6 +61,8 @@ class LandmarkDetail: UIView {
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        
+        startInitiativeButton.layer.cornerRadius = 5
 
     }
     

@@ -44,7 +44,7 @@ class LandmarkDetailTableViewController: UITableViewController {
             initiative in
             self.landmarkInitiatives.append(initiative)
             OperationQueue.main.addOperation {
-                self.tableView.reloadData()
+                self.animateTable()
             }
         })
     }
@@ -70,6 +70,27 @@ class LandmarkDetailTableViewController: UITableViewController {
             FirebaseAPI.retrieveUser(withKey: FirebaseAuth.currentUserID, completion: { (user) in
                 dest.currentUser = user
             })
+        }
+    }
+    
+    func animateTable() {
+        tableView.reloadData()
+        
+        let cells = tableView.visibleCells
+        let tableHeight = tableView.bounds.size.height
+        
+        
+        cells.forEach { (cell) in
+            cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
+        }
+        
+        var index = 0
+        
+        for cell in cells {
+            UIView.animate(withDuration: 1.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            index += 1
         }
     }
 }

@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DropPinDetail" customModule="LemonHandshake" customModuleProvider="target">
             <connections>
+                <outlet property="activityButton" destination="e4s-Qp-Cnf" id="hjt-qa-Peb"/>
                 <outlet property="addressLabel" destination="K76-vK-END" id="wOb-gf-9fA"/>
                 <outlet property="contentView" destination="lLC-UZ-XGW" id="aCe-Xu-EgK"/>
                 <outlet property="latitudeLabel" destination="eu5-GG-bLI" id="50h-tV-KZE"/>

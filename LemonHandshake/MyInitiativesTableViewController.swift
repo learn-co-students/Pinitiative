@@ -27,7 +27,7 @@ class MyInitiativesTableViewController: UITableViewController {
             initiatives.forEach{ initiative in
                 self.userInitiatives.append(initiative)
                 OperationQueue.main.addOperation {
-                    self.tableView.reloadData()
+                    self.animateTable()
                 }
             }
         }
@@ -66,22 +66,6 @@ class MyInitiativesTableViewController: UITableViewController {
         return cell
     }
     
-    //MARK: Table View Cell animation:
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.layer.transform = CATransform3DMakeScale(0.1,0.1, 1)
-
-        UIView.animate(withDuration: 0.3, animations: {
-            cell.layer.transform = CATransform3DMakeScale(1.05, 1.05, 1)
-        }, completion: { finished in
-            UIView.animate(withDuration: 0.1, animations: { 
-                cell.layer.transform = CATransform3DMakeScale(1, 1, 1)
-            })
-            
-        })
-    
-    }
-    
-    
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -97,7 +81,7 @@ class MyInitiativesTableViewController: UITableViewController {
             let initiative = userInitiatives[indexPath.row]
             
             if initiative.leader == FirebaseAuth.currentUserID {
-            let leaderAlertController = UIAlertController(title: "Delete Initiative", message: "This action cannot be undone.", preferredStyle: .alert)
+            let leaderAlertController = UIAlertController(title: "Delete Initiative?", message: "This action cannot be undone.", preferredStyle: .alert)
                 
                 let okAction =  UIAlertAction(title: "Ok", style: .default, handler: { (action) in
                    self.userInitiatives.removeAll()
@@ -121,6 +105,26 @@ class MyInitiativesTableViewController: UITableViewController {
         }
     }
     
+    func animateTable() {
+        tableView.reloadData()
+        
+        let cells = tableView.visibleCells
+        let tableHeight = tableView.bounds.size.height
+        
+        
+        cells.forEach { (cell) in
+            cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
+        }
+        
+        var index = 0
+        
+        for cell in cells {
+            UIView.animate(withDuration: 1.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            index += 1
+        }
+    }
     
 
 }

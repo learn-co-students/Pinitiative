@@ -38,7 +38,7 @@ class NearbyInitiativesTableViewController: UITableViewController {
         FirebaseAPI.geoFirePullNearbyInitiatives(within: 0.5, ofLocation: store.userLocation) { (initiative) in
             self.nearbyInitiatives.append(initiative)
             OperationQueue.main.addOperation {
-                self.tableView.reloadData()
+                self.animateTable()
             }
         }
     }
@@ -88,20 +88,24 @@ class NearbyInitiativesTableViewController: UITableViewController {
     }
     
     //MARK: Table View Cell animation:
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.layer.transform = CATransform3DMakeScale(0.1,0.1, 1)
+    func animateTable() {
+        tableView.reloadData()
         
-        UIView.animate(withDuration: 0.3, animations: {
-            cell.layer.transform = CATransform3DMakeScale(1.05, 1.05, 1)
-        }, completion: { finished in
-            UIView.animate(withDuration: 0.1, animations: {
-                cell.layer.transform = CATransform3DMakeScale(1, 1, 1)
-            })
-            
-        })
+        let cells = tableView.visibleCells
+        let tableHeight = tableView.bounds.size.height
         
+        
+        cells.forEach { (cell) in
+            cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
+        }
+        
+        var index = 0
+        
+        for cell in cells {
+            UIView.animate(withDuration: 1.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            index += 1
+        }
     }
-
-    
-        
 }

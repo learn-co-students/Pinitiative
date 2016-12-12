@@ -21,6 +21,7 @@ class DropPinDetail: UIView {
     var hasInitiative = false
     var initiativeKey = ""
         
+    @IBOutlet weak var activityButton: UIButton!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -67,6 +68,7 @@ class DropPinDetail: UIView {
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        activityButton.layer.cornerRadius = 5
     }
     
     
