@@ -50,7 +50,6 @@ class MyInitiativesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "initiativeCell", for: indexPath) as! MyInitiativesTableViewCell
-        
         cell.contentView.backgroundColor = UIColor.clear
         let userInitiative = userInitiatives[indexPath.row]
         cell.initiativeLabel.text = userInitiative.name
@@ -67,6 +66,23 @@ class MyInitiativesTableViewController: UITableViewController {
         return cell
     }
     
+    //MARK: Table View Cell animation:
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.layer.transform = CATransform3DMakeScale(0.1,0.1, 1)
+
+        UIView.animate(withDuration: 0.3, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1.05, 1.05, 1)
+        }, completion: { finished in
+            UIView.animate(withDuration: 0.1, animations: { 
+                cell.layer.transform = CATransform3DMakeScale(1, 1, 1)
+            })
+            
+        })
+    
+    }
+    
+    
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "initiativeToDetailSegue" {
@@ -75,6 +91,7 @@ class MyInitiativesTableViewController: UITableViewController {
         }
     }
 
+    //MARK: Delete Cell functionality
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let initiative = userInitiatives[indexPath.row]
@@ -103,5 +120,7 @@ class MyInitiativesTableViewController: UITableViewController {
             }
         }
     }
+    
+    
 
 }
