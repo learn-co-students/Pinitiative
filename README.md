@@ -18,7 +18,7 @@ Other users will be able to see your initiatives and nearby initiatives. If they
 All of the developers on this team were students at [The Flatiron School](https://flatironschool.com/) during the development of the project.
 
 
-![alt-text](http://i.imgur.com/1HK2h74.jpg)
-![alt-text](http://imgur.com/1Fp8uK9)
-![alt-text](http://imgur.com/1oBmaNX)
-![alt-text](http://imgur.com/Dn0afYR)
+![Map](http://i.imgur.com/1HK2h74.jpg)
+![CreateInitiative](http://i.imgur.com/1Fp8uK9.jpg)
+![Detail](http://i.imgur.com/1oBmaNX.jpg) 
+![Chat](http://i.imgur.com/Dn0afYR.jpg)
